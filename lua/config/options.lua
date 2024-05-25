@@ -1,0 +1,56 @@
+-- Mostrar números de línea
+vim.opt.number = true
+
+-- Habilitar el uso del mouse
+vim.opt.mouse = "a"
+
+-- Mostrar comandos en la barra de estado
+vim.opt.showcmd = true
+
+-- Resaltar coincidencias al buscar
+vim.opt.showmatch = true
+
+-- Mostrar números de línea relativos
+vim.opt.relativenumber = true
+
+-- Configuraciones para la indexación, tabulaciones y formateo de texto para pantallas angostas
+vim.opt.breakindent = true
+vim.opt.autoindent = true
+vim.opt.linebreak = true
+
+-- Habilitar sintaxis y configuración de archivos
+vim.cmd("syntax on")
+vim.cmd("filetype plugin indent on")
+
+-- Configuración de indentación predeterminada para todos los archivos
+vim.opt.tabstop = 4        -- Número de espacios por tabulación
+vim.opt.shiftwidth = 4     -- Número de espacios para indentación
+vim.opt.expandtab = true   -- Utilizar espacios en lugar de tabulaciones
+
+-- Configuración de plegado de código
+vim.opt.foldmethod = "syntax"
+vim.opt.foldlevel = 99
+
+-- No mostrar el modo de edición
+vim.opt.showmode = false
+
+-- Siempre mostrar la barra de estado
+vim.opt.laststatus = 2
+
+-- Habilitar colores verdaderos en la terminal
+vim.opt.termguicolors = true
+
+-- Configuración de la altura del comando
+vim.opt.cmdheight = 1
+
+-- Configuraciones de búsqueda
+vim.opt.hlsearch = true   -- Resaltar coincidencias
+vim.opt.incsearch = true  -- Búsqueda incremental
+vim.opt.ignorecase = true -- Búsquedas insensibles a mayúsculas...
+vim.opt.smartcase = true  -- ... a menos que contengan al menos una letra mayúscula
+
+
+-- Configuración del portapapeles (pendiente de verificación)
+ vim.opt.clipboard = "unnamedplus"
+
+
