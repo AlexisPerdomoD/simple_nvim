@@ -19,6 +19,10 @@ return {
                 --graphql = { "prettier" },
                 luaa = { "stylua" },
             },
+            prettier = {
+                command = 'prettier',
+                args = { '--config', vim.fn.expand('~/.config/nvim/.prettierrc') },
+            },
             --format_on_save = {
             --    lsp_fallback = true,
             --    async = false,
