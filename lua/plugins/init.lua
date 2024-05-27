@@ -25,6 +25,7 @@ require('lazy').setup({
     require('plugins.tree_setter'),
     require('plugins.luasnip'),
     require('plugins.formater_manager'),
-    require('plugins.linter_manager'),
+    --require('plugins.linter_manager'),
     require('plugins.commenter'),
+    require('plugins.status_bar'),
 })
