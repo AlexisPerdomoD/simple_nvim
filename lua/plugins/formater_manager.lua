@@ -23,6 +23,10 @@ return {
                 command = 'prettier',
                 args = { '--config', vim.fn.expand('~/.config/nvim/.prettierrc') },
             },
+            stylua = {
+                command = 'stylua',
+                args = { '--config', vim.fn.expand('~/.config/nvim/stylua.toml') }
+            }
             --format_on_save = {
             --    lsp_fallback = true,
             --    async = false,

@@ -8,9 +8,6 @@ local silent_opts = { silent = true }
 -- Normal mode mappings
 map('n', '<leader>1', ':source ~/.config/nvim/init.lua | :Lazy install<CR>', silent_opts)
 map('n', '<leader>2', ':source ~/.config/nvim/init.lua<CR>', opts)
-map('n', '<C-D>', ':Prettier<CR>', opts)
-map('n', '<space>/', ':Commentary<CR>', silent_opts)
-map('v', '<space>/', ':Commentary<CR>', silent_opts)
 map('v', '$', '$<Left>', opts)
 map('n', '<space>w', ':w<CR>', opts)
 map('n', '<space>q', ':q<CR>', opts)
@@ -24,22 +21,10 @@ map('n', '<space><Left>', ':TmuxNavigateLeft<cr>', silent_opts)
 map('n', '<space><Down>', ':TmuxNavigateDown<cr>', silent_opts)
 map('n', '<space><Up>', ':TmuxNavigateUp<cr>', silent_opts)
 map('n', '<space><Right>', ':TmuxNavigateRight<cr>', silent_opts)
-map('n', '<space-S><Up>', ':resize +3<CR>', silent_opts)
-map('n', '<space-S><Down>', ':resize -3<CR>', silent_opts)
-map('n', '<space-S><Right>', ':vertical resize +5<CR>', silent_opts)
-map('n', '<space-S><Left>', ':vertical resize -5<CR>', silent_opts)
-
--- Go to definition/type/implementation/references with coc.nvim
-map('n', '<A>gd', '<Plug>(coc-definition)', {})
-map('n', '<A>gy', '<Plug>(coc-type-definition)', {})
-map('n', '<A>gi', '<Plug>(coc-implementation)', {})
-map('n', '<A>gr', '<Plug>(coc-references)', {})
-
--- Abbreviations
-vim.cmd [[
-  cnoreabbrev tree NERDTreeToggle
-  cnoreabbrev find NERDTreeFind
-]]
+map('n', '<leader><Up>', ':resize +3<CR>', silent_opts)
+map('n', '<leader><Down>', ':resize -3<CR>', silent_opts)
+map('n', '<leader><Right>', ':vertical resize +5<CR>', silent_opts)
+map('n', '<leader><Left>', ':vertical resize -5<CR>', silent_opts)
 
 -- Insert mode mappings
 map('i', '(', '()<Left>', opts)
@@ -60,12 +45,11 @@ vim.opt.clipboard:append({'unnamedplus'})
 
 -- Mapear `d` para no sobreescribir el portapapeles
 map('n', 'd', '"_d', { noremap = true, silent = true })
-map('v', 'd', '"_d', { noremap = true, silent = true })
+-- modo visual si quiero copiar al clipboard 
+-- map('v', 'd', '"_d', { noremap = true, silent = true })
 
 -- Mapear `p` para pegar sin sobrescribir el portapapeles
 map('n', 'p', '"0p', { noremap = true, silent = true })
 map('v', 'p', '"0p', { noremap = true, silent = true })
 
--- Show diagnostic or element info with CocAction
--- map('n', '<leader><leader>', ':call CocAction("doHover")<CR>', silent_opts)
 
