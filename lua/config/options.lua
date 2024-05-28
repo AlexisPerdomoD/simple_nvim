@@ -27,10 +27,6 @@ vim.opt.tabstop = 4        -- Número de espacios por tabulación
 vim.opt.shiftwidth = 4     -- Número de espacios para indentación
 vim.opt.expandtab = true   -- Utilizar espacios en lugar de tabulaciones
 
--- Configuración de plegado de código
-vim.opt.foldmethod = "syntax"
-vim.opt.foldlevel = 99
-
 -- No mostrar el modo de edición
 vim.opt.showmode = false
 
@@ -53,4 +49,8 @@ vim.opt.smartcase = true  -- ... a menos que contengan al menos una letra mayús
 -- Configuración del portapapeles (pendiente de verificación)
  vim.opt.clipboard = "unnamedplus"
 
-
+-- Configuración de plegado
+vim.o.foldmethod = 'expr'
+vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.o.foldlevel = 99
+vim.o.foldenable = true

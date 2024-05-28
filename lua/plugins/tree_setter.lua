@@ -19,6 +19,9 @@ return {
             'json',
             'go'
         },
+        fold = {
+            enable = true
+        },
         highlight = {
             enable = true,
         },

@@ -25,7 +25,9 @@ return {
             },
             stylua = {
                 command = 'stylua',
-                args = { '--config', vim.fn.expand('~/.config/nvim/stylua.toml') }
+                args = {
+                    '--search-parent-directories', '--stdin-filepath', '%:p', '-'
+                },
             }
             --format_on_save = {
             --    lsp_fallback = true,

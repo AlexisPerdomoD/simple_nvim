@@ -21,10 +21,10 @@ map('n', '<space><Left>', ':TmuxNavigateLeft<cr>', silent_opts)
 map('n', '<space><Down>', ':TmuxNavigateDown<cr>', silent_opts)
 map('n', '<space><Up>', ':TmuxNavigateUp<cr>', silent_opts)
 map('n', '<space><Right>', ':TmuxNavigateRight<cr>', silent_opts)
-map('n', '<leader><Up>', ':resize +3<CR>', silent_opts)
-map('n', '<leader><Down>', ':resize -3<CR>', silent_opts)
-map('n', '<leader><Right>', ':vertical resize +5<CR>', silent_opts)
-map('n', '<leader><Left>', ':vertical resize -5<CR>', silent_opts)
+map('n', '<leader><Up>', ':resize +5<CR>', silent_opts)
+map('n', '<leader><Down>', ':resize -5<CR>', silent_opts)
+map('n', '<leader><Left>', ':vertical resize +7<CR>', silent_opts)
+map('n', '<leader><Right>', ':vertical resize -7<CR>', silent_opts)
 
 -- Insert mode mappings
 map('i', '(', '()<Left>', opts)
@@ -52,4 +52,7 @@ map('n', 'd', '"_d', { noremap = true, silent = true })
 map('n', 'p', '"0p', { noremap = true, silent = true })
 map('v', 'p', '"0p', { noremap = true, silent = true })
 
+-- folding 
+-- Define el keybinding y el resaltado de los pliegues en una línea
+map('n', 'za', ':execute "normal! za" | hi Folded guibg=#4C566A guifg=#D8DEE9<CR>', opts)
 

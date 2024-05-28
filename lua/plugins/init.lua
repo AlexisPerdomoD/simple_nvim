@@ -27,5 +27,6 @@ require('lazy').setup({
     require('plugins.formater_manager'),
     --require('plugins.linter_manager'),
     require('plugins.commenter'),
+    require('plugins.icons'),
     require('plugins.status_bar'),
 })

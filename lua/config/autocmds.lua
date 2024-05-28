@@ -3,7 +3,7 @@
 -- Add any additional autocmds here
 -- -- Create an augroup
 local myAutoCmd = vim.api.nvim_create_augroup("MyAutoCmd", { clear = true })
-
+local foldingCmd = vim.api.nvim_create_augroup("folding_comands", {clear = true})
 -- Autocommands
 vim.api.nvim_create_autocmd("BufWritePost", {
   pattern = "*.lua",
@@ -24,14 +24,11 @@ vim.cmd([[
   augroup END
 ]])
 
+-- Define un autocomando para abrir todos los folds al cargar un archivo
+vim.api.nvim_create_autocmd({"BufReadPost", "FileReadPost"}, {
+  group = foldingCmd,
+  pattern = ".*",
+  command = 'normal zR'
+})
 
--- Show hover documentation if no diagnostic
---vim.api.nvim_create_autocmd({"CursorHoldI", "CursorHold"}, {
---  callback = function()
---    if vim.fn['coc#float#has_float']() and vim.fn['CocHasProvider']('hover') == 1 and vim.fn['coc#rpc#ready']() then
---      vim.fn['CocActionAsync']('doHover')
---    end
---  end,
---  group = myAutoCmd,
--- })
 
