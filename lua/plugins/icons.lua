@@ -1,7 +1,6 @@
 return {
-    {'DaikyXendo/nvim-material-icon'},
-    -- nerdtree icons 
-    {'ryanoasis/vim-devicons'},
+    -- nerdtree icons
+    'ryanoasis/vim-devicons',
     -- dependencies = { 'nvim-web-devicons' },
     -- config = function()
     --     require 'nvim-web-devicons'.setup {

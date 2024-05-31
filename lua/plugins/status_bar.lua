@@ -1,7 +1,7 @@
 return {
     'glepnir/galaxyline.nvim',
     branch = 'main',
-    requires = { 'nvim-tree/nvim-web-devicons', opt = true },
+    dependencies = { 'nvim-tree/nvim-web-devicons', opt = true },
     config = function()
       -- Configuración de galaxyline
       local gl = require('galaxyline')
@@ -41,6 +41,7 @@ return {
       gls.left[2] = {
         GitBranch = {
           provider = 'GitBranch',
+          separator = ' ',
           condition = condition.check_git_workspace,
           highlight = {colors.nord13, colors.nord0, 'bold'},
         }

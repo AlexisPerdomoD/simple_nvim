@@ -27,9 +27,9 @@ return {
             vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
             vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
             vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-            vim.keymap.set('n', '<leader>f', function()
-                vim.lsp.buf.format { async = true }
-            end, opts)
+            --vim.keymap.set('n', '<leader>f', function()
+            --  vim.lsp.buf.format { async = true }
+            --end, opts)
         end
 
         require("neodev").setup()
@@ -37,8 +37,24 @@ return {
             on_attach = on_attach,
             settings = {
                 Lua = {
+                    runtime = {
+                        version = 'LuaJIT', -- Puede ser 'Lua 5.1' o 'Lua 5.3' dependiendo de tu entorno
+                        path = vim.split(package.path, ';')
+                    },
+                    diagnostic = {
+                        globals = { 'vim' }
+                    },
                     telemetry = { enable = false },
-                    workspace = { checkThirdParty = false },
+                    workspace = {
+                        checkThirdParty = false,
+                        library = {
+                            [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+                            [vim.fn.stdpath('config') .. '/lua'] = true,
+                            [vim.fn.expand('$HOME/.config/wezterm')] = true, -- Asegúrate de que incluye la ruta de wezterm
+                        },
+                        maxPreload = 2000,
+                        preLoadFileSize = 1000,
+                    },
                 }
             }
         })
@@ -71,6 +87,34 @@ return {
         require 'lspconfig'.cssls.setup {
             capabilities = capabilities,
             on_attach = on_attach
+        }
+        require 'lspconfig'.yamlls.setup {
+            capabilities = capabilities,
+            on_attach = on_attach
+        }
+        -- defaults to gopls
+        require 'lspconfig'.gopls.setup {
+            capabilities = capabilities,
+            on_attach = on_attach,
+            filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
+            root_dir = require 'lspconfig'.util.root_pattern("go.work", "go.mod", ".git"),
+            cmd = { "gopls", "serve" },
+            settings = {
+                gopls = {
+                    analyses = {
+                        unusedparams = true,
+                    },
+                    staticcheck = true,
+                },
+            },
+        }
+        --defaults to golangci-lint
+        require 'lspconfig'.golangci_lint_ls.setup {
+            capabilities = capabilities,
+            on_attach = on_attach,
+            cmd = { "golangci-lint-langserver" },
+            filetypes = { 'go', 'gomod' },
+            root_dir = require 'lspconfig'.util.root_pattern('.golangci.yml', '.golangci.yaml', '.golangci.toml', '.golangci.json', "go.work", "go.mod", ".git"),
         }
     end
 }
