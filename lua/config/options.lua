@@ -27,6 +27,7 @@ vim.opt.tabstop = 4        -- Número de espacios por tabulación
 vim.opt.shiftwidth = 4     -- Número de espacios para indentación
 vim.opt.expandtab = true   -- Utilizar espacios en lugar de tabulaciones
 
+
 -- No mostrar el modo de edición
 vim.opt.showmode = false
 
@@ -44,7 +45,6 @@ vim.opt.hlsearch = true   -- Resaltar coincidencias
 vim.opt.incsearch = true  -- Búsqueda incremental
 vim.opt.ignorecase = true -- Búsquedas insensibles a mayúsculas...
 vim.opt.smartcase = true  -- ... a menos que contengan al menos una letra mayúscula
-
 
 -- Configuración del portapapeles (pendiente de verificación)
  vim.opt.clipboard = "unnamedplus"

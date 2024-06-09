@@ -5,7 +5,8 @@ return {
         "nvim-treesitter/playground",
     },
     build        = ":TSUpdate",
-    --event        = "VeryLazy",
+
+    lazy         = false,
     main         = "nvim-treesitter.configs",
     opts         = {
         ensure_installed = {
@@ -37,8 +38,8 @@ return {
                     ["if"] = "@function.inner",
                     ["ac"] = "@conditional.outer",
                     ["ic"] = "@conditional.inner",
-                    ["al"] = "@loop.outer",
-                    ["il"] = "@loop.inner",
+                    ["so"] = "@loop.outer",
+                    ["si"] = "@loop.inner",
                 }
             }
         },

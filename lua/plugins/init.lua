@@ -15,7 +15,7 @@ require('lazy').setup({
     -- Load all plugin configurations
     -- require('plugins.fzf'),
     -- themes
-    require('config.themes.moonfly'),
+    require('config.themes.nord'),
     require('plugins.nerdtree'),
     require('plugins.tmux_navigator'),
     require('plugins.telescope2'),
@@ -25,7 +25,7 @@ require('lazy').setup({
     require('plugins.tree_setter'),
     require('plugins.luasnip'),
     require('plugins.formater_manager'),
-    --require('plugins.linter_manager'),
+    -- require('plugins.linter_manager'),
     require('plugins.commenter'),
     require('plugins.icons'),
     require('plugins.status_bar'),

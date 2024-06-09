@@ -8,24 +8,21 @@ return {
       local condition = require('galaxyline.condition')
       local gls = gl.section
 
-      -- Definir colores del tema Nord
+      -- Definir colores genéricos
       local colors = {
-        nord0  = '#2E3440',
-        nord1  = '#3B4252',
-        nord2  = '#434C5E',
-        nord3  = '#4C566A',
-        nord4  = '#D8DEE9',
-        nord5  = '#E5E9F0',
-        nord6  = '#ECEFF4',
-        nord7  = '#8FBCBB',
-        nord8  = '#88C0D0',
-        nord9  = '#81A1C1',
-        nord10 = '#5E81AC',
-        nord11 = '#BF616A',
-        nord12 = '#D08770',
-        nord13 = '#EBCB8B',
-        nord14 = '#A3BE8C',
-        nord15 = '#B48EAD',
+        bg = '#000000',         -- Background color
+        fg = '#D8DEE9',         -- Foreground color
+        black = '#2E3440',      -- Black
+        red = '#BF616A',        -- Red
+        green = '#A3BE8C',      -- Green (Git color)
+        yellow = '#EBCB8B',     -- Yellow
+        blue = '#81A1C1',       -- Blue
+        magenta = '#B48EAD',    -- Magenta
+        cyan = '#88C0D0',       -- Cyan
+        white = '#ECEFF4',      -- White
+        grey = '#4C566A',       -- Grey
+        darkgrey = '#3B4252',   -- Dark Grey
+        solidgrey = '#434C5E',  -- Solid Grey (Between almost black and silver)
       }
 
       gl.short_line_list = {'NvimTree', 'vista', 'dbui', 'packer'}
@@ -34,23 +31,61 @@ return {
       gls.left[1] = {
         RainbowRed = {
           provider = function() return '▊ ' end,
-          highlight = {colors.nord9, colors.nord0}
+          highlight = {colors.green, colors.bg}
         },
       }
 
+      -- Mode indicator
       gls.left[2] = {
-        GitBranch = {
-          provider = 'GitBranch',
-          separator = ' ',
-          condition = condition.check_git_workspace,
-          highlight = {colors.nord13, colors.nord0, 'bold'},
-        }
+        ViMode = {
+          provider = function()
+            local mode_color = {
+              n = colors.green,
+              i = colors.blue,
+              v = colors.magenta,
+              [''] = colors.magenta,
+              V = colors.magenta,
+              c = colors.red,
+              no = colors.red,
+              s = colors.orange,
+              S = colors.orange,
+              [''] = colors.orange,
+              ic = colors.yellow,
+              R = colors.violet,
+              Rv = colors.violet,
+              cv = colors.red,
+              ce = colors.red,
+              r = colors.cyan,
+              rm = colors.cyan,
+              ['r?'] = colors.cyan,
+              ['!'] = colors.red,
+              t = colors.red,
+            }
+            vim.api.nvim_command('hi GalaxyViMode guifg='..mode_color[vim.fn.mode()])
+            return '  '
+          end,
+          highlight = {colors.red, colors.bg, 'bold'},
+        },
       }
 
       gls.left[3] = {
+        GitBranch = {
+          provider = 'GitBranch',
+          separator = '',
+          condition = condition.check_git_workspace,
+          highlight = {colors.green, colors.bg, 'bold'},
+        }
+      }
+    gls.left[4] = {
+        RainbowRed = {
+          provider = function() return '▊ asd' end,
+          highlight = {colors.bg, colors.bg}
+        },
+      }
+      gls.left[4] = {
         FileName = {
           provider = 'FileName',
-          highlight = {colors.nord8, colors.nord0, 'bold'}
+          highlight = {colors.darkgrey, colors.bg, 'bold'}
         }
       }
 
@@ -59,7 +94,7 @@ return {
         FileEncode = {
           provider = 'FileEncode',
           condition = condition.hide_in_width,
-          highlight = {colors.nord10, colors.nord0, 'bold'}
+          highlight = {colors.grey, colors.bg, 'bold'}
         }
       }
 
@@ -67,28 +102,28 @@ return {
         FileFormat = {
           provider = 'FileFormat',
           condition = condition.hide_in_width,
-          highlight = {colors.nord10, colors.nord0, 'bold'}
+          highlight = {colors.green, colors.bg, 'bold'}
         }
       }
 
       gls.right[3] = {
         LineInfo = {
           provider = 'LineColumn',
-          highlight = {colors.nord4, colors.nord0},
+          highlight = {colors.darkgrey, colors.bg},
         },
       }
 
       gls.right[4] = {
         PerCent = {
           provider = 'LinePercent',
-          highlight = {colors.nord4, colors.nord0, 'bold'},
+          highlight = {colors.fg, colors.bg, 'bold'},
         }
       }
 
       gls.right[5] = {
         RainbowBlue = {
           provider = function() return ' ▊' end,
-          highlight = {colors.nord9, colors.nord0}
+          highlight = {colors.green, colors.bg}
         },
       }
 
@@ -97,8 +132,8 @@ return {
         BufferType = {
           provider = 'FileTypeName',
           separator = ' ',
-          separator_highlight = { 'NONE', colors.nord0 },
-          highlight = { colors.nord4, colors.nord0 }
+          separator_highlight = { 'NONE', colors.bg },
+          highlight = { colors.fg, colors.bg }
         }
       }
 
@@ -106,15 +141,16 @@ return {
         SFileName = {
           provider = 'SFileName',
           condition = condition.buffer_not_empty,
-          highlight = { colors.nord4, colors.nord0 }
+          highlight = { colors.fg, colors.bg }
         }
       }
 
       gls.short_line_right[1] = {
         BufferIcon = {
           provider = 'BufferIcon',
-          highlight = { colors.nord4, colors.nord0 }
+          highlight = { colors.fg, colors.bg }
         }
       }
     end
   }
+

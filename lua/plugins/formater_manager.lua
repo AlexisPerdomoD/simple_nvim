@@ -18,10 +18,25 @@ return {
                 markdown = { "prettier" },
                 --graphql = { "prettier" },
                 luaa = { "stylua" },
+                bash = { "shfmt" },
+                sh = { "shfmt" },
+                zsh = { "shfmt" },
+            },
+            shfmt = {
+                options = { "-i", "2", "-ci" },
+
             },
             prettier = {
-                command = 'prettier',
-                args = { '--config', vim.fn.expand('~/.config/nvim/.prettierrc') },
+                command = vim.fn.stdpath("data") .. "/mason/bin/prettier", -- Ruta a prettier instalado por Mason
+                args = function()
+                    return {
+                        "--stdin-filepath",
+                        vim.api.nvim_buf_get_name(0),
+                        "--config",
+                        vim.fn.expand("~/.config/nvim/.prettierrc.json")
+                    }
+                end,
+                stdin = true
             },
             stylua = {
                 command = 'stylua',

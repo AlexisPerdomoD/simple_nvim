@@ -2,6 +2,7 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = {
         "williamboman/mason.nvim",
+        "williamboman/mason-lspconfig.nvim",
         "folke/neodev.nvim",
     },
     config = function()
@@ -33,6 +34,11 @@ return {
         end
 
         require("neodev").setup()
+        require("lspconfig").bashls.setup({
+            filetypes = { "sh", "bash", "zsh" }, -- Incluye Bash y Zsh
+            cmd = { "bash-language-server", "start" },
+            on_attach = on_attach
+        })
         require("lspconfig").lua_ls.setup({
             on_attach = on_attach,
             settings = {
@@ -59,6 +65,13 @@ return {
             }
         })
         require('lspconfig').tsserver.setup({
+            on_attach = on_attach,
+            cmd = { vim.fn.expand("~/.local/share/nvim/mason/bin/typescript-language-server"), "--stdio" }
+
+
+        })
+
+        require('lspconfig').sqls.setup({
             on_attach = on_attach
         })
         --Enable (broadcasting) snippet capability for completion

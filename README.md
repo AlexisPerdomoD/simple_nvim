@@ -1,1 +1,1 @@
-###  personal, simple y poderossa neovim setup
+###  personal small, minimalistic vim config with lazy.nvim.
