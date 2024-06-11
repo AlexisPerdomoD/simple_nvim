@@ -31,6 +31,14 @@ vim.api.nvim_create_autocmd({ "BufReadPost", "FileReadPost" }, {
     pattern = ".*",
     command = 'normal zR'
 })
+-- update files when they change on file system
+vim.opt.autoread = true
+vim.cmd [[
+  augroup auto_read
+    autocmd!
+    autocmd FocusGained,BufEnter * checktime
+  augroup END
+]]
 
 -- get npm when a js file is open
 -- vim.cmd([[
