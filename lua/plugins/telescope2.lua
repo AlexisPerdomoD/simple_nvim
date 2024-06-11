@@ -25,7 +25,7 @@ return {
            end,
     keys = {
         {
-            "<space>gf",
+            "<space>cb",
             function()
                 require("telescope.builtin").buffers()
             end,
@@ -38,27 +38,27 @@ return {
             end,
             desc = "Telescope Git status",
         },
-        --{
-        -- "<space>gf",
-        -- function()
-        --   require('telescope.builtin').git_files({ show_untracked = true })
-        -- end,
-        -- desc = "Telescope Git Files",
-        --},
-        --{
-        --"<space>gc",
-        --function()
-        --require("telescope.builtin").git_bcommits()
-        --end,
-        --desc = "Telescope Git status",
-        --},
-        --{
-        --"<space>gb",
-        --function()
-        --  require("telescope.builtin").git_branches()
-        --end,
-        --desc = "Telescope Git branches",
-        --},
+        {
+         "<space>gf",
+         function()
+           require('telescope.builtin').git_files({ show_untracked = true })
+         end,
+         desc = "Telescope Git Files",
+        },
+        {
+        "<space>gc",
+        function()
+        require("telescope.builtin").git_commits()
+        end,
+        desc = "Telescope Git commits",
+        },
+        {
+        "<space>gb",
+        function()
+          require("telescope.builtin").git_branches()
+        end,
+        desc = "Telescope Git branches",
+        },
         {
             "<space>pp",
             function()
