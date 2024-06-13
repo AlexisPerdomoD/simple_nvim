@@ -15,7 +15,7 @@ require('lazy').setup({
     -- Load all plugin configurations
     -- require('plugins.fzf'),
     -- themes
-    require('config.themes.moonfly'),
+    require('config.themes.nord'),
     require('plugins.nerdtree'),
     require('plugins.tmux_navigator'),
     require('plugins.telescope2'),
@@ -30,5 +30,5 @@ require('lazy').setup({
     require('plugins.icons'),
     require('plugins.status_bar'),
     require('plugins.codeium'),
-
+    require('plugins.git')
 })
