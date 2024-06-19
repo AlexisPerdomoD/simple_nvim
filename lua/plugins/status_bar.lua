@@ -30,7 +30,7 @@ return {
       -- Left side of the statusline
       gls.left[1] = {
         RainbowRed = {
-          provider = function() return '▊ ' end,
+          provider = function() return ' ▊ ' end,
           highlight = {colors.green, colors.bg}
         },
       }
@@ -62,7 +62,8 @@ return {
               t = colors.red,
             }
             vim.api.nvim_command('hi GalaxyViMode guifg='..mode_color[vim.fn.mode()])
-            return '  '
+            return  '💀 '
+
           end,
           highlight = {colors.red, colors.bg, 'bold'},
         },
@@ -75,12 +76,6 @@ return {
           condition = condition.check_git_workspace,
           highlight = {colors.green, colors.bg, 'bold'},
         }
-      }
-    gls.left[4] = {
-        RainbowRed = {
-          provider = function() return '▊ asd' end,
-          highlight = {colors.bg, colors.bg}
-        },
       }
       gls.left[4] = {
         FileName = {
@@ -151,6 +146,7 @@ return {
           highlight = { colors.fg, colors.bg }
         }
       }
+        vim.opt.laststatus = 3  -- Usa una sola barra de estado global
     end
   }
 

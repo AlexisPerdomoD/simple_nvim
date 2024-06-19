@@ -13,15 +13,17 @@ return {
              enabled = true,
         --     auto_trigger = true,
              debounce = 75,
-             keymap = {
-                 accept = "<C-a>",
-        --         next = "<C-n>",
-        --         prev = "<C-p>",
-        --         dismiss = "<C-e>",
-             },
+        --      keymap = {
+        --          accept = "<C-a>",
+        -- --         next = "<C-n>",
+        -- --         prev = "<C-p>",
+        -- --         dismiss = "<C-e>",
+        --      },
          },
     },
     config = function(opts)
+        -- disable default bindings
+        vim.g.codeium_disable_bindings = 1
         vim.keymap.set('i', '<C-a>', function() return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
         vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
         vim.keymap.set('i', '<c-]>', function() return vim.fn['codeium#CycleCompletions'](1) end,

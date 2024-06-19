@@ -9,6 +9,10 @@ return {
     "L3MON4D3/LuaSnip",
     "saadparwaiz1/cmp_luasnip",
     "windwp/nvim-autopairs",
+    --devi icons 
+    'ryanoasis/vim-devicons',
+
+
   },
   event = "VeryLazy",
   main = "config.plugins.cmp",

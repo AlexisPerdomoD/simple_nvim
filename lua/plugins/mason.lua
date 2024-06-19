@@ -2,6 +2,9 @@ return {
     "williamboman/mason.nvim",
     dependencies = {
         "williamboman/mason-lspconfig.nvim",
+        "neovim/nvim-lspconfig",
+        "nvim-treesitter/nvim-treesitter",
+
     },
     config = function()
         require("mason").setup()
