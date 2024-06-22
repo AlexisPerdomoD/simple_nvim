@@ -1,8 +1,9 @@
 -- example lazy.nvim install setup
 return {
     "slugbyte/lackluster.nvim",
-    lazy = false,
-    priority = 1000,
+    -- lazy = true,
+    event = 'VeryLazy',
+    -- priority = 1000,
     config = function()
         local lackluster = require("lackluster")
 
@@ -14,34 +15,31 @@ return {
             --   1) a hexcode like "#a1b2c3" for a custom color
             --   2) "default" or nil will just use whatever lackluster's default is.
             tweak_syntax = {
-                string = "default",
+                string = color.gray5,
                 -- string = "#a1b2c3", -- custom hexcode
                 -- string = color.green, -- lackluster color
-                string_escape = "default",
-                comment = "default",
-                builtin = "default", -- builtin modules and functions
+                string_escape = color.orange,
+                comment = color.gray4,
+                builtin = color.blue, -- builtin modules and functions
                 type = "default",
-                keyword = "default",
-                keyword_return = "default",
-                keyword_exception = "default",
+                keyword = color.green,
+                keyword_return = color.red,
+                keyword_exception = color.orange,
             },
             -- You can overwrite the following background colors by setting them to one of...
             --   1) a hexcode like "#a1b2c3" for a custom color
             --   2) "none" for transparency
             --   3) "default" or nil will just use whatever lackluster's default is.
             tweak_background = {
-                normal = 'none', -- main background
+                normal = "#121212", -- main background
                 -- normal = 'none',    -- transparent
                 -- normal = '#a1b2c3',    -- hexcode
                 -- normal = color.green,    -- lackluster color
                 telescope = 'default', -- telescope
-                menu = 'default', -- nvim_cmp, wildmenu ... (bad idea to transparent)
-                popup = 'default', -- lazy, mason, whichkey ... (bad idea to transparent)
+                menu = 'default',      -- nvim_cmp, wildmenu ... (bad idea to transparent)
+                popup = 'default',     -- lazy, mason, whichkey ... (bad idea to transparent)
             },
         })
-
-        -- colorscheme must be set after after setup()!
-        vim.cmd.colorscheme("lackluster-mint")
     end,
     -- init = function()
     --     vim.cmd.colorscheme("lackluster")
