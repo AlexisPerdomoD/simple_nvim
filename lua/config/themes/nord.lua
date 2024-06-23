@@ -10,8 +10,8 @@ end
 return {
     'shaunsingh/nord.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
-    priority = 100,
-    lazy = false,
+    -- priority = 10,
+    event = "VeryLazy",
     config = function()
         --Lua:
         -- Example config in lua
@@ -24,6 +24,6 @@ return {
         vim.g.nord_bold = true
         -- Key mapping to toggle background
         vim.api.nvim_set_keymap('n', '<leader>tb', ':lua Toggle_nord_background()<CR>', { noremap = true, silent = true })
-        vim.cmd [[colorscheme nord]]
+        -- vim.cmd [[colorscheme nord]]
     end
 }

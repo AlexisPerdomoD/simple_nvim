@@ -88,11 +88,11 @@ function M.setup()
                 return vim_item
             end,
         },
-        -- snippet = {
-        -- expand = function(args)
-        -- luasnip.lsp_expand(args.body)
-        -- end,
-        --},
+         snippet = {
+         expand = function(args)
+         luasnip.lsp_expand(args.body)
+         end,
+        },
         mapping = {
             ["<C-d>"] = cmp.mapping.scroll_docs(-4),
             ["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -117,7 +117,7 @@ function M.setup()
         sources = {
             { name = "nvim_lsp" },
             -- { name = "path" },
-            --{ name = "luasnip" },
+            { name = "luasnip" },
             { name = "buffer" },
         },
     })

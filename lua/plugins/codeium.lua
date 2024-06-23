@@ -9,17 +9,17 @@ return {
     opts = {
         delay = 100,
         ignore_whitespace = false,
-         suggestion = {
-             enabled = true,
-        --     auto_trigger = true,
-             debounce = 75,
-        --      keymap = {
-        --          accept = "<C-a>",
-        -- --         next = "<C-n>",
-        -- --         prev = "<C-p>",
-        -- --         dismiss = "<C-e>",
-        --      },
-         },
+        suggestion = {
+            enabled = true,
+            --     auto_trigger = true,
+            debounce = 75,
+            --      keymap = {
+            --          accept = "<C-a>",
+            -- --         next = "<C-n>",
+            -- --         prev = "<C-p>",
+            -- --         dismiss = "<C-e>",
+            --      },
+        },
     },
     config = function(opts)
         -- disable default bindings
@@ -32,7 +32,7 @@ return {
             { expr = true, silent = true })
         -- disabled for now
         vim.keymap.set('i', '<c-u>', function() return vim.fn['codeium#Reset']() end, { expr = true })
-
+        vim.keymap.set('i', '<Esc>', '<Esc>', { silent = true })
     end
     --     vim.keymap.set('i', '<C-e>', function() return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
     --     vim.keymap.set('i', '<c-n>', function() return vim.fn['codeium#CycleCompletions'](1) end,

@@ -20,6 +20,7 @@ return {
             'json',
             'go'
         },
+        auto_install = true,
         fold = {
             enable = true
         },

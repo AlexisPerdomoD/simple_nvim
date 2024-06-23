@@ -27,13 +27,26 @@ return {
 
             },
             prettier = {
-                command = vim.fn.stdpath("data") .. "/mason/bin/prettier", -- Ruta a prettier instalado por Mason
+                -- command = vim.fn.stdpath("data") .. "/mason/bin/pretierd", -- Ruta a prettier instalado por Mason
+                inherit = false,
+                command = "prettier",
                 args = function()
+                    local config_path = vim.fn.findfile(".prettierrc", ".;") or
+                                        vim.fn.findfile(".prettierrc.json", ".;") or
+                                        vim.fn.findfile(".prettierrc.js", ".;") or
+                                        vim.fn.findfile(".prettierrc.yaml", ".;") or
+                                        vim.fn.findfile(".prettierrc.yml", ".;")
+
+                    if config_path == "" then
+                        config_path = vim.fn.expand("~/.config/nvim/.prettierrc.json")
+                    end
+                    print(config_path)
                     return {
+                        "--config",
+                        config_path,
+                        "--config",
                         "--stdin-filepath",
                         vim.api.nvim_buf_get_name(0),
-                        "--config",
-                        vim.fn.expand("~/.config/nvim/.prettierrc.json")
                     }
                 end,
                 stdin = true

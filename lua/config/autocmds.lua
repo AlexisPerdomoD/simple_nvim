@@ -21,7 +21,7 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 vim.cmd([[
   augroup filetypes
     autocmd!
-    autocmd BufNewFile,BufRead *.html,*.jsx,*.tsx setlocal shiftwidth=2
+    autocmd BufNewFile,BufRead *.html,*.jsx,*.tsx, *.yml, *.yaml setlocal shiftwidth=2
   augroup END
 ]])
 

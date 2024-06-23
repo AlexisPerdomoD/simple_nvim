@@ -6,13 +6,10 @@ local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 local silent_opts = { silent = true }
 -- Normal mode mappings
-map('n', '<leader>1', ':source ~/.config/nvim/init.lua | :Lazy install<CR>', silent_opts)
-map('n', '<leader>2', ':source ~/.config/nvim/init.lua<CR>', opts)
+map('n', '<leader>1', ':source ~/.config/nvim/init.lua<CR>', opts)
 map('v', '$', '$<Left>', opts)
 map('n', '<space>w', ':w<CR>', opts)
 map('n', '<space>q', ':q<CR>', opts)
-map('n', '<space>d', ':NERDTreeToggle<CR>', opts)
-map('n', '<space>t', ':!wezterm<CR>', opts)
 --map('n', '<space>f', ':Files<CR>', opts)
 --map('n', '<space>g', ':Buffers<CR>', opts)
 map('n', '<space>p', ':Fold<CR>', silent_opts)
