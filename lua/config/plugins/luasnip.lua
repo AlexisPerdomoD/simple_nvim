@@ -7,21 +7,21 @@ function M.setup()
   ls.config.set_config {
     -- This tells LuaSnip to remember to keep around the last snippet.
     -- You can jump back into even if you move outside of the selection
-     --history = true,
+    history = true,
 
     -- This one is cool cause if you have dynamic snippets, it updatesas you type!
-    --updateevents = "TextChanged,TextChangedI",
+    updateevents = "TextChanged,TextChangedI",
 
     -- Autosnippets:
-    -- enable_autosnippets = false,
+    enable_autosnippets = true,
 
-   -- ext_opts = {
-     -- [types.choiceNode] = {
-       -- active = {
-         -- virt_text = { { "<- Choice", "Error" } },
-       -- },
-     -- },
-    --},
+    ext_opts = {
+      [types.choiceNode] = {
+        active = {
+          virt_text = { { "<- Choice", "Error" } },
+        },
+      },
+    },
   }
 
   -- <c-k> is my expansion key

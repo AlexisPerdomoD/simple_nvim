@@ -24,6 +24,8 @@ return {
                 "markdown_oxide",
                 "sqls",
                 "yamlls",
+                'tailwindcss',
+                --"google-java-format",
                 -- does not work for formaters
                 --"prettier",
                 --"yamlfmt",

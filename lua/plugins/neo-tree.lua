@@ -7,18 +7,18 @@ return {
         "MunifTanjim/nui.nvim",
         -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
     },
-    priority = 10000,
+    priority = 1200,
     config = function()
         require("neo-tree").setup({
-             window = {
-                 position = "float",
+            window = {
+                position = "float",
 
-                 --width = 30,
-                 mapping_options = {
-                     noremap = true,
-                     -- nowait = true,
-                 },
-             },
+                --width = 30,
+                mapping_options = {
+                    noremap = true,
+                    -- nowait = true,
+                },
+            },
             close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
             popup_border_style = "rounded",
             enable_git_status = false,
@@ -123,7 +123,7 @@ return {
             },
 
         })
-        
+
 
         vim.keymap.set("n", "<space>.", "<cmd>Neotree toggle reveal current<cr>")
         vim.keymap.set("n", "<space>d", "<cmd>Neotree toggle reveal left<cr>")

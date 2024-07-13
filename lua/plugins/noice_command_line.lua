@@ -96,7 +96,7 @@ return {
                 },
                 -- :Noice last
                 last = {
-                    view = "popup",
+                    view = "mini",
                     opts = { enter = true, format = "details" },
                     filter = {
                         any = {
@@ -112,7 +112,7 @@ return {
                 -- :Noice errors
                 errors = {
                     -- options for the message history that you get with `:Noice`
-                    view = "popup",
+                    view = "mini",
                     opts = { enter = true, format = "details" },
                     filter = { error = true },
                     filter_opts = { reverse = true },
@@ -125,7 +125,7 @@ return {
                 -- The default routes will forward notifications to nvim-notify
                 -- Benefit of using Noice for this is the routing and consistent history view
                 enabled = true,
-                view = "notify",
+                view = "mini",
             },
             lsp = {
                 progress = {
@@ -227,11 +227,13 @@ return {
                     },
                     size = {
                         width = "40%",
-                        height = "auto",
+                        height = 'auto',
                     },
                     border = {
-                        style = rounded_border_style,
-                        -- style = "none",
+                        -- style = border_style,
+                        style = "none",
+                      padding = { 0, 0 },
+                        
                     },
                     filter_options = {},
                     win_options = {
@@ -250,12 +252,16 @@ return {
                     win_options = {
                         winblend = 0,
                         -- winhighlight = {}
+                    },
+                    border = {
+                        style = border_style,
+                        padding = { 0, 1 },
                     }
                 },
                 popupmenu = {
                     relative = "editor",
                     position = {
-                        row = 8,
+                        row = 4,
                         col = "50%",
                     },
                     size = {
@@ -263,7 +269,7 @@ return {
                         height = 10,
                     },
                     border = {
-                        style = rounded_border_style,
+                        style = border_style,
                         padding = { 0, 1 },
                     },
                     win_options = {

@@ -2,18 +2,16 @@
 local cmp = require('cmp')
 local luasnip = require('luasnip')
 local cmp_autopairs = require "nvim-autopairs.completion.cmp"
-
 local M = {}
-
 function M.setup()
     cmp.setup({
         -- Configuración de los colores
-        vim.cmd([[
-            highlight! Pmenu guibg=NONE ctermbg=NONE
-            highlight! PmenuSel guibg=#3E4452 guifg=NONE
-            highlight! CmpBorder guifg=#3E4452 guibg=NONE
-            highlight! CmpDocBorder guifg=#3E4452 guibg=NONE
-        ]]),
+        -- vim.cmd([[
+        --      highlight! Pmenu guibg=NONE ctermbg=NONE
+        --      highlight! PmenuSel guibg=NONE guifg=NONE
+        --      highlight! CmpBorder guifg=NONE guibg=NONE
+        --      highlight! CmpDocBorder guifg=NONE guibg=NONE
+        --  ]]),
         -- vim.cmd([[
         --     highlight! CmpBorder guifg=#3E4452
         --     highlight! CmpDocBorder guifg=#3E4452
@@ -23,19 +21,22 @@ function M.setup()
         --
         window = {
             completion = {
-                border = 'rounded',
+
+                border = 'solid', -- Opciones: 'single', double', 'rounded', 'solid', 'shadow', o { 'top', 'right', 'bottom', 'left' }
                 winhighlight = 'Normal:Pmenu,FloatBorder:CmpBorder,CursorLine:PmenuSel,Search:None',
                 scrollbar = false,
             },
             documentation = {
-                border = 'rounded',
+                border = 'solid',
                 winhighlight = 'Normal:Pmenu,FloatBorder:CmpDocBorder,CursorLine:PmenuSel,Search:None',
+                scrollbar = false,
             },
         },
 
         formatting = {
             format = function(entry, vim_item)
                 local KIND_ICONS = {
+                    Tailwind = '󰹞󰹞󰹞',
                     Text = ' ', -- Texto
                     Method = ' ', -- Método
                     Function = ' ', -- Función
@@ -88,10 +89,10 @@ function M.setup()
                 return vim_item
             end,
         },
-         snippet = {
-         expand = function(args)
-         luasnip.lsp_expand(args.body)
-         end,
+        snippet = {
+            expand = function(args)
+                luasnip.lsp_expand(args.body)
+            end,
         },
         mapping = {
             ["<C-d>"] = cmp.mapping.scroll_docs(-4),
@@ -115,12 +116,30 @@ function M.setup()
             ["<c-space>"] = cmp.mapping.complete(),
         },
         sources = {
-            { name = "nvim_lsp" },
+            {
+                name = "nvim_lsp",
+                priority = 10,
+                keyword_length = 6,
+                group_index = 1,
+                max_item_count = 30,
+            },
             -- { name = "path" },
             { name = "luasnip" },
             { name = "buffer" },
         },
+        performance = {
+            trigger_debounce_time = 500,
+            throttle = 550,
+            fetching_timeout = 80,
+        },
     })
+    -- highlight PmenuSel guibg=#333333 guifg=#FFFFFF gui=bold
+    vim.cmd [[
+            highlight Pmenu guibg=NONE ctermbg=NONE
+
+            highlight PmenuSbar guibg=NONE
+            highlight PmenuThumb guibg=#444444
+        ]]
     cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done { map_char = { tex = "" } })
 
     -- Set configuration for specific filetype.

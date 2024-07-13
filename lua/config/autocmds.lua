@@ -18,13 +18,13 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     group = myAutoCmd,
 })
 -- Autocomandos para excepciones de indentación para archivos HTML, JSX y TSX
-vim.cmd([[
-  augroup filetypes
-    autocmd!
-    autocmd BufNewFile,BufRead *.html,*.jsx,*.tsx, *.yml, *.yaml setlocal shiftwidth=2
-  augroup END
-]])
-
+-- vim.cmd([[
+--   augroup filetypes
+--     autocmd!
+--     autocmd BufNewFile,BufRead *.html,*.jsx,*.tsx, *.yml, *.yaml setlocal shiftwidth=2
+--   augroup END
+-- ]])
+--
 -- Define un autocomando para abrir todos los folds al cargar un archivo
 vim.api.nvim_create_autocmd({ "BufReadPost", "FileReadPost" }, {
     group = foldingCmd,
