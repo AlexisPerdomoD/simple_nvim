@@ -226,12 +226,12 @@ return {
                         col = "50%",
                     },
                     size = {
-                        width = "40%",
+                        width = "30%",
                         height = 'auto',
                     },
                     border = {
-                        -- style = border_style,
-                        style = "none",
+                         style = border_style,
+                        -- style = "none",
                       padding = { 0, 0 },
                         
                     },
