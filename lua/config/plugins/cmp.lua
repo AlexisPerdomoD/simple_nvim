@@ -118,20 +118,20 @@ function M.setup()
         sources = {
             {
                 name = "nvim_lsp",
-                priority = 10,
-                keyword_length = 6,
-                group_index = 1,
+                -- priority = 10,
+                -- keyword_length = 6,
+                -- group_index = 1,
                 max_item_count = 30,
             },
             -- { name = "path" },
             { name = "luasnip" },
             { name = "buffer" },
         },
-        performance = {
-            trigger_debounce_time = 500,
-            throttle = 550,
-            fetching_timeout = 80,
-        },
+        -- performance = {
+        --     trigger_debounce_time = 500,
+        --     throttle = 550,
+        --     fetching_timeout = 80,
+        -- },
     })
     -- highlight PmenuSel guibg=#333333 guifg=#FFFFFF gui=bold
     vim.cmd [[
