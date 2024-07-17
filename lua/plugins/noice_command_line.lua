@@ -230,10 +230,10 @@ return {
                         height = 'auto',
                     },
                     border = {
-                         style = border_style,
+                        style = border_style,
                         -- style = "none",
-                      padding = { 0, 0 },
-                        
+                        padding = { 0, 0 },
+
                     },
                     filter_options = {},
                     win_options = {
@@ -249,6 +249,10 @@ return {
                     }
                 },
                 mini = {
+                    position = {
+                        row = '0%',
+                        col = "50%",
+                    },
                     win_options = {
                         winblend = 0,
                         -- winhighlight = {}
@@ -282,19 +286,27 @@ return {
                 {
                     filter = {
                         event = "msg_show",
-                        -- kind = "search_count",
+                        kind = "search_count",
                         find = "written"
                     },
                     opts = { skip = true },
                 },
+                -- {
+                --     filter = {
+                --         -- event = "BufEnter",
+                --         bufname = "*NERD_tree*",
+                --     },
+                --     opts = { skip = true }, -- omitir procesamiento en estos casos
+                -- },
                 {
                     filter = {
-                        -- event = "BufEnter",
-                        bufname = "*NERD_tree*",
+                        event = "notify",
+                        kind = "info",
+                        find = "No information available",
                     },
-                    opts = { skip = true }, -- omitir procesamiento en estos casos
+                    opts = { skip = true },
                 },
-            },                              --- @see section on routes
+            },
         })
     end,
 }
