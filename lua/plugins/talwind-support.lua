@@ -11,7 +11,7 @@ return {
         },
         conceal = {
             enabled = true, -- can be toggled by commands
-            min_length = 20, -- only conceal classes exceeding the provided length
+            min_length = 150, -- only conceal classes exceeding the provided length
             symbol = "󱏿", -- only a single character is allowed
             highlight = { -- extmark highlight options, see :h 'highlight'
                 fg = "#38BDF8",
