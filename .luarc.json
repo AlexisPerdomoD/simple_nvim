@@ -29,5 +29,11 @@
         "/home/sixela/.local/share/nvim/lazy/cmp-cmdline/lua",
         "/home/sixela/.config/nvim/lua",
         "${3rd}/luv/library"
+    ],
+    "diagnostics.disable": [
+        "trailing-space"
+    ],
+    "diagnostics.globals": [
+        "asd"
     ]
 }

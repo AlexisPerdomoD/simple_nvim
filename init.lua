@@ -8,12 +8,9 @@ local ensure_lazy = function()
     end
     vim.opt.rtp:prepend(install_path)
 end
-
 ensure_lazy()
-
--- Load plugins
-require'lazy'.setup'plugins'
 -- Load config
-require'config'
--- Set colorscheme
-vim.cmd.colorscheme'catppuccin'
+require 'config'
+-- Load plugins
+require 'lazy'.setup 'plugins'
+-- colorscheme is set into the selected theme on config/themes/
