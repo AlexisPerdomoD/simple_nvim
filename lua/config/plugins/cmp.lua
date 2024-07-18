@@ -22,14 +22,14 @@ function M.setup()
         window = {
             completion = {
 
-                border = 'solid', -- Opciones: 'single', double', 'rounded', 'solid', 'shadow', o { 'top', 'right', 'bottom', 'left' }
+                border = 'shadow', -- Opciones: 'single', double', 'rounded', 'solid', 'shadow', o { 'top', 'right', 'bottom', 'left' }
                 winhighlight = 'Normal:Pmenu,FloatBorder:CmpBorder,CursorLine:PmenuSel,Search:None',
-                scrollbar = false,
+                scrollbar = true,
             },
             documentation = {
                 border = 'solid',
                 winhighlight = 'Normal:Pmenu,FloatBorder:CmpDocBorder,CursorLine:PmenuSel,Search:None',
-                scrollbar = false,
+                scrollbar = true,
             },
         },
 
@@ -134,12 +134,12 @@ function M.setup()
         -- },
     })
     -- highlight PmenuSel guibg=#333333 guifg=#FFFFFF gui=bold
-    vim.cmd [[
-            highlight Pmenu guibg=NONE ctermbg=NONE
-
-            highlight PmenuSbar guibg=NONE
-            highlight PmenuThumb guibg=#444444
-        ]]
+     vim.cmd [[
+             highlight Pmenu guibg=NONE ctermbg=NONE
+    
+             highlight PmenuSbar guibg=NONE
+             highlight PmenuThumb guibg=NONE
+       ]]
     cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done { map_char = { tex = "" } })
 
     -- Set configuration for specific filetype.

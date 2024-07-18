@@ -32,12 +32,12 @@ return {
                 command = "prettier",
                 args = function()
                     local config_path = vim.fn.findfile(".prettierrc", ".;") or
-                                        vim.fn.findfile(".prettierrc.json", ".;") or
-                                        vim.fn.findfile(".prettierrc.js", ".;") or
-                                        vim.fn.findfile(".prettierrc.yaml", ".;") or
-                                        vim.fn.findfile(".prettierrc.yml", ".;")
+                        vim.fn.findfile(".prettierrc.json", ".;") or
+                        vim.fn.findfile(".prettierrc.js", ".;") or
+                        vim.fn.findfile(".prettierrc.yaml", ".;") or
+                        vim.fn.findfile(".prettierrc.yml", ".;")
 
-                    if config_path == "" then
+                    if config_path == nil then
                         config_path = vim.fn.expand("~/.config/nvim/.prettierrc.json")
                     end
                     print(config_path)
