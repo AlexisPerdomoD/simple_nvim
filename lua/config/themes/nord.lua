@@ -10,20 +10,20 @@ end
 return {
     'shaunsingh/nord.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
-    -- priority = 10,
+    -- priority = 1000,
     event = "VeryLazy",
     config = function()
         --Lua:
         -- Example config in lua
-        vim.g.nord_contrast = true
-        vim.g.nord_borders = true
-        vim.g.nord_disable_background = true
+        vim.g.nord_contrast = false
+        vim.g.nord_borders = false
+        vim.g.nord_disable_background = false
         --vim.g.nord_italic = false
         --vim.g.nord_uniform_diff_background = true
         vim.g.nord_enable_sidebar_background = true
         vim.g.nord_bold = true
         -- Key mapping to toggle background
-        vim.api.nvim_set_keymap('n', '<leader>tb', ':lua Toggle_nord_background()<CR>', { noremap = true, silent = true })
+        -- vim.api.nvim_set_keymap('n', '<leader>tb', ':lua Toggle_nord_background()<CR>', { noremap = true, silent = true })
         -- vim.cmd [[colorscheme nord]]
     end
 }

@@ -1,8 +1,9 @@
 
 return {
     "rafamadriz/neon",
-    lazy = false,
-    priority = 1000,
+    event = "VeryLazy",
+    --lazy = false,
+    --priority = 1000,
     config = function()
         vim.g.neon_style = "dark" -- dark, light, default, doom 
         -- vim.g.neon_italic_comment = false
@@ -11,6 +12,6 @@ return {
         vim.g.neon_bold = true
         -- vim.g.neon_italic_function = true
         vim.g.neon_transparent = true
-        vim.cmd.colorscheme "neon"
+        -- vim.cmd.colorscheme "neon"
     end
 }

@@ -6,4 +6,5 @@ return {
     require('config.themes.catppuccin'),
     require('config.themes.kanagawa'),
     require('config.themes.neon'),
+    require('config.themes.everforest'),
 }
