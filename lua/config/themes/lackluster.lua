@@ -15,13 +15,13 @@ return {
             --   1) a hexcode like "#a1b2c3" for a custom color
             --   2) "default" or nil will just use whatever lackluster's default is.
             tweak_syntax = {
-                string = color.gray6,
+                string = color.orange,
                 -- string = "#a1b2c3", -- custom hexcode
                 -- string = color.green, -- lackluster color
                 string_escape = color.lack,
-                comment = color.gray5,
+                comment = color.gray4,
                 builtin = color.red, -- builtin modules and functions
-                type = color.orange,
+                type = color.red,
                 keyword = color.green,
                 keyword_return = color.red,
                 keyword_exception = color.orange,
@@ -31,13 +31,13 @@ return {
             --   2) "none" for transparency
             --   3) "default" or nil will just use whatever lackluster's default is.
             tweak_background = {
-                normal = "#121212", -- main background
+                normal = "#101010", -- main background
                 -- normal = 'none',    -- transparent
                 -- normal = '#a1b2c3',    -- hexcode
                 -- normal = color.green,    -- lackluster color
                 telescope = 'default', -- telescope
-                menu = '#121212',      -- nvim_cmp, wildmenu ... (bad idea to transparent)
-                popup = '#121212',     -- lazy, mason, whichkey ... (bad idea to transparent)
+                menu = '#060606',      -- nvim_cmp, wildmenu ... (bad idea to transparent)
+                popup = '#101010',     -- lazy, mason, whichkey ... (bad idea to transparent)
             },
             
         })
