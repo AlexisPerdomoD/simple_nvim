@@ -1,8 +1,14 @@
-###  personal small, minimalistic vim config with lazy.nvim.
+#  personal small, minimalistic vim config with lazy.nvim.
 
-#### Requirements 
-- npm for mason
-- golancgo for lsp
-- install manually lazy.vim 
-- nerd font 
+### Requirements 
+- npm installed
+- Golang installed 
+- install manually lazy.vim (maybe not required) 
+- nerd font(optional)
+
+
+
+
+
+
 
