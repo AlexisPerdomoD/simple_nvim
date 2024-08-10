@@ -18,7 +18,6 @@ return {
             'typescript',
             'html',
             'css',
-            --'markdowm',
             'json',
             'go'
         },
