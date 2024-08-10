@@ -31,18 +31,18 @@ return {
                 { ['source'] = 'htmlhint' }
             ),
         }
-        lint.linters.vale = {
-            cmd = 'vale',                -- comando para ejecutar Vale
-            stdin = true,                -- Vale puede usar entrada estándar
-            args = { '--no-exit', '-' }, -- --no-exit para continuar en caso de errores y - para usar stdin
-            stream = 'both',             -- salida estándar y error estándar
-            ignore_exitcode = true,      -- ignora el código de salida para evitar errores en Neovim
-            parser = require('lint.parser').from_pattern(
-                '^stdin:%(\\d+):(\\d+): (.+)',
-                { 'lnum', 'col', 'message' },
-                { ['source'] = 'vale' }
-            ),
-        }
+        -- lint.linters.vale = {
+        --     cmd = 'vale',                -- comando para ejecutar Vale
+        --     stdin = true,                -- Vale puede usar entrada estándar
+        --     args = { '--no-exit', '-' }, -- --no-exit para continuar en caso de errores y - para usar stdin
+        --     stream = 'both',             -- salida estándar y error estándar
+        --     ignore_exitcode = true,      -- ignora el código de salida para evitar errores en Neovim
+        --     parser = require('lint.parser').from_pattern(
+        --         '^stdin:%(\\d+):(\\d+): (.+)',
+        --         { 'lnum', 'col', 'message' },
+        --         { ['source'] = 'vale' }
+        --     ),
+        -- }
         -- complementar mason instalation
         -- npm install -g @typescript-eslint/parser @typescript-eslint/eslint-plugin prettier eslint-config-prettier eslint-plugin-prettier
         --set linters
@@ -54,7 +54,7 @@ return {
             --svelte = { "eslint_d" },
             --python = { "pylint" },
             html = { "htmlhint" },
-            markdown = { "vale" },
+            -- markdown = { "vale" },
         }
 
         local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
