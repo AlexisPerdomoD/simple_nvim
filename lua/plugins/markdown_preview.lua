@@ -1,6 +1,10 @@
 return {
-    "iamcco/markdown-preview.nvim",
-    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-    ft = { "markdown" },
-    build = function() vim.fn["mkdp#util#install"]() end,
+    'MeanderingProgrammer/render-markdown.nvim',
+    opts = {},
+    event = 'VeryLazy',
+    dependencies = { 
+        { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
+        { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' },            -- if you use standalone mini plugins
+        { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },       -- if you prefer nvim-web-devicons
+    }
 }
