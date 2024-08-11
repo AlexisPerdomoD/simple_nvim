@@ -1,6 +1,8 @@
 return {
     'akinsho/toggleterm.nvim',
     version = "*",
+    -- lazy = true,
+    event = "VeryLazy",
     config = function()
         require("toggleterm").setup {
             -- size can be a number or function which is passed the current terminal

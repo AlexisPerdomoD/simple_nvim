@@ -1,9 +1,9 @@
 return {
     {
         'disrupted/one.nvim', -- personal tweaked colorscheme
-        --lazy = false,
+        lazy = true,
         --priority = 9999,
-        event='VeryLazy',
+        -- event='VeryLazy',
         -- config = function()
         --     require('one').colorscheme()
         -- end,

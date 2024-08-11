@@ -5,6 +5,7 @@ return {
         "williamboman/mason-lspconfig.nvim",
         "folke/neodev.nvim",
     },
+    event='VeryLazy',
     config = function()
         vim.keymap.set('n', '.e', vim.diagnostic.open_float)
         vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
@@ -66,10 +67,9 @@ return {
                 }
             }
         })
-        -- require('lspconfig').tsserver.setup({
-        --     on_attach = on_attach,
-        -- })
-
+         require('lspconfig').tsserver.setup({
+             on_attach = on_attach,
+         })
         --Enable (broadcasting) snippet capability for completion
         local capabilities = vim.lsp.protocol.make_client_capabilities()
         capabilities.textDocument.completion.completionItem.snippetSupport = true

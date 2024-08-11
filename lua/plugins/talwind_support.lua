@@ -2,6 +2,7 @@
 return {
     "luckasRanarison/tailwind-tools.nvim",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
+    lazy = true,
     opts = {
         document_color = {
             enabled = true, -- can be toggled by commands

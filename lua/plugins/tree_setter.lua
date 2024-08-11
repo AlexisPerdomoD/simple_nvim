@@ -6,8 +6,7 @@ return {
         --"nvim-treesitter/playground",
     },
     build        = ":TSUpdate",
-
-    lazy         = false,
+    event        = "BufReadPost",
     main         = "nvim-treesitter.configs",
     opts         = {
         ensure_installed = {

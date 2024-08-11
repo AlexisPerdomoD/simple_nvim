@@ -6,6 +6,7 @@ return {
         "nvim-treesitter/nvim-treesitter",
 
     },
+    lazy=true,
     config = function()
         require("mason").setup()
         require("mason-lspconfig").setup({
