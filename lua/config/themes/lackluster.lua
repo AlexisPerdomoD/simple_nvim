@@ -1,9 +1,9 @@
 -- example lazy.nvim install setup
 return {
     "slugbyte/lackluster.nvim",
-    -- lazy = true,
+     lazy = true,
     -- event = 'VeryLazy',
-    priority = 1000,
+    -- priority = 1000,
     config = function()
         local lackluster = require("lackluster")
 

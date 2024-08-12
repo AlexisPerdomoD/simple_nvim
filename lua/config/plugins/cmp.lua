@@ -123,7 +123,7 @@ function M.setup()
                 -- group_index = 1,
                 max_item_count = 30,
             },
-            -- { name = "path" },
+            { name = "path" },
             { name = "luasnip" },
             { name = "buffer" },
         },
