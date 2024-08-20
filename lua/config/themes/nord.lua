@@ -11,7 +11,8 @@ return {
     'shaunsingh/nord.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     -- priority = 1000,
-    event = "VeryLazy",
+    -- event = "VeryLazy",
+    lazy = true,
     config = function()
         --Lua:
         -- Example config in lua

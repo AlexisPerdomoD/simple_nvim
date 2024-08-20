@@ -1,8 +1,8 @@
 return {
     "rebelot/kanagawa.nvim",
-    priority = 1000,
+    -- priority = 1000,
     -- event = "VeryLazy",
-    -- lazy = true,
+    lazy = true,
     -- event = "VeryLazy",
     --Default options:
     config = function()
@@ -58,7 +58,7 @@ return {
             },
         })
 
-        vim.cmd("colorscheme kanagawa")
+       -- vim.cmd("colorscheme kanagawa")
     end
 }
 --

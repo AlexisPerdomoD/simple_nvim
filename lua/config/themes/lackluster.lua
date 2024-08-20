@@ -1,9 +1,9 @@
 -- example lazy.nvim install setup
 return {
     "slugbyte/lackluster.nvim",
-     lazy = true,
+    lazy = true,
     -- event = 'VeryLazy',
-    -- priority = 1000,
+    priority = 1000,
     config = function()
         local lackluster = require("lackluster")
 
@@ -39,7 +39,7 @@ return {
                 menu = '#060606',      -- nvim_cmp, wildmenu ... (bad idea to transparent)
                 popup = '#101010',     -- lazy, mason, whichkey ... (bad idea to transparent)
             },
-            
+
         })
     end,
     init = function()
