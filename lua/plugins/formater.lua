@@ -6,16 +6,16 @@ return {
 
         conform.setup({
             formatters_by_ft = {
-                javascript = { "prettier" },
-                typescript = { "prettier" },
-                javascriptreact = { "prettier" },
-                typescriptreact = { "prettier" },
+                javascript = { "prettierd" },
+                typescript = { "prettierd" },
+                javascriptreact = { "prettierd" },
+                typescriptreact = { "prettierd" },
                 --svelte = { "prettier" },
-                css = { "prettier" },
-                html = { "prettier" },
-                json = { "prettier" },
+                css = { "prettierd" },
+                html = { "prettierd" },
+                json = { "prettierd" },
                 yaml = { 'yamlfmt' },
-                markdown = { "prettier" },
+                markdown = { "prettierd" },
                 --graphql = { "prettier" },
                 luaa = { "stylua" },
                 bash = { "shfmt" },
@@ -29,7 +29,7 @@ return {
             prettier = {
                 -- command = vim.fn.stdpath("data") .. "/mason/bin/pretierd", -- Ruta a prettier instalado por Mason
                 inherit = false,
-                command = "prettier",
+                command = "prettierd",
                 args = function()
                     local config_path = vim.fn.findfile(".prettierrc", ".;") or
                         vim.fn.findfile(".prettierrc.json", ".;") or
