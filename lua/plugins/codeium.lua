@@ -9,7 +9,7 @@ return {
         delay = 100,
         ignore_whitespace = false,
         suggestion = {
-            enabled = true,
+            enabled = false,
             --     auto_trigger = true,
             debounce = 75,
             --      keymap = {
@@ -20,15 +20,22 @@ return {
             --      },
         },
     },
-    config = function(opts)
+    config = function(_opts)
+        vim.g.codeium_enabled = false
         -- disable default bindings
         vim.g.codeium_disable_bindings = 1
+        vim.keymap.set('i', '<C-i>a', '<Esc>:CodeiumEnable<CR>a', { silent = false })
         vim.keymap.set('i', '<C-a>', function() return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
+        vim.keymap.set('i', '<C-k>', function() return vim.fn['codeium#AcceptNextWord']() end,{ expr = true, silent = true })
+        vim.keymap.set('i', '<C-l>', function() return vim.fn['codeium#AcceptNextLine']() end, { expr = true, silent = true })
+        
+        vim.keymap.set('i', '<c-C>', function() return vim.fn['codeium#Chat']() end, { expr = true, silent = true })
         vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
         vim.keymap.set('i', '<c-]>', function() return vim.fn['codeium#CycleCompletions'](1) end,
             { expr = true, silent = true })
         vim.keymap.set('i', '<c-[>', function() return vim.fn['codeium#CycleCompletions'](-1) end,
             { expr = true, silent = true })
+        
         -- disabled for now
         vim.keymap.set('i', '<c-u>', function() return vim.fn['codeium#Reset']() end, { expr = true })
         vim.keymap.set('i', '<Esc>', '<Esc>', { silent = true })
@@ -41,3 +48,5 @@ return {
     --     vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
     -- end
 }
+-- Accept word from suggestion 	codeium#AcceptNextWord() 	<C-k>
+-- Accept line from suggestion 	codeium#AcceptNextLine() 	<C-l>
