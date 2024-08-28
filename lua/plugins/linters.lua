@@ -50,7 +50,7 @@ return {
             javascript = { "eslint_d" },
             typescript = {},
             javascriptreact = { "eslint_d" },
-            typescriptreact = {},
+            typescriptreact = {"eslint_d" },
             --svelte = { "eslint_d" },
             --python = { "pylint" },
             html = { "htmlhint" },
