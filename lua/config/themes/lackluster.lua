@@ -3,7 +3,7 @@ return {
     "slugbyte/lackluster.nvim",
     lazy = true,
     -- event = 'VeryLazy',
-    priority = 1000,
+    -- priority = 1000,
     config = function()
         local lackluster = require("lackluster")
 
@@ -45,6 +45,6 @@ return {
     init = function()
         --     vim.cmd.colorscheme("lackluster")
         -- vim.cmd.colorscheme("lackluster-hack") -- my favorite
-        vim.cmd.colorscheme("lackluster-mint")
+        --  vim.cmd.colorscheme("lackluster-mint")
     end,
 }

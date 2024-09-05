@@ -51,5 +51,5 @@ map('v', 'p', '"0p', { noremap = true, silent = true })
 
 -- folding 
 -- Define el keybinding y el resaltado de los pliegues en una línea
-map('n', 'za', ':execute "normal! za" | hi Folded guibg=#4C566A guifg=#D8DEE9<CR>', opts)
+map('n', 'za', ':execute "normal! za" | hi Folded guibg=#4C566A guifg=#020202<CR>', opts)
 

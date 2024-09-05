@@ -1,8 +1,7 @@
 
 return {
     "rafamadriz/neon",
-    event = "VeryLazy",
-    --lazy = false,
+    lazy = true,
     --priority = 1000,
     config = function()
         vim.g.neon_style = "dark" -- dark, light, default, doom 
