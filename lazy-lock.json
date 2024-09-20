@@ -40,6 +40,7 @@
   "oxocarbon.nvim": { "branch": "main", "commit": "004777819ba294423b638a35a75c9f0c7be758ed" },
   "plenary.nvim": { "branch": "master", "commit": "2d9b06177a975543726ce5c73fca176cedbffe9d" },
   "render-markdown.nvim": { "branch": "main", "commit": "354baf485370b670bb1c1cd64309438607b0465d" },
+  "supermaven-nvim": { "branch": "main", "commit": "3da044bbc23a354e9cb17602ed2d5ca8528173bb" },
   "tailwind-tools.nvim": { "branch": "master", "commit": "41e901e7b4470082b5388b8385249632642c2510" },
   "telescope-file-browser.nvim": { "branch": "master", "commit": "dd9de68c08b6d678198a99f5ea13e0384a1f04cf" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "cf48d4dfce44e0b9a2e19a008d6ec6ea6f01a83b" },

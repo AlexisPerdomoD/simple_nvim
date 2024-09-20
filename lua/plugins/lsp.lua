@@ -67,7 +67,7 @@ return {
                 }
             }
         })
-         require('lspconfig').tsserver.setup({
+         require('lspconfig').ts_ls.setup({
              on_attach = on_attach,
          })
         --Enable (broadcasting) snippet capability for completion
