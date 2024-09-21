@@ -21,7 +21,7 @@ return {
                  "gopls",
                 "html",
                 "jsonls",
-                "tsserver",
+                --"ts_lps",
                 "markdown_oxide",
                  "sqls",
                 "yamlls",
