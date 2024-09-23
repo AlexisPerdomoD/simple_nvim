@@ -17,11 +17,14 @@ return {
             disable_inline_completion = false, -- disables inline completion for use with cmp
             disable_keymaps = false,           -- disables built in keymaps for more manual control
             condition = function()
-                return false -- condition to check for starting supermaven, `true` means to start supermaven when the condition is true.
-            end -- condition to check for stopping supermaven, `true` means to stop supermaven when the condition is true.
+                return false                   -- condition to check for starting supermaven, `true` means to start supermaven when the condition is true.
+            end,
+
         })
-        -- require("supermaven-nvim.api").stop()
+        local api = require('supermaven-nvim.api') -- condition to check for stopping supermaven, `true` means to stop supermaven when the condition is true.
+        api.use_free_version()
     end,
+
 }
 --
 -- :SupermavenStart    start supermaven-nvim
