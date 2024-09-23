@@ -4,7 +4,7 @@ return {
     --     "nvim-lua/plenary.nvim",
     --     "hrsh7th/nvim-cmp",
     -- }, uses for comunity extention folks if want to include into comands ia suggestions
-    event = 'VeryLazy',
+    lazy = true,
     opts = {
         delay = 100,
         ignore_whitespace = false,
