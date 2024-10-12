@@ -8,5 +8,6 @@ return {
     require'config.themes.neon',
     require'config.themes.everforest',
     require'config.themes.oxocarbon',
-    require'config.themes.tokyodark'
+    require'config.themes.tokyodark',
+    require'config.themes.synthwave',
 }
