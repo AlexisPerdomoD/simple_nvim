@@ -21,6 +21,7 @@ return {
                 bash = { "shfmt" },
                 sh = { "shfmt" },
                 zsh = { "shfmt" },
+                cs = { "csharpier" },
             },
             shfmt = {
                 options = { "-i", "2", "-ci" },

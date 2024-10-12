@@ -5,7 +5,7 @@ return {
         "williamboman/mason-lspconfig.nvim",
         "folke/neodev.nvim",
     },
-    event='VeryLazy',
+    event = 'VeryLazy',
     config = function()
         vim.keymap.set('n', '.e', vim.diagnostic.open_float)
         vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
@@ -67,9 +67,9 @@ return {
                 }
             }
         })
-         require('lspconfig').ts_ls.setup({
-             on_attach = on_attach,
-         })
+        require('lspconfig').ts_ls.setup({
+            on_attach = on_attach,
+        })
         --Enable (broadcasting) snippet capability for completion
         local capabilities = vim.lsp.protocol.make_client_capabilities()
         capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -87,6 +87,25 @@ return {
             capabilities = capabilities,
             on_attach = on_attach
         }
+
+        -- An example nvim-lspconfig capabilities setting
+
+        -- require("lspconfig").markdown_oxide.setup({
+        --     -- Ensure that dynamicRegistration is enabled! This allows the LS to take into account actions like the
+        --     -- Create Unresolved File code action, resolving completions for unindexed code blocks, ...
+        --     capabilities = vim.tbl_deep_extend(
+        --         'force',
+        --         capabilities,
+        --         {
+        --             workspace = {
+        --                 didChangeWatchedFiles = {
+        --                     dynamicRegistration = true,
+        --                 },
+        --             },
+        --         }
+        --     ),
+        --     on_attach = on_attach -- configure your on attach config
+        -- })
         require 'lspconfig'.markdown_oxide.setup {
             on_attach = on_attach
         }
@@ -131,5 +150,60 @@ return {
             filetypes = { 'go', 'gomod' },
             root_dir = require 'lspconfig'.util.root_pattern('.golangci.yml', '.golangci.yaml', '.golangci.toml', '.golangci.json', "go.work", "go.mod", ".git"),
         }
+        -- defaults to omnisharp (dotnet)
+        require 'lspconfig'.omnisharp.setup {
+            cmd = { "omnisharp" },
+            filetypes = { "cs", "vb" },
+            on_attach = on_attach,
+            capabilities = capabilities,
+            root_dir = require('lspconfig').util.root_pattern('*.csproj', '.git', '*.sln'),
+            settings = {
+                FormattingOptions = {
+                    -- Enables support for reading code style, naming convention and analyzer
+                    -- settings from .editorconfig.
+                    EnableEditorConfigSupport = true,
+                    -- Specifies whether 'using' directives should be grouped and sorted during
+                    -- document formatting.
+                    OrganizeImports = nil,
+                },
+                MsBuild = {
+                    -- If true, MSBuild project system will only load projects for files that
+                    -- were opened in the editor. This setting is useful for big C# codebases
+                    -- and allows for faster initialization of code navigation features only
+                    -- for projects that are relevant to code that is being edited. With this
+                    -- setting enabled OmniSharp may load fewer projects and may thus display
+                    -- incomplete reference lists for symbols.
+                    LoadProjectsOnDemand = nil,
+                },
+                RoslynExtensionsOptions = {
+                    -- Enables support for roslyn analyzers, code fixes and rulesets.
+                    EnableAnalyzersSupport = nil,
+                    -- Enables support for showing unimported types and unimported extension
+                    -- methods in completion lists. When committed, the appropriate using
+                    -- directive will be added at the top of the current file. This option can
+                    -- have a negative impact on initial completion responsiveness,
+                    -- particularly for the first few completion sessions after opening a
+                    -- solution.
+                    EnableImportCompletion = nil,
+                    -- Only run analyzers against open files when 'enableRoslynAnalyzers' is
+                    -- true
+                    AnalyzeOpenDocumentsOnly = nil,
+                },
+                Sdk = {
+                    -- Specifies whether to include preview versions of the .NET SDK when
+                    -- determining which version to use for project loading.
+                    IncludePrereleases = true,
+                },
+            },
+        }
+
+        -- csharp alternative lighttier
+        --     require 'lspconfig'.csharp_ls.setup {
+        --         capabilities = capabilities,
+        --         on_attach = on_attach,
+        --         cmd = { "csharp-ls" },
+        --         filetypes = { 'cs', 'csx', 'cake' },
+        --         -- root_dir = require 'lspconfig'.util.root_pattern('global.json', '.git'),
+        --     }
     end
 }

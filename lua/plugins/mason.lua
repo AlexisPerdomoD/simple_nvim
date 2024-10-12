@@ -16,18 +16,21 @@ return {
                 "cssls",
                 "cssmodules_ls",
                 "css_variables",
-                --"eslint_d",
                  "golangci_lint_ls",
                  "gopls",
                 "html",
                 "jsonls",
-                --"ts_lps",
                 "markdown_oxide",
                  "sqls",
                 "yamlls",
                 'tailwindcss',
-                --"google-java-format",
+                'omnisharp',
+               
+                -- 'csharp_ls', lighttier alternative to omnisharp but less compatibility
                 -- does not work for formaters
+                -- list for formnaters and linters reference 
+                --'CSharpier'
+                --"eslint_d",
                 --"prettier",
                 --"yamlfmt",
                 --"shfmt",
