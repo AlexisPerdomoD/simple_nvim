@@ -4,7 +4,7 @@
 -- -- Create an augroup
 local myAutoCmd = vim.api.nvim_create_augroup("MyAutoCmd", { clear = true })
 local foldingCmd = vim.api.nvim_create_augroup("folding_comands", { clear = true })
-local nodejsCmd = vim.api.nvim_create_augroup("NodeJSAutogroup", { clear = true })
+-- local nodejsCmd = vim.api.nvim_create_augroup("NodeJSAutogroup", { clear = true })
 -- Autocommands
 vim.api.nvim_create_autocmd("BufWritePost", {
     pattern = "*.lua",

@@ -34,6 +34,7 @@
         "trailing-space"
     ],
     "diagnostics.globals": [
-        "asd"
+        "asd",
+        "vim"
     ]
 }

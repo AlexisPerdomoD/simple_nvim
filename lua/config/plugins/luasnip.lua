@@ -38,6 +38,7 @@ function M.setup()
     if ls.jumpable(-1) then
       ls.jump(-1)
     end
+
   end, { silent = true })
 
   -- <c-l> is selecting within a list of options.

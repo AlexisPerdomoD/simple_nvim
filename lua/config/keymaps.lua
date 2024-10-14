@@ -37,19 +37,16 @@ map('n', '<C-c>', '"*y', opts)
 map('v', '<C-c>', '"*yy', opts)
 map('i', '<C-S>v', '"*p', opts)
 map('n', '<C-c>v', '"*PP', opts)
--- Usa el portapapeles del sistema para copiar y pegar
-vim.opt.clipboard:append({'unnamedplus'})
 
 -- Mapear `d` para no sobreescribir el portapapeles
 map('n', 'd', '"_d', { noremap = true, silent = true })
--- modo visual si quiero copiar al clipboard 
+-- modo visual si quiero copiar al clipboard
 -- map('v', 'd', '"_d', { noremap = true, silent = true })
 
 -- Mapear `p` para pegar sin sobrescribir el portapapeles
 map('n', 'p', '"0p', { noremap = true, silent = true })
 map('v', 'p', '"0p', { noremap = true, silent = true })
 
--- folding 
+-- folding
 -- Define el keybinding y el resaltado de los pliegues en una línea
-map('n', 'za', ':execute "normal! za" | hi Folded guibg=#4C566A guifg=#020202<CR>', opts)
-
+map('n', 'za', ':execute "normal! za" | hi Folded guibg=#666666 guifg=#020202<CR>', opts)

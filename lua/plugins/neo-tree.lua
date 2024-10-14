@@ -129,5 +129,7 @@ return {
         vim.keymap.set("n", "<space>d", "<cmd>Neotree toggle reveal left<cr>")
         -- git status
         vim.keymap.set("n", ".gs", "<cmd>Neotree float toggle git_status<cr>")
+        --buffers 
+        vim.keymap.set("n", "<space>b", "<cmd>Neotree float toggle buffers<cr>")
     end,
 }
