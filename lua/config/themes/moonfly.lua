@@ -2,9 +2,9 @@ return {
     "bluz71/vim-moonfly-colors",
     dependencies = { 'hrsh7th/nvim-cmp' },
     name = "moonfly",
-     lazy = true,
+    lazy = false,
     --event = 'VeryLazy',
-    --priority = 1000,
+    priority = 1000,
     config = function()
         -- cursor
         vim.g.moonflyCursorColor = true
@@ -38,5 +38,6 @@ return {
                 documentation = require('cmp').config.window.bordered(winhighlight),
             }
         })
+        vim.cmd [[ colorscheme moonfly ]]
     end
 }
