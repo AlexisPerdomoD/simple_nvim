@@ -22,6 +22,7 @@ return {
                 sh = { "shfmt" },
                 zsh = { "shfmt" },
                 cs = { "csharpier" },
+                nix = { "nixpkgs_fmt" },
             },
             shfmt = {
                 options = { "-i", "2", "-ci" },
@@ -57,7 +58,17 @@ return {
                 args = {
                     '--search-parent-directories', '--stdin-filepath', '%:p', '-'
                 },
-            }
+            },
+            nixpkgs_fmt = {
+                command = 'nixpkgs-fmt',
+                args = {
+                    '--stdin-filepath', '%:p', '-'
+                },
+            },
+              default_format_opts = {
+    lsp_format = "fallback",
+  },
+
             --format_on_save = {
             --    lsp_fallback = true,
             --    async = false,
