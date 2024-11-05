@@ -13,4 +13,4 @@ ensure_lazy()
 require 'config'
 -- Load plugins
 require 'lazy'.setup 'plugins'
--- colorscheme is set into the selected theme on config/themes/
+-- color-scheme is set into the selected theme on "config/themes/"

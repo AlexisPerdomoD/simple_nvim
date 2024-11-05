@@ -147,8 +147,15 @@ return {
         require 'lspconfig'.tailwindcss.setup {
             on_attach = on_attach
         }
-        require 'lspconfig'.sqls.setup {
-            on_attach = on_attach
+        require 'lspconfig'.sqlls.setup {
+            root_dir = require('lspconfig').util.root_pattern("*.sql", ".git"),
+            on_attach = on_attach,
+            settings = {
+                sqlls = {
+                    -- Aquí puedes añadir configuraciones específicas del servidor
+                    formatter = { command = "sql-formatter" }, -- Comando del formateador
+                }
+            },
         }
         require 'lspconfig'.yamlls.setup {
             capabilities = capabilities,
@@ -226,12 +233,14 @@ return {
         }
 
         -- csharp alternative lighttier
-        --     require 'lspconfig'.csharp_ls.setup {
-        --         capabilities = capabilities,
-        --         on_attach = on_attach,
-        --         cmd = { "csharp-ls" },
-        --         filetypes = { 'cs', 'csx', 'cake' },
-        --         -- root_dir = require 'lspconfig'.util.root_pattern('global.json', '.git'),
-        --     }
+        -- require 'lspconfig'.csharp_ls.setup {
+        --     capabilities = capabilities,
+        --     on_attach = on_attach,
+        --     cmd = { "csharp-ls" },
+        --     filetypes = { 'cs', 'csx', 'cake' },
+        --     root_dir = require('lspconfig').util.root_pattern('*.csproj', '.git', '*.sln'),
+        --
+        --     -- root_dir = require 'lspconfig'.util.root_pattern('global.json', '.git'),
+        --       }
     end
 }
