@@ -46,9 +46,9 @@ vim.opt.cmdheight = 1
 vim.opt.hlsearch = true   -- Resaltar coincidencias
 vim.opt.incsearch = true  -- Búsqueda incremental
 vim.opt.ignorecase = true -- Búsquedas insensibles a mayúsculas...
-vim.opt.smartcase = true  -- ... a menos que contengan al menos una letra mayúscula
+vim.opt.smartcase = true  -- ... A menos que contengan al menos una letra mayúscula
 
--- Configuración del portapapeles (pendiente de verificación)
+-- Configuración del porta papeles (pendiente de verificación)
 vim.opt.clipboard = "unnamedplus"
 
 -- Configuración de plegado
@@ -58,6 +58,8 @@ vim.o.foldlevel = 99
 vim.o.foldenable = true
 -- Usa el portapapeles del sistema para copiar y pegar
 vim.opt.clipboard:append({ 'unnamedplus' })
+-- vim.opt.spell = false
+vim.opt.spelllang = { 'en', 'es' }
 
 
 -- warnings disabled
