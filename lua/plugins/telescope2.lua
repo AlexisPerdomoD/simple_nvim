@@ -4,11 +4,8 @@ return {
     dependencies = {
         "nvim-lua/plenary.nvim",
         "nvim-telescope/telescope-file-browser.nvim",
-        {
-            'nvim-telescope/telescope-fzf-native.nvim',
-            build = 'make'
-        } },
-    opts = {
+         },
+              opts = {
         extensions = {
             fzf = {
                 fuzzy = true,                   -- false will only do exact matching
@@ -21,7 +18,7 @@ return {
     },
     config = function(opts)
         require('telescope').setup(opts)
-        require('telescope').load_extension('fzf')
+        -- require('telescope').load_extension('fzf')
            end,
     keys = {
         {

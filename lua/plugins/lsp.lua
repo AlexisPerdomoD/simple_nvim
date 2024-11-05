@@ -76,7 +76,7 @@ return {
             settings = {
                 Lua = {
                     runtime = {
-                        version = 'LuaJIT', -- Puede ser 'Lua 5.1' o 'Lua 5.3' dependiendo de tu entorno
+                        version = 'Lua 5.2', -- Puede ser 'Lua 5.1' o 'Lua 5.3' dependiendo de tu entorno
                         path = vim.split(package.path, ';')
                     },
                     diagnostic = {
