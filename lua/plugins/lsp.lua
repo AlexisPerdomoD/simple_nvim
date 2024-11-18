@@ -6,30 +6,30 @@ return {
         "williamboman/mason-lspconfig.nvim",
         "folke/neodev.nvim",
     },
-    event = 'VeryLazy',
+    event = "VeryLazy",
     config = function()
-        vim.keymap.set('n', '.e', vim.diagnostic.open_float)
-        vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-        vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-        vim.keymap.set('n', '.q', vim.diagnostic.setloclist)
+        vim.keymap.set("n", ".e", vim.diagnostic.open_float)
+        vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
+        vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
+        vim.keymap.set("n", ".q", vim.diagnostic.setloclist)
 
         local on_attach = function(_, bufnr)
-            vim.bo[bufnr].omnifunc = 'v:lua.vim.lsp.omnifunc' -- algo de autocompletadito
+            vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc" -- algo de autocompletadito
             local opts = { buffer = bufnr }
-            vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-            vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-            vim.keymap.set('n', '..', vim.lsp.buf.hover, opts)
-            vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-            vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-            vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
-            vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
-            vim.keymap.set('n', '<space>wl', function()
+            vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+            vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+            vim.keymap.set("n", "..", vim.lsp.buf.hover, opts)
+            vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+            vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+            vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
+            vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
+            vim.keymap.set("n", "<space>wl", function()
                 print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
             end, opts)
-            vim.keymap.set('n', 'td', vim.lsp.buf.type_definition, opts)
-            vim.keymap.set('n', 'rn', vim.lsp.buf.rename, opts)
-            vim.keymap.set({ 'n', 'v' }, 'ca', vim.lsp.buf.code_action, opts)
-            vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+            vim.keymap.set("n", "td", vim.lsp.buf.type_definition, opts)
+            vim.keymap.set("n", "rn", vim.lsp.buf.rename, opts)
+            vim.keymap.set({ "n", "v" }, "ca", vim.lsp.buf.code_action, opts)
+            vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
             -- code actions
             -- vim.keymap.set({ 'n', 'v' }, '.ca', vim.lsp.buf.code_action, opts)
             --vim.keymap.set('n', '<leader>f', function()
@@ -41,61 +41,62 @@ return {
         require("lspconfig").bashls.setup({
             filetypes = { "sh", "bash", "zsh" }, -- Incluye Bash y Zsh
             cmd = { "bash-language-server", "start" },
-            on_attach = on_attach
+            on_attach = on_attach,
         })
         require("lspconfig").lua_ls.setup({
+            comand = "lua-language-server",
             on_attach = on_attach,
             on_init = function(client)
                 if client.workspace_folders then
                     local path = client.workspace_folders[1].name
-                    if vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc') then
+                    if vim.uv.fs_stat(path .. "/.luarc.json") or vim.uv.fs_stat(path .. "/.luarc.jsonc") then
                         return
                     end
                 end
 
-                client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+                client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
                     runtime = {
                         -- Tell the language server which version of Lua you're using
                         -- (most likely LuaJIT in the case of Neovim)
-                        version = 'LuaJIT'
+                        version = "LuaJIT",
                     },
                     -- Make the server aware of Neovim runtime files
                     workspace = {
                         checkThirdParty = false,
                         library = {
-                            vim.env.VIMRUNTIME
+                            vim.env.VIMRUNTIME,
                             -- Depending on the usage, you might want to add additional paths here.
                             -- "${3rd}/luv/library"
                             -- "${3rd}/busted/library",
-                        }
+                        },
                         -- or pull in all of 'runtimepath'. NOTE: this is a lot slower
                         -- library = vim.api.nvim_get_runtime_file("", true)
-                    }
+                    },
                 })
             end,
             settings = {
                 Lua = {
                     runtime = {
-                        version = 'Lua 5.2', -- Puede ser 'Lua 5.1' o 'Lua 5.3' dependiendo de tu entorno
-                        path = vim.split(package.path, ';')
+                        version = "Lua 5.2", -- Puede ser 'Lua 5.1' o 'Lua 5.3' dependiendo de tu entorno
+                        path = vim.split(package.path, ";"),
                     },
                     diagnostic = {
-                        globals = { 'vim' }
+                        globals = { "vim" },
                     },
                     telemetry = { enable = false },
                     workspace = {
                         checkThirdParty = false,
                         library = {
-                            [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-                            [vim.fn.stdpath('config') .. '/lua'] = true,
+                            [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+                            [vim.fn.stdpath("config") .. "/lua"] = true,
                         },
                         maxPreload = 2000,
                         preLoadFileSize = 1000,
                     },
-                }
-            }
+                },
+            },
         })
-        require('lspconfig').ts_ls.setup({
+        require("lspconfig").ts_ls.setup({
             on_attach = on_attach,
         })
         --Enable (broadcasting) snippet capability for completion
@@ -104,17 +105,17 @@ return {
         -- Neovim does not currently include built-in snippets. vscode-html-language-server only provides completions when snippet support is enabled. To enable completion, install a snippet plugin and add the following override to your language client capabilities during setup.
 
         -- The code-formatting feature of the lsp can be controlled with the provideFormatter option.
-        require 'lspconfig'.html.setup {
+        require("lspconfig").html.setup({
             capabilities = capabilities,
             on_attach = on_attach,
             options = {
-                filetype = { 'html', 'templ', 'handlebars', '.handlebars' }
-            }
-        }
-        require 'lspconfig'.jsonls.setup {
+                filetype = { "html", "templ", "handlebars", ".handlebars" },
+            },
+        })
+        require("lspconfig").jsonls.setup({
             capabilities = capabilities,
-            on_attach = on_attach
-        }
+            on_attach = on_attach,
+        })
 
         -- An example nvim-lspconfig capabilities setting
 
@@ -134,39 +135,39 @@ return {
         --     ),
         --     on_attach = on_attach -- configure your on attach config
         -- })
-        require 'lspconfig'.markdown_oxide.setup {
-            on_attach = on_attach
-        }
-        require 'lspconfig'.css_variables.setup {
-            on_attach = on_attach
-        }
-        require 'lspconfig'.cssls.setup {
+        require("lspconfig").markdown_oxide.setup({
+            on_attach = on_attach,
+        })
+        require("lspconfig").css_variables.setup({
+            on_attach = on_attach,
+        })
+        require("lspconfig").cssls.setup({
             capabilities = capabilities,
-            on_attach = on_attach
-        }
-        require 'lspconfig'.tailwindcss.setup {
-            on_attach = on_attach
-        }
-        require 'lspconfig'.sqlls.setup {
-            root_dir = require('lspconfig').util.root_pattern("*.sql", ".git"),
+            on_attach = on_attach,
+        })
+        require("lspconfig").tailwindcss.setup({
+            on_attach = on_attach,
+        })
+        require("lspconfig").sqlls.setup({
+            root_dir = require("lspconfig").util.root_pattern("*.sql", ".git"),
             on_attach = on_attach,
             settings = {
                 sqlls = {
                     -- Aquí puedes añadir configuraciones específicas del servidor
                     formatter = { command = "sql-formatter" }, -- Comando del formateador
-                }
+                },
             },
-        }
-        require 'lspconfig'.yamlls.setup {
-            capabilities = capabilities,
-            on_attach = on_attach
-        }
-        -- defaults to gopls
-        require 'lspconfig'.gopls.setup {
+        })
+        require("lspconfig").yamlls.setup({
             capabilities = capabilities,
             on_attach = on_attach,
-            filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
-            root_dir = require 'lspconfig'.util.root_pattern("go.work", "go.mod", ".git"),
+        })
+        -- defaults to gopls
+        require("lspconfig").gopls.setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+            filetypes = { "go", "gomod", "gowork", "gotmpl" },
+            root_dir = require("lspconfig").util.root_pattern("go.work", "go.mod", ".git"),
             cmd = { "gopls", "serve" },
             settings = {
                 gopls = {
@@ -176,22 +177,30 @@ return {
                     staticcheck = true,
                 },
             },
-        }
+        })
         --defaults to golangci-lint
-        require 'lspconfig'.golangci_lint_ls.setup {
+        require("lspconfig").golangci_lint_ls.setup({
             capabilities = capabilities,
             on_attach = on_attach,
             cmd = { "golangci-lint-langserver" },
-            filetypes = { 'go', 'gomod' },
-            root_dir = require 'lspconfig'.util.root_pattern('.golangci.yml', '.golangci.yaml', '.golangci.toml', '.golangci.json', "go.work", "go.mod", ".git"),
-        }
+            filetypes = { "go", "gomod" },
+            root_dir = require("lspconfig").util.root_pattern(
+                ".golangci.yml",
+                ".golangci.yaml",
+                ".golangci.toml",
+                ".golangci.json",
+                "go.work",
+                "go.mod",
+                ".git"
+            ),
+        })
         -- defaults to omnisharp (dotnet)
-        require 'lspconfig'.omnisharp.setup {
+        require("lspconfig").omnisharp.setup({
             cmd = { "omnisharp" },
             filetypes = { "cs", "vb" },
             on_attach = on_attach,
             capabilities = capabilities,
-            root_dir = require('lspconfig').util.root_pattern('*.csproj', '.git', '*.sln'),
+            root_dir = require("lspconfig").util.root_pattern("*.csproj", ".git", "*.sln"),
             settings = {
                 FormattingOptions = {
                     -- Enables support for reading code style, naming convention and analyzer
@@ -199,7 +208,7 @@ return {
                     EnableEditorConfigSupport = true,
                     -- Specifies whether 'using' directives should be grouped and sorted during
                     -- document formatting.
-                    OrganizeImports = nil,
+                    -- OrganizeImports = nil,
                 },
                 MsBuild = {
                     -- If true, MSBuild project system will only load projects for files that
@@ -212,14 +221,14 @@ return {
                 },
                 RoslynExtensionsOptions = {
                     -- Enables support for roslyn analyzers, code fixes and rulesets.
-                    EnableAnalyzersSupport = nil,
+                    EnableAnalyzersSupport = true,
                     -- Enables support for showing unimported types and unimported extension
                     -- methods in completion lists. When committed, the appropriate using
                     -- directive will be added at the top of the current file. This option can
                     -- have a negative impact on initial completion responsiveness,
                     -- particularly for the first few completion sessions after opening a
                     -- solution.
-                    EnableImportCompletion = nil,
+                    EnableImportCompletion = true,
                     -- Only run analyzers against open files when 'enableRoslynAnalyzers' is
                     -- true
                     AnalyzeOpenDocumentsOnly = nil,
@@ -230,28 +239,33 @@ return {
                     IncludePrereleases = true,
                 },
             },
-        }
+            -- enable_roslyn_analyzers = true,
+            -- organize_imports_on_format = true,
+            -- enable_import_completion = true,
+        })
         require("lspconfig").nixd.setup({
-  cmd = { "nixd" },
-  settings = {
-    nixd = {
-      nixpkgs = {
-        expr = "import <nixpkgs> { }",
-      },
-      formatting = {
-        command = { "alejandra" }, -- or nixfmt or nixpkgs-fmt
-      },
-      -- options = {
-      --   nixos = {
-      --       expr = '(builtins.getFlake "/PATH/TO/FLAKE").nixosConfigurations.CONFIGNAME.options',
-      --   },
-      --   home_manager = {
-      --       expr = '(builtins.getFlake "/PATH/TO/FLAKE").homeConfigurations.CONFIGNAME.options',
-      --   },
-      -- },
-    },
-  },
-})
+            on_attach = on_attach,
+            cmd = { "nixd" },
+            settings = {
+                nixd = {
+                    nixpkgs = {
+                        expr = "import <nixpkgs> { }",
+                    },
+                    formatting = {
+                        command = { "alejandra" }, -- or nixfmt or nixpkgs-fmt
+                    },
+                    filetypes = { "nix" },
+                    -- options = {
+                    --   nixos = {
+                    --       expr = '(builtins.getFlake "/PATH/TO/FLAKE").nixosConfigurations.CONFIGNAME.options',
+                    --   },
+                    --   home_manager = {
+                    --       expr = '(builtins.getFlake "/PATH/TO/FLAKE").homeConfigurations.CONFIGNAME.options',
+                    --   },
+                    -- },
+                },
+            },
+        })
         -- csharp alternative lighttier
         -- require 'lspconfig'.csharp_ls.setup {
         --     capabilities = capabilities,
@@ -262,5 +276,5 @@ return {
         --
         --     -- root_dir = require 'lspconfig'.util.root_pattern('global.json', '.git'),
         --       }
-    end
+    end,
 }

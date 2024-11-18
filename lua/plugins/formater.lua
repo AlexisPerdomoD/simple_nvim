@@ -14,30 +14,30 @@ return {
                 css = { "prettierd" },
                 html = { "prettierd" },
                 json = { "prettierd" },
-                yaml = { 'yamlfmt' },
+                yaml = { "yamlfmt" },
                 markdown = { "prettierd" },
                 --graphql = { "prettier" },
                 lua = { "stylua" },
                 bash = { "shfmt" },
                 sh = { "shfmt" },
                 zsh = { "shfmt" },
-                cs = { "csharpier" },
+                cs = { "dotnet-csharpier" },
                 nix = { "nixpkgs_fmt" },
+                xml = { "xmlformat" },
             },
             shfmt = {
                 options = { "-i", "2", "-ci" },
-
             },
             prettier = {
                 -- command = vim.fn.stdpath("data") .. "/mason/bin/pretierd", -- Ruta a prettier instalado por Mason
                 inherit = false,
                 command = "prettierd",
                 args = function()
-                    local config_path = vim.fn.findfile(".prettierrc", ".;") or
-                        vim.fn.findfile(".prettierrc.json", ".;") or
-                        vim.fn.findfile(".prettierrc.js", ".;") or
-                        vim.fn.findfile(".prettierrc.yaml", ".;") or
-                        vim.fn.findfile(".prettierrc.yml", ".;")
+                    local config_path = vim.fn.findfile(".prettierrc", ".;")
+                        or vim.fn.findfile(".prettierrc.json", ".;")
+                        or vim.fn.findfile(".prettierrc.js", ".;")
+                        or vim.fn.findfile(".prettierrc.yaml", ".;")
+                        or vim.fn.findfile(".prettierrc.yml", ".;")
 
                     if config_path == nil then
                         config_path = vim.fn.expand("~/.config/nvim/.prettierrc.json")
@@ -51,23 +51,37 @@ return {
                         vim.api.nvim_buf_get_name(0),
                     }
                 end,
-                stdin = true
+                stdin = true,
             },
             stylua = {
-                command = 'stylua',
+                command = "stylua",
                 args = {
-                    '--search-parent-directories', '--stdin-filepath', '%:p', '-'
+                    "--search-parent-directories",
+                    "--stdin-filepath",
+                    "%:p",
+                    "-",
                 },
             },
+
             nixpkgs_fmt = {
-                command = 'nixpkgs-fmt',
+                command = "nixpkgs-fmt",
                 args = {
-                    '--stdin-filepath', '%:p', '-'
+                    "--stdin-filepath",
+                    "%:p",
+                    "-",
                 },
             },
-              default_format_opts = {
-    lsp_format = "fallback",
-  },
+            xmlformat = {
+                command = "xmlformat",
+                args = {
+                    "--stdin-filepath",
+                    "%:p",
+                    "-",
+                },
+            },
+            default_format_opts = {
+                lsp_format = "fallback",
+            },
 
             --format_on_save = {
             --    lsp_fallback = true,
