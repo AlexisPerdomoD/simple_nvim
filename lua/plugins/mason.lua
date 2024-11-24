@@ -4,9 +4,8 @@ return {
         "williamboman/mason-lspconfig.nvim",
         "neovim/nvim-lspconfig",
         "nvim-treesitter/nvim-treesitter",
-
     },
-    lazy=true,
+    lazy = true,
     config = function()
         require("mason").setup()
         require("mason-lspconfig").setup({
@@ -16,19 +15,19 @@ return {
                 "cssls",
                 "cssmodules_ls",
                 "css_variables",
-                 "golangci_lint_ls",
-                 "gopls",
+                "golangci_lint_ls",
+                "gopls",
                 "html",
                 "jsonls",
                 "markdown_oxide",
-                 "sqls",
+                "sqls",
                 "yamlls",
-                'tailwindcss',
-                'omnisharp',
-               
+                "tailwindcss",
+                --                'omnisharp',
+
                 -- 'csharp_ls', lighttier alternative to omnisharp but less compatibility
                 -- does not work for formaters
-                -- list for formnaters and linters reference 
+                -- list for formnaters and linters reference
                 --'CSharpier'
                 --"eslint_d",
                 --"prettier",
@@ -38,9 +37,8 @@ return {
                 --or linters
                 --'vale',
             },
-            automatic_installation = true,
-        }
-        )
+            -- automatic_installation = true,
+        })
     end,
 }
 

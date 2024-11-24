@@ -5,6 +5,7 @@ return {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
         "folke/neodev.nvim",
+        "hoffs/omnisharp-extended-lsp.nvim",
     },
     event = "VeryLazy",
     config = function()
@@ -195,10 +196,34 @@ return {
             ),
         })
         -- defaults to omnisharp (dotnet)
+        local extended = require("omnisharp_extended")
+        local on_attach_cs = function(_, bufnr)
+            vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc" -- algo de autocompletadito
+            local opts = { buffer = bufnr }
+            vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+            vim.keymap.set("n", "gd", extended.lsp_definition, opts)
+            vim.keymap.set("n", "..", vim.lsp.buf.hover, opts)
+            vim.keymap.set("n", "gi", extended.lsp_implementation, opts)
+            vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+            vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
+            vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
+            vim.keymap.set("n", "<space>wl", function()
+                print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+            end, opts)
+            vim.keymap.set("n", "td", extended.lsp_type_definition, opts)
+            vim.keymap.set("n", "rn", vim.lsp.buf.rename, opts)
+            vim.keymap.set({ "n", "v" }, "ca", vim.lsp.buf.code_action, opts)
+            vim.keymap.set("n", "gr", extended.lsp_references, opts)
+            -- code actions
+            -- vim.keymap.set({ 'n', 'v' }, '.ca', vim.lsp.buf.code_action, opts)
+            --vim.keymap.set('n', '<leader>f', function()
+            --  vim.lsp.buf.format { async = true }
+            --end, opts)
+        end
         require("lspconfig").omnisharp.setup({
             cmd = { "omnisharp" },
             filetypes = { "cs", "vb" },
-            on_attach = on_attach,
+            on_attach = on_attach_cs,
             capabilities = capabilities,
             root_dir = require("lspconfig").util.root_pattern("*.csproj", ".git", "*.sln"),
             settings = {
@@ -232,6 +257,7 @@ return {
                     -- Only run analyzers against open files when 'enableRoslynAnalyzers' is
                     -- true
                     AnalyzeOpenDocumentsOnly = nil,
+                    enableDecompilationSupport = true,
                 },
                 Sdk = {
                     -- Specifies whether to include preview versions of the .NET SDK when
