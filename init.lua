@@ -14,3 +14,11 @@ require 'config'
 -- Load plugins
 require 'lazy'.setup 'plugins'
 -- color-scheme is set into the selected theme on "config/themes/"
+--
+if vim.g.neovide then
+    vim.o.guifont = 'Iosevka Nerd Font Mono:h10:b'
+    vim.g.neovide_refresh_rate = 165
+    vim.g.neovide_text_gama = 0
+    vim.g.neovide_text_contrast = 0
+    vim.g.neovide_cursor_vfx_mode = 'railgun'
+end
