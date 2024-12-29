@@ -1,12 +1,17 @@
 return {
     "zootedb0t/citruszest.nvim",
     lazy = true,
-    config = require("citruszest").setup({
-        option = {
-            transparent = false, -- Enable/Disable transparency
-            bold = false,
-            italic = true,
-        }
+    -- priority = 1000,
+    config =
+        function()
+            require("citruszest").setup({
+                option = {
+                    transparent = true, -- Enable/Disable transparency
+                    bold = false,
+                    italic = true,
+                }
 
-    })
+            })
+            vim.cmd [[ colorscheme citruszest ]]
+        end
 }

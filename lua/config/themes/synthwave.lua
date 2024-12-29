@@ -3,28 +3,13 @@ return {
     lazy = true, -- make sure we load this during startup if it is your main colorscheme
     --priority = 1000,
     config = function()
-        -- vim.cmd.colorscheme("synthweave")
-        -- transparent version
-        vim.cmd.colorscheme("synthweave-transparent")
-    end
+        if vim.g.neovide then
+            vim.cmd.colorscheme("synthweave")
+        else
+            vim.cmd.colorscheme("synthweave-transparent")
+        end
+    end,
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 --     {
 --     "samharju/synthweave.nvim",
