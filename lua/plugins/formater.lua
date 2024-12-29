@@ -21,7 +21,7 @@ return {
                 bash = { "shfmt" },
                 sh = { "shfmt" },
                 zsh = { "shfmt" },
-                cs = { "dotnet format" },
+                cs = { "csharpier" },
                 nix = { "nixpkgs_fmt" },
                 xml = { "xmlformat" },
             },

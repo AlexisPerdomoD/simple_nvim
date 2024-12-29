@@ -108,7 +108,6 @@ return {
         -- The code-formatting feature of the lsp can be controlled with the provideFormatter option.
         require("lspconfig").html.setup({
             capabilities = capabilities,
-            on_attach = on_attach,
             options = {
                 filetype = { "html", "templ", "handlebars", ".handlebars" },
             },

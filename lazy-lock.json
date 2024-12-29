@@ -46,7 +46,7 @@
   "render-markdown.nvim": { "branch": "main", "commit": "629b5f7dc053b73cd753e4ceb830a45f86f9b3da" },
   "supermaven-nvim": { "branch": "main", "commit": "40bde487fe31723cdd180843b182f70c6a991226" },
   "synthweave.nvim": { "branch": "master", "commit": "50cb17af14dbdf8a2af634c40b9b20298f67aba0" },
-  "tailwind-tools.nvim": { "branch": "master", "commit": "3703e162d819a04b128902c508276553dae0dfb8" },
+  "tailwind-tools.nvim": { "branch": "master", "commit": "4b2d88cc7d49a92f28b9942712f1a53d2c3d5b27" },
   "telescope-file-browser.nvim": { "branch": "master", "commit": "3b8a1e17187cfeedb31decbd625da62398a8ff34" },
   "telescope.nvim": { "branch": "master", "commit": "85922dde3767e01d42a08e750a773effbffaea3e" },
   "toggleterm.nvim": { "branch": "main", "commit": "48be57eaba817f038d61bbf64d2c597f578c0827" },
