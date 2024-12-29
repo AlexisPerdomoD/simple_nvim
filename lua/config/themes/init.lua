@@ -10,4 +10,6 @@ return {
     require'config.themes.oxocarbon',
     require'config.themes.tokyodark',
     require'config.themes.synthwave',
+    require'config.themes.citruszest',
+    require'config.themes.ramojus',
 }
