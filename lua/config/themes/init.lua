@@ -12,4 +12,5 @@ return {
     require'config.themes.synthwave',
     require'config.themes.citruszest',
     require'config.themes.ramojus',
+    require'config.themes.dracula',
 }

@@ -84,8 +84,8 @@ local default_setup = {
 
 return {
     "ramojus/mellifluous.nvim",
-    lazy = false,
-    priority = 1000,
+    lazy = true,
+    -- priority = 1000,
     config = function()
         require("mellifluous").setup(default_setup)
         vim.cmd("colorscheme mellifluous")
