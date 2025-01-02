@@ -23,7 +23,7 @@ require("lazy").setup("plugins")
 if vim.g.neovide then
     vim.g.neovide_floating_corner_radius = 0.9
     vim.g.neovide_transparency = 1
-    vim.o.guifont = "Iosevka Nerd Font Mono:h10"
+    vim.o.guifont = "Agave Nerd Font Mono:h10"
     vim.g.neovide_text_gamma = 0.5
     vim.g.neovide_text_contrast = 0.9
     vim.g.neovide_input_use_logo = true
@@ -39,5 +39,5 @@ if vim.g.neovide then
 
     vim.api.nvim_set_keymap("v", "<sc-c>", '"+y', { noremap = true }) -- Select line(s) in visual mode and copy (CTRL+Shift+V)
     vim.api.nvim_set_keymap("i", "<sc-v>", '<ESC>"+p', { noremap = true }) -- Paste in insert mode (CTRL+Shift+C)
-    vim.api.nvim_set_keymap("n", "<sc-v>", '"+p', { noremap = true }) -- Paste in normal mode (CTRL+Shift+C)
+    vim.api.nvim_set_keymap("n", "<sc-v>", '"+p', { noremap = true }) -- paste in normal mode (ctrl+shift+c)
 end

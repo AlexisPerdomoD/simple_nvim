@@ -117,24 +117,6 @@ return {
             on_attach = on_attach,
         })
 
-        -- An example nvim-lspconfig capabilities setting
-
-        -- require("lspconfig").markdown_oxide.setup({
-        --     -- Ensure that dynamicRegistration is enabled! This allows the LS to take into account actions like the
-        --     -- Create Unresolved File code action, resolving completions for unindexed code blocks, ...
-        --     capabilities = vim.tbl_deep_extend(
-        --         'force',
-        --         capabilities,
-        --         {
-        --             workspace = {
-        --                 didChangeWatchedFiles = {
-        --                     dynamicRegistration = true,
-        --                 },
-        --             },
-        --         }
-        --     ),
-        --     on_attach = on_attach -- configure your on attach config
-        -- })
         require("lspconfig").markdown_oxide.setup({
             on_attach = on_attach,
         })
@@ -220,11 +202,11 @@ return {
             --end, opts)
         end
         require("lspconfig").omnisharp.setup({
-            cmd = { "omnisharp" },
+            cmd = { "OmniSharp" },
             filetypes = { "cs", "vb" },
             on_attach = on_attach_cs,
             capabilities = capabilities,
-            root_dir = require("lspconfig").util.root_pattern("*.csproj", ".git", "*.sln"),
+            root_dir = require("lspconfig").util.root_pattern("*.csproj", ".git", "*.sln", "global.json"),
             settings = {
                 FormattingOptions = {
                     -- Enables support for reading code style, naming convention and analyzer

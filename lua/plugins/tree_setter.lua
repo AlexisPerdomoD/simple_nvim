@@ -2,27 +2,27 @@ return {
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
         "nvim-treesitter/nvim-treesitter-textobjects",
-        -- 'p00f/nvim-ts-rainbow'
+        "p00f/nvim-ts-rainbow",
         --"nvim-treesitter/playground",
     },
-    build        = ":TSUpdate",
-    event        = "BufReadPost",
-    main         = "nvim-treesitter.configs",
-    opts         = {
+    build = ":TSUpdate",
+    event = "BufReadPost",
+    main = "nvim-treesitter.configs",
+    opts = {
         ensure_installed = {
             "lua",
             "luadoc",
             "query",
-            'javascript',
-            'typescript',
-            'html',
-            'css',
-            'json',
-            'go'
+            "javascript",
+            "typescript",
+            "html",
+            "css",
+            "json",
+            "go",
         },
         auto_install = true,
         fold = {
-            enable = true
+            enable = true,
         },
         highlight = {
             enable = true,
@@ -35,14 +35,14 @@ return {
                 enable = true,
                 lookahead = true,
                 keymaps = {
-                    ["af"] = "@function.outer",
-                    ["if"] = "@function.inner",
-                    ["ac"] = "@conditional.outer",
-                    ["ic"] = "@conditional.inner",
-                    ["so"] = "@loop.outer",
-                    ["si"] = "@loop.inner",
-                }
-            }
+                    ["gf"] = "@function.outer",
+                    ["gif"] = "@function.inner",
+                    ["gc"] = "@conditional.outer",
+                    ["gic"] = "@conditional.inner",
+                    ["gl"] = "@loop.outer",
+                    ["gil"] = "@loop.inner",
+                },
+            },
         },
         -- playground = {
         --     enable = true,
@@ -62,12 +62,12 @@ return {
         --         show_help = '?',
         --     },
         -- },
-        -- rainbow = {
-        --     enable = true,
-        --     extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
-        --     max_file_lines = nil, -- Do not enable for files with more than n lines, int
-        --     -- colors = {}, -- table of hex strings
-        --     -- termcolors = {} -- table of colour name strings
-        -- }
-    }
+        rainbow = {
+            enable = true,
+            extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
+            max_file_lines = nil, -- Do not enable for files with more than n lines, int
+            -- colors = {}, -- table of hex strings
+            -- termcolors = {} -- table of colour name strings
+        },
+    },
 }
