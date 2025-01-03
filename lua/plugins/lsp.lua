@@ -5,6 +5,7 @@ return {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
         "folke/neodev.nvim",
+        'Hoffs/omnisharp-extended-lsp.nvim'
     },
     event = "VeryLazy",
     config = function()
