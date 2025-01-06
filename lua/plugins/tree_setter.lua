@@ -37,8 +37,8 @@ return {
                 keymaps = {
                     ["gf"] = "@function.outer",
                     ["gif"] = "@function.inner",
-                    ["gc"] = "@conditional.outer",
-                    ["gic"] = "@conditional.inner",
+                    ["gd"] = "@conditional.outer",
+                    ["gid"] = "@conditional.inner",
                     ["gl"] = "@loop.outer",
                     ["gil"] = "@loop.inner",
                 },

@@ -1,5 +1,7 @@
 return {
     "supermaven-inc/supermaven-nvim",
+    lazy = false,
+    priority = 500,
     config = function()
         local sm = require("supermaven-nvim")
         sm.setup({

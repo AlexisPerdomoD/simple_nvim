@@ -10,20 +10,20 @@ return {
         require("mason").setup()
         require("mason-lspconfig").setup({
             ensure_installed = {
-                "bashls",
+ --               "bashls",
                 -- "lua_ls",
-                "cssls",
-                "cssmodules_ls",
-                "css_variables",
-                "golangci_lint_ls",
-                "gopls",
-                "html",
-                "jsonls",
-                "markdown_oxide",
-                "sqls",
-                "yamlls",
-                "tailwindcss",
-                --                'omnisharp',
+                -- "cssls",
+                -- "cssmodules_ls",
+                -- "css_variables",
+                -- "golangci_lint_ls",
+                -- "gopls",
+                -- "html",
+                -- "jsonls",
+                -- "markdown_oxide",
+                -- "sqls",
+                -- "yamlls",
+                -- "tailwindcss",
+                -- --                'omnisharp',
 
                 -- 'csharp_ls', lighttier alternative to omnisharp but less compatibility
                 -- does not work for formaters

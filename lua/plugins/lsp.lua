@@ -99,6 +99,15 @@ return {
         })
         require("lspconfig").ts_ls.setup({
             on_attach = on_attach,
+            filetypes = {
+                "javascript",
+                ".js",
+                "javascriptreact",
+                "javascript.jsx",
+                "typescript",
+                "typescriptreact",
+                "typescript.tsx",
+            },
         })
         --Enable (broadcasting) snippet capability for completion
         local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -206,7 +215,7 @@ return {
             filetypes = { "cs", "vb" },
             on_attach = on_attach_cs,
             capabilities = capabilities,
-            root_dir = require("lspconfig").util.root_pattern("*.csproj", ".git", "*.sln", "global.json"),
+            root_dir = require("lspconfig").util.root_pattern("*.csproj", ".git", "*.sln"),
             settings = {
                 FormattingOptions = {
                     -- Enables support for reading code style, naming convention and analyzer
@@ -238,7 +247,7 @@ return {
                     -- Only run analyzers against open files when 'enableRoslynAnalyzers' is
                     -- true
                     AnalyzeOpenDocumentsOnly = nil,
-                    enableDecompilationSupport = true,
+                    enableDecompilationSupport = false,
                 },
                 Sdk = {
                     -- Specifies whether to include preview versions of the .NET SDK when
