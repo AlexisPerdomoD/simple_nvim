@@ -258,5 +258,6 @@ return {
         --
         --     -- root_dir = require 'lspconfig'.util.root_pattern('global.json', '.git'),
         --       }
+        require("lspconfig").hyprls.setup({})
     end,
 }
