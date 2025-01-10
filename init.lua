@@ -45,7 +45,7 @@ if vim.g.neovide then
     vim.api.nvim_set_keymap("i", "<sc-v>", '<ESC>"+p', { noremap = true }) -- Paste in insert mode (CTRL+Shift+C)
     vim.api.nvim_set_keymap("n", "<sc-v>", '"+p', { noremap = true })      -- paste in normal mode (ctrl+shift+c)
 end
-
+vim.opt.lazyredraw = false
 vim.o.cursorline = true
 vim.o.termguicolors = true 
 vim.api.nvim_set_hl(0, "CursorLine", { bg = "#1e1e2e", fg = "NONE", underline = false })
