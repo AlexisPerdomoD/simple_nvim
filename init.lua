@@ -25,13 +25,13 @@ if vim.g.neovide then
     vim.g.neovide_cursor_vfx_mode = "railgun"
     vim.g.neovide_floating_corner_radius = 0.9
     vim.g.neovide_transparency = 1
-    vim.o.guifont = "Iosevka Nerd Font Mono:h10:b"
+    vim.o.guifont = "Iosevka Nerd Font:h10:b"
     vim.g.neovide_text_gamma = 0.5
     vim.g.neovide_text_contrast = 0.9
     vim.g.neovide_input_use_logo = true
 
     vim.g.neovide_refresh_rate = 165
-    vim.g.neovide_refresh_rate_idle = 5
+    vim.g.neovide_refresh_rate_idle = 15
 
     vim.api.nvim_set_keymap("n", "<sc-v>", 'l"+P', { noremap = true })
     -- vim.api.nvim_set_keymap("v", "<sc-v>", '"+P', { noremap = true })

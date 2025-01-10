@@ -203,7 +203,7 @@ return {
             --end, opts)
         end
         require("lspconfig").omnisharp.setup({
-            cmd = { "OmniSharp" },
+            cmd = { "omnisharp" },
             filetypes = { "cs", "vb" },
             on_attach = on_attach_cs,
             capabilities = capabilities,
@@ -215,7 +215,7 @@ return {
                     EnableEditorConfigSupport = true,
                     -- Specifies whether 'using' directives should be grouped and sorted during
                     -- document formatting.
-                    OrganizeImports = nil,
+                    OrganizeImports = true,
                 },
                 MsBuild = {
                     -- If true, MSBuild project system will only load projects for files that
@@ -228,14 +228,14 @@ return {
                 },
                 RoslynExtensionsOptions = {
                     -- Enables support for roslyn analyzers, code fixes and rulesets.
-                    EnableAnalyzersSupport = nil,
+                    EnableAnalyzersSupport = true,
                     -- Enables support for showing unimported types and unimported extension
                     -- methods in completion lists. When committed, the appropriate using
                     -- directive will be added at the top of the current file. This option can
                     -- have a negative impact on initial completion responsiveness,
                     -- particularly for the first few completion sessions after opening a
                     -- solution.
-                    EnableImportCompletion = nil,
+                    EnableImportCompletion = true,
                     -- Only run analyzers against open files when 'enableRoslynAnalyzers' is
                     -- true
                     AnalyzeOpenDocumentsOnly = nil,
