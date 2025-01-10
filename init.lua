@@ -19,6 +19,15 @@ ensure_lazy()
 require("config")
 -- Load plugins
 require("lazy").setup("plugins")
+vim.api.nvim_set_hl(0, "CursorLine", { bg = "#1e1e2e", fg = "NONE", underline = false })
+vim.o.guicursor = table.concat({
+    "n-v-c:block", -- Bloque completo en modos normal, visual y de comando
+    "i-ci-ve:ver25", -- Cursor vertical en inserción y selectores
+    "r-cr:hor20", -- Cursor horizontal más pequeño en reemplazo
+    "a:blinkon100", -- Parpadeo para todos los modos
+    "sm:block-blinkwait175-blinkon150-blinkoff150", -- Parpadeo especial para modo de sustitución
+}, ",")
+
 -- color-scheme is set into the selected theme on "config/themes/"
 --
 if vim.g.neovide then
