@@ -20,7 +20,6 @@ require("config")
 -- Load plugins
 require("lazy").setup("plugins")
 
-
 -- color-scheme is set into the selected theme on "config/themes/"
 --
 if vim.g.neovide then

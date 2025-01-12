@@ -32,7 +32,7 @@ return {
                 enable = true,
 
                 -- Timing of animation (how steps will progress in time)
-                timing = function() return 10 end --<function: implements linear total 250ms animation duration>,
+                timing = function() return 1 end --<function: implements linear total 250ms animation duration>,
 
                 -- Subresize generator for all steps of resize animations
                 -- subresize = --<function: implements equal linear steps>,
@@ -41,7 +41,7 @@ return {
             -- Window open
             open = {
                 -- Whether to enable this animation
-                enable = true,
+                enable = false,
 
                 -- Timing of animation (how steps will progress in time)
                 timing = function() return 10 end --<function: implements linear total 250ms animation duration>,
@@ -56,10 +56,10 @@ return {
             -- Window close
             close = {
                 -- Whether to enable this animation
-                enable = true,
+                enable = false,
 
                 -- Timing of animation (how steps will progress in time)
-                timing = function() return 10 end      --<function: implements linear total 250ms animation duration>,
+                timing = function() return 10 end --<function: implements linear total 250ms animation duration>,
 
                 -- Floating window config generator visualizing specific window
                 --   winconfig = --<function: implements static window for 25 steps>,
