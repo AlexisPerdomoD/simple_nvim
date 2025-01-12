@@ -20,11 +20,11 @@ return {
             },
             diagnostic = {
                 on_insert = false,
-                show_code_action = true, -- Muestra una acción rápida al diagnosticar.
-                border_follow = true,    -- Sigue el contorno para diagnósticos flotantes.
+                --  show_code_action = true, -- Muestra una acción rápida al diagnosticar.
+                -- border_follow = true,    -- Sigue el contorno para diagnósticos flotantes.
             },
             lightbulb = {
-                enable = true,
+                enable = false,
             },
         })
 
@@ -43,8 +43,8 @@ return {
 
 
             vim.keymap.set("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", opts)
-            vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-            -- vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+            vim.keymap.set("n", "DE", vim.lsp.buf.declaration, opts)
+            vim.keymap.set("n", "gD", vim.lsp.buf.definition, opts)
             vim.keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts)
             vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
             vim.keymap.set("n", "..", "<cmd>Lspsaga hover_doc<CR>", opts)
@@ -66,12 +66,8 @@ return {
             -- vim.keymap.set("n", "gr", "<cmd>Lspsaga finder def+ref<CR>", opts)
             vim.keymap.set("n", "gr", "<cmd>Lspsaga finder ref<CR>", opts)
         end
-        -- defaults to omnisharp (dotnet)
-        local on_attach_cs = function()
-            vim.keymap.set("n", "D", require('omnisharp_extended').lsp_definition, opts)
-            vim.keymap.set("n", "TD", require('omnisharp_extended').lsp_type_definition, opts)
-            return on_attach
-        end
+        -- -- defaults to omnisharp (dotnet)
+
         require("lspconfig").bashls.setup({
             filetypes = { "sh", "bash", "zsh" }, -- Incluye Bash y Zsh
             cmd = { "bash-language-server", "start" },
@@ -199,9 +195,11 @@ return {
         })
 
         require("lspconfig").omnisharp.setup({
+
             cmd = { "omnisharp" },
             filetypes = { "cs", "vb" },
-            on_attach = on_attach_cs(),
+            handlers = { ['textDocument/definition'] = require('omnisharp_extended').handler },
+            on_attach = on_attach,
             capabilities = capabilities,
             root_dir = require("lspconfig").util.root_pattern("*.csproj", ".git", "*.sln", "global.json"),
             settings = {
