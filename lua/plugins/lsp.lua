@@ -8,6 +8,8 @@ return {
         'Hoffs/omnisharp-extended-lsp.nvim',
         "hrsh7th/cmp-nvim-lsp",
         "nvimdev/lspsaga.nvim",
+        'nvim-treesitter/nvim-treesitter',
+        'nvim-tree/nvim-web-devicons',
     },
     event = "VeryLazy",
     config = function()
@@ -25,6 +27,10 @@ return {
             },
             lightbulb = {
                 enable = false,
+            },
+            symbol_in_winbar = {
+                enable = true,
+                hide_keyword = true,
             },
         })
 
@@ -193,12 +199,12 @@ return {
                 ".git"
             ),
         })
-
-        require("lspconfig").omnisharp.setup({
+        --- csharp setup
+        local cs_setup = {
 
             cmd = { "omnisharp" },
             filetypes = { "cs", "vb" },
-            handlers = { ['textDocument/definition'] = require('omnisharp_extended').handler },
+
             on_attach = on_attach,
             capabilities = capabilities,
             root_dir = require("lspconfig").util.root_pattern("*.csproj", ".git", "*.sln", "global.json"),
@@ -220,7 +226,12 @@ return {
                     IncludePrereleases = true
                 },
             },
-        })
+        }
+        local cs_extended = require('omnisharp_extended')
+        if (cs_extended and cs_extended.handler) then
+            cs_setup.handlers = { ['textDocument/definition'] = cs_extended.handler }
+        end
+        require 'lspconfig'.omnisharp.setup(cs_setup)
 
         require("lspconfig").hyprls.setup({})
     end,
