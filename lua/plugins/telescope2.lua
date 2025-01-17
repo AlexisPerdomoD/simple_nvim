@@ -1,6 +1,6 @@
 return {
     "nvim-telescope/telescope.nvim",
-    event = 'VeryLazy',
+    event = "VeryLazy",
     dependencies = {
         "nvim-lua/plenary.nvim",
         "nvim-telescope/telescope-file-browser.nvim",
@@ -17,12 +17,12 @@ return {
                 case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
                 -- the default case_mode is "smart_case"
             },
-        }
+        },
     },
     config = function(opts)
         require('telescope').setup(opts)
         require('telescope').load_extension('fzf')
-           end,
+    end,
     keys = {
         {
             "<space>cb",
@@ -39,25 +39,25 @@ return {
             desc = "Telescope Git status",
         },
         {
-         "<space>gf",
-         function()
-           require('telescope.builtin').git_files({ show_untracked = true })
-         end,
-         desc = "Telescope Git Files",
+            "<space>gf",
+            function()
+                require("telescope.builtin").git_files({ show_untracked = true })
+            end,
+            desc = "Telescope Git Files",
         },
         {
-        "<space>gc",
-        function()
-        require("telescope.builtin").git_commits()
-        end,
-        desc = "Telescope Git commits",
+            "<space>gc",
+            function()
+                require("telescope.builtin").git_commits()
+            end,
+            desc = "Telescope Git commits",
         },
         {
-        "<space>gb",
-        function()
-          require("telescope.builtin").git_branches()
-        end,
-        desc = "Telescope Git branches",
+            "<space>gb",
+            function()
+                require("telescope.builtin").git_branches()
+            end,
+            desc = "Telescope Git branches",
         },
         {
             "<space>pp",
@@ -74,14 +74,14 @@ return {
                             vim.cmd(string.format("edit ~/.config/nvim/lua/plugins/%s.lua", new_plugin))
                         end)
                         return true
-                    end
+                    end,
                 })
-            end
+            end,
         },
         {
             "<space>ff",
             function()
-                require('telescope.builtin').find_files()
+                require("telescope.builtin").find_files()
             end,
             desc = "Telescope Find Files",
         },
@@ -90,36 +90,45 @@ return {
             function()
                 require("telescope.builtin").help_tags()
             end,
-            desc = "Telescope Help"
+            desc = "Telescope Help",
         },
         {
             "<space>fb",
             function()
                 require("telescope").extensions.file_browser.file_browser({ path = "%:h:p", select_buffer = true })
             end,
-            desc = "Telescope file browser"
+            desc = "Telescope file browser",
         },
         {
             "<space>C",
             function()
                 require("telescope.builtin").colorscheme()
             end,
-            desc = 'ColorScheme Telescope'
+            desc = "ColorScheme Telescope",
         },
         {
             "<space>hk",
             function()
                 require("telescope.builtin").keymaps()
             end,
-            desc = 'Telescope keymaps'
+            desc = "Telescope keymaps",
+        },
+        {
+            "<space>SS",
+            function()
+                require("telescope.builtin").grep_string({
+                    use_regex = true,
+                    word_match = "-w",
+                })
+            end,
+            desc = "Telescope grep string",
         },
         {
             "<space>ss",
             function()
-                require("telescope.builtin").grep_string()
+                require("telescope.builtin").live_grep()
             end,
-            desc = 'Telescope grep string'
-        }
-
-    }
+            desc = "Telescope live_grep",
+        },
+    },
 }
