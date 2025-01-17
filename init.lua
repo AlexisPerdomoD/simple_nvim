@@ -39,16 +39,16 @@ if vim.g.neovide then
     -- vim.api.nvim_set_keymap("i", "<sc-v>", '<ESC>l"+Pli', { noremap = true })
     vim.api.nvim_set_keymap("t", "<sc-v>", '<C-\\><C-n>"+Pi', { noremap = true })
 
-    vim.api.nvim_set_keymap("v", "<sc-c>", '"+y', { noremap = true })      -- Select line(s) in visual mode and copy (CTRL+Shift+V)
+    vim.api.nvim_set_keymap("v", "<sc-c>", '"+y', { noremap = true }) -- Select line(s) in visual mode and copy (CTRL+Shift+V)
     vim.api.nvim_set_keymap("i", "<sc-v>", '<ESC>"+p', { noremap = true }) -- Paste in insert mode (CTRL+Shift+C)
-    vim.api.nvim_set_keymap("n", "<sc-v>", '"+p', { noremap = true })      -- paste in normal mode (ctrl+shift+c)
+    vim.api.nvim_set_keymap("n", "<sc-v>", '"+p', { noremap = true }) -- paste in normal mode (ctrl+shift+c)
 end
-
+vim.o.cursorline = true
 vim.api.nvim_set_hl(0, "CursorLine", { bg = "#1e1e2e", fg = "NONE", underline = false })
 vim.o.guicursor = table.concat({
-    "n-v-c:block",                                  -- Bloque completo en modos normal, visual y de comando
-    "i-ci-ve:ver25",                                -- Cursor vertical en inserción y selectores
-    "r-cr:hor20",                                   -- Cursor horizontal más pequeño en reemplazo
-    "a:blinkon100",                                 -- Parpadeo para todos los modos
+    "n-v-c:block", -- Bloque completo en modos normal, visual y de comando
+    "i-ci-ve:ver25", -- Cursor vertical en inserción y selectores
+    "r-cr:hor20", -- Cursor horizontal más pequeño en reemplazo
+    "a:blinkon100", -- Parpadeo para todos los modos
     "sm:block-blinkwait175-blinkon150-blinkoff150", -- Parpadeo especial para modo de sustitución
 }, ",")
