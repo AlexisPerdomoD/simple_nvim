@@ -63,7 +63,7 @@ return {
         --     },
         -- },
         rainbow = {
-            enable = true,
+            enable = false,
             extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
             max_file_lines = nil, -- Do not enable for files with more than n lines, int
             -- colors = {}, -- table of hex strings

@@ -1,7 +1,6 @@
 return {
     "supermaven-inc/supermaven-nvim",
-    lazy = false,
-    priority = 500,
+    event = "BufReadPre",
     config = function()
         local sm = require("supermaven-nvim")
         sm.setup({
@@ -15,18 +14,17 @@ return {
                 -- suggestion_color = "#ffffff",
                 -- cterm = 244,
             },
-            log_level = "off",                 -- set to "off" to disable logging completely
+            log_level = "off", -- set to "off" to disable logging completely
             disable_inline_completion = false, -- disables inline completion for use with cmp
-            disable_keymaps = false,           -- disables built in keymaps for more manual control
+            disable_keymaps = false, -- disables built in keymaps for more manual control
             condition = function()
-                return false                   -- condition to check for starting supermaven, `true` means to start supermaven when the condition is true.
+                return false -- condition to check for starting supermaven, `true` means to start supermaven when the condition is true.
             end,
-
         })
-        local api = require('supermaven-nvim.api') -- condition to check for stopping supermaven, `true` means to stop supermaven when the condition is true.
-        api.use_free_version()
+        -- local api = require("supermaven-nvim.api") -- condition to check for stopping supermaven, `true` means to stop supermaven when the condition is true.
+        -- api.use_free_version()
+        vim.cmd("SupermavenStart")
     end,
-
 }
 --
 -- :SupermavenStart    start supermaven-nvim
