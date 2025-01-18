@@ -16,6 +16,7 @@ return {
                 json = { "prettierd" },
                 yaml = { 'yamlfmt' },
                 markdown = { "prettierd" },
+                xml = {"xmlformater"},
                 --graphql = { "prettier" },
                 luaa = { "stylua" },
                 bash = { "shfmt" },
