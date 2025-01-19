@@ -4,9 +4,9 @@ return {
     config = function()
         require("dracula").setup({
             italic_comment = true,
-            transparent_bg = vim.g.neovide == nil,
+            transparent_bg = false,
         })
 
-        vim.cmd("colorscheme dracula-soft")
+        vim.cmd("colorscheme dracula")
     end,
 }

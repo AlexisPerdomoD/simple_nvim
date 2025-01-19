@@ -31,20 +31,14 @@ return {
             --   2) "none" for transparency
             --   3) "default" or nil will just use whatever lackluster's default is.
             tweak_background = {
-                normal = "#101010", -- main background
+                normal = "none", -- main background
                 -- normal = 'none',    -- transparent
                 -- normal = '#a1b2c3',    -- hexcode
                 -- normal = color.green,    -- lackluster color
-                telescope = 'default', -- telescope
-                menu = '#060606',      -- nvim_cmp, wildmenu ... (bad idea to transparent)
-                popup = '#101010',     -- lazy, mason, whichkey ... (bad idea to transparent)
+                telescope = "default", -- telescope
+                menu = "default", -- nvim_cmp, wildmenu ... (bad idea to transparent)
+                popup = "default", -- lazy, mason, whichkey ... (bad idea to transparent)
             },
-
         })
-    end,
-    init = function()
-        --     vim.cmd.colorscheme("lackluster")
-        -- vim.cmd.colorscheme("lackluster-hack") -- my favorite
-        --  vim.cmd.colorscheme("lackluster-mint")
     end,
 }
