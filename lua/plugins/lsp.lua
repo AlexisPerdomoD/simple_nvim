@@ -6,7 +6,7 @@ return {
         "williamboman/mason-lspconfig.nvim",
         "folke/neodev.nvim",
 
-        'Hoffs/omnisharp-extended-lsp.nvim',
+        "Hoffs/omnisharp-extended-lsp.nvim",
         "hrsh7th/cmp-nvim-lsp",
         "nvimdev/lspsaga.nvim",
     },
@@ -29,7 +29,7 @@ return {
             },
         })
 
-        local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+        local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
         local on_attach = function(_, bufnr)
             vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc" -- algo de autocompletadito
@@ -41,7 +41,6 @@ return {
             vim.keymap.set("n", ".e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
             vim.keymap.set("n", ".E", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
             vim.keymap.set("n", ".L", vim.diagnostic.setloclist)
-
 
             vim.keymap.set("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", opts)
             vim.keymap.set("n", "DE", vim.lsp.buf.declaration, opts)
@@ -94,7 +93,6 @@ return {
                         checkThirdParty = false,
                         library = {
                             vim.env.VIMRUNTIME,
-
                         },
                     },
                 })
@@ -140,7 +138,7 @@ return {
             },
         })
         --require 'lspconfig'.markdown_oxide.setup {}
-        require('lspconfig').marksman.setup({})
+        require("lspconfig").marksman.setup({})
         require("lspconfig").jsonls.setup({
             capabilities = capabilities,
             on_attach = on_attach,
@@ -148,7 +146,7 @@ return {
 
         require("lspconfig").css_variables.setup({
             on_attach = on_attach,
-            capabilities = capabilities
+            capabilities = capabilities,
         })
         require("lspconfig").cssls.setup({
             capabilities = capabilities,
@@ -156,17 +154,32 @@ return {
         })
         require("lspconfig").tailwindcss.setup({
             on_attach = on_attach,
-            capabilities = capabilities
+            capabilities = capabilities,
         })
-        require("lspconfig").sqlls.setup({
-            root_dir = require("lspconfig").util.root_pattern("*.sql", ".git"),
+        require("lspconfig").sqls.setup({
+            capabilities = capabilities,
             on_attach = on_attach,
             settings = {
-                sqlls = {
-                    formatter = { command = "sql-formatter" },
+                sqls = {
+                    connections = {
+                        {
+                            driver = "postgresql",
+                            dataSourceName = "host=localhost port=5432 user=postgres password=password dbname=base sslmode=disable",
+                        },
+                    },
                 },
             },
         })
+        -- require("lspconfig").sqlls.setup({
+        --     root_dir = require("lspconfig").util.root_pattern(".sqllsrc.json"),
+        --     on_attach = on_attach,
+        --     capabilities = capabilities,
+        --     settings = {
+        --         sqlls = {
+        --             formatter = { command = "sql-formatter" },
+        --         },
+        --     },
+        -- })
         require("lspconfig").yamlls.setup({
             capabilities = capabilities,
             on_attach = on_attach,
@@ -204,12 +217,11 @@ return {
             ),
         })
 
-
         require("lspconfig").omnisharp.setup({
             cmd = { "OmniSharp" },
 
             filetypes = { "cs", "vb" },
-            handlers = { ['textDocument/definition'] = require('omnisharp_extended').handler },
+            handlers = { ["textDocument/definition"] = require("omnisharp_extended").handler },
             on_attach = on_attach,
             capabilities = capabilities,
             root_dir = require("lspconfig").util.root_pattern("*.csproj", ".git", "*.sln"),
@@ -229,7 +241,7 @@ return {
                     enableDecompilationSupport = false,
                 },
                 Sdk = {
-                    IncludePrereleases = true
+                    IncludePrereleases = true,
                 },
             },
             -- enable_roslyn_analyzers = true,

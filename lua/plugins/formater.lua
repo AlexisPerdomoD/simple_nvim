@@ -24,6 +24,7 @@ return {
                 cs = { "csharpier" },
                 nix = { "nixpkgs_fmt" },
                 xml = { "xmlformat" },
+                sql = { "sql_formatter" },
             },
             shfmt = {
                 options = { "-i", "2", "-ci" },
@@ -73,6 +74,14 @@ return {
             },
             xmlformat = {
                 command = "xmlformat",
+                args = {
+                    "--stdin-filepath",
+                    "%:p",
+                    "-",
+                },
+            },
+            sql_format = {
+                command = "sql-formatter",
                 args = {
                     "--stdin-filepath",
                     "%:p",
