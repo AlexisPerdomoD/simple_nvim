@@ -61,6 +61,5 @@ return {
        -- vim.cmd("colorscheme kanagawa")
     end
 }
---
 -- -- setup must be called before loading
 -- vim.cmd("colorscheme kanagawa")

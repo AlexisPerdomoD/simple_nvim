@@ -55,3 +55,6 @@ vim.o.guicursor = table.concat({
     "a:blinkon100",                                 -- Parpadeo para todos los modos
     "sm:block-blinkwait175-blinkon150-blinkoff150", -- Parpadeo especial para modo de sustitución
 }, ",")
+
+local cmp_border_setuper = require("utils.cmp_border_setuper")
+cmp_border_setuper()

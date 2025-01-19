@@ -19,7 +19,5 @@ function M.config()
       hl["@string.special.symbol.ruby"] = { link = "@field" }
     end,
   })
- --    vim.cmd "g.everforest_colors_override = {'bg0': ['#000', '234'], 'bg2': ['#000', '235']}"
- -- everforest.load()
 end
 return M
