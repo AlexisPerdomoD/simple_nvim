@@ -17,16 +17,19 @@ return {
 
         require("neodev").setup()
         require("lspsaga").setup({
+            -- "󰅂 ",
             ui = {
                 border = "rounded",
+                code_action = "⚡",
             },
             diagnostic = {
                 on_insert = false,
                 --  show_code_action = true, -- Muestra una acción rápida al diagnosticar.
-                -- border_follow = true,    -- Sigue el contorno para diagnósticos flotantes.
+                border_follow = true, -- Sigue el contorno para diagnósticos flotantes.
             },
             lightbulb = {
-                enable = false,
+                enable = true,
+                virtual_text = false,
             },
             symbol_in_winbar = {
                 enable = true,
@@ -127,6 +130,7 @@ return {
         })
         require("lspconfig").ts_ls.setup({
             on_attach = on_attach,
+            capabilities = capabilities
         })
         require("lspconfig").html.setup({
             capabilities = capabilities,
@@ -135,8 +139,10 @@ return {
                 filetype = { "html", "templ", "handlebars", ".handlebars" },
             },
         })
-        --require 'lspconfig'.markdown_oxide.setup {}
-        require('lspconfig').marksman.setup({})
+        --         --require 'lspconfig'.markdown_oxide.setup {}
+        --         require('lspconfig').marksman.setup({})
+        -- =======
+        require("lspconfig").markdown_oxide.setup({})
         require("lspconfig").jsonls.setup({
             capabilities = capabilities,
             on_attach = on_attach,
@@ -165,7 +171,6 @@ return {
         })
         require("lspconfig").yamlls.setup({
             capabilities = capabilities,
-            on_attach = on_attach,
         })
         -- defaults to gopls
         require("lspconfig").gopls.setup({

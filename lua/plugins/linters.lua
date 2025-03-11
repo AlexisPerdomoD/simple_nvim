@@ -20,15 +20,15 @@ return {
         -- }
 
         lint.linters.htmlhint = {
-            cmd = 'htmlhint',       -- comando para ejecutar htmlhint
-            stdin = false,          -- htmlhint no usa entrada estándar
-            args = {},              -- argumentos opcionales para el comando
-            stream = 'both',        -- salida estándar y error estándar
+            cmd = "htmlhint", -- comando para ejecutar htmlhint
+            stdin = false, -- htmlhint no usa entrada estándar
+            args = {}, -- argumentos opcionales para el comando
+            stream = "both", -- salida estándar y error estándar
             ignore_exitcode = true, -- ignora el código de salida para evitar errores en Neovim
-            parser = require('lint.parser').from_pattern(
-                '[^:]+:(\\d+):(\\d+): (.+)',
-                { 'lnum', 'col', 'message' },
-                { ['source'] = 'htmlhint' }
+            parser = require("lint.parser").from_pattern(
+                "[^:]+:(\\d+):(\\d+): (.+)",
+                { "lnum", "col", "message" },
+                { ["source"] = "htmlhint" }
             ),
         }
         -- lint.linters.vale = {
@@ -47,10 +47,10 @@ return {
         -- npm install -g @typescript-eslint/parser @typescript-eslint/eslint-plugin prettier eslint-config-prettier eslint-plugin-prettier
         --set linters
         lint.linters_by_ft = {
-            javascript = { "eslint_d" },
-            typescript = {},
-            javascriptreact = { "eslint_d" },
-            typescriptreact = {'eslint_d'}, 
+            javascript = { "eslint" },
+            typescript = { "eslint" },
+            javascriptreact = { "eslint" },
+            typescriptreact = { "eslint" },
             --svelte = { "eslint_d" },
             --python = { "pylint" },
             html = { "htmlhint" },
