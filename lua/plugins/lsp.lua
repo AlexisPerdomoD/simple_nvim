@@ -16,16 +16,19 @@ return {
 
         require("neodev").setup()
         require("lspsaga").setup({
+            -- "󰅂 ",
             ui = {
                 border = "rounded",
+                code_action = "⚡",
             },
             diagnostic = {
                 on_insert = false,
                 --  show_code_action = true, -- Muestra una acción rápida al diagnosticar.
-                -- border_follow = true,    -- Sigue el contorno para diagnósticos flotantes.
+                border_follow = true, -- Sigue el contorno para diagnósticos flotantes.
             },
             lightbulb = {
-                enable = false,
+                enable = true,
+                virtual_text = false,
             },
         })
 
@@ -121,9 +124,11 @@ return {
         })
         require("lspconfig").ts_ls.setup({
             on_attach = on_attach,
+            capabilities = capabilities,
             filetypes = {
                 "javascript",
                 ".js",
+                ".ts",
                 "javascriptreact",
                 "javascript.jsx",
                 "typescript",
@@ -137,8 +142,9 @@ return {
                 filetype = { "html", "templ", "handlebars", ".handlebars" },
             },
         })
-        --require 'lspconfig'.markdown_oxide.setup {}
-        require("lspconfig").marksman.setup({})
+
+        require("lspconfig").markdown_oxide.setup({})
+        -- require("lspconfig").marksman.setup({})
         require("lspconfig").jsonls.setup({
             capabilities = capabilities,
             on_attach = on_attach,
@@ -170,19 +176,8 @@ return {
                 },
             },
         })
-        -- require("lspconfig").sqlls.setup({
-        --     root_dir = require("lspconfig").util.root_pattern(".sqllsrc.json"),
-        --     on_attach = on_attach,
-        --     capabilities = capabilities,
-        --     settings = {
-        --         sqlls = {
-        --             formatter = { command = "sql-formatter" },
-        --         },
-        --     },
-        -- })
         require("lspconfig").yamlls.setup({
             capabilities = capabilities,
-            on_attach = on_attach,
         })
         -- defaults to gopls
         require("lspconfig").gopls.setup({
