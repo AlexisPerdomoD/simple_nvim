@@ -139,10 +139,8 @@ return {
                 filetype = { "html", "templ", "handlebars", ".handlebars" },
             },
         })
-        --         --require 'lspconfig'.markdown_oxide.setup {}
-        --         require('lspconfig').marksman.setup({})
-        -- =======
-        require("lspconfig").markdown_oxide.setup({})
+        require('lspconfig').marksman.setup({})
+        -- require("lspconfig").markdown_oxide.setup({})
         require("lspconfig").jsonls.setup({
             capabilities = capabilities,
             on_attach = on_attach,
