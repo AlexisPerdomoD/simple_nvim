@@ -3,10 +3,9 @@ return {
     event = "VeryLazy",
     dependencies = {
         "MunifTanjim/nui.nvim",
-        -- "nvim-treesitter/nvim-treesitter",
+        "nvim-treesitter/nvim-treesitter",
         "hrsh7th/nvim-cmp",
-
-        -- "rcarriga/nvim-notify",
+        "rcarriga/nvim-notify",
     },
     config = function()
         local border_style = {
@@ -230,7 +229,7 @@ return {
                         height = 'auto',
                     },
                     border = {
-                        style = border_style,
+                        style = rounded_border_style,
                         -- style = "none",
                         padding = { 0, 0 },
 
@@ -258,7 +257,7 @@ return {
                         -- winhighlight = {}
                     },
                     border = {
-                        style = border_style,
+                        style = rounded_border_style,
                         padding = { 0, 1 },
                     }
                 },
@@ -273,7 +272,7 @@ return {
                         height = 10,
                     },
                     border = {
-                        style = border_style,
+                        style = rounded_border_style,
                         padding = { 0, 1 },
                     },
                     win_options = {

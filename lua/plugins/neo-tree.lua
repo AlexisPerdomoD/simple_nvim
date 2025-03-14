@@ -90,7 +90,7 @@ return {
                     required_width = 120, -- min width of window required to show this column
                 },
                 type = {
-                    enabled = false,
+                    enabled = true,
                     required_width = 120, -- min width of window required to show this column
                 },
                 last_modified = {
@@ -102,8 +102,8 @@ return {
                     required_width = 200, -- min width of window required to show this column
                 },
                 symlink_target = {
-                    enabled = false,
-                },
+                    enabled = true
+                }
             },
             filesystem = {
                 filtered_items = {
@@ -129,7 +129,7 @@ return {
         vim.keymap.set("n", "<space>d", "<cmd>Neotree toggle reveal left<cr>")
         -- git status
         vim.keymap.set("n", ".gs", "<cmd>Neotree float toggle git_status<cr>")
-        --buffers 
+        --buffers
         vim.keymap.set("n", "<space>b", "<cmd>Neotree float toggle buffers<cr>")
     end,
 }
