@@ -44,7 +44,7 @@ return {
                     with_markers = false,
                     -- indent_marker = "│",
                     -- last_indent_marker = "└",
-                    -- highlight = "NeoTreeIndentMarker",
+                    highlight = "NeoTreeIndentMarker",
                     -- expander config, needed for nesting files
                     with_expanders = nil, -- if nil and file nesting is enabled, will enable expanders
                     expander_collapsed = "",
@@ -58,7 +58,7 @@ return {
                     -- The next two settings are only a fallback, if you use nvim-web-devicons and configure default icons there
                     -- then these will never be used.
                     default = "*",
-                    highlight = "NeoTreeFileIcon"
+                    highlight = "NeoTreeFileIcon",
                 },
                 modified = {
                     symbol = "[+]",
@@ -72,37 +72,37 @@ return {
                 git_status = {
                     symbols = {
                         -- Change type
-                        added     = "+", -- or "✚", but this is redundant info if you use git_status_colors on the name
-                        modified  = "", -- or "", but this is redundant info if you use git_status_colors on the name
-                        deleted   = "✖", -- this can only be used in the git_status source
-                        renamed   = "󰁕", -- this can only be used in the git_status source
+                        added = "+", -- or "✚", but this is redundant info if you use git_status_colors on the name
+                        modified = "", -- or "", but this is redundant info if you use git_status_colors on the name
+                        deleted = "✖", -- this can only be used in the git_status source
+                        renamed = "󰁕", -- this can only be used in the git_status source
                         -- Status type
                         untracked = "??",
-                        ignored   = "",
-                        unstaged  = "󰄱",
-                        staged    = "",
-                        conflict  = "",
-                    }
+                        ignored = "",
+                        unstaged = "󰄱",
+                        staged = "",
+                        conflict = "",
+                    },
                 },
                 -- If you don't want to use these columns, you can set `enabled = false` for each of them individually
                 file_size = {
                     enabled = true,
-                    required_width = 120, -- min width of window required to show this column
+                    required_width = 80, -- min width of window required to show this column
                 },
                 type = {
-                    enabled = false,
-                    required_width = 120, -- min width of window required to show this column
+                    enabled = true,
+                    required_width = 80, -- min width of window required to show this column
                 },
                 last_modified = {
                     enabled = true,
-                    required_width = 120, -- min width of window required to show this column
+                    required_width = 80, -- min width of window required to show this column
                 },
                 created = {
                     enabled = false,
                     required_width = 200, -- min width of window required to show this column
                 },
                 symlink_target = {
-                    enabled = false,
+                    enabled = true,
                 },
             },
             filesystem = {
@@ -117,19 +117,17 @@ return {
                         ".git",
                     },
                     always_show_by_pattern = { -- uses glob style patterns
-                        ".env*",
+                        "*.env",
                     },
                 },
             },
-
         })
-
 
         vim.keymap.set("n", "<space>.", "<cmd>Neotree toggle reveal current<cr>")
         vim.keymap.set("n", "<space>d", "<cmd>Neotree toggle reveal left<cr>")
         -- git status
         vim.keymap.set("n", ".gs", "<cmd>Neotree float toggle git_status<cr>")
-        --buffers 
+        --buffers
         vim.keymap.set("n", "<space>b", "<cmd>Neotree float toggle buffers<cr>")
     end,
 }
