@@ -44,7 +44,7 @@ if vim.g.neovide then
     vim.api.nvim_set_keymap("n", "<sc-v>", '"+p', { noremap = true }) -- paste in normal mode (ctrl+shift+c)
 end
 vim.o.cursorline = true
-vim.api.nvim_set_hl(0, "CursorLine", { bg = "#1e1e2e", fg = "NONE", underline = false })
+-- vim.api.nvim_set_hl(0, "CursorLine", { bg = "#202020", fg = "NONE", underline = false })
 vim.o.guicursor = table.concat({
     "n-v-c:block", -- Bloque completo en modos normal, visual y de comando
     "i-ci-ve:ver25", -- Cursor vertical en inserción y selectores
