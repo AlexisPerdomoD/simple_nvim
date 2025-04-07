@@ -1,3 +1,4 @@
+local color_bg = require "lua.utils.bg_color_setuper"
 -- Add any additional keymaps here
 -- -- Set leader key
 vim.g.mapleader = "."
@@ -51,3 +52,6 @@ map("v", "p", '"0p', { noremap = true, silent = true })
 -- folding
 -- Define el keybinding y el resaltado de los pliegues en una línea
 map("n", "za", ':execute "normal! za" | hi Folded guibg=#666666 guifg=#020202<CR>', opts)
+
+-- remmove background color
+vim.keymap.set("n", "<leader>t", color_bg.toggle_bg, opts)
