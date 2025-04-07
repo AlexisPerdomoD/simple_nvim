@@ -1,4 +1,4 @@
-local color_bg = require "lua.utils.bg_color_setuper"
+local color_bg = require "utils.bg_color_setuper"
 -- Add any additional keymaps here
 -- -- Set leader key
 vim.g.mapleader = "."
