@@ -35,6 +35,7 @@
     ],
     "diagnostics.globals": [
         "asd",
-        "vim"
+        "vim",
+        "Color_setuper"
     ]
 }
