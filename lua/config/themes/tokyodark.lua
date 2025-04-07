@@ -1,6 +1,5 @@
 return {
     "tiagovla/tokyodark.nvim",
-    -- priority = 1000,
     lazy = true,
     opts = {
         -- custom options here
