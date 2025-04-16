@@ -31,11 +31,14 @@
         "${3rd}/luv/library"
     ],
     "diagnostics.disable": [
-        "trailing-space"
+        "trailing-space",
+        "undefined-global"
     ],
     "diagnostics.globals": [
         "asd",
         "vim",
-        "Color_setuper"
+        "Color_setuper",
+        "a",
+        "aaa"
     ]
 }

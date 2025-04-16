@@ -8,6 +8,7 @@ return {
         else
             vim.cmd.colorscheme("synthweave-transparent")
         end
+        require('utils.bg_color_setuper').bg_setuper(false, true)
     end,
 }
 

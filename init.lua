@@ -15,13 +15,9 @@ local ensure_lazy = function()
     vim.opt.rtp:prepend(install_path)
 end
 ensure_lazy()
--- Load config
 require("config")
--- Load plugins
 require("lazy").setup("plugins")
 
--- color-scheme is set into the selected theme on "config/themes/"
---
 if vim.g.neovide then
     vim.g.neovide_cursor_vfx_mode = "railgun"
     vim.g.neovide_floating_corner_radius = 0.9
@@ -35,18 +31,17 @@ if vim.g.neovide then
     vim.g.neovide_refresh_rate_idle = 15
 
     vim.api.nvim_set_keymap("n", "<sc-v>", 'l"+P', { noremap = true })
-    -- vim.api.nvim_set_keymap("v", "<sc-v>", '"+P', { noremap = true })
     vim.api.nvim_set_keymap("c", "<sc-v>", '<C-o>l<C-o>"+<C-o>P<C-o>l', { noremap = true })
-    -- vim.api.nvim_set_keymap("i", "<sc-v>", '<ESC>l"+Pli', { noremap = true })
     vim.api.nvim_set_keymap("t", "<sc-v>", '<C-\\><C-n>"+Pi', { noremap = true })
-
     vim.api.nvim_set_keymap("v", "<sc-c>", '"+y', { noremap = true })      -- Select line(s) in visual mode and copy (CTRL+Shift+V)
     vim.api.nvim_set_keymap("i", "<sc-v>", '<ESC>"+p', { noremap = true }) -- Paste in insert mode (CTRL+Shift+C)
     vim.api.nvim_set_keymap("n", "<sc-v>", '"+p', { noremap = true })      -- paste in normal mode (ctrl+shift+c)
 end
+
+
 vim.opt.lazyredraw = false
 vim.o.cursorline = true
-vim.o.termguicolors = true 
+vim.o.termguicolors = true
 vim.api.nvim_set_hl(0, "CursorLine", { bg = "#1e1e2e", fg = "NONE", underline = false })
 vim.o.guicursor = table.concat({
     "n-v-c:block",                                  -- Bloque completo en modos normal, visual y de comando

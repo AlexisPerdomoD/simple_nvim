@@ -36,9 +36,10 @@ return {
                 -- normal = '#a1b2c3',    -- hexcode
                 -- normal = color.green,    -- lackluster color
                 telescope = "default", -- telescope
-                menu = "default", -- nvim_cmp, wildmenu ... (bad idea to transparent)
-                popup = "default", -- lazy, mason, whichkey ... (bad idea to transparent)
+                menu = "default",      -- nvim_cmp, wildmenu ... (bad idea to transparent)
+                popup = "default",     -- lazy, mason, whichkey ... (bad idea to transparent)
             },
         })
+        require('utils.bg_color_setuper').bg_setuper(false, true)
     end,
 }

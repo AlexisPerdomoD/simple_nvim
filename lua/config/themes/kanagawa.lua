@@ -1,10 +1,6 @@
 return {
     "rebelot/kanagawa.nvim",
-    -- priority = 1000,
-    -- event = "VeryLazy",
     lazy = true,
-    -- event = "VeryLazy",
-    --Default options:
     config = function()
         require('kanagawa').setup({
             compile = false,  -- enable compiling the colorscheme
@@ -57,8 +53,8 @@ return {
                 light = "lotus"
             },
         })
-
-       -- vim.cmd("colorscheme kanagawa")
+        require('utils.bg_color_setuper').bg_setuper(false, true)
+        -- vim.cmd("colorscheme kanagawa")
     end
 }
 -- -- setup must be called before loading

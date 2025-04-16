@@ -13,5 +13,6 @@ return {
 
             })
             vim.cmd [[ colorscheme citruszest ]]
+            require('utils.bg_color_setuper').bg_setuper(false, true)
         end
 }

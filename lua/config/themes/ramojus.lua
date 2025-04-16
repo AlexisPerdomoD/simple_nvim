@@ -89,5 +89,6 @@ return {
     config = function()
         require("mellifluous").setup(default_setup)
         vim.cmd("colorscheme mellifluous")
+        require('utils.bg_color_setuper').bg_setuper(false, true)
     end,
 }

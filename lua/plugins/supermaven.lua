@@ -22,7 +22,7 @@ return {
 
         })
         local api = require('supermaven-nvim.api') -- condition to check for stopping supermaven, `true` means to stop supermaven when the condition is true.
-        api.use_free_version()
+        vim.cmd("SupermavenStart")
     end,
 
 }

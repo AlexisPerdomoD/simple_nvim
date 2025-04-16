@@ -8,5 +8,6 @@ return {
         })
 
         vim.cmd("colorscheme dracula")
+        require('utils.bg_color_setuper').bg_setuper(false, true)
     end,
 }

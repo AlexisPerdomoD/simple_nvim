@@ -16,5 +16,6 @@ return {
         vim.g.moonflyTerminalColors = false
         vim.g.moonflyTransparent = true
         vim.cmd([[ colorscheme moonfly ]])
+        require('utils.bg_color_setuper').bg_setuper(false, true)
     end,
 }

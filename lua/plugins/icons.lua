@@ -1,5 +1,4 @@
 return {
-    -- nerdtree icons
     'ryanoasis/vim-devicons',
     -- dependencies = { 'nvim-web-devicons' },
     -- config = function()

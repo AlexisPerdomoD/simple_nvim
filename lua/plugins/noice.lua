@@ -8,16 +8,6 @@ return {
         "rcarriga/nvim-notify",
     },
     config = function()
-        local border_style = {
-            top_left = "┌",
-            top = "─",
-            top_right = "┐",
-            left = "│",
-            right = "│",
-            bottom_left = "└",
-            bottom = "─",
-            bottom_right = "┘",
-        }
         local rounded_border_style = {
             top_left = "╭",
             top = "─",
@@ -30,16 +20,16 @@ return {
         }
         require("noice").setup({
             cmdline = {
+
                 enabled = true,         -- enables the Noice cmdline UI
                 view = "cmdline_popup", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
-                opts = {},              -- global options for the cmdline. See section on views
+                spell = false,
+                views = {
+                    ["^z="] = "cmdline"
+                },
+                opts = {}, -- global options for the cmdline. See section on views
                 ---@type table<string, CmdlineFormat>
                 format = {
-                    -- conceal: (default=true) This will hide the text in the cmdline that matches the pattern.
-                    -- view: (default is cmdline view)
-                    -- opts: any options passed to the view
-                    -- icon_hl_group: optional hl_group for the icon
-                    -- title: set to anything or empty string to hide
                     cmdline = { pattern = "^:", icon = "", lang = "vim", title = "PODER" },
                     search_down = { kind = "search", pattern = "^/", icon = "  ", lang = "regex", title = " Search Down " },
                     search_up = { kind = "search", pattern = "^%?", icon = "  ", lang = "regex", title = " Search Up " },
@@ -47,12 +37,9 @@ return {
                     lua = { pattern = { "^:%s*lua%s+", "^:%s*lua%s*=%s*", "^:%s*=%s*" }, icon = "  ", lang = "lua", title = " Lua " },
                     help = { pattern = "^:%s*he?l?p?%s+", icon = " ", title = " Help " },
                     input = {}, -- Used by input()
-                    -- lua = false, -- to disable a format, set to `false`
                 },
             },
             messages = {
-                -- NOTE: If you enable messages, then the cmdline is enabled automatically.
-                -- This is a current Neovim limitation.
                 enabled = true,              -- enables the Noice messages UI
                 view = "mini",               -- default view for messages
                 view_error = "notify",       -- view for errors
@@ -118,19 +105,12 @@ return {
                 },
             },
             notify = {
-                -- Noice can be used as `vim.notify` so you can route any notification like other messages
-                -- Notification messages have their level and other properties set.
-                -- event is always "notify" and kind can be any log level as a string
-                -- The default routes will forward notifications to nvim-notify
-                -- Benefit of using Noice for this is the routing and consistent history view
-                enabled = true,
+               enabled = true,
                 view = "mini",
             },
             lsp = {
                 progress = {
                     enabled = true,
-                    -- Lsp Progress is formatted using the builtins for lsp_progress. See config.format.builtin
-                    -- See the section on formatting for more details on how to customize.
                     --- @type NoiceFormat|string
                     format = "lsp_progress",
                     --- @type NoiceFormat|string
@@ -139,11 +119,8 @@ return {
                     view = "mini",
                 },
                 override = {
-                    -- override the default lsp markdown formatter with Noice
                     ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-                    -- override the lsp markdown formatter with Noice
                     ["vim.lsp.util.stylize_markdown"] = true,
-                    -- override cmp documentation with Noice (needs the other options to work)
                     ["cmp.entry.get_documentation"] = true,
                 },
                 hover = {
@@ -208,8 +185,6 @@ return {
             },
             ---@type NoicePresets
             presets = {
-                -- you can enable a preset by setting it to true, or a table that will override the preset config
-                -- you can also add custom presets that you can enable/disable with enabled=true
                 bottom_search = false,        -- use a classic bottom cmdline for search
                 command_palette = false,      -- position the cmdline and popupmenu together
                 long_message_to_split = true, -- long messages will be sent to a split
@@ -285,18 +260,19 @@ return {
                 {
                     filter = {
                         event = "msg_show",
+                        kind = "confirm",
+                        find = "^z=",
+                    },
+                    opts = { skip = true },
+                },
+                {
+                    filter = {
+                        event = "msg_show",
                         kind = "search_count",
                         find = "written"
                     },
                     opts = { skip = true },
                 },
-                -- {
-                --     filter = {
-                --         -- event = "BufEnter",
-                --         bufname = "*NERD_tree*",
-                --     },
-                --     opts = { skip = true }, -- omitir procesamiento en estos casos
-                -- },
                 {
                     filter = {
                         event = "notify",

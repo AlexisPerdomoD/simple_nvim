@@ -17,7 +17,7 @@ return {
 
         require("neodev").setup()
         require("lspsaga").setup({
-            -- "󰅂 ",
+            virtual_text = true,
             ui = {
                 border = "rounded",
                 code_action = "⚡",
@@ -46,8 +46,8 @@ return {
             -- vim.keymap.set("n", ".e", vim.diagnostic.open_float)
             -- vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
             -- vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
-            vim.keymap.set("n", ".e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
-            vim.keymap.set("n", ".E", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
+            vim.keymap.set("n", ".E", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
+            vim.keymap.set("n", ".e", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
             vim.keymap.set("n", ".L", vim.diagnostic.setloclist)
 
 
@@ -67,12 +67,7 @@ return {
             end, opts)
             vim.keymap.set("n", "td", vim.lsp.buf.type_definition, opts)
             vim.keymap.set("n", "rn", vim.lsp.buf.rename, opts)
-            -- vim.keymap.set("n", "rn", "<cmd>Lspsaga rename<CR>", opts)
-            -- vim.keymap.set({ "n", "v" }, "ca", vim.lsp.buf.code_action, opts)
             vim.keymap.set("n", "ca", "<cmd>Lspsaga code_action<CR>", opts)
-            -- vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-
-            -- vim.keymap.set("n", "gr", "<cmd>Lspsaga finder def+ref<CR>", opts)
             vim.keymap.set("n", "gr", "<cmd>Lspsaga finder ref<CR>", opts)
         end
         -- -- defaults to omnisharp (dotnet)
@@ -139,6 +134,8 @@ return {
                 filetype = { "html", "templ", "handlebars", ".handlebars" },
             },
         })
+        require 'lspconfig'.angularls.setup { capabilities = capabilities, on_attach = on_attach }
+
         require('lspconfig').marksman.setup({})
         -- require("lspconfig").markdown_oxide.setup({})
         require("lspconfig").jsonls.setup({
@@ -150,14 +147,17 @@ return {
             on_attach = on_attach,
             capabilities = capabilities
         })
+
         require("lspconfig").cssls.setup({
             capabilities = capabilities,
             on_attach = on_attach,
         })
+
         require("lspconfig").tailwindcss.setup({
             on_attach = on_attach,
             capabilities = capabilities
         })
+
         require("lspconfig").sqlls.setup({
             root_dir = require("lspconfig").util.root_pattern("*.sql", ".git"),
             on_attach = on_attach,
@@ -167,6 +167,7 @@ return {
                 },
             },
         })
+
         require("lspconfig").yamlls.setup({
             capabilities = capabilities,
         })

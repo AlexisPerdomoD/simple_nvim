@@ -1,4 +1,5 @@
-local color_bg = require "lua.utils.bg_color_setuper"
+local color_bg = require "utils.bg_color_setuper"
+local custom_spell_check = require "utils.custom_spell_check"
 -- Add any additional keymaps here
 -- -- Set leader key
 vim.g.mapleader = "."
@@ -55,3 +56,7 @@ map("n", "za", ':execute "normal! za" | hi Folded guibg=#666666 guifg=#020202<CR
 
 -- remmove background color
 vim.keymap.set("n", "<leader>t", color_bg.toggle_bg, opts)
+
+-- Crear el mapeo para invocar el corrector personalizado
+vim.keymap.set("n", "sp", custom_spell_check,
+    { desc = "Corrector ortográfico personalizado", noremap = true, silent = true })
