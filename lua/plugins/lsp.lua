@@ -26,6 +26,7 @@ return {
                 on_insert = false,
                 --  show_code_action = true, -- Muestra una acción rápida al diagnosticar.
                 border_follow = true, -- Sigue el contorno para diagnósticos flotantes.
+                diagnostic_only_current = true,
             },
             lightbulb = {
                 enable = true,

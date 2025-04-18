@@ -1,10 +1,8 @@
 -- eliminar linter de error con variable vim
 -- Mostrar números de línea
 vim.opt.number = true
-
 -- Habilitar el uso del mouse
 vim.opt.mouse = "a"
-
 -- Mostrar comandos en la barra de estado
 vim.opt.showcmd = true
 

@@ -24,3 +24,13 @@ vim.cmd [[
     autocmd FocusGained,BufEnter * checktime
   augroup END
 ]]
+
+local function center_cursor()
+    local height = vim.api.nvim_win_get_height(0)
+    vim.o.scrolloff = math.floor(height / 2)
+end
+
+-- Set scrolloff on startup and resize
+vim.api.nvim_create_autocmd({ "VimResized", "BufEnter", "WinEnter" }, {
+    callback = center_cursor,
+})

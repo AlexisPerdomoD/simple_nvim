@@ -25,7 +25,6 @@ return {
                 "yamlls",
                 'tailwindcss',
                 'omnisharp',
-                'tsserver',
 
                 -- 'csharp_ls', lighttier alternative to omnisharp but less compatibility
                 -- does not work for formaters
