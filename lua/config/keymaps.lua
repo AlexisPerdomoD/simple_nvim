@@ -26,6 +26,9 @@ map("n", "<leader><Left>", ":vertical resize +12<CR>", silent_opts)
 map("n", "<leader><Right>", ":vertical resize -12<CR>", silent_opts)
 map("n", "<leader>c", ":nohlsearch<CR>", silent_opts)
 
+vim.keymap.set("n", "<Down>", "gj", { noremap = true })
+vim.keymap.set("n", "<Up>", "gk", { noremap = true })
+
 -- Insert mode mappings
 map("i", "(", "()<Left>", opts)
 map("i", "{", "{}<Left>", opts)

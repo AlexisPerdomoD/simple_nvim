@@ -6,17 +6,18 @@ return {
 
         conform.setup({
             formatters_by_ft = {
-                javascript = { "prettierd" },
-                typescript = { "prettierd" },
-                javascriptreact = { "prettierd" },
-                typescriptreact = { "prettierd" },
+                javascript = { "prettier" },
+                typescript = { "prettier" },
+                javascriptreact = { "prettier" },
+                typescriptreact = { "prettier" },
                 --svelte = { "prettier" },
-                css = { "prettierd" },
-                html = { "prettierd" },
-                json = { "prettierd" },
+                vue = { "prettier" },
+                css = { "prettier" },
+                html = { "prettier" },
+                json = { "prettier" },
                 yaml = { 'yamlfmt' },
-                markdown = { "prettierd" },
-                xml = {"xmlformater"},
+                markdown = { "prettier" },
+                xml = { "xmlformater" },
                 --graphql = { "prettier" },
                 luaa = { "stylua" },
                 bash = { "shfmt" },
@@ -58,19 +59,19 @@ return {
                 args = {
                     '--search-parent-directories', '--stdin-filepath', '%:p', '-'
                 },
-            }
-            --format_on_save = {
-            --    lsp_fallback = true,
-            --    async = false,
-            --    timeout_ms = 500,
-            --},
+            },
+            format_after_save = {
+                lsp_fallback = true,
+                async = true,
+                timeout_ms = 1500,
+            },
         })
 
         vim.keymap.set({ "n", "v" }, "<leader>f", function()
             conform.format({
                 lsp_fallback = true,
-                async = false,
-                timeout_ms = 500,
+                async = true,
+                timeout_ms = 1500,
             })
         end, { desc = "Format file or range (in visual mode)" })
     end,

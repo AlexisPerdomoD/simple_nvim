@@ -13,8 +13,6 @@ return {
     },
     event = "VeryLazy",
     config = function()
-        -- snippets
-
         require("neodev").setup()
         require("lspsaga").setup({
             virtual_text = true,
@@ -24,8 +22,7 @@ return {
             },
             diagnostic = {
                 on_insert = false,
-                --  show_code_action = true, -- Muestra una acción rápida al diagnosticar.
-                border_follow = true, -- Sigue el contorno para diagnósticos flotantes.
+                border_follow = true,
                 diagnostic_only_current = true,
             },
             lightbulb = {
@@ -44,15 +41,16 @@ return {
             vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc" -- algo de autocompletadito
             local opts = { buffer = bufnr, noremap = true, silent = true }
 
-            -- vim.keymap.set("n", ".e", vim.diagnostic.open_float)
+
             -- vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
             -- vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
-            vim.keymap.set("n", ".E", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
-            vim.keymap.set("n", ".e", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
+            vim.keymap.set("n", ".e", vim.diagnostic.open_float)
+            vim.keymap.set("n", "<space>[", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
+            vim.keymap.set("n", "<space>]", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
             vim.keymap.set("n", ".L", vim.diagnostic.setloclist)
 
 
-            vim.keymap.set("n", "gh", "<cmd>Lspsaga lsp_finder<CR>", opts)
+            vim.keymap.set("n", "F", "<cmd>Lspsaga lsp_finder<CR>", opts)
             vim.keymap.set("n", "DE", vim.lsp.buf.declaration, opts)
             vim.keymap.set("n", "gD", vim.lsp.buf.definition, opts)
             vim.keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts)
@@ -124,10 +122,22 @@ return {
                 },
             },
         })
+
         require("lspconfig").ts_ls.setup({
             on_attach = on_attach,
-            capabilities = capabilities
+            capabilities = capabilities,
+            init_options = {
+                plugins = {
+                    {
+                        name = "@vue/typescript-plugin",
+                        location = "",
+                        languages = { "vue" },
+                    },
+                },
+            },
+            filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
         })
+
         require("lspconfig").html.setup({
             capabilities = capabilities,
             on_attach = on_attach,
@@ -136,8 +146,18 @@ return {
             },
         })
         require 'lspconfig'.angularls.setup { capabilities = capabilities, on_attach = on_attach }
-
-        require('lspconfig').marksman.setup({})
+        require 'lspconfig'.volar.setup {
+            filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+            init_options = {
+                vue = {
+                    hybridMode = true,
+                },
+            },
+        }
+        -- require 'lspconfig'.vuels.setup {}
+        require('lspconfig').marksman.setup({
+            capabilities = capabilities
+        })
         -- require("lspconfig").markdown_oxide.setup({})
         require("lspconfig").jsonls.setup({
             capabilities = capabilities,
