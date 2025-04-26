@@ -5,7 +5,7 @@
 -- kanagawa_dragon. Dark, link to original.
 
 local default_setup = {
-    colorset = "kanagawa_dragon",
+    colorset = "mountain",
     plugins = {
         aerial = true,
         blink_cmp = true,
@@ -32,8 +32,10 @@ local default_setup = {
         },
     },
     dim_inactive = false,
-    styles = { -- see :h attr-list for options. set {} for NONE, { option = true } for option
-        main_keywords = {},
+    -- see :h attr-list for options. set {} for NONE, { option = true } for option
+
+    styles = {
+        main_keywords = { bold = true },
         other_keywords = {},
         types = {},
         operators = {},
@@ -84,11 +86,10 @@ local default_setup = {
 
 return {
     "ramojus/mellifluous.nvim",
-    lazy = true,
-    -- priority = 1000,
+    priority = 1000,
     config = function()
-        require("mellifluous").setup(default_setup)
-        vim.cmd("colorscheme mellifluous")
-        require('utils.bg_color_setuper').bg_setuper(false, true)
+        require "mellifluous".setup(default_setup)
+        vim.cmd "colorscheme mellifluous"
+        require 'utils.bg_color_setuper'.bg_setuper(false, true)
     end,
 }

@@ -3,8 +3,6 @@ return {
     dependencies = { "hrsh7th/nvim-cmp" },
     name = "moonfly",
     lazy = true,
-    --event = 'VeryLazy',
-    -- priority = 1000,
     config = function()
         -- cursor
         vim.g.moonflyCursorColor = true
@@ -13,9 +11,9 @@ return {
         vim.g.moonflyNormalFloat = true
 
         -- terminal
-        vim.g.moonflyTerminalColors = false
-        vim.g.moonflyTransparent = true
+        vim.g.moonflyTerminalColors = true
+        vim.g.moonflyTransparent = false
         vim.cmd([[ colorscheme moonfly ]])
-        require('utils.bg_color_setuper').bg_setuper(false, true)
+        require 'utils.bg_color_setuper'.bg_setuper(false, true)
     end,
 }
