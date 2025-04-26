@@ -1,6 +1,7 @@
 return {
     'echasnovski/mini.animate',
     version = '*',
+    lazy = vim.g.neovide,
     config = function()
         require('mini.animate').setup({
             -- Cursor path
@@ -20,7 +21,7 @@ return {
                 enable = true,
 
                 -- Timing of animation (how steps will progress in time)
-                timing = function() return 5 end --<function: implements linear total 250ms animation duration>,
+                timing = function() return 2 end --<function: implements linear total 250ms animation duration>,
 
                 -- Subscroll generator based on total scroll
                 --subscroll = --<function: implements equal scroll with at most 60 steps>,

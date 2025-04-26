@@ -10,7 +10,6 @@ return {
                 typescript = { "prettier" },
                 javascriptreact = { "prettier" },
                 typescriptreact = { "prettier" },
-                --svelte = { "prettier" },
                 vue = { "prettier" },
                 css = { "prettier" },
                 html = { "prettier" },
@@ -18,19 +17,19 @@ return {
                 yaml = { 'yamlfmt' },
                 markdown = { "prettier" },
                 xml = { "xmlformater" },
-                --graphql = { "prettier" },
                 luaa = { "stylua" },
                 bash = { "shfmt" },
                 sh = { "shfmt" },
                 zsh = { "shfmt" },
                 cs = { "csharpier" },
             },
+
             shfmt = {
                 options = { "-i", "2", "-ci" },
 
             },
+
             prettier = {
-                -- command = vim.fn.stdpath("data") .. "/mason/bin/pretierd", -- Ruta a prettier instalado por Mason
                 inherit = false,
                 command = "prettierd",
                 args = function()
@@ -54,12 +53,14 @@ return {
                 end,
                 stdin = true
             },
+
             stylua = {
                 command = 'stylua',
                 args = {
                     '--search-parent-directories', '--stdin-filepath', '%:p', '-'
                 },
             },
+
             format_after_save = {
                 lsp_fallback = true,
                 async = true,

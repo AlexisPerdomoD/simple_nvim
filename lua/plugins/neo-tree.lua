@@ -23,10 +23,10 @@ return {
             popup_border_style = "rounded",
             enable_git_status = false,
             enable_diagnostics = true,
-           default_component_configs = {
+            default_component_configs = {
                 indent = {
                     indent_size = 2,
-                    padding = 1, -- extra padding on left hand side
+                    padding = 1,          -- extra padding on left hand side
                     with_markers = false,
                     with_expanders = nil, -- if nil and file nesting is enabled, will enable expanders
                     expander_collapsed = "",
@@ -100,6 +100,10 @@ return {
                     },
                     always_show_by_pattern = { -- uses glob style patterns
                         ".env*",
+                        ".prettierrc",
+                        ".eslintrc",
+                        ".gitignore",
+                        ".zshrc"
                     },
                 },
             },
@@ -107,11 +111,9 @@ return {
         })
 
 
-        vim.keymap.set("n", "<space>.", "<cmd>Neotree toggle reveal current<cr>")
-        vim.keymap.set("n", "<space>d", "<cmd>Neotree toggle reveal left<cr>")
-        -- git status
-        vim.keymap.set("n", ".gs", "<cmd>Neotree float toggle git_status<cr>")
-        --buffers
-        vim.keymap.set("n", "<space>b", "<cmd>Neotree float toggle buffers<cr>")
+        vim.keymap.set("n", "<space>.", "<cmd>Neotree toggle  current<cr>")
+        vim.keymap.set("n", "<space>d", "<cmd>Neotree toggle  left<cr>")
+        vim.keymap.set("n", ".gs", "<cmd>Neotree float  toggle  git_status<cr>")
+        vim.keymap.set("n", "<space>b", "<cmd>Neotree float  toggle buffers<cr>")
     end,
 }
