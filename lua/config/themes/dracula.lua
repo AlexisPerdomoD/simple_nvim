@@ -1,6 +1,6 @@
 return {
     "Mofiqul/dracula.nvim",
-    lazy = true,
+    priority = 1000,
     config = function()
         require("dracula").setup({
             italic_comment = true,
