@@ -23,7 +23,7 @@ return {
             diagnostic = {
                 on_insert = false,
                 border_follow = true,
-                diagnostic_only_current = true,
+                diagnostic_only_current = false,
             },
             lightbulb = {
                 enable = true,
@@ -75,6 +75,7 @@ return {
             filetypes = { "sh", "bash", "zsh" }, -- Incluye Bash y Zsh
             cmd = { "bash-language-server", "start" },
             on_attach = on_attach,
+            capabilities = capabilities,
         })
         require("lspconfig").lua_ls.setup({
             on_attach = on_attach,

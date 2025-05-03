@@ -10,7 +10,7 @@ vim.opt.showcmd = true
 vim.opt.showmatch = true
 
 -- Mostrar números de línea relativos
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 
 -- Configuraciones para la indexación, tabulaciones y formateo de texto para pantallas angostas
 vim.opt.breakindent = true
@@ -22,8 +22,8 @@ vim.cmd("syntax on")
 vim.cmd("filetype plugin indent on")
 
 -- Configuración de indentación predeterminada para todos los archivos
-vim.opt.tabstop = 4 -- Número de espacios por tabulación
-vim.opt.shiftwidth = 4 -- Número de espacios para indentación
+vim.opt.tabstop = 4      -- Número de espacios por tabulación
+vim.opt.shiftwidth = 4   -- Número de espacios para indentación
 vim.opt.expandtab = true -- Utilizar espacios en lugar de tabulaciones
 
 -- No mostrar el modo de edición
@@ -36,13 +36,13 @@ vim.opt.laststatus = 2
 vim.opt.termguicolors = true
 
 -- Configuración de la altura del comando
-vim.opt.cmdheight = 1
+vim.opt.cmdheight = 0
 
 -- Configuraciones de búsqueda
-vim.opt.hlsearch = true -- Resaltar coincidencias
-vim.opt.incsearch = true -- Búsqueda incremental
+vim.opt.hlsearch = true   -- Resaltar coincidencias
+vim.opt.incsearch = true  -- Búsqueda incremental
 vim.opt.ignorecase = true -- Búsquedas insensibles a mayúsculas...
-vim.opt.smartcase = true -- ... A menos que contengan al menos una letra mayúscula
+vim.opt.smartcase = true  -- ... A menos que contengan al menos una letra mayúscula
 
 -- Configuración del porta papeles (pendiente de verificación)
 vim.opt.clipboard = "unnamedplus"
