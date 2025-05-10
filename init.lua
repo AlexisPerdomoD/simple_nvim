@@ -14,9 +14,10 @@ local ensure_lazy = function()
     end
     vim.opt.rtp:prepend(install_path)
 end
+
 ensure_lazy()
-require("config")
-require("lazy").setup("plugins")
+require "config"
+require "lazy".setup "plugins"
 
 if vim.g.neovide then
     require "utils.neovide_setup" ()
@@ -35,5 +36,4 @@ vim.o.guicursor = table.concat({
     "sm:block-blinkwait175-blinkon150-blinkoff150", -- Parpadeo especial para modo de sustitución
 }, ",")
 
-local cmp_border_setuper = require("utils.cmp_border_setuper")
-cmp_border_setuper()
+require "utils.cmp_border_setuper" ()
