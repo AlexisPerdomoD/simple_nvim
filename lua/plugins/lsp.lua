@@ -227,5 +227,7 @@ return {
         config.csharp_ls.setup(default_setup(on_attach, capabilities))
         cs_extensions.buf_read_cmd_bind()
         config.hyprls.setup(default_setup(on_attach, capabilities))
+
+        vim.diagnostic.config({ virtual_text = true })
     end,
 }
