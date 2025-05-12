@@ -1,65 +1,43 @@
 return {
     "williamboman/mason.nvim",
-    dependencies = {
-        "williamboman/mason-lspconfig.nvim",
-        --       "neovim/nvim-lspconfig",
-        "nvim-treesitter/nvim-treesitter",
-
-    },
-    lazy = true,
+    event = "VeryLazy",
     config = function()
         require("mason").setup()
-        -- require("mason-lspconfig").setup({
-        --     ensure_installed = {
-        --         "bashls",
-        --         "lua_ls",
-        --         "cssls",
-        --         "cssmodules_ls",
-        --         "css_variables",
-        --         "golangci_lint_ls",
-        --         "gopls",
-        --         "html",
-        --         "jsonls",
-        --         "markdown_oxide",
-        --         "sqls",
-        --         "yamlls",
-        --         'tailwindcss',
-        --         'omnisharp',
-        --
-        --         -- 'csharp_ls', lighttier alternative to omnisharp but less compatibility
-        --         -- does not work for formaters
-        --         -- list for formnaters and linters reference
-        --         --'CSharpier'
-        --         --"eslint_d",
-        --         --"prettier",
-        --         --"yamlfmt",
-        --         --"shfmt",
-        --         --"stylua",
-        --         --or linters
-        --         --'vale',
-        --     },
-        --     automatic_installation = true,
-        -- }
-        -- )
+
+        local mason_registry = require("mason-registry")
+        local manual_ensure_installed = function(server_name)
+            if not mason_registry.is_installed(server_name) then
+                mason_registry.get_package(server_name):install()
+                print("Installed " .. server_name)
+            end
+        end
+
+        local ensure_installed = {
+            "typescript-language-server",
+            "bash-language-server",
+            "lua-language-server",
+            "css-lsp",
+            "cssmodules-language-server",
+            "css-variables-language-server",
+            "golangci-lint-langserver",
+            "gopls",
+            "html-lsp",
+            "json-lsp",
+            "marksman",
+            "sqls",
+            "yaml-language-server",
+            "tailwindcss-language-server",
+            "csharp-language-server",
+            "csharpier",
+            "eslint_d",
+            "prettier",
+            "yamlfmt",
+            "shfmt",
+            "stylua",
+        }
+
+        for _, server_name in ipairs(ensure_installed) do
+            manual_ensure_installed(server_name)
+        end
     end,
 }
-
--- bash-language-server
---     ◍ css-lsp
---     ◍ css-variables-language-server
---     ◍ eslint_d
---     ◍ golangci-lint
---     ◍ golangci-lint-langserver
---     ◍ google-java-format
---     ◍ gopls
---     ◍ html-lsp
---     ◍ htmlhint
---     ◍ json-lsp
---     ◍ lua-language-server
---     ◍ markdown-oxide
---     ◍ prettier
---     ◍ shfmt
---     ◍ stylua
---     ◍ typescript-language-server
---     ◍ yaml-language-server
---     ◍ yamlfmt
