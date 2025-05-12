@@ -1,7 +1,8 @@
-# querys comunes para usar con postgres 
+# querys comunes para usar con postgres
 
-### Eliminar todas las tablas de una base de datos 
-```sql
+### Eliminar todas las tablas de una base de datos
+
+```postgresql
 DO $$ DECLARE
     r RECORD;
 BEGIN

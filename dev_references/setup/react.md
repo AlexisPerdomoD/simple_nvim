@@ -4,27 +4,30 @@
 
 ```javascript
 module.exports = {
-root: true,
-env: { browser: true, es2020: true },
-extends: [
-'expo',
-'eslint:recommended',
-'plugin:react/recommended',
-'plugin:react/jsx-runtime',
-'plugin:react-hooks/recommended'
-],
-ignorePatterns: ['dist', '.eslintrc.cjs'],
-parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
-settings: { react: { version: '18.2' } },
-plugins: ['react-refresh'],
-rules: {
-'react-refresh/enable': 'off',
-'no-unused-vars': 'off',
-'@typescript-eslint/no-unused-vars': 'off',
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    "expo",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
+    "plugin:react-hooks/recommended",
+  ],
+  ignorePatterns: ["dist", ".eslintrc.cjs"],
+  parserOptions: { ecmaVersion: "latest", sourceType: "module" },
+  settings: { react: { version: "18.2" } },
+  plugins: ["react-refresh"],
+  rules: {
+    "react-refresh/enable": "off",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "off",
 
-'react-refresh/only-export-components': ['warn', { allowConstantExport: true }]
-}
-}
+    "react-refresh/only-export-components": [
+      "warn",
+      { allowConstantExport: true },
+    ],
+  },
+};
 ```
 
 ## package.json referencia
@@ -40,12 +43,13 @@ rules: {
 ```
 
 ## .prettierrc.json
+
 ```json
 {
-    "trailingComma": "none",
-    "tabWidth": 4,
-    "semi": false,
-    "singleQuote": true,
-    "printWidth": 120
+  "trailingComma": "none",
+  "tabWidth": 4,
+  "semi": false,
+  "singleQuote": true,
+  "printWidth": 120
 }
 ```
