@@ -17,7 +17,7 @@ return {
                 yaml = { 'yamlfmt' },
                 markdown = { "prettier" },
                 xml = { "xmlformater" },
-                luaa = { "stylua" },
+                lua = { "stylua" },
                 bash = { "shfmt" },
                 sh = { "shfmt" },
                 zsh = { "shfmt" },

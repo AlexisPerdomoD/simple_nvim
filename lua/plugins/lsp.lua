@@ -7,10 +7,10 @@ local markdown_setup = function(on_attach, capabilities)
     return {
         capabilities = capabilities,
         on_attach = on_attach,
-        filetypes =
-        ".md"
+        filetypes = ".md",
     }
 end
+
 local lua_setup = function(on_attach, capabilities)
     return {
         on_attach = on_attach,
@@ -18,7 +18,10 @@ local lua_setup = function(on_attach, capabilities)
         on_init = function(client)
             if client.workspace_folders then
                 local path = client.workspace_folders[1].name
-                if vim.uv.fs_stat(path .. "/.luarc.json") or vim.uv.fs_stat(path .. "/.luarc.jsonc") then
+                if
+                    vim.uv.fs_stat(path .. "/.luarc.json")
+                    or vim.uv.fs_stat(path .. "/.luarc.jsonc")
+                then
                     return
                 end
             end
@@ -87,7 +90,7 @@ end
 
 local vue_setup = function()
     return {
-        filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+        filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
         init_options = {
             vue = {
                 hybridMode = true,
@@ -116,7 +119,6 @@ local sql_setup = function(on_attach, capabilities)
         },
     }
 end
-
 local golang_setup = function(on_attach, capabilities, util)
     return {
         capabilities = capabilities,
@@ -141,8 +143,15 @@ local golangci_lint_setup = function(on_attach, capabilities, util)
         on_attach = on_attach,
         cmd = { "golangci-lint-langserver" },
         filetypes = { "go", "gomod" },
-        root_dir = util.root_pattern(".golangci.yml", ".golangci.yaml", ".golangci.toml", ".golangci.json", "go.work",
-            "go.mod", ".git"),
+        root_dir = util.root_pattern(
+            ".golangci.yml",
+            ".golangci.yaml",
+            ".golangci.toml",
+            ".golangci.json",
+            "go.work",
+            "go.mod",
+            ".git"
+        ),
     }
 end
 
@@ -153,24 +162,30 @@ return {
         "decodetalkers/csharpls-extended-lsp.nvim",
         "hrsh7th/cmp-nvim-lsp",
         "nvimdev/lspsaga.nvim",
-        'nvim-treesitter/nvim-treesitter',
-        'nvim-tree/nvim-web-devicons',
+        "nvim-treesitter/nvim-treesitter",
+        "nvim-tree/nvim-web-devicons",
     },
     event = "VeryLazy",
     config = function()
         local saga_config = {
             virtual_text = true,
             ui = { border = "rounded", code_action = "⚡" },
-            diagnostic = { on_insert = false, border_follow = true, diagnostic_only_current = false },
+            diagnostic = {
+                on_insert = false,
+                border_follow = true,
+                diagnostic_only_current = false,
+            },
             lightbulb = { enable = true, virtual_text = false },
-            symbol_in_winbar = { enable = true, hide_keyword = true, },
+            symbol_in_winbar = { enable = true, hide_keyword = true },
         }
 
         require("lspsaga").setup(saga_config)
-        local config = require 'lspconfig'
+        local config = require("lspconfig")
         local utils = config.util
-        local cs_extensions = require('csharpls_extended')
-        local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+        local cs_extensions = require("csharpls_extended")
+        local capabilities = require("cmp_nvim_lsp").default_capabilities(
+            vim.lsp.protocol.make_client_capabilities()
+        )
 
         local on_attach = function(_, bufnr)
             vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc" -- algo de autocompletadito
@@ -193,9 +208,12 @@ return {
             vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
             vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
             vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
-            vim.keymap.set("n", "<space>wl", function()
-                print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-            end, opts)
+            vim.keymap.set(
+                "n",
+                "<space>wl",
+                function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
+                opts
+            )
             vim.keymap.set("n", "td", vim.lsp.buf.type_definition, opts)
             vim.keymap.set("n", "rn", vim.lsp.buf.rename, opts)
             vim.keymap.set("n", "ca", "<cmd>Lspsaga code_action<CR>", opts)
@@ -206,8 +224,8 @@ return {
             capabilities = capabilities,
         })
 
-        vim.api.nvim_create_autocmd('LspAttach', {
-            group = vim.api.nvim_create_augroup('my.lsp', {}),
+        vim.api.nvim_create_autocmd("LspAttach", {
+            group = vim.api.nvim_create_augroup("my.lsp", {}),
             callback = function(args)
                 local bufnr = args.buf
                 local opts = { buffer = bufnr, noremap = true, silent = true }
@@ -232,33 +250,42 @@ return {
                 vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
                 vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
                 vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
-                vim.keymap.set("n", "<space>wl", function()
-                    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-                end, opts)
+                vim.keymap.set(
+                    "n",
+                    "<space>wl",
+                    function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
+                    opts
+                )
                 vim.keymap.set("n", "td", vim.lsp.buf.type_definition, opts)
                 vim.keymap.set("n", "rn", vim.lsp.buf.rename, opts)
                 vim.keymap.set("n", "ca", "<cmd>Lspsaga code_action<CR>", opts)
                 vim.keymap.set("n", "gr", "<cmd>Lspsaga finder ref<CR>", opts)
 
-                if client:supports_method('textDocument/implementation') then
+                if client:supports_method("textDocument/implementation") then
                     -- Create a keymap for vim.lsp.buf.implementation ...
                 end
                 -- Enable auto-completion. Note: Use CTRL-Y to select an item. |complete_CTRL-Y|
-                if client:supports_method('textDocument/completion') then
+                if client:supports_method("textDocument/completion") then
                     -- Optional: trigger autocompletion on EVERY keypress. May be slow!
                     -- local chars = {}; for i = 32, 126 do table.insert(chars, string.char(i)) end
                     -- client.server_capabilities.completionProvider.triggerCharacters = chars
-                    vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
+                    -- vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
                 end
                 -- Auto-format ("lint") on save.
                 -- Usually not needed if server supports "textDocument/willSaveWaitUntil".
-                if not client:supports_method('textDocument/willSaveWaitUntil')
-                    and client:supports_method('textDocument/formatting') then
-                    vim.api.nvim_create_autocmd('BufWritePre', {
-                        group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
+                if
+                    not client:supports_method("textDocument/willSaveWaitUntil")
+                    and client:supports_method("textDocument/formatting")
+                then
+                    vim.api.nvim_create_autocmd("BufWritePre", {
+                        group = vim.api.nvim_create_augroup("my.lsp", { clear = false }),
                         buffer = args.buf,
                         callback = function()
-                            vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
+                            vim.lsp.buf.format({
+                                bufnr = args.buf,
+                                id = client.id,
+                                timeout_ms = 1000,
+                            })
                         end,
                     })
                 end
@@ -266,22 +293,22 @@ return {
         })
 
         vim.lsp.enable("lua_ls")
-        config.bashls.setup(bash_setup(on_attach, capabilities))
-        config.ts_ls.setup(ts_setup(on_attach, capabilities))
-        config.angularls.setup(default_setup(on_attach, capabilities))
-        config.volar.setup(vue_setup())
-        config.html.setup(html_setup(on_attach, capabilities))
-        config.cssls.setup(default_setup(on_attach, capabilities))
-        config.css_variables.setup(default_setup(on_attach, capabilities))
-        config.tailwindcss.setup(default_setup(on_attach, capabilities))
-        config.marksman.setup(markdown_setup(on_attach, capabilities))
-        config.jsonls.setup(default_setup(on_attach, capabilities))
-        config.sqlls.setup(sql_setup(on_attach, capabilities))
-        config.yamlls.setup(minimal_setup(on_attach, capabilities))
-        config.gopls.setup(golang_setup(on_attach, capabilities, utils))
-        config.golangci_lint_ls.setup(golangci_lint_setup(on_attach, capabilities, utils))
+        vim.lsp.enable("bash_ls")
+        vim.lsp.enable("ts_ls")
+        vim.lsp.enable("angular_ls")
+        vim.lsp.enable("html_ls")
+        vim.lsp.enable("css_ls")
+        vim.lsp.enable("css_modules_ls")
+        vim.lsp.enable("css_variables_ls")
+        vim.lsp.enable("tailwindcss_ls")
+        vim.lsp.enable("marksman_ls")
+        vim.lsp.enable("json_ls")
+        vim.lsp.enable("sql_ls")
+        vim.lsp.enable("yaml_ls")
+        vim.lsp.enable("go_ls")
+        vim.lsp.enable("golangci_lint_ls")
         -- config.omnisharp.setup(cs_setup(on_attach, capabilities, config.util, cs_extensions))
-        config.csharp_ls.setup(default_setup(on_attach, capabilities))
+        vim.lsp.enable("csharp_ls")
         cs_extensions.buf_read_cmd_bind()
         config.hyprls.setup(default_setup(on_attach, capabilities))
 
