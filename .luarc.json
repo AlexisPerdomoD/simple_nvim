@@ -1,6 +1,12 @@
 {
-  "runtime.version": "LuaJIT",
-  "workspace.library": ["${3rd}/luv/library", "${3rd}/vim/library"],
-  "diagnostics.disable": ["trailing-space", "undefined-global"],
-  "diagnostics.globals": ["vim", "color_setuper"]
+    "Lua.runtime.version": "LuaJIT",
+    "Lua.diagnostics.globals": [
+        "vim"
+    ],
+    "Lua.workspace.checkThirdParty": false,
+    "Lua.workspace.library": [
+        "${3rd}/luv/library",
+        "${3rd}/vim/library",
+        "vim"
+    ]
 }
