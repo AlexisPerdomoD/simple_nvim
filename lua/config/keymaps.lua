@@ -1,5 +1,5 @@
-local color_bg = require "utils.bg_color_setuper"
-local custom_spell_check = require "utils.custom_spell_check"
+local color_bg = require("utils.bg_color_setuper")
+local custom_spell_check = require("utils.custom_spell_check")
 -- Add any additional keymaps here
 -- -- Set leader key
 vim.g.mapleader = "."
@@ -27,8 +27,11 @@ map("n", "<leader><Left>", ":vertical resize +15<CR>", silent_opts)
 map("n", "<leader><Right>", ":vertical resize -15<CR>", silent_opts)
 map("n", "<leader>c", ":nohlsearch<CR>", silent_opts)
 
+-- avoid breaked lines jump
 vim.keymap.set("n", "<Down>", "gj", { noremap = true })
 vim.keymap.set("n", "<Up>", "gk", { noremap = true })
+vim.keymap.set("i", "<Down>", "gj", { noremap = true })
+vim.keymap.set("i", "<Up>", "gk", { noremap = true })
 
 -- Insert mode mappings
 map("i", "(", "()<Left>", opts)
@@ -56,11 +59,15 @@ map("v", "p", '"0p', { noremap = true, silent = true })
 
 -- folding
 -- Define el keybinding y el resaltado de los pliegues en una línea
-map("n", "za", ':execute "normal! za" | hi Folded guibg=#666666 guifg=#020202<CR>', opts)
+-- map("n", "za", ':execute "normal! za" | hi Folded guibg=#666666 guifg=#020202<CR>', opts)
 
 -- remmove background color
 vim.keymap.set("n", "<leader>t", color_bg.toggle_bg, opts)
 
 -- Crear el mapeo para invocar el corrector personalizado
-vim.keymap.set("n", "sp", custom_spell_check,
-    { desc = "Corrector ortográfico personalizado", noremap = true, silent = true })
+vim.keymap.set(
+    "n",
+    "sp",
+    custom_spell_check,
+    { desc = "Corrector ortográfico personalizado", noremap = true, silent = true }
+)

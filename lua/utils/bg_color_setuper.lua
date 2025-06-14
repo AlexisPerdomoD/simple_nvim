@@ -15,7 +15,6 @@ Bg_transparent = false
 
 local function toggle_bg()
     Bg_transparent = not Bg_transparent
-    print(Bg_transparent)
     bg_setuper(Bg_transparent, Bg_transparent)
 end
 

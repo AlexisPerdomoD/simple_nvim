@@ -8,6 +8,7 @@ return {
         "hrsh7th/cmp-git",
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
+        "davidmh/cmp-nerdfonts",
         "windwp/nvim-autopairs",
         --devi icons
         "ryanoasis/vim-devicons",
@@ -25,6 +26,7 @@ return {
                     name = "nvim_lsp",
                     max_item_count = 30,
                 },
+                { name = "nerdfonts" },
                 { name = "path" },
                 { name = "luasnip" },
                 { name = "buffer" },
@@ -70,9 +72,7 @@ return {
                 end,
             },
             snippet = {
-                expand = function(args)
-                    luasnip.lsp_expand(args.body)
-                end,
+                expand = function(args) luasnip.lsp_expand(args.body) end,
             },
             mapping = {
                 ["<C-d>"] = cmp.mapping.scroll_docs(-4),
