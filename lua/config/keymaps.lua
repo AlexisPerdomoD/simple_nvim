@@ -30,9 +30,6 @@ map("n", "<leader>c", ":nohlsearch<CR>", silent_opts)
 -- avoid breaked lines jump
 vim.keymap.set("n", "<Down>", "gj", { noremap = true })
 vim.keymap.set("n", "<Up>", "gk", { noremap = true })
-vim.keymap.set("i", "<Down>", "gj", { noremap = true })
-vim.keymap.set("i", "<Up>", "gk", { noremap = true })
-
 -- Insert mode mappings
 map("i", "(", "()<Left>", opts)
 map("i", "{", "{}<Left>", opts)
@@ -54,8 +51,8 @@ map("n", "d", '"_d', { noremap = true, silent = true })
 -- map('v', 'd', '"_d', { noremap = true, silent = true })
 
 -- Mapear `p` para pegar sin sobrescribir el portapapeles
-map("n", "p", '"0p', { noremap = true, silent = true })
-map("v", "p", '"0p', { noremap = true, silent = true })
+-- map("n", "p", '"p"', { noremap = true, silent = true })
+-- map("v", "p", '"p"', { noremap = true, silent = true })
 
 -- folding
 -- Define el keybinding y el resaltado de los pliegues en una línea

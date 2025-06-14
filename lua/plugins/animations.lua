@@ -113,7 +113,6 @@ return {
                         default_animation = "fade",
                     },
                     search = {
-                        enabled = true,
                         default_animation = "pulse",
 
                         -- Keys to navigate to the next match
@@ -123,14 +122,14 @@ return {
                         prev_mapping = "N",
                     },
                     paste = {
-                        enabled = true,
+                        enabled = false,
                         default_animation = "reverse_fade",
 
                         -- Keys to paste
-                        paste_mapping = "p",
+                        -- paste_mapping = "p",
 
                         -- Keys to paste above the cursor
-                        Paste_mapping = "P",
+                        --Paste_mapping = "P",
                     },
                     undo = {
                         enabled = true,
