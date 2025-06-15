@@ -1,6 +1,6 @@
 local color_bg = require("utils.bg_color_setuper")
 local custom_spell_check = require("utils.custom_spell_check")
--- Add any additional keymaps here
+-- Add any additional key maps here
 -- -- Set leader key
 vim.g.mapleader = "."
 
@@ -14,26 +14,43 @@ map("n", "<space>w", ":w<CR>", opts)
 map("n", "<space>q", ":q<CR>", opts)
 map("n", "<space>p", ":fold<CR>", silent_opts)
 -- directions
+-- TIP: Disable arrow keys in normal mode
+map("n", "<left>", '<cmd>echo "Use h to move!!"<CR>', opts)
+map("n", "<right>", '<cmd>echo "Use l to move!!"<CR>', opts)
+map("n", "<Up>", '<cmd>echo "Use k to move!!"<CR>', opts)
+map("n", "<Down>", '<cmd>echo "Use j to move!!"<CR>', opts)
 map("n", "<Tab>", ":tabnext<CR>", silent_opts)
 map("n", "<S-Tab>", ":tabprevious<CR>", silent_opts)
 map("n", "<space><Tab>", ":tabnew<CR>", silent_opts)
+
 map("n", "<space><Left>", ":TmuxNavigateLeft<cr>", silent_opts)
+map("n", "<A-h>", ":TmuxNavigateLeft<cr>", silent_opts)
 map("n", "<space><Down>", ":TmuxNavigateDown<cr>", silent_opts)
+map("n", "<A-j>", ":TmuxNavigateDown<cr>", silent_opts)
 map("n", "<space><Up>", ":TmuxNavigateUp<cr>", silent_opts)
+map("n", "<A-k>", ":TmuxNavigateUp<cr>", silent_opts)
 map("n", "<space><Right>", ":TmuxNavigateRight<cr>", silent_opts)
+map("n", "<A-l>", ":TmuxNavigateRight<cr>", silent_opts)
+
 map("n", "<leader><Up>", ":resize +5<CR>", silent_opts)
+map("n", "<leader>k", ":resize +5<CR>", silent_opts)
 map("n", "<leader><Down>", ":resize -5<CR>", silent_opts)
+map("n", "<leader>j", ":resize -5<CR>", silent_opts)
 map("n", "<leader><Left>", ":vertical resize +15<CR>", silent_opts)
+map("n", "<leader>l", ":vertical resize +15<CR>", silent_opts)
 map("n", "<leader><Right>", ":vertical resize -15<CR>", silent_opts)
+
+map("n", "<leader>h", ":vertical resize -15<CR>", silent_opts)
 map("n", "<leader>c", ":nohlsearch<CR>", silent_opts)
+map("n", "<leader>s", ":w<CR>", silent_opts)
 
 -- avoid breaked lines jump
-vim.keymap.set("n", "<Down>", "gj", { noremap = true })
-vim.keymap.set("n", "<Up>", "gk", { noremap = true })
+-- map("n", "<Down>", "gj", { noremap = true })
+-- map("n", "<Up>", "gk", { noremap = true })
 -- Insert mode mappings
-map("i", "(", "()<Left>", opts)
-map("i", "{", "{}<Left>", opts)
-map("i", "[", "[]<Left>", opts)
+-- map("i", "(", "()<Left>", opts)
+-- map("i", "{", "{}<Left>", opts)
+-- map("i", "[", "[]<Left>", opts)
 -- map('i', '<', '<><Left>', opts)  -- Uncomment this line if needed
 map("i", "'", "''<Left>", opts)
 map("i", '"', '""<Left>', opts)
@@ -46,7 +63,7 @@ map("i", "<C-S>v", '"*p', opts)
 map("n", "<C-c>v", '"*PP', opts)
 
 -- Mapear `d` para no sobreescribir el portapapeles
-map("n", "d", '"_d', { noremap = true, silent = true })
+-- map("n", "d", '"_d', { noremap = true, silent = true })
 -- modo visual si quiero copiar al clipboard
 -- map('v', 'd', '"_d', { noremap = true, silent = true })
 

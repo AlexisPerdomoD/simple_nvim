@@ -5,13 +5,14 @@ return {
         "nvim-lua/plenary.nvim",
         "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
         "MunifTanjim/nui.nvim",
+        "lewis6991/gitsigns.nvim",
         -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
     },
     priority = 900,
     config = function()
         require("neo-tree").setup({
             window = {
-                position = "float",
+                position = "right",
 
                 --width = 30,
                 mapping_options = {
@@ -26,7 +27,7 @@ return {
             default_component_configs = {
                 indent = {
                     indent_size = 2,
-                    padding = 1,          -- extra padding on left hand side
+                    padding = 1, -- extra padding on left hand side
                     with_markers = false,
                     with_expanders = nil, -- if nil and file nesting is enabled, will enable expanders
                     expander_collapsed = "",
@@ -40,7 +41,7 @@ return {
                     -- The next two settings are only a fallback, if you use nvim-web-devicons and configure default icons there
                     -- then these will never be used.
                     default = "*",
-                    highlight = "NeoTreeFileIcon"
+                    highlight = "NeoTreeFileIcon",
                 },
                 modified = {
                     symbol = "[+]",
@@ -54,17 +55,17 @@ return {
                 git_status = {
                     symbols = {
                         -- Change type
-                        added     = "+", -- or "✚", but this is redundant info if you use git_status_colors on the name
-                        modified  = "", -- or "", but this is redundant info if you use git_status_colors on the name
-                        deleted   = "✖", -- this can only be used in the git_status source
-                        renamed   = "󰁕", -- this can only be used in the git_status source
+                        added = "+", -- or "✚", but this is redundant info if you use git_status_colors on the name
+                        modified = "", -- or "", but this is redundant info if you use git_status_colors on the name
+                        deleted = "✖", -- this can only be used in the git_status source
+                        renamed = "󰁕", -- this can only be used in the git_status source
                         -- Status type
                         untracked = "??",
-                        ignored   = "",
-                        unstaged  = "󰄱",
-                        staged    = "",
-                        conflict  = "",
-                    }
+                        ignored = "",
+                        unstaged = "󰄱",
+                        staged = "",
+                        conflict = "",
+                    },
                 },
                 -- If you don't want to use these columns, you can set `enabled = false` for each of them individually
                 file_size = {
@@ -84,8 +85,8 @@ return {
                     required_width = 200, -- min width of window required to show this column
                 },
                 symlink_target = {
-                    enabled = true
-                }
+                    enabled = true,
+                },
             },
             filesystem = {
                 filtered_items = {
@@ -103,13 +104,11 @@ return {
                         ".prettierrc",
                         ".eslintrc",
                         ".gitignore",
-                        ".zshrc"
+                        ".zshrc",
                     },
                 },
             },
-
         })
-
 
         vim.keymap.set("n", "<space>.", "<cmd>Neotree toggle  current<cr>")
         vim.keymap.set("n", "<space>d", "<cmd>Neotree toggle  left<cr>")

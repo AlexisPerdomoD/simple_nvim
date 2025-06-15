@@ -21,30 +21,47 @@ return {
         require("noice").setup({
             cmdline = {
 
-                enabled = true,         -- enables the Noice cmdline UI
+                enabled = true, -- enables the Noice cmdline UI
                 view = "cmdline_popup", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
                 spell = false,
                 views = {
-                    ["^z="] = "cmdline"
+                    ["^z="] = "cmdline",
                 },
                 opts = {}, -- global options for the cmdline. See section on views
                 ---@type table<string, CmdlineFormat>
                 format = {
                     cmdline = { pattern = "^:", icon = "", lang = "vim", title = "PODER" },
-                    search_down = { kind = "search", pattern = "^/", icon = "  ", lang = "regex", title = " Search Down " },
-                    search_up = { kind = "search", pattern = "^%?", icon = "  ", lang = "regex", title = " Search Up " },
+                    search_down = {
+                        kind = "search",
+                        pattern = "^/",
+                        icon = "  ",
+                        lang = "regex",
+                        title = " Search Down ",
+                    },
+                    search_up = {
+                        kind = "search",
+                        pattern = "^%?",
+                        icon = "  ",
+                        lang = "regex",
+                        title = " Search Up ",
+                    },
                     filter = { pattern = "^:%s*!", icon = "  ", lang = "bash", title = "Filter" },
-                    lua = { pattern = { "^:%s*lua%s+", "^:%s*lua%s*=%s*", "^:%s*=%s*" }, icon = "  ", lang = "lua", title = " Lua " },
+                    lua = {
+                        pattern = { "^:%s*lua%s+", "^:%s*lua%s*=%s*", "^:%s*=%s*" },
+                        icon = "  ",
+                        lang = "lua",
+                        title = " Lua ",
+                    },
                     help = { pattern = "^:%s*he?l?p?%s+", icon = " ", title = " Help " },
                     input = {}, -- Used by input()
                 },
             },
             messages = {
-                enabled = true,              -- enables the Noice messages UI
-                view = "mini",               -- default view for messages
-                view_error = "notify",       -- view for errors
-                view_warn = "notify",        -- view for warnings
-                view_history = "messages",   -- view for :messages
+                enabled = true, -- enables the Noice messages UI
+                view = "mini", -- default view for messages
+                view_error = "notify", -- view for errors
+                view_warn = "notify", -- view for warnings
+                view_history = "messages", -- view for :messages
                 -- view_search = false,
                 view_search = "virtualtext", -- view for search count messages. Set to `false` to disable
             },
@@ -76,7 +93,7 @@ return {
                             { error = true },
                             { warning = true },
                             { event = "msg_show", kind = { "" } },
-                            { event = "lsp",      kind = "message" },
+                            { event = "lsp", kind = "message" },
                         },
                     },
                 },
@@ -90,7 +107,7 @@ return {
                             { error = true },
                             { warning = true },
                             { event = "msg_show", kind = { "" } },
-                            { event = "lsp",      kind = "message" },
+                            { event = "lsp", kind = "message" },
                         },
                     },
                     filter_opts = { count = 1 },
@@ -105,8 +122,9 @@ return {
                 },
             },
             notify = {
-               enabled = true,
+                enabled = true,
                 view = "mini",
+                background_colour = "#000000",
             },
             lsp = {
                 progress = {
@@ -127,7 +145,7 @@ return {
                     enabled = true,
                     view = nil, -- when nil, use defaults from documentation
                     ---@type NoiceViewOptions
-                    opts = {},  -- merged with defaults from documentation
+                    opts = {}, -- merged with defaults from documentation
                 },
                 signature = {
                     enabled = true,
@@ -135,11 +153,11 @@ return {
                         enabled = true,
                         trigger = true, -- Automatically show signature help when typing a trigger character from the LSP
                         luasnip = true, -- Will open signature help when jumping to Luasnip insert nodes
-                        throttle = 50,  -- Debounce lsp signature help request by 50ms
+                        throttle = 50, -- Debounce lsp signature help request by 50ms
                     },
-                    view = nil,         -- when nil, use defaults from documentation
+                    view = nil, -- when nil, use defaults from documentation
                     ---@type NoiceViewOptions
-                    opts = {},          -- merged with defaults from documentation
+                    opts = {}, -- merged with defaults from documentation
                 },
                 message = {
                     -- Messages shown by lsp servers
@@ -162,7 +180,7 @@ return {
             },
             markdown = {
                 hover = {
-                    ["|(%S-)|"] = vim.cmd.help,                       -- vim help links
+                    ["|(%S-)|"] = vim.cmd.help, -- vim help links
                     ["%[.-%]%((%S-)%)"] = require("noice.util").open, -- markdown links
                 },
                 highlights = {
@@ -185,13 +203,13 @@ return {
             },
             ---@type NoicePresets
             presets = {
-                bottom_search = false,        -- use a classic bottom cmdline for search
-                command_palette = false,      -- position the cmdline and popupmenu together
+                bottom_search = false, -- use a classic bottom cmdline for search
+                command_palette = false, -- position the cmdline and popupmenu together
                 long_message_to_split = true, -- long messages will be sent to a split
-                inc_rename = true,            -- enables an input dialog for inc-rename.nvim
-                lsp_doc_border = true,        -- add a border to hover docs and signature help
+                inc_rename = true, -- enables an input dialog for inc-rename.nvim
+                lsp_doc_border = true, -- add a border to hover docs and signature help
             },
-            throttle = 1000 / 30,             -- how frequently does Noice need to check for ui updates? This has no effect when in blocking mode.
+            throttle = 1000 / 30, -- how frequently does Noice need to check for ui updates? This has no effect when in blocking mode.
             ---@type NoiceConfigViews
             views = {
                 cmdline_popup = {
@@ -201,17 +219,19 @@ return {
                     },
                     size = {
                         width = "30%",
-                        height = 'auto',
+                        height = "auto",
                     },
                     border = {
                         style = rounded_border_style,
                         -- style = "none",
                         padding = { 0, 0 },
-
                     },
                     filter_options = {},
                     win_options = {
-                        winhighlight = { Normal = "TelescopePromptNormal", FloatBorder = "DiagnosticInfo" },
+                        winhighlight = {
+                            Normal = "TelescopePromptNormal",
+                            FloatBorder = "DiagnosticInfo",
+                        },
                     },
                 },
                 split = {
@@ -219,12 +239,12 @@ return {
                 },
                 notify = {
                     size = {
-                        width = 30
-                    }
+                        width = 30,
+                    },
                 },
                 mini = {
                     position = {
-                        row = '0%',
+                        row = "10%",
                         col = "50%",
                     },
                     win_options = {
@@ -234,7 +254,7 @@ return {
                     border = {
                         style = rounded_border_style,
                         padding = { 0, 1 },
-                    }
+                    },
                 },
                 popupmenu = {
                     relative = "editor",
@@ -251,7 +271,10 @@ return {
                         padding = { 0, 1 },
                     },
                     win_options = {
-                        winhighlight = { Normal = "TelescopePromptNormal", FloatBorder = "DiagnosticInfo" },
+                        winhighlight = {
+                            Normal = "TelescopePromptNormal",
+                            FloatBorder = "DiagnosticInfo",
+                        },
                     },
                 },
             }, ---@see section on views
@@ -260,16 +283,8 @@ return {
                 {
                     filter = {
                         event = "msg_show",
-                        kind = "confirm",
-                        find = "^z=",
-                    },
-                    opts = { skip = true },
-                },
-                {
-                    filter = {
-                        event = "msg_show",
                         kind = "search_count",
-                        find = "written"
+                        find = "written",
                     },
                     opts = { skip = true },
                 },

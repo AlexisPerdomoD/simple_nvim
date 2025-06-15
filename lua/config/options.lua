@@ -6,11 +6,11 @@ vim.opt.mouse = "a"
 -- Mostrar comandos en la barra de estado
 vim.opt.showcmd = true
 
--- Resaltar coincidencias al buscar
+-- Resaltar coincidencias al busca s s
 vim.opt.showmatch = true
 
 -- Mostrar números de línea relativos
-vim.opt.relativenumber = false
+vim.opt.relativenumber = true
 
 -- Configuraciones para la indexación, tabulaciones y formateo de texto para pantallas angostas
 vim.opt.breakindent = true
@@ -43,7 +43,6 @@ vim.opt.hlsearch = true -- Resaltar coincidencias
 vim.opt.incsearch = true -- Búsqueda incremental
 vim.opt.ignorecase = true -- Búsquedas insensibles a mayúsculas...
 vim.opt.smartcase = true -- ... A menos que contengan al menos una letra mayúscula
-
 -- Configuración del porta papeles (pendiente de verificación)
 vim.opt.clipboard = "unnamedplus"
 

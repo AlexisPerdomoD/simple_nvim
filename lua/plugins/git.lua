@@ -1,18 +1,17 @@
 return {
     {
-        'tpope/vim-fugitive',
-        cmd = { 'Git', 'G' },
-        event = 'VeryLazy'
+        "tpope/vim-fugitive",
+        cmd = { "Git", "G" },
+        event = "VeryLazy",
     },
     {
-        'lewis6991/gitsigns.nvim',
-        event = 'VeryLazy',
+        "lewis6991/gitsigns.nvim",
+        event = "VeryLazy",
         config = function()
-            require('gitsigns').setup()
+            require("gitsigns").setup()
 
-            vim.keymap.set('n', '<space>gh', ':Gitsigns preview_hunk<CR>', { silent = true })
-            vim.keymap.set('n', '<space>gt', ':Gitsigns blame_line<CR>', { silent = true })
-        end
-    }
-
+            vim.keymap.set("n", "<space>gh", ":Gitsigns preview_hunk<CR>", { silent = true })
+            vim.keymap.set("n", "<space>gt", ":Gitsigns blame_line<CR>", { silent = true })
+        end,
+    },
 }
