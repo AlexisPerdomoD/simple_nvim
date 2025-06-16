@@ -1,8 +1,8 @@
 return function()
     vim.g.neovide_cursor_vfx_mode = "railgun"
     vim.g.neovide_floating_corner_radius = 0.9
-    -- vim.o.guifont = "FantasqueSansM Nerd Font:h10"
-    vim.o.guifont = "SpaceMono Nerd Font:h10"
+    vim.o.guifont = "GohuFont 11 Nerd Font:h11"
+    --  vim.o.guifont = "SpaceMono Nerd Font:h10"
     vim.g.neovide_text_gamma = 0.9
     vim.g.neovide_text_contrast = 1
     vim.g.neovide_input_use_logo = true

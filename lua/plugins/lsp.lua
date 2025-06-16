@@ -59,16 +59,24 @@ return {
         }
 
         require("lspsaga").setup(saga_config)
-
+        -- Configuración de capabilities con UTF-16 para consistencia
+        local capabilities_settings = vim.lsp.protocol.make_client_capabilities()
+        capabilities_settings = vim.tbl_deep_extend("force", capabilities_settings, {
+            offsetEncoding = { "utf-16" },
+            general = {
+                positionEncodings = { "utf-16" },
+            },
+        })
+        -- Primero configurar los capabilities por defecto
         vim.lsp.config("*", {
-            capabilities = require("cmp_nvim_lsp").default_capabilities(
-                vim.lsp.protocol.make_client_capabilities()
-            ),
+            capabilities = capabilities_settings,
         })
 
         vim.api.nvim_create_autocmd("LspAttach", {
             group = vim.api.nvim_create_augroup("my.lsp", {}),
             callback = function(args)
+                require("cmp_nvim_lsp").default_capabilities(capabilities_settings)
+
                 local bufnr = args.buf
                 local opts = { buffer = bufnr, noremap = true, silent = true }
 

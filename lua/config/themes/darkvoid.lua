@@ -1,5 +1,7 @@
 return {
     "aliqyan-21/darkvoid.nvim",
+    lazy = false,
+    priority = 1000,
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
         require("darkvoid").setup({
@@ -43,5 +45,7 @@ return {
                 },
             },
         })
+
+        vim.cmd("colorscheme darkvoid")
     end,
 }

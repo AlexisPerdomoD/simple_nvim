@@ -88,8 +88,14 @@ return {
                     end
                 end, { "i", "s" }),
                 ["<C-Down>"] = cmp.mapping.select_next_item(),
+                ["<C-J>"] = cmp.mapping.select_next_item(),
                 ["<C-Up>"] = cmp.mapping.select_prev_item(),
+                ["<C-K>"] = cmp.mapping.select_prev_item(),
                 ["<C-Right>"] = cmp.mapping.confirm({
+                    behavior = cmp.ConfirmBehavior.Insert,
+                    select = true,
+                }),
+                ["<C-l>"] = cmp.mapping.confirm({
                     behavior = cmp.ConfirmBehavior.Insert,
                     select = true,
                 }),

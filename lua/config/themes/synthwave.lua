@@ -1,14 +1,10 @@
 return {
     "samharju/synthweave.nvim",
     lazy = true, -- make sure we load this during startup if it is your main colorscheme
-    --priority = 1000,
+    -- priority = 1000,
     config = function()
-        if vim.g.neovide then
-            vim.cmd.colorscheme("synthweave")
-        else
-            vim.cmd.colorscheme("synthweave-transparent")
-        end
-        require('utils.bg_color_setuper').bg_setuper(false, true)
+        vim.cmd.colorscheme("synthweave-transparent")
+        -- require("utils.bg_color_setuper").bg_setuper(false, true)
     end,
 }
 

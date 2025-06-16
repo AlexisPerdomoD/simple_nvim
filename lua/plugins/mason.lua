@@ -27,6 +27,7 @@ return {
             "sqls",
             "yaml-language-server",
             "tailwindcss-language-server",
+            "rust-analyzer",
             "csharp-language-server",
             "csharpier",
             "eslint_d",
