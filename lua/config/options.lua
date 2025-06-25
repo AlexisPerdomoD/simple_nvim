@@ -53,7 +53,7 @@ vim.o.foldlevel = 99
 vim.o.foldenable = true
 -- Usa el portapapeles del sistema para copiar y pegar
 ---@diagnostic disable: undefined-field
-vim.opt.spell = true
+vim.opt.spell = false
 vim.opt.spelllang = { "en", "es" }
 vim.o.signcolumn = "yes"
 

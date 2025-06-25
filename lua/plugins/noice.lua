@@ -244,7 +244,7 @@ return {
                 },
                 mini = {
                     position = {
-                        row = "10%",
+                        row = "5%",
                         col = "50%",
                     },
                     win_options = {

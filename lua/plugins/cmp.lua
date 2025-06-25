@@ -78,7 +78,7 @@ return {
                 ["<C-d>"] = cmp.mapping.scroll_docs(-4),
                 ["<C-f>"] = cmp.mapping.scroll_docs(4),
                 ["<C-x>"] = cmp.mapping.abort(),
-                ["<C-n>"] = cmp.mapping(function(fallback)
+                ["<C-z>"] = cmp.mapping(function(fallback)
                     if cmp.visible() then
                         cmp.select_next_item()
                     elseif luasnip.choice_active() then
@@ -88,9 +88,9 @@ return {
                     end
                 end, { "i", "s" }),
                 ["<C-Down>"] = cmp.mapping.select_next_item(),
-                ["<C-J>"] = cmp.mapping.select_next_item(),
+                ["<C-j>"] = cmp.mapping.select_next_item(),
                 ["<C-Up>"] = cmp.mapping.select_prev_item(),
-                ["<C-K>"] = cmp.mapping.select_prev_item(),
+                ["<C-k>"] = cmp.mapping.select_prev_item(),
                 ["<C-Right>"] = cmp.mapping.confirm({
                     behavior = cmp.ConfirmBehavior.Insert,
                     select = true,

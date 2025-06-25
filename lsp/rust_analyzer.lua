@@ -28,6 +28,19 @@ end
 
 return {
     cmd = { "rust-analyzer" },
+    settings = {
+        ["rust-analyzer"] = {
+            diagnostics = {
+                enable = true,
+                onSave = false,
+            },
+            cargo = {
+                buildScripts = {
+                    enable = true,
+                },
+            },
+        },
+    },
     filetypes = { "rust" },
     root_dir = function(bufnr, on_dir)
         local fname = vim.api.nvim_buf_get_name(bufnr)
@@ -94,7 +107,8 @@ return {
             init_params.initializationOptions = config.settings["rust-analyzer"]
         end
     end,
-    on_attach = function()
+    on_attach = function(_, bufnr)
+        vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
         vim.api.nvim_buf_create_user_command(
             0,
             "LspCargoReload",
