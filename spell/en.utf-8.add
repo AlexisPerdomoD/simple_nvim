@@ -40,3 +40,6 @@ DownloadFolderNodeArg
 fn
 let
 usr
+OpenAI
+S3
+Github
