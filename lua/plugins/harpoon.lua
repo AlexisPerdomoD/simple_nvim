@@ -10,7 +10,11 @@ return {
         harpoon:setup()
         -- REQUIRED
 
-        vim.keymap.set('n', '<space>a', function() harpoon:list():add() end)
+        vim.keymap.set('n', '<space>a', function()
+            harpoon:list():add()
+            local filename = vim.fn.expand '%:t' -- o usa vim.fn.expand("%:t") solo para el nombre
+            vim.notify('Archivo agregado a Harpoon: ' .. filename, vim.log.levels.INFO, { title = 'Harpoon' })
+        end)
         vim.keymap.set('n', '<space>e', function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
 
         vim.keymap.set('n', '<space>1', function() harpoon:list():select(1) end)
