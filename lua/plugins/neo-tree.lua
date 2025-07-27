@@ -35,8 +35,11 @@ return {
                     expander_highlight = 'NeoTreeExpander',
                 },
                 icon = {
-                    folder_closed = '',
-                    folder_open = '',
+                    folder_empty_open = '󰜌',
+                    -- folder_closed = '',
+                    folder_closed = '',
+                    -- folder_open = '',
+                    folder_open = '',
                     folder_empty = '󰜌',
                     -- The next two settings are only a fallback, if you use nvim-web-devicons and configure default icons there
                     -- then these will never be used.
@@ -77,10 +80,12 @@ return {
                     required_width = 120, -- min width of window required to show this column
                 },
                 last_modified = {
+                    format = 'relative',
                     enabled = true,
                     required_width = 120, -- min width of window required to show this column
                 },
                 created = {
+                    format = 'relative',
                     enabled = false,
                     required_width = 200, -- min width of window required to show this column
                 },

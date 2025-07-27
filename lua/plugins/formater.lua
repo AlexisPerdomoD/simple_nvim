@@ -1,52 +1,50 @@
 return {
-    "stevearc/conform.nvim",
-    event = { "BufReadPre", "BufNewFile" },
+    'stevearc/conform.nvim',
+    event = { 'BufReadPre', 'BufNewFile' },
     config = function()
-        local conform = require "conform"
+        local conform = require 'conform'
 
         conform.setup {
             formatters_by_ft = {
-                javascript = { "prettier" },
-                typescript = { "prettier" },
-                javascriptreact = { "prettier" },
-                typescriptreact = { "prettier" },
-                vue = { "prettier" },
-                css = { "prettier" },
-                html = { "prettier" },
-                json = { "prettier" },
-                yaml = { "yamlfmt" },
-                markdown = { "prettier" },
-                xml = { "xmlformater" },
-                lua = { "stylua" },
-                bash = { "shfmt" },
-                sh = { "shfmt" },
-                zsh = { "shfmt" },
-                cs = { "csharpier" },
+                javascript = { 'prettier' },
+                typescript = { 'prettier' },
+                javascriptreact = { 'prettier' },
+                typescriptreact = { 'prettier' },
+                vue = { 'prettier' },
+                css = { 'prettier' },
+                html = { 'prettier' },
+                json = { 'prettier' },
+                yaml = { 'yamlfmt' },
+                markdown = { 'prettier' },
+                xml = { 'xmlformater' },
+                lua = { 'stylua' },
+                bash = { 'shfmt' },
+                sh = { 'shfmt' },
+                zsh = { 'shfmt' },
+                cs = { 'csharpier' },
             },
 
             shfmt = {
-                options = { "-i", "2", "-ci" },
+                options = { '-i', '2', '-ci' },
             },
 
             prettier = {
                 inherit = false,
-                command = "prettierd",
+                command = 'prettierd',
                 args = function()
-                    local config_path = vim.fn.findfile(".prettierrc", ".;")
-                        or vim.fn.findfile(".prettierrc.json", ".;")
-                        or vim.fn.findfile(".prettierrc.js", ".;")
-                        or vim.fn.findfile(".prettierrc.yaml", ".;")
-                        or vim.fn.findfile(".prettierrc.yml", ".;")
+                    local config_path = vim.fn.findfile('.prettierrc', '.;')
+                        or vim.fn.findfile('.prettierrc.json', '.;')
+                        or vim.fn.findfile('.prettierrc.js', '.;')
+                        or vim.fn.findfile('.prettierrc.yaml', '.;')
+                        or vim.fn.findfile('.prettierrc.yml', '.;')
 
-                    if config_path == nil then
-                        config_path = vim.fn.expand "~/.config/nvim/.prettierrc.json"
-                    end
+                    if config_path == nil then config_path = vim.fn.expand '~/.config/nvim/.prettierrc.json' end
                     print(config_path)
                     return {
-                        "--config",
+                        '--config',
                         config_path,
-                        "--config",
-                        "--stdin-filepath",
+                        '--config',
+                        '--stdin-filepath',
                         vim.api.nvim_buf_get_name(0),
                     }
                 end,
@@ -54,12 +52,12 @@ return {
             },
 
             stylua = {
-                command = "stylua",
+                command = 'stylua',
                 args = {
-                    "--search-parent-directories",
-                    "--stdin-filepath",
-                    "%:p",
-                    "-",
+                    '--search-parent-directories',
+                    '--stdin-filepath',
+                    '%:p',
+                    '-',
                 },
             },
 
@@ -71,8 +69,8 @@ return {
         }
 
         vim.keymap.set(
-            { "n", "v" },
-            "<leader>f",
+            { 'n', 'v' },
+            '<leader>f',
             function()
                 conform.format {
                     lsp_fallback = true,
@@ -80,7 +78,7 @@ return {
                     timeout_ms = 1500,
                 }
             end,
-            { desc = "Format file or range (in visual mode)" }
+            { desc = 'Format file or range (in visual mode)' }
         )
     end,
 }

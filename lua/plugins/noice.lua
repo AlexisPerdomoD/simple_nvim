@@ -32,14 +32,18 @@ return {
                 format = {
                     cmdline = { pattern = '^:', icon = '', lang = 'vim', title = 'PODER' },
                     search_down = {
-                        kind = 'search',
+                        name = 'search down',
+                        -- view = '',
+                        -- kind = 'search',
                         pattern = '^/',
                         icon = '  ',
                         lang = 'regex',
                         title = ' Search Down ',
                     },
                     search_up = {
-                        kind = 'search',
+                        name = 'search up',
+                        --  view = '',
+                        -- kind = 'search',
                         pattern = '^%?',
                         icon = '  ',
                         lang = 'regex',
@@ -47,13 +51,23 @@ return {
                     },
                     filter = { pattern = '^:%s*!', icon = '  ', lang = 'bash', title = 'Filter' },
                     lua = {
+                        name = 'lua',
+                        -- view = '',
+                        -- kind = 'lua',
                         pattern = { '^:%s*lua%s+', '^:%s*lua%s*=%s*', '^:%s*=%s*' },
                         icon = '  ',
                         lang = 'lua',
                         title = ' Lua ',
                     },
-                    help = { pattern = '^:%s*he?l?p?%s+', icon = ' ', title = ' Help ' },
-                    input = {}, -- Used by input()
+                    help = {
+                        name = 'help',
+                        -- view = '',
+                        -- kind = 'help',
+                        pattern = '^:%s*he?l?p?%s+',
+                        icon = ' ',
+                        title = ' Help ',
+                    },
+                    -- input = {}, -- Used by input()
                 },
             },
             messages = {
@@ -71,7 +85,7 @@ return {
                 backend = 'cmp', -- backend to use to show regular cmdline completions
                 ---@type NoicePopupmenuItemKind|false
                 -- Icons for completion item kinds (see defaults at noice.config.icons.kinds)
-                kind_icons = {}, -- set to `false` to disable icons
+                -- kind_icons = {}, -- set to `false` to disable icons
             },
             -- default options for require('noice').redirect
             -- see the section on Command Redirection
@@ -87,6 +101,7 @@ return {
                     -- options for the message history that you get with `:Noice`
                     view = 'split',
                     opts = { enter = true, format = 'details' },
+                    filter_opts = {},
                     filter = {
                         any = {
                             { event = 'notify' },
