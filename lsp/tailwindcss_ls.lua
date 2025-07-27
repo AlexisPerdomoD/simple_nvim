@@ -50,30 +50,26 @@ return {
         "typescriptreact",
         "vue",
         "svelte",
-        "templ"
+        "templ",
     },
     before_init = function(_, config)
-        if not config.settings then
-            config.settings = {}
-        end
-        if not config.settings.editor then
-            config.settings.editor = {}
-        end
+        if not config.settings then config.settings = {} end
+        if not config.settings.editor then config.settings.editor = {} end
         if not config.settings.editor.tabSize then
             config.settings.editor.tabSize = vim.lsp.util.get_effective_tabstop()
         end
     end,
     root_markers = {
-        'tailwind.config.js',
-        'tailwind.config.cjs',
-        'tailwind.config.mjs',
-        'tailwind.config.ts',
-        'postcss.config.js',
-        'postcss.config.cjs',
-        'postcss.config.mjs',
-        'postcss.config.ts',
-        'package.json',
-        '.git'
+        "tailwind.config.js",
+        "tailwind.config.cjs",
+        "tailwind.config.mjs",
+        "tailwind.config.ts",
+        "postcss.config.js",
+        "postcss.config.cjs",
+        "postcss.config.mjs",
+        "postcss.config.ts",
+        "package.json",
+        ".git",
     },
     settings = {
         tailwindCSS = {
@@ -82,7 +78,7 @@ return {
                 eelixir = "html-eex",
                 eruby = "erb",
                 htmlangular = "html",
-                templ = "html"
+                templ = "html",
             },
             lint = {
                 cssConflict = "warning",
@@ -91,15 +87,9 @@ return {
                 invalidScreen = "error",
                 invalidTailwindDirective = "error",
                 invalidVariant = "error",
-                recommendedVariantOrder = "warning"
+                recommendedVariantOrder = "warning",
             },
-            validate = true
-        }
-    }
-
-
-
-
-
-
+            validate = true,
+        },
+    },
 }

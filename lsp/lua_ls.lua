@@ -1,51 +1,60 @@
 ---@type vim.lsp.Config
 return {
-    cmd = { "lua-language-server" },
+    cmd = { 'lua-language-server' },
     on_init = function(client)
-        if client.workspace_folders then
-            local path = client.workspace_folders[1].name
-            if
-                path ~= vim.fn.stdpath("config")
-                and (
-                    vim.uv.fs_stat(path .. "/.luarc.json")
-                    or vim.uv.fs_stat(path .. "/.luarc.jsonc")
-                )
-            then
-                return
-            end
-        end
+        -- if client.workspace_folders then
+        --     local path = client.workspace_folders[1].name
+        --     if
+        --         path ~= vim.fn.stdpath("config")
+        --         and (
+        --             vim.uv.fs_stat(path .. "/.luarc.json")
+        --             or vim.uv.fs_stat(path .. "/.luarc.jsonc")
+        --         )
+        --     then
+        --         return
+        --     end
+        --     -- Opcional: extender biblioteca con lazy.nvim si no usas `.luarc.json`
+        --     local library = {
+        --         require("lazy.core.config").options.root,
+        --     }
+        --
+        --     for _, lib in ipairs(library) do
+        --         table.insert(client.config.settings.Lua.workspace.library, lib)
+        --     end
+        -- end
     end,
-    filetypes = { "lua" },
+    filetypes = { 'lua' },
     root_markers = {
-        ".luarc.json",
-        ".luarc.jsonc",
-        ".luacheckrc",
-        ".stylua.toml",
-        "stylua.toml",
-        "selene.toml",
-        "selene.yml",
-        ".git",
+        '.luarc.json',
+        '.luarc.jsonc',
+        '.luacheckrc',
+        '.stylua.toml',
+        'stylua.toml',
+        'selene.toml',
+        'selene.yml',
+        '.git',
     },
     settings = {
         Lua = {
             runtime = {
-                version = "LuaJIT",
+                version = 'LuaJIT',
                 path = {
-                    "lua/?.lua",
-                    "lua/?/init.lua",
+                    'lua/?.lua',
+                    'lua/?/init.lua',
                 },
             },
 
             diagnostic = {
-                globals = { "vim" },
+                globals = { 'vim' },
             },
             telemetry = { enable = false },
             workspace = {
                 checkThirdParty = false,
                 library = {
                     vim.env.VIMRUNTIME,
-                    "{$3rd}/luv/library",
-                    "{$3rd}/vim/library",
+                    require('lazy.core.config').options.root,
+                    '${3rd}/luv/library',
+                    '${3rd}/vim/library',
                 },
                 -- maxPreload = 2000,
                 -- preLoadFileSize = 1000,
