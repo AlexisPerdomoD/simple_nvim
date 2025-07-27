@@ -1,28 +1,51 @@
 ---@type vim.lsp.Config
 return {
     cmd = { 'lua-language-server' },
+
     on_init = function(client)
-        -- if client.workspace_folders then
-        --     local path = client.workspace_folders[1].name
-        --     if
-        --         path ~= vim.fn.stdpath("config")
-        --         and (
-        --             vim.uv.fs_stat(path .. "/.luarc.json")
-        --             or vim.uv.fs_stat(path .. "/.luarc.jsonc")
-        --         )
-        --     then
-        --         return
-        --     end
-        --     -- Opcional: extender biblioteca con lazy.nvim si no usas `.luarc.json`
-        --     local library = {
-        --         require("lazy.core.config").options.root,
-        --     }
-        --
-        --     for _, lib in ipairs(library) do
-        --         table.insert(client.config.settings.Lua.workspace.library, lib)
-        --     end
-        -- end
+        if client.workspace_folders then
+            local path = client.workspace_folders[1].name
+            if
+                path ~= vim.fn.stdpath 'config'
+                and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc'))
+            then
+                return
+            end
+        end
+
+        client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+            runtime = {
+                -- Tell the language server which version of Lua you're using (most
+                -- likely LuaJIT in the case of Neovim)
+                version = 'LuaJIT',
+                -- Tell the language server how to find Lua modules same way as Neovim
+                -- (see `:h lua-module-load`)
+                path = {
+                    'lua/?.lua',
+                    'lua/?/init.lua',
+                },
+            },
+            -- Make the server aware of Neovim runtime files
+            workspace = {
+                checkThirdParty = false,
+                library = {
+                    vim.env.VIMRUNTIME,
+                    -- Depending on the usage, you might want to add additional paths
+                    -- here.
+                    '${3rd}/luv/library',
+                    '${3rd}/busted/library',
+                },
+                -- Or pull in all of 'runtimepath'.
+                -- NOTE: this is a lot slower and will cause issues when working on
+                -- your own configuration.
+                -- See https://github.com/neovim/nvim-lspconfig/issues/3189
+                -- library = {
+                --   vim.api.nvim_get_runtime_file('', true),
+                -- }
+            },
+        })
     end,
+
     filetypes = { 'lua' },
     root_markers = {
         '.luarc.json',
@@ -36,29 +59,30 @@ return {
     },
     settings = {
         Lua = {
-            runtime = {
-                version = 'LuaJIT',
-                path = {
-                    'lua/?.lua',
-                    'lua/?/init.lua',
-                },
-            },
 
-            diagnostic = {
-                globals = { 'vim' },
-            },
-            telemetry = { enable = false },
-            workspace = {
-                checkThirdParty = false,
-                library = {
-                    vim.env.VIMRUNTIME,
-                    require('lazy.core.config').options.root,
-                    '${3rd}/luv/library',
-                    '${3rd}/vim/library',
-                },
-                -- maxPreload = 2000,
-                -- preLoadFileSize = 1000,
-            },
+            --     runtime = {
+            --         version = 'LuaJIT',
+            --         path = {
+            --             'lua/?.lua',
+            --             'lua/?/init.lua',
+            --         },
+            --     },
+            --
+            --     diagnostic = {
+            --         globals = { 'vim' },
+            --     },
+            --     telemetry = { enable = false },
+            --     workspace = {
+            --         checkThirdParty = false,
+            --         library = {
+            --             vim.env.VIMRUNTIME,
+            --             require('lazy.core.config').options.root,
+            --             '${3rd}/luv/library',
+            --             '${3rd}/vim/library',
+            --         },
+            --         -- maxPreload = 2000,
+            --         -- preLoadFileSize = 1000,
+            --     },
         },
     },
 }
