@@ -3,7 +3,8 @@ return {
     {
         "zbirenbaum/copilot.lua",
         cmd = "Copilot",
-        event = "InsertEnter",
+        -- event = "InsertEnter",
+        lazy = true,
         config = function()
             require("copilot").setup({
                 suggestion = { enabled = false },
@@ -22,6 +23,7 @@ return {
     {
         "yetone/avante.nvim",
         event = "VeryLazy",
+        lazy = true,
         version = false, -- Never set this value to "*"! Never!
         opts = {
             provider = "copilot",

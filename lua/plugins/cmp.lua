@@ -16,11 +16,11 @@ return {
     event = "VeryLazy",
     config = function()
         ---@diagnostic disable: missing-fields
-        local cmp = require("cmp")
-        local luasnip = require("luasnip")
-        local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+        local cmp = require "cmp"
+        local luasnip = require "luasnip"
+        local cmp_autopairs = require "nvim-autopairs.completion.cmp"
 
-        cmp.setup({
+        cmp.setup {
             sources = {
                 {
                     name = "nvim_lsp",
@@ -91,18 +91,18 @@ return {
                 ["<C-j>"] = cmp.mapping.select_next_item(),
                 ["<C-Up>"] = cmp.mapping.select_prev_item(),
                 ["<C-k>"] = cmp.mapping.select_prev_item(),
-                ["<C-Right>"] = cmp.mapping.confirm({
+                ["<C-Right>"] = cmp.mapping.confirm {
                     behavior = cmp.ConfirmBehavior.Insert,
                     select = true,
-                }),
-                ["<C-l>"] = cmp.mapping.confirm({
+                },
+                ["<C-l>"] = cmp.mapping.confirm {
                     behavior = cmp.ConfirmBehavior.Insert,
                     select = true,
-                }),
+                },
                 ["<c-space>"] = cmp.mapping.complete(),
             },
-        })
-        cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
+        }
+        cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done { map_char = { tex = "" } })
 
         -- Set configuration for specific filetype.
         cmp.setup.filetype("gitcommit", {

@@ -1,9 +1,9 @@
 return {
     "supermaven-inc/supermaven-nvim",
-    enabled = false,
+    lazy = true,
     config = function()
-        local sm = require("supermaven-nvim")
-        sm.setup({
+        local sm = require "supermaven-nvim"
+        sm.setup {
             keymaps = {
                 accept_suggestion = "<C-a>",
                 clear_suggestion = "<C-]>",
@@ -20,9 +20,9 @@ return {
             condition = function()
                 return false -- condition to check for starting supermaven, `true` means to start supermaven when the condition is true.
             end,
-        })
-        vim.cmd("SupermavenStop")
-        vim.cmd("SupermavenStart")
+        }
+        vim.cmd "SupermavenStop"
+        vim.cmd "SupermavenStart"
     end,
 }
 --
