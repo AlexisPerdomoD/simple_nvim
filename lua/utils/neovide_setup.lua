@@ -2,7 +2,6 @@
 function AdjustTransparency(delta) vim.g.neovide_opacity = math.min(1.0, math.max(0.1, vim.g.neovide_opacity + delta)) end
 return function()
     vim.g.neovide_cursor_vfx_mode = 'railgun'
-    --  vim.g.neovide_floating_corner_radius = 1
     -- vim.o.guifont = "Mononoki Nerd Font Mono:h11"
     -- vim.o.guifont = "Mononoki Nerd Font:h11"
     -- vim.o.guifont = "SpaceMono Nerd Font:h10"
@@ -14,7 +13,7 @@ return function()
     vim.g.neovide_refresh_rate_idle = 15
     vim.g.neovide_opacity = 1
     vim.g.transparency = 1
-    vim.opt.linespace = 0
+    vim.opt.linespace = 2
     vim.g.neovide_floating_corner_radius = 0.5
     vim.api.nvim_set_keymap('n', '<sc-v>', 'l"+P', { noremap = true })
     vim.api.nvim_set_keymap('c', '<sc-v>', '<C-o>l<C-o>"+<C-o>P<C-o>l', { noremap = true })
