@@ -1,74 +1,74 @@
 return {
-    "folke/noice.nvim",
-    event = "VeryLazy",
+    'folke/noice.nvim',
+    event = 'VeryLazy',
     dependencies = {
-        "MunifTanjim/nui.nvim",
-        "nvim-treesitter/nvim-treesitter",
-        "hrsh7th/nvim-cmp",
-        "rcarriga/nvim-notify",
+        'MunifTanjim/nui.nvim',
+        'nvim-treesitter/nvim-treesitter',
+        'hrsh7th/nvim-cmp',
+        'rcarriga/nvim-notify',
     },
     config = function()
         local rounded_border_style = {
-            top_left = "╭",
-            top = "─",
-            top_right = "╮",
-            left = "│",
-            right = "│",
-            bottom_left = "╰",
-            bottom = "─",
-            bottom_right = "╯",
+            top_left = '╭',
+            top = '─',
+            top_right = '╮',
+            left = '│',
+            right = '│',
+            bottom_left = '╰',
+            bottom = '─',
+            bottom_right = '╯',
         }
-        require("noice").setup({
+        require('noice').setup {
             cmdline = {
 
                 enabled = true, -- enables the Noice cmdline UI
-                view = "cmdline_popup", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
+                view = 'cmdline_popup', -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
                 spell = false,
                 views = {
-                    ["^z="] = "cmdline",
+                    ['^z='] = 'cmdline',
                 },
                 opts = {}, -- global options for the cmdline. See section on views
                 ---@type table<string, CmdlineFormat>
                 format = {
-                    cmdline = { pattern = "^:", icon = "", lang = "vim", title = "PODER" },
+                    cmdline = { pattern = '^:', icon = '', lang = 'vim', title = 'PODER' },
                     search_down = {
-                        kind = "search",
-                        pattern = "^/",
-                        icon = "  ",
-                        lang = "regex",
-                        title = " Search Down ",
+                        kind = 'search',
+                        pattern = '^/',
+                        icon = '  ',
+                        lang = 'regex',
+                        title = ' Search Down ',
                     },
                     search_up = {
-                        kind = "search",
-                        pattern = "^%?",
-                        icon = "  ",
-                        lang = "regex",
-                        title = " Search Up ",
+                        kind = 'search',
+                        pattern = '^%?',
+                        icon = '  ',
+                        lang = 'regex',
+                        title = ' Search Up ',
                     },
-                    filter = { pattern = "^:%s*!", icon = "  ", lang = "bash", title = "Filter" },
+                    filter = { pattern = '^:%s*!', icon = '  ', lang = 'bash', title = 'Filter' },
                     lua = {
-                        pattern = { "^:%s*lua%s+", "^:%s*lua%s*=%s*", "^:%s*=%s*" },
-                        icon = "  ",
-                        lang = "lua",
-                        title = " Lua ",
+                        pattern = { '^:%s*lua%s+', '^:%s*lua%s*=%s*', '^:%s*=%s*' },
+                        icon = '  ',
+                        lang = 'lua',
+                        title = ' Lua ',
                     },
-                    help = { pattern = "^:%s*he?l?p?%s+", icon = " ", title = " Help " },
+                    help = { pattern = '^:%s*he?l?p?%s+', icon = ' ', title = ' Help ' },
                     input = {}, -- Used by input()
                 },
             },
             messages = {
                 enabled = true, -- enables the Noice messages UI
-                view = "mini", -- default view for messages
-                view_error = "notify", -- view for errors
-                view_warn = "notify", -- view for warnings
-                view_history = "messages", -- view for :messages
+                view = 'mini', -- default view for messages
+                view_error = 'notify', -- view for errors
+                view_warn = 'notify', -- view for warnings
+                view_history = 'messages', -- view for :messages
                 -- view_search = false,
-                view_search = "virtualtext", -- view for search count messages. Set to `false` to disable
+                view_search = 'virtualtext', -- view for search count messages. Set to `false` to disable
             },
             popupmenu = {
                 enabled = false, -- enables the Noice popupmenu UI
                 ---@type 'nui'|'cmp'
-                backend = "cmp", -- backend to use to show regular cmdline completions
+                backend = 'cmp', -- backend to use to show regular cmdline completions
                 ---@type NoicePopupmenuItemKind|false
                 -- Icons for completion item kinds (see defaults at noice.config.icons.kinds)
                 kind_icons = {}, -- set to `false` to disable icons
@@ -77,37 +77,37 @@ return {
             -- see the section on Command Redirection
             ---@type NoiceRouteConfig
             redirect = {
-                view = "popup",
-                filter = { event = "msg_show" },
+                view = 'popup',
+                filter = { event = 'msg_show' },
             },
             -- You can add any custom commands below that will be available with `:Noice command`
             ---@type table<string, NoiceCommand>
             commands = {
                 history = {
                     -- options for the message history that you get with `:Noice`
-                    view = "split",
-                    opts = { enter = true, format = "details" },
+                    view = 'split',
+                    opts = { enter = true, format = 'details' },
                     filter = {
                         any = {
-                            { event = "notify" },
+                            { event = 'notify' },
                             { error = true },
                             { warning = true },
-                            { event = "msg_show", kind = { "" } },
-                            { event = "lsp", kind = "message" },
+                            { event = 'msg_show', kind = { '' } },
+                            { event = 'lsp', kind = 'message' },
                         },
                     },
                 },
                 -- :Noice last
                 last = {
-                    view = "mini",
-                    opts = { enter = true, format = "details" },
+                    view = 'mini',
+                    opts = { enter = true, format = 'details' },
                     filter = {
                         any = {
-                            { event = "notify" },
+                            { event = 'notify' },
                             { error = true },
                             { warning = true },
-                            { event = "msg_show", kind = { "" } },
-                            { event = "lsp", kind = "message" },
+                            { event = 'msg_show', kind = { '' } },
+                            { event = 'lsp', kind = 'message' },
                         },
                     },
                     filter_opts = { count = 1 },
@@ -115,31 +115,31 @@ return {
                 -- :Noice errors
                 errors = {
                     -- options for the message history that you get with `:Noice`
-                    view = "mini",
-                    opts = { enter = true, format = "details" },
+                    view = 'mini',
+                    opts = { enter = true, format = 'details' },
                     filter = { error = true },
                     filter_opts = { reverse = true },
                 },
             },
             notify = {
                 enabled = true,
-                view = "mini",
-                background_colour = "#000000",
+                view = 'mini',
+                background_colour = '#000000',
             },
             lsp = {
                 progress = {
                     enabled = true,
                     --- @type NoiceFormat|string
-                    format = "lsp_progress",
+                    format = 'lsp_progress',
                     --- @type NoiceFormat|string
-                    format_done = "lsp_progress_done",
+                    format_done = 'lsp_progress_done',
                     throttle = 1000 / 30, -- frequency to update lsp progress message
-                    view = "mini",
+                    view = 'mini',
                 },
                 override = {
-                    ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-                    ["vim.lsp.util.stylize_markdown"] = true,
-                    ["cmp.entry.get_documentation"] = true,
+                    ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
+                    ['vim.lsp.util.stylize_markdown'] = true,
+                    ['cmp.entry.get_documentation'] = true,
                 },
                 hover = {
                     enabled = true,
@@ -162,34 +162,34 @@ return {
                 message = {
                     -- Messages shown by lsp servers
                     enabled = true,
-                    view = "mini",
+                    view = 'mini',
                     opts = {},
                 },
                 -- defaults for hover and signature help
                 documentation = {
-                    view = "hover",
+                    view = 'hover',
                     ---@type NoiceViewOptions
                     opts = {
-                        lang = "markdown",
+                        lang = 'markdown',
                         replace = true,
-                        render = "plain",
-                        format = { "{message}" },
-                        win_options = { concealcursor = "n", conceallevel = 3 },
+                        render = 'plain',
+                        format = { '{message}' },
+                        win_options = { concealcursor = 'n', conceallevel = 3 },
                     },
                 },
             },
             markdown = {
                 hover = {
-                    ["|(%S-)|"] = vim.cmd.help, -- vim help links
-                    ["%[.-%]%((%S-)%)"] = require("noice.util").open, -- markdown links
+                    ['|(%S-)|'] = vim.cmd.help, -- vim help links
+                    ['%[.-%]%((%S-)%)'] = require('noice.util').open, -- markdown links
                 },
                 highlights = {
-                    ["|%S-|"] = "@text.reference",
-                    ["@%S+"] = "@parameter",
-                    ["^%s*(Parameters:)"] = "@text.title",
-                    ["^%s*(Return:)"] = "@text.title",
-                    ["^%s*(See also:)"] = "@text.title",
-                    ["{%S-}"] = "@parameter",
+                    ['|%S-|'] = '@text.reference',
+                    ['@%S+'] = '@parameter',
+                    ['^%s*(Parameters:)'] = '@text.title',
+                    ['^%s*(Return:)'] = '@text.title',
+                    ['^%s*(See also:)'] = '@text.title',
+                    ['{%S-}'] = '@parameter',
                 },
             },
             health = {
@@ -199,7 +199,7 @@ return {
                 -- noice tries to move out of the way of existing floating windows.
                 enabled = true, -- you can disable this behaviour here
                 -- add any filetypes here, that shouldn't trigger smart move.
-                excluded_filetypes = { "cmp_menu", "cmp_docs", "notify" },
+                excluded_filetypes = { 'cmp_menu', 'cmp_docs', 'notify' },
             },
             ---@type NoicePresets
             presets = {
@@ -214,12 +214,12 @@ return {
             views = {
                 cmdline_popup = {
                     position = {
-                        row = "50%",
-                        col = "50%",
+                        row = '50%',
+                        col = '50%',
                     },
                     size = {
-                        width = "30%",
-                        height = "auto",
+                        width = '30%',
+                        height = 'auto',
                     },
                     border = {
                         style = rounded_border_style,
@@ -229,8 +229,8 @@ return {
                     filter_options = {},
                     win_options = {
                         winhighlight = {
-                            Normal = "TelescopePromptNormal",
-                            FloatBorder = "DiagnosticInfo",
+                            Normal = 'TelescopePromptNormal',
+                            FloatBorder = 'DiagnosticInfo',
                         },
                     },
                 },
@@ -244,8 +244,8 @@ return {
                 },
                 mini = {
                     position = {
-                        row = "5%",
-                        col = "50%",
+                        row = '5%',
+                        col = '50%',
                     },
                     win_options = {
                         winblend = 0,
@@ -257,10 +257,10 @@ return {
                     },
                 },
                 popupmenu = {
-                    relative = "editor",
+                    relative = 'editor',
                     position = {
                         row = 4,
-                        col = "50%",
+                        col = '50%',
                     },
                     size = {
                         width = 60,
@@ -272,8 +272,8 @@ return {
                     },
                     win_options = {
                         winhighlight = {
-                            Normal = "TelescopePromptNormal",
-                            FloatBorder = "DiagnosticInfo",
+                            Normal = 'TelescopePromptNormal',
+                            FloatBorder = 'DiagnosticInfo',
                         },
                     },
                 },
@@ -282,21 +282,21 @@ return {
             routes = {
                 {
                     filter = {
-                        event = "msg_show",
-                        kind = "search_count",
-                        find = "written",
+                        event = 'msg_show',
+                        kind = 'search_count',
+                        find = 'written',
                     },
                     opts = { skip = true },
                 },
                 {
                     filter = {
-                        event = "notify",
-                        kind = "info",
-                        find = "No information available",
+                        event = 'notify',
+                        kind = 'info',
+                        find = 'No information available',
                     },
                     opts = { skip = true },
                 },
             },
-        })
+        }
     end,
 }
