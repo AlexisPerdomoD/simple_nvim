@@ -6,7 +6,7 @@ return function()
     -- vim.o.guifont = "Mononoki Nerd Font Mono:h11"
     -- vim.o.guifont = "Mononoki Nerd Font:h11"
     -- vim.o.guifont = "SpaceMono Nerd Font:h10"
-    vim.o.guifont = 'MartianMono Nerd Font:h10'
+    vim.o.guifont = 'MartianMono Nerd Font:h9'
     vim.g.neovide_text_gamma = 1
     vim.g.neovide_text_contrast = 1
     vim.g.neovide_input_use_logo = true
@@ -14,6 +14,8 @@ return function()
     vim.g.neovide_refresh_rate_idle = 15
     vim.g.neovide_opacity = 1
     vim.g.transparency = 1
+    vim.opt.linespace = 0
+    vim.g.neovide_floating_corner_radius = 0.5
     vim.api.nvim_set_keymap('n', '<sc-v>', 'l"+P', { noremap = true })
     vim.api.nvim_set_keymap('c', '<sc-v>', '<C-o>l<C-o>"+<C-o>P<C-o>l', { noremap = true })
     vim.api.nvim_set_keymap('t', '<sc-v>', '<Cd\\><C-n>"+Pi', { noremap = true })

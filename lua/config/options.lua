@@ -2,7 +2,7 @@
 -- Mostrar números de línea
 vim.opt.number = true
 -- Habilitar el uso del mouse
-vim.opt.mouse = "a"
+vim.opt.mouse = 'a'
 -- Mostrar comandos en la barra de estado
 vim.opt.showcmd = true
 
@@ -18,8 +18,8 @@ vim.opt.autoindent = true
 vim.opt.linebreak = true
 
 -- Habilitar sintaxis y configuración de archivos
-vim.cmd "syntax on"
-vim.cmd "filetype plugin indent on"
+vim.cmd 'syntax on'
+vim.cmd 'filetype plugin indent on'
 -- Configuración de indentación predeterminada para todos los archivos
 vim.opt.tabstop = 4 -- Número de espacios por tabulación
 vim.opt.shiftwidth = 4 -- Número de espacios para indentación
@@ -35,7 +35,7 @@ vim.opt.laststatus = 3
 vim.opt.termguicolors = true
 
 -- Configuración de la altura del comando
-vim.opt.cmdheight = 0
+vim.o.cmdheight = 0
 
 -- Configuraciones de búsqueda
 vim.opt.hlsearch = true -- Resaltar coincidencias
@@ -43,11 +43,11 @@ vim.opt.incsearch = true -- Búsqueda incremental
 vim.opt.ignorecase = true -- Búsquedas insensibles a mayúsculas...
 vim.opt.smartcase = true -- ... A menos que contengan al menos una letra mayúscula
 -- Configuración del porta papeles (pendiente de verificación)
-vim.opt.clipboard = "unnamedplus"
+vim.opt.clipboard = 'unnamedplus'
 
 -- Configuración de plegado
-vim.o.foldmethod = "expr"
-vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+vim.o.foldmethod = 'expr'
+vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.o.foldlevel = 99
 vim.o.foldenable = true
 -- Usa el portapapeles del sistema para copiar y pegar
@@ -55,10 +55,10 @@ vim.o.foldenable = true
 vim.opt.spell = false
 ---@diagnostic disable-next-line: missing-fields
 vim.opt.spelllang = {
-    "en",
-    "es",
+    'en',
+    'es',
 }
-vim.o.signcolumn = "yes"
+vim.o.signcolumn = 'yes'
 
 -- warnings disabled
 vim.g.loaded_node_provider = 0
