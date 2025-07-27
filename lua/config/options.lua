@@ -18,9 +18,8 @@ vim.opt.autoindent = true
 vim.opt.linebreak = true
 
 -- Habilitar sintaxis y configuración de archivos
-vim.cmd("syntax on")
-vim.cmd("filetype plugin indent on")
-
+vim.cmd "syntax on"
+vim.cmd "filetype plugin indent on"
 -- Configuración de indentación predeterminada para todos los archivos
 vim.opt.tabstop = 4 -- Número de espacios por tabulación
 vim.opt.shiftwidth = 4 -- Número de espacios para indentación
@@ -30,7 +29,7 @@ vim.opt.expandtab = true -- Utilizar espacios en lugar de tabulaciones
 vim.opt.showmode = false
 
 -- Siempre mostrar la barra de estado
-vim.opt.laststatus = 2
+vim.opt.laststatus = 3
 
 -- Habilitar colores verdaderos en la terminal
 vim.opt.termguicolors = true
@@ -54,7 +53,11 @@ vim.o.foldenable = true
 -- Usa el portapapeles del sistema para copiar y pegar
 ---@diagnostic disable: undefined-field
 vim.opt.spell = false
-vim.opt.spelllang = { "en", "es" }
+---@diagnostic disable-next-line: missing-fields
+vim.opt.spelllang = {
+    "en",
+    "es",
+}
 vim.o.signcolumn = "yes"
 
 -- warnings disabled
@@ -62,4 +65,3 @@ vim.g.loaded_node_provider = 0
 vim.g.loaded_python3_provider = 0
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_perl_provider = 0
-vim.g.loaded_lua_provider = 0
