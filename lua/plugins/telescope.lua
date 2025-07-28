@@ -156,7 +156,7 @@ return {
             desc = 'Telescope keymaps',
         },
         {
-            '<space>SS',
+            '<space>LG',
             function()
                 require('telescope.builtin').grep_string {
                     use_regex = true,
@@ -166,7 +166,7 @@ return {
             desc = 'Telescope grep string',
         },
         {
-            '<space>ss',
+            '<space>lg',
             function() require('telescope.builtin').live_grep() end,
             desc = 'Telescope live_grep',
         },

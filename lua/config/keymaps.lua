@@ -53,13 +53,13 @@ map('i', '<C-k>', '<Up>', opts)
 -- map("n", "<Down>", "gj", { noremap = true })
 -- map("n", "<Up>", "gk", { noremap = true })
 -- Insert mode mappings
-map('i', '(', '()<Left>', opts)
-map('i', '{', '{}<Left>', opts)
-map('i', '[', '[]<Left>', opts)
+-- map('i', '(', '()<Left>', opts)
+-- map('i', '{', '{}<Left>', opts)
+-- map('i', '[', '[]<Left>', opts)
 -- map('i', '<', '<><Left>', opts)  -- Uncomment this line if needed
-map('i', "'", "''<Left>", opts)
-map('i', '"', '""<Left>', opts)
-map('i', '`', '``<Left>', opts)
+-- map('i', "'", "''<Left>", opts)
+-- map('i', '"', '""<Left>', opts)
+-- map('i', '`', '``<Left>', opts)
 
 -- Paste shortcuts
 map('n', '<C-c>', '"*y', opts)
