@@ -25,7 +25,6 @@ return {
         vim.cmd 'SupermavenStart'
     end,
 }
---
 -- :SupermavenStart    start supermaven-nvim
 -- :SupermavenStop     stop supermaven-nvim
 -- :SupermavenRestart  restart supermaven-nvim

@@ -12,9 +12,9 @@ return {
     ---@module "auto-session"
     ---@type AutoSession.Config
     opts = {
-        allowed_dirs = {
-            '~/work/*',
-        },
+        -- allowed_dirs = {
+        --     '~/work/*',
+        -- },
         -- The following are already the default values, no need to provide them if these are already the settings you want.
         session_lens = {
             mappings = {

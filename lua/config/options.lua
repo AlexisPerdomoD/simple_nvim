@@ -59,7 +59,8 @@ vim.opt.spelllang = {
     'es',
 }
 vim.o.signcolumn = 'yes'
-
+-- chequear
+vim.o.swapfile = false
 -- warnings disabled
 vim.g.loaded_node_provider = 0
 vim.g.loaded_python3_provider = 0
