@@ -41,7 +41,7 @@ return {
             never_draw_over_target = true,
             hide_target_hack = true,
             gamma = 1,
-            time_interval = 12, -- milliseconds
+            time_interval = 10, -- milliseconds
 
             -- Smear cursor when switching buffers or windows.
             smear_between_buffers = true,
@@ -55,7 +55,7 @@ return {
 
             -- Set to `true` if your font supports legacy computing symbols (block unicode symbols).
             -- Smears will blend better on all backgrounds.
-            legacy_computing_symbols_support = false,
+            -- legacy_computing_symbols_support = false,
 
             -- Smear cursor in insert mode.
             -- See also `vertical_bar_cursor_insert_mode` and `distance_stop_animating_vertical_bar`.
