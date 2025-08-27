@@ -1,4 +1,9 @@
 return {
+    -- add mapping navigation support
+    {
+        'christoomey/vim-tmux-navigator',
+    },
+
     -- adds support to lua into nvim
     {
         'folke/lazydev.nvim',
