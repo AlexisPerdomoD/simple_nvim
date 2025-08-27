@@ -16,7 +16,6 @@ local ensure_lazy = function()
     ---@diagnostic disable-next-line: undefined-field
     vim.opt.rtp:prepend(install_path)
 end
-
 ensure_lazy()
 require 'config'
 require('lazy').setup 'plugins'
