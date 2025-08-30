@@ -36,6 +36,7 @@ return {
     -- This add animates the cursor
     {
         enabled = vim.g.neovide == nil,
+        lazy = true,
         'sphamba/smear-cursor.nvim',
         opts = {
             cursor_color = '#ff8800',
@@ -46,7 +47,7 @@ return {
             never_draw_over_target = true,
             hide_target_hack = true,
             gamma = 1,
-            time_interval = 10, -- milliseconds
+            time_interval = 12, -- milliseconds
 
             -- Smear cursor when switching buffers or windows.
             smear_between_buffers = true,
@@ -56,7 +57,7 @@ return {
             smear_between_neighbor_lines = true,
 
             -- Draw the smear in buffer space instead of screen space when scrolling
-            scroll_buffer_space = true,
+            scroll_buffer_space = false,
 
             -- Set to `true` if your font supports legacy computing symbols (block unicode symbols).
             -- Smears will blend better on all backgrounds.
@@ -64,7 +65,7 @@ return {
 
             -- Smear cursor in insert mode.
             -- See also `vertical_bar_cursor_insert_mode` and `distance_stop_animating_vertical_bar`.
-            smear_insert_mode = true,
+            smear_insert_mode = false,
         },
     },
 }
