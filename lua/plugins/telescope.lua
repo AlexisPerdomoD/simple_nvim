@@ -38,7 +38,8 @@ end
 
 return {
     'nvim-telescope/telescope.nvim',
-    event = 'VeryLazy',
+    -- event = 'VeryLazy',
+    lazy = true,
     dependencies = {
         'nvim-lua/plenary.nvim',
         'nvim-telescope/telescope-file-browser.nvim',
@@ -101,30 +102,6 @@ return {
                 }
             end,
         },
-        -- {
-        --     "<space>wd",
-        --     function()
-        --         require("telescope").extensions.file_browser.file_browser(
-        --             {
-        --                 path = "~/work",
-        --                 select_buffer = true,
-        --             }
-        --
-        --             --     {
-        --             --     prompt_title = "Work directory",
-        --             --     cwd = "~/work",
-        --             --     attach_mappings = function(_, map)
-        --             --         map("i", "<c-y>", function(prompt_bufnr)
-        --             --             local dir = action_state.get_current_line()
-        --             --             actions.close(prompt_bufnr)
-        --             --             vim.cmd(string.format("tcd ~/work/", dir))
-        --             --         end)
-        --             --         return true
-        --             --     end,
-        --             -- }
-        --         )
-        --     end,
-        -- },
         {
             '<space>ff',
             function() require('telescope.builtin').find_files() end,

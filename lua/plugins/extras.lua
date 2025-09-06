@@ -8,6 +8,8 @@ return {
     {
         'folke/lazydev.nvim',
         ft = 'lua', -- only load on lua files
+        lazy = true,
+        -- event = 'VeryLazy',
         opts = {
             library = {
                 -- See the configuration section for more details
@@ -20,7 +22,8 @@ return {
     -- adds support to close tags in html
     {
         'windwp/nvim-ts-autotag',
-        event = 'VeryLazy',
+        -- event = 'VeryLazy',
+        lazy = true,
         config = function()
             --- @diagnostic disable-next-line
             require('nvim-ts-autotag').setup {

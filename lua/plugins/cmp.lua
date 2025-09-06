@@ -8,11 +8,12 @@ return {
         'hrsh7th/cmp-git',
         'L3MON4D3/LuaSnip',
         'saadparwaiz1/cmp_luasnip',
-        'davidmh/cmp-nerdfonts',
+        -- 'davidmh/cmp-nerdfonts',
         'windwp/nvim-autopairs',
         --devi icons
         'ryanoasis/vim-devicons',
     },
+
     event = 'VeryLazy',
     config = function()
         ---@diagnostic disable: missing-fields
@@ -24,9 +25,9 @@ return {
             sources = {
                 {
                     name = 'nvim_lsp',
-                    max_item_count = 30,
+                    max_item_count = 10,
                 },
-                { name = 'nerdfonts' },
+                -- { name = 'nerdfonts' },
                 { name = 'path' },
                 { name = 'luasnip' },
                 { name = 'buffer' },
