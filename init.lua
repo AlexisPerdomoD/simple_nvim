@@ -33,4 +33,4 @@ vim.o.guicursor = table.concat({
     'sm:block-blinkwait175-blinkon150-blinkoff150', -- Parpadeo especial para modo de sustitución
 }, ',')
 
-require 'utils.cmp_border_setuper'()
+-- require 'utils.cmp_border_setuper'()

@@ -1,12 +1,12 @@
 ---@param disable_bg_color boolean
 ---@param disable_float_bg_color boolean
 local function bg_setuper(disable_bg_color, disable_float_bg_color)
-    if disable_bg_color then vim.cmd([[hi Normal guibg=NONE]]) end
+    if disable_bg_color then vim.cmd [[hi Normal guibg=NONE]] end
     if disable_float_bg_color then
-        vim.cmd([[
+        vim.cmd [[
             hi FloatBorder guibg=NONE
             hi NormalFloat guibg=NONE
-        ]])
+        ]]
     end
     return nil
 end
@@ -18,8 +18,9 @@ local function toggle_bg()
     bg_setuper(Bg_transparent, Bg_transparent)
 end
 
-return {
-    bg_setuper = bg_setuper,
-    toggle_bg = toggle_bg,
-    Bg_transparent = Bg_transparent,
-}
+local M = {}
+M.bg_setuper = bg_setuper
+M.toggle_bg = toggle_bg
+M.Bg_transparent = Bg_transparent
+
+return M

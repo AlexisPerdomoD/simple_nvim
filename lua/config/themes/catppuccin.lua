@@ -3,9 +3,10 @@ return {
     -- event = 'VeryLazy',
     -- priority = 1000,
     lazy = true,
-    name = "catppuccin",
+    name = 'catppuccin',
     config = function()
-        require("catppuccin").setup({
+        require('catppuccin').setup {
+            float = { solid = true, transparent = true },
             -- flavour = "auto", -- latte, frappe, macchiato, mocha
             -- background = { -- :h background
             --     light = "latte",
@@ -48,7 +49,7 @@ return {
                 notify = false,
                 mini = {
                     enabled = true,
-                    indentscope_color = "",
+                    indentscope_color = '',
                 },
                 -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
             },
@@ -58,26 +59,25 @@ return {
             native_lsp = {
                 enabled = true,
                 virtual_text = {
-                    errors = { "italic" },
-                    hints = { "italic" },
-                    warnings = { "italic" },
-                    information = { "italic" },
-                    ok = { "italic" },
+                    errors = { 'italic' },
+                    hints = { 'italic' },
+                    warnings = { 'italic' },
+                    information = { 'italic' },
+                    ok = { 'italic' },
                 },
                 underlines = {
-                    errors = { "underline" },
-                    hints = { "underline" },
-                    warnings = { "underline" },
-                    information = { "underline" },
-                    ok = { "underline" },
+                    errors = { 'underline' },
+                    hints = { 'underline' },
+                    warnings = { 'underline' },
+                    information = { 'underline' },
+                    ok = { 'underline' },
                 },
                 inlay_hints = {
                     background = true,
                 },
             },
-            treesitter = true
-        })
+            treesitter = true,
+        }
         require('utils.bg_color_setuper').bg_setuper(false, true)
     end,
-
 }
