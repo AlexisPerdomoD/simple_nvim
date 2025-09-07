@@ -25,11 +25,16 @@ return {
                     'lua/?/init.lua',
                 },
             },
+
+            diagnostics = {
+                globals = { 'vim' }, -- 👈 necesario para que te autocomplete vim
+            },
             -- Make the server aware of Neovim runtime files
             workspace = {
                 checkThirdParty = false,
                 library = {
                     vim.env.VIMRUNTIME,
+                    require('lazy.core.config').options.root, -- 👈 plugins lazy.nvim,
                     -- Depending on the usage, you might want to add additional paths
                     -- here.
                     '${3rd}/luv/library',
