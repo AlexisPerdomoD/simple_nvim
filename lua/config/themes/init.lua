@@ -1,5 +1,5 @@
 return {
-    require 'config.themes.one-dark',
+    require 'config.themes.onedark',
     require 'config.themes.catppuccin',
     require 'config.themes.tokyodark',
     require 'config.themes.dracula',
