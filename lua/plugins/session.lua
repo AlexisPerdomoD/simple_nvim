@@ -1,6 +1,6 @@
 return {
     'rmagatti/auto-session',
-    lazy = false,
+    event = 'VeryLazy',
     keys = {
         -- Will use Telescope if installed or a vim.ui.select picker otherwise
         { '<space>s', '<cmd>AutoSession search<CR>', desc = 'Session search' },
@@ -52,7 +52,7 @@ return {
             },
 
             -- Telescope only: If load_on_setup is false, make sure you use `:SessionSearch` to open the picker as it will initialize everything first
-            load_on_setup = true,
+            load_on_setup = false,
         },
     },
 }
