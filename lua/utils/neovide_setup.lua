@@ -1,6 +1,8 @@
 --- @param delta number
 function AdjustTransparency(delta) vim.g.neovide_opacity = math.min(1.0, math.max(0.1, vim.g.neovide_opacity + delta)) end
-return function()
+local M = {}
+
+M.neovide_setup = function()
     vim.g.neovide_cursor_vfx_mode = 'railgun'
     -- vim.o.guifont = "Mononoki Nerd Font Mono:h11"
     -- vim.o.guifont = "Mononoki Nerd Font:h11"
@@ -39,3 +41,5 @@ return function()
     vim.keymap.set('n', '<C-)>', function() AdjustTransparency(0.05) end)
     vim.keymap.set('n', '<C-(>', function() AdjustTransparency(-0.05) end)
 end
+
+return M
