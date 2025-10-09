@@ -25,7 +25,7 @@ return {
             sources = {
                 {
                     name = 'nvim_lsp',
-                    max_item_count = 10,
+                    max_item_count = 25,
                 },
                 -- { name = 'nerdfonts' },
                 { name = 'path' },

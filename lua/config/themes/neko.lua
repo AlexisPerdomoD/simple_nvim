@@ -4,10 +4,10 @@ T.priority = 1000
 
 T.config = function(opts)
     local bg_utils = require 'utils.bg_color_setuper'
-    local theme = require 'nekonight'
     opts = opts or {}
-
-    theme.setup(opts)
+    opts.style = 'fire-obsidian'
+    require('nekonight').setup(opts)
+    vim.cmd 'colorscheme nekonight-dracula-at-night'
     bg_utils.bg_setuper(false, true)
 end
 
