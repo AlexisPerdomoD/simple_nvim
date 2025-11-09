@@ -7,7 +7,7 @@ T.config = function(opts)
     opts = opts or {}
     opts.style = 'fire-obsidian'
     require('nekonight').setup(opts)
-    vim.cmd 'colorscheme nekonight-dracula-at-night'
+    vim.cmd 'colorscheme nekonight-synthwave'
     bg_utils.bg_setuper(false, true)
 end
 
