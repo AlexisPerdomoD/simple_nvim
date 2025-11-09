@@ -6,13 +6,13 @@ return {
         'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
         'MunifTanjim/nui.nvim',
         'lewis6991/gitsigns.nvim',
-        -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+        -- '3rd/image.nvim', -- Optional image support in preview window: See `# Preview Mode` for more information
     },
     priority = 900,
     config = function()
         require('neo-tree').setup {
             window = {
-                position = 'left',
+                position = 'float',
 
                 --width = 30,
                 mapping_options = {

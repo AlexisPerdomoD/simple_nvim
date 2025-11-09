@@ -16,15 +16,14 @@ return {
     },
 
     -- Integración con nvim-cmp (opcional)
-    {
-        'zbirenbaum/copilot-cmp',
-        after = { 'copilot.lua' },
-        config = function() require('copilot_cmp').setup() end,
-    },
+    -- {
+    --     'zbirenbaum/copilot-cmp',
+    --     after = { 'copilot.lua' },
+    --     config = function() require('copilot_cmp').setup() end,
+    -- },
 
     {
         'yetone/avante.nvim',
-        event = 'VeryLazy',
         lazy = true,
         version = false, -- Never set this value to "*"! Never!
         opts = {

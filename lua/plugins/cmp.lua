@@ -8,7 +8,7 @@ return {
         'hrsh7th/cmp-git',
         'L3MON4D3/LuaSnip',
         'saadparwaiz1/cmp_luasnip',
-        -- 'davidmh/cmp-nerdfonts',
+        'davidmh/cmp-nerdfonts',
         'windwp/nvim-autopairs',
         --devi icons
         'ryanoasis/vim-devicons',
@@ -23,14 +23,11 @@ return {
 
         cmp.setup {
             sources = {
-                {
-                    name = 'nvim_lsp',
-                    max_item_count = 25,
-                },
-                -- { name = 'nerdfonts' },
-                { name = 'path' },
-                { name = 'luasnip' },
-                { name = 'buffer' },
+                { name = 'nvim_lsp', max_item_count = 25 },
+                { name = 'luasnip', max_item_count = 5 },
+                { name = 'path', max_item_count = 3 },
+                { name = 'buffer', max_item_count = 5 },
+                { name = 'nerdfonts', max_item_count = 3 },
             },
             -- performance = {
             --     trigger_debounce_time = 500,
@@ -103,32 +100,26 @@ return {
                 ['<c-space>'] = cmp.mapping.complete(),
             },
         }
+
         cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done { map_char = { tex = '' } })
 
         -- Set configuration for specific filetype.
         cmp.setup.filetype('gitcommit', {
-            sources = cmp.config.sources({
-                { name = 'git' }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
-            }, {
-                { name = 'buffer' },
-            }),
+            sources = cmp.config.sources {
+                { { name = 'buffer' } },
+                -- { name = 'git' }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
+            },
         })
 
         -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
         cmp.setup.cmdline({ '/', '?' }, {
             mapping = cmp.mapping.preset.cmdline(),
-            sources = {
-                { name = 'buffer' },
-            },
+            sources = { { name = 'buffer' } },
         })
         -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
         cmp.setup.cmdline(':', {
             mapping = cmp.mapping.preset.cmdline(),
-            sources = cmp.config.sources({
-                { name = 'path' },
-            }, {
-                { name = 'cmdline' },
-            }),
+            sources = cmp.config.sources({ { name = 'path' } }, { { name = 'cmdline' } }),
         })
     end,
 }
