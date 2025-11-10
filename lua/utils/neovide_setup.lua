@@ -2,18 +2,16 @@
 function AdjustTransparency(delta) vim.g.neovide_opacity = math.min(1.0, math.max(0.1, vim.g.neovide_opacity + delta)) end
 local M = {}
 
-M.neovide_setup = function()
+M.init = function()
     vim.g.neovide_cursor_vfx_mode = 'railgun'
-    -- vim.o.guifont = "Mononoki Nerd Font Mono:h11"
-    -- vim.o.guifont = "Mononoki Nerd Font:h11"
-    -- vim.o.guifont = "SpaceMono Nerd Font:h10"
-    vim.o.guifont = 'MartianMono Nerd Font:h9'
+    vim.o.guifont = 'FantasqueSansM Nerd Font:h9'
+    -- vim.o.guifont = 'MartianMono Nerd Font:h8'
     vim.g.neovide_text_gamma = 1
     vim.g.neovide_text_contrast = 1
     vim.g.neovide_input_use_logo = true
-    vim.g.neovide_refresh_rate = 165
+    -- vim.g.neovide_refresh_rate = 165
     vim.g.neovide_refresh_rate_idle = 15
-    vim.g.neovide_opacity = 1
+    vim.g.neovide_opacity = 0.8
     vim.g.transparency = 1
     vim.opt.linespace = 2
     vim.g.neovide_floating_corner_radius = 0.5
