@@ -9,7 +9,11 @@ function M.custom.change_neovide_font()
 
     local fonts = {}
     -- LEE LAS FUENTES INSTALADAS
-    for font in io.popen('fc-list : family | sort | uniq'):lines() do
+    -- for font in io.popen('fc-list : family | sort | uniq'):lines() do
+    --     table.insert(fonts, font)
+    -- end
+    -- NUEVA VERSION MAS LIMPIA
+    for font in io.popen("fc-list : family | cut -d',' -f1 | sort -u"):lines() do
         table.insert(fonts, font)
     end
 
@@ -31,7 +35,7 @@ function M.custom.change_neovide_font()
                     actions.close(buff)
                     local selection = action_state.get_selected_entry()
                     -- CAMBIA LA FUENTE DE NEOVIDE DINÁMICAMENTE
-                    vim.o.guifont = selection[1] .. ':h10'
+                    vim.o.guifont = selection[1] .. ':h8'
                     print('Neovide font set to: ' .. selection[1])
                 end)
                 return true
