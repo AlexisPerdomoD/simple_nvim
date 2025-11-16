@@ -3,7 +3,7 @@ return {
     'numToStr/Comment.nvim',
     lazy = true,
     config = function()
-        require 'comment'.setup {
+        require('comment').setup {
             ---Add a space b/w comment and the line
             padding = true,
             ---Whether the cursor should stay at its position
@@ -13,7 +13,7 @@ return {
             ---LHS of toggle mappings in NORMAL mode
             toggler = {
                 ---Line-comment toggle keymap
-                line = "cl",
+                line = 'cl',
                 ---Block-comment toggle keymap
                 block = 'gbc',
             },
@@ -46,5 +46,5 @@ return {
             ---Function to call after (un)comment
             post_hook = nil,
         }
-    end
+    end,
 }

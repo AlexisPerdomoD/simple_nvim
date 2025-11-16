@@ -23,6 +23,7 @@ M.opts = {
         '~/work',
         '~/.config/*',
     },
+    auto_save = true,
     -- The following are already the default values, no need to provide them if these are already the settings you want.
     session_lens = {
         mappings = {

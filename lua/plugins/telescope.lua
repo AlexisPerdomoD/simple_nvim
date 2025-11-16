@@ -111,11 +111,10 @@ M.opts = {
 M.config = function(opts)
     local telescope = require 'telescope'
     local builtin = require 'telescope.builtin'
-
+    local mapper = vim.keymap
     opts = opts or {}
     telescope.setup(opts)
 
-    local mapper = vim.keymap
     -- BUILTIN
     mapper.set('n', '<space>cb', builtin.buffers, { desc = 'Telescope buffers' })
     mapper.set('n', '<space>gs', builtin.git_status, { desc = 'Telescope Git status' })

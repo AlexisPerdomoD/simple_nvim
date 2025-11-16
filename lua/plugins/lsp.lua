@@ -18,7 +18,7 @@ return {
                 diagnostic_only_current = false,
             },
             lightbulb = { enable = true, virtual_text = false },
-            symbol_in_winbar = { enable = false, hide_keyword = true },
+            symbol_in_winbar = { enable = true, hide_keyword = true },
         }
 
         require('lspsaga').setup(saga_config)
