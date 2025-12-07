@@ -259,8 +259,8 @@ return {
                 },
                 mini = {
                     position = {
-                        row = '5%',
-                        col = '50%',
+                        row = '95%',
+                        col = '99%',
                     },
                     win_options = {
                         winblend = 0,
