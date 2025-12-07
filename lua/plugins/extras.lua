@@ -1,9 +1,8 @@
 return {
     -- add mapping navigation support
-    {
-        'christoomey/vim-tmux-navigator',
-    },
-
+    { 'christoomey/vim-tmux-navigator' },
+    -- adds better java support for jdtls
+    { 'mfussenegger/nvim-jdtls', ft = 'java' },
     -- adds support to lua into nvim
     {
         'folke/lazydev.nvim',
@@ -21,8 +20,7 @@ return {
     -- adds support to close tags in html
     {
         'windwp/nvim-ts-autotag',
-        -- event = 'VeryLazy',
-        lazy = true,
+        ft = { 'html', 'jsx', 'tsx' },
         config = function()
             --- @diagnostic disable-next-line
             require('nvim-ts-autotag').setup {
