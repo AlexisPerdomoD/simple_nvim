@@ -24,21 +24,28 @@ M.config = function()
         },
         sections = {
             lualine_a = { 'mode' },
-            lualine_b = { 'branch', 'diff', 'diagnostics' },
-            lualine_c = { 'filename' },
+            lualine_b = { 'branch', 'diff' },
+            lualine_c = {},
             lualine_x = { 'encoding', 'fileformat', 'filetype' },
             lualine_y = { 'progress' },
-            lualine_z = { 'location' },
+            lualine_z = { 'lsp_status', 'location' },
         },
-        inactive_sections = {
-            lualine_a = {},
-            lualine_b = {},
-            lualine_c = { 'filename' },
-            lualine_x = { 'location' },
-            lualine_y = {},
-            lualine_z = {},
+
+        inactive_sections = {},
+        tabline = {
+            lualine_a = { { 'filename', path = 1, shorting_target = 120 } },
+            lualine_b = { 'diagnostics' },
+            lualine_c = {},
+            lualine_x = {},
+            lualine_y = { 'tabs' },
+            lualine_z = {
+                {
+                    'datetime',
+                    -- options: default, us, uk, iso, or your own format string ("%H:%M", etc..)
+                    style = 'default',
+                },
+            },
         },
-        tabline = {},
         winbar = {},
         inactive_winbar = {},
         extensions = {},
