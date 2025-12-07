@@ -1,6 +1,6 @@
 local T = { 'projekt0n/github-nvim-theme' }
 T.name = 'github-theme'
-T.lazy = false
+-- T.lazy = true
 T.priority = 1000
 T.config = function(opts)
     opts = opts

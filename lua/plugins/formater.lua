@@ -16,7 +16,7 @@ return {
                 json = { 'prettier' },
                 yaml = { 'yamlfmt' },
                 markdown = { 'prettier' },
-                xml = { 'xmlformater' },
+                xml = { 'xmlformat' },
                 lua = { 'stylua' },
                 bash = { 'shfmt' },
                 sh = { 'shfmt' },
@@ -39,7 +39,6 @@ return {
                         or vim.fn.findfile('.prettierrc.yml', '.;')
 
                     if config_path == nil then config_path = vim.fn.expand '~/.config/nvim/.prettierrc.json' end
-                    print(config_path)
                     return {
                         '--config',
                         config_path,
@@ -64,7 +63,7 @@ return {
             format_after_save = {
                 lsp_fallback = true,
                 async = true,
-                timeout_ms = 1500,
+                timeout_ms = 500,
             },
         }
 
@@ -75,7 +74,7 @@ return {
                 conform.format {
                     lsp_fallback = true,
                     async = true,
-                    timeout_ms = 1500,
+                    timeout_ms = 500,
                 }
             end,
             { desc = 'Format file or range (in visual mode)' }

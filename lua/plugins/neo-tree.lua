@@ -11,12 +11,22 @@ return {
     priority = 900,
     config = function()
         require('neo-tree').setup {
+            enable_refresh_on_write = false,
+            buffers = {
+                window = {
+                    width = 30,
+                    auto_expand_width = true,
+                },
+            },
+            add_blank_line_at_top = true,
             window = {
+                width = 60,
                 position = 'float',
-
+                auto_expand_width = true,
                 --width = 30,
                 mapping_options = {
                     noremap = true,
+
                     -- nowait = true,
                 },
             },
@@ -25,9 +35,13 @@ return {
             enable_git_status = true,
             enable_diagnostics = true,
             default_component_configs = {
+                container = {
+                    enable_character_fade = true,
+                    right_padding = 0,
+                },
                 indent = {
-                    indent_size = 2,
-                    padding = 1, -- extra padding on left hand side
+                    indent_size = 1,
+                    padding = 0, -- extra padding on left hand side
                     with_markers = false,
                     with_expanders = nil, -- if nil and file nesting is enabled, will enable expanders
                     expander_collapsed = '',
@@ -45,6 +59,8 @@ return {
                     -- then these will never be used.
                     default = '*',
                     highlight = 'NeoTreeFileIcon',
+                    use_filtered_colors = false,
+                    provider = nil,
                 },
                 modified = {
                     symbol = '[+]',
@@ -116,7 +132,7 @@ return {
         }
 
         vim.keymap.set('n', '<space>.', '<cmd>Neotree toggle  current<cr>')
-        vim.keymap.set('n', '<space>d', '<cmd>Neotree toggle  left<cr>')
+        vim.keymap.set('n', '<space>d', '<cmd>Neotree toggle  right<cr>')
         vim.keymap.set('n', '.gs', '<cmd>Neotree float toggle git_status<cr>')
         vim.keymap.set('n', '<space>b', '<cmd>Neotree float  toggle buffers<cr>')
     end,
