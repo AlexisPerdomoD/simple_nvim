@@ -23,8 +23,8 @@ M.config = function()
             },
         },
         sections = {
-            lualine_a = { 'mode' },
-            lualine_b = { 'branch', 'diff' },
+            lualine_a = { 'branch' },
+            lualine_b = { 'diff' },
             lualine_c = {},
             lualine_x = { 'encoding', 'fileformat', 'filetype' },
             lualine_y = { 'progress' },
@@ -33,18 +33,18 @@ M.config = function()
 
         inactive_sections = {},
         tabline = {
-            lualine_a = { { 'filename', path = 1, shorting_target = 120 } },
-            lualine_b = { 'diagnostics' },
-            lualine_c = {},
+            lualine_a = { 'mode' },
+            lualine_b = { { 'filename', path = 1, shorting_target = 120 } },
+            lualine_c = { 'diagnostics' },
             lualine_x = {},
-            lualine_y = { 'tabs' },
-            lualine_z = {
+            lualine_y = {
                 {
                     'datetime',
                     -- options: default, us, uk, iso, or your own format string ("%H:%M", etc..)
                     style = 'default',
                 },
             },
+            lualine_z = { 'tabs' },
         },
         winbar = {},
         inactive_winbar = {},

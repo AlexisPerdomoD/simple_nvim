@@ -14,7 +14,6 @@ map('n', '<space>w', ':w<CR>', opts)
 map('n', '<space>q', ':q<CR>', opts)
 map('n', '<space>p', ':fold<CR>', silent_opts)
 -- directions
--- TIP: Disable arrow keys in normal mode
 map('n', '<left>', '<cmd>echo "Use h to move!!"<CR>', opts)
 map('n', '<right>', '<cmd>echo "Use l to move!!"<CR>', opts)
 map('n', '<Up>', '<cmd>echo "Use k to move!!"<CR>', opts)

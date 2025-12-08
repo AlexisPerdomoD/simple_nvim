@@ -29,7 +29,7 @@ vim.opt.expandtab = true -- Utilizar espacios en lugar de tabulaciones
 vim.opt.showmode = false
 
 -- Siempre mostrar la barra de estado
-vim.opt.laststatus = 3
+vim.opt.laststatus = 0
 
 -- Habilitar colores verdaderos en la terminal
 vim.opt.termguicolors = true
@@ -51,9 +51,7 @@ vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.o.foldlevel = 99
 vim.o.foldenable = true
 -- Usa el portapapeles del sistema para copiar y pegar
----@diagnostic disable: undefined-field
 vim.opt.spell = false
----@diagnostic disable-next-line: missing-fields
 vim.opt.spelllang = {
     'en',
     'es',
