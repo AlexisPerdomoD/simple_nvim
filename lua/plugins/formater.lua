@@ -38,7 +38,9 @@ return {
                         or vim.fn.findfile('.prettierrc.yaml', '.;')
                         or vim.fn.findfile('.prettierrc.yml', '.;')
 
-                    if config_path == nil then config_path = vim.fn.expand '~/.config/nvim/.prettierrc.json' end
+                    if config_path == nil then
+                        config_path = os.getenv 'HOME' .. '/.config/nvim/default_dev_config/.prettierrc.json'
+                    end
                     return {
                         '--config',
                         config_path,
