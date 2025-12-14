@@ -77,7 +77,7 @@ return {
                     timeout_ms = 500,
                 }
             end,
-            { desc = 'Format file or range (in visual mode)' }
+            { desc = 'Format= format file or range (in visual, normal mode)' }
         )
     end,
 }
