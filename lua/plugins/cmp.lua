@@ -20,7 +20,6 @@ return {
         local cmp = require 'cmp'
         local luasnip = require 'luasnip'
         local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
-
         cmp.setup {
             sources = {
                 { name = 'nvim_lsp', max_item_count = 25 },
@@ -65,7 +64,6 @@ return {
                         TypeParameter = ' ', -- Parámetro de tipo
                     }
                     vim_item.kind = KIND_ICONS[vim_item.kind] or vim_item.kind
-
                     return vim_item
                 end,
             },

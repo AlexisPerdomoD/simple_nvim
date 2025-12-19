@@ -2,13 +2,15 @@ return {
     'williamboman/mason.nvim',
     event = 'VeryLazy',
     config = function()
-        require('mason').setup()
+        local mason = require 'mason'
+        mason.setup {}
 
         local mason_registry = require 'mason-registry'
+
         local manual_ensure_installed = function(server_name)
             if not mason_registry.is_installed(server_name) then
                 mason_registry.get_package(server_name):install()
-                print('Installed ' .. server_name)
+                vim.notify('Installed ' .. server_name, vim.log.levels.INFO, { title = 'LSP Server Install' })
             end
         end
 

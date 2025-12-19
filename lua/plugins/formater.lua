@@ -61,12 +61,7 @@ return {
                     '-',
                 },
             },
-
-            format_after_save = {
-                lsp_fallback = true,
-                async = true,
-                timeout_ms = 500,
-            },
+            format_on_save = nil,
         }
 
         vim.keymap.set(
@@ -79,7 +74,18 @@ return {
                     timeout_ms = 500,
                 }
             end,
-            { desc = 'Format= format file or range (in visual, normal mode)' }
+            { desc = 'Format= format file or range (in visual, normal mode)', noremap = true }
         )
+
+        vim.keymap.set({ 'n', 'v' }, '<leader>s', function()
+            conform.format({
+                lsp_fallback = true,
+                async = true,
+                timeout_ms = 500,
+            }, function()
+                vim.cmd ':w'
+                vim.notify('Formateo correcto', vim.log.levels.INFO)
+            end)
+        end, { desc = 'Format= format file or range (in visual, normal mode) and saved', noremap = true })
     end,
 }

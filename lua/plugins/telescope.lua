@@ -86,7 +86,10 @@ function M.custom.colorscheme()
     builtin.colorscheme()
     vim.api.nvim_create_autocmd('ColorScheme', {
         once = true, -- solo una vez tras escoger el nuevo esquema
-        callback = function() bg_util.bg_setuper(false, true) end,
+        callback = function()
+            bg_util:clear_cache()
+            bg_util:bg_setuper(false, true)
+        end,
     })
 end
 
