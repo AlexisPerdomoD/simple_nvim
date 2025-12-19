@@ -9,7 +9,7 @@ T.config = function()
     }
 
     vim.cmd 'colorscheme dracula'
-    bg_utils.bg_setuper(false, true)
+    bg_utils:bg_setuper(false, true)
 end
 
 return T

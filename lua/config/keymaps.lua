@@ -5,10 +5,9 @@ vim.g.mapleader = '.'
 
 local map = vim.api.nvim_set_keymap
 -- Normal mode mappings
-map('n', '<leader>1', ':source ~/.config/nvim/init.lua<CR>', { noremap = true, desc = 'Reload config' })
+map('n', '<leader>1', ':source ~/.config/nvim/init.lua<CR>', { noremap = true, desc = 'Reload config', silent = true })
 map('v', '$', '$<Left>', { noremap = true, desc = 'Jump to end of line' })
 map('n', '<space>w', ':w<CR>', { noremap = true, desc = 'Save file' })
-map('n', '<leader>s', ':w<CR>', { silent = true, desc = 'Save file' })
 map('n', '<space>q', ':q<CR>', { noremap = true, desc = 'Quit file' })
 map('n', '<space>p', ':fold<CR>', { noremap = true, desc = 'Toggle fold' })
 -- directions
@@ -16,9 +15,10 @@ map('n', '<left>', '<cmd>echo "Use h to move!!"<CR>', { noremap = true, desc = '
 map('n', '<right>', '<cmd>echo "Use l to move!!"<CR>', { noremap = true, desc = 'Move right' })
 map('n', '<Up>', '<cmd>echo "Use k to move!!"<CR>', { noremap = true, desc = 'Move up' })
 map('n', '<Down>', '<cmd>echo "Use j to move!!"<CR>', { noremap = true, desc = 'Move down' })
-map('n', '<Tab>', ':tabnext<CR>', { noremap = true, desc = 'Next tab' })
-map('n', '<S-Tab>', ':tabprevious<CR>', { noremap = true, desc = 'Previous tab' })
-map('n', '<space><Tab>', ':tabnew<CR>', { noremap = true, desc = 'New tab' })
+
+map('n', '<Tab>', ':tabnext<CR>', { noremap = true, desc = 'Next tab', silent = true })
+map('n', '<S-Tab>', ':tabprevious<CR>', { noremap = true, desc = 'Previous tab', silent = true })
+map('n', '<space><Tab>', ':tabnew<CR>', { noremap = true, desc = 'New tab', silent = true })
 
 map('n', '<space><Left>', ':TmuxNavigateLeft<cr>', { silent = true, desc = 'Tmux left' })
 map('n', '<A-h>', ':TmuxNavigateLeft<cr>', { silent = true, desc = 'Tmux left' })
@@ -55,7 +55,12 @@ map('i', '<C-S>v', '"*p', { noremap = true, desc = 'Paste from system clipboard'
 map('n', '<C-c>v', '"*PP', { noremap = true, desc = 'Paste from system clipboard' })
 
 -- remmove background color
-vim.keymap.set('n', '<leader>t', color_bg.toggle_bg, { noremap = true, desc = 'Toggle background color' })
+vim.keymap.set(
+    'n',
+    '<leader>t',
+    function() color_bg:toggle_bg() end,
+    { noremap = true, desc = 'Toggle background color' }
+)
 
 -- Crear el mapeo para invocar el corrector personalizado
 vim.keymap.set(

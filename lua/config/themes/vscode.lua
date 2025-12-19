@@ -1,7 +1,7 @@
 local backgroundSetter = require 'utils.bg_color_setuper'
 local M = { 'Mofiqul/vscode.nvim' }
-M.lazy = true
--- M.priority = 1000
+M.lazy = false
+M.priority = 1000
 M.config = function()
     --  Lua:
     --  For dark theme (neovim's default)
@@ -15,7 +15,7 @@ M.config = function()
         -- style = 'light'
 
         -- Enable transparent background
-        transparent = true,
+        transparent = false,
 
         -- Enable italic comment
         italic_comments = true,
@@ -27,7 +27,7 @@ M.config = function()
         underline_links = true,
 
         -- Disable nvim-tree background color
-        disable_nvimtree_bg = true,
+        disable_nvimtree_bg = false,
 
         -- Apply theme colors to terminal
         terminal_colors = true,
@@ -49,7 +49,7 @@ M.config = function()
     -- load the theme without affecting devicon colors.
     vim.cmd.colorscheme 'vscode'
     vim.o.background = 'dark'
-    backgroundSetter.bg_setuper(false, true)
+    backgroundSetter:bg_setuper(false, true)
 end
 
 return M

@@ -79,7 +79,7 @@ T.config = function()
         treesitter = true,
     }
 
-    bg_color_setuper.bg_setuper(false, true)
+    bg_color_setuper:bg_setuper(false, true)
 end
 
 return T

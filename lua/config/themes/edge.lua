@@ -9,12 +9,11 @@ M.config = function()
     -- 0 no transparency
     -- 1 full transparency
     -- 2 components only transparency
-    vim.g.edge_transparent_background = 1
+    vim.g.edge_transparent_background = 2
     -- dim
     -- bright --default
     -- blend
     vim.g.edge_float_style = 'dim'
     vim.cmd 'colorscheme edge'
 end
-
 return M

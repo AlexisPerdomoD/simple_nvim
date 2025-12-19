@@ -19,7 +19,7 @@ T.config = function(opts)
 
     github_theme.setup(opts)
     vim.cmd 'colorscheme github_dark_default'
-    bg_utils.bg_setuper(false, true)
+    bg_utils:bg_setuper(false, true)
 end
 
 return T

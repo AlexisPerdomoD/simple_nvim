@@ -1,6 +1,6 @@
 local M = { 'slugbyte/lackluster.nvim' }
-M.lazy = false
-M.priority = 1000
+M.lazy = true
+-- M.priority = 1000
 M.custom_palette = {
     azure = '#37478a',
     cyan = '#22d3ee',
@@ -14,6 +14,7 @@ M.custom_palette = {
 
 M.config = function()
     local theme = require 'lackluster'
+    local backgroundSetter = require 'utils.bg_color_setuper'
     local palette = M.custom_palette
     palette.teal = theme.color.green
 
@@ -198,6 +199,7 @@ M.config = function()
     }
 
     vim.cmd.colorscheme 'lackluster'
+    backgroundSetter:bg_setuper(false, false)
 end
 
 return M
