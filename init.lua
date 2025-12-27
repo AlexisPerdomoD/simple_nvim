@@ -1,11 +1,12 @@
-require 'config'
-
 if vim.g.neovide then
     local neovide_setup = require 'utils.neovide_setup'
     neovide_setup:init()
 end
 
-vim.opt.lazyredraw = false
+require 'config'
+require 'config.lazy'
+
+vim.o.lazyredraw = false
 vim.o.cursorline = true
 vim.o.guicursor = table.concat({
     'n-v-c:block', -- Bloque completo en modos normal, visual y de comando
@@ -14,5 +15,3 @@ vim.o.guicursor = table.concat({
     'a:blinkon100', -- Parpadeo para todos los modos
     'sm:block-blinkwait175-blinkon150-blinkoff150', -- Parpadeo especial para modo de sustitución
 }, ',')
-
--- require 'utils.cmp_border_setuper'()
