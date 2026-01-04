@@ -1,21 +1,18 @@
-local M = { 'rmagatti/auto-session' }
+local M        = { 'rmagatti/auto-session' }
 M.dependencies = { 'nvim-telescope/telescope.nvim' }
 
-if vim.g.neovide ~= nil then
-    M.lazy = false
-else
-    M.event = 'VeryLazy'
-end
+M.lazy         = false
 
-M.keys = {
+M.keys         = {
     -- Will use Telescope if installed or a vim.ui.select picker otherwise
-    { '<space>s', '<cmd>AutoSession search<CR>', desc = 'Session search' },
-    { '<space>S', '<cmd>AutoSession save<CR>', desc = 'Save session' },
-    { '<space>ws', '<cmd>AutoSession toggle<CR>', desc = 'Toggle autosave' },
+    { '<space>s',  '<cmd>SessionSearch<CR>', desc = 'Session search' },
+    { '<space>S',  '<cmd>SessionSave<CR>',   desc = 'Save session' },
+    { '<space>ws', '<cmd>SessionToggle<CR>', desc = 'Toggle autosave' },
 }
+
 ---@module "auto-session"
 ---@type AutoSession.Config
-M.opts = {
+M.opts         = {
     -- allowed_dirs = {
     --     '~/work/*',
     -- },
@@ -23,6 +20,7 @@ M.opts = {
         '~/work',
         '~/.config/*',
     },
+    lazy_support = true,
     auto_save = true,
     -- The following are already the default values, no need to provide them if these are already the settings you want.
     session_lens = {
@@ -58,4 +56,7 @@ M.opts = {
         load_on_setup = true,
     },
 }
+
+
+
 return M

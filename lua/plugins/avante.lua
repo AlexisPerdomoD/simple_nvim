@@ -7,6 +7,7 @@ return {
         cmd = 'Copilot',
         -- event = "InsertEnter",
         lazy = true,
+        enabled = false,
         config = function()
             require('copilot').setup {
                 suggestion = { enabled = false },
@@ -32,10 +33,10 @@ return {
                 copilot = {
                     endpoint = 'https://api.githubcopilot.com',
                     model = 'claude-3.5-sonnet',
-                    proxy = nil, -- [protocol://]host[:port] Use this proxy
+                    proxy = nil,            -- [protocol://]host[:port] Use this proxy
                     allow_insecure = false, -- Allow insecure server connections
                     extra_request_body = {
-                        timeout = 30000, -- Timeout in milliseconds
+                        timeout = 30000,    -- Timeout in milliseconds
                         temperature = 0.8,
                         max_tokens = 20480,
                     },
@@ -99,19 +100,19 @@ return {
                     close_from_input = nil, -- e.g., { normal = "<Esc>", insert = "<C-d>" }
                 },
                 files = {
-                    add_current = '<space>ac', -- Add current buffer to selected files
+                    add_current = '<space>ac',     -- Add current buffer to selected files
                     add_all_buffers = '<space>aB', -- Add all buffer files to selected files
                 },
-                select_model = '<space>a?', -- Select model command
-                select_history = '<space>ah', -- Select history command
+                select_model = '<space>a?',        -- Select model command
+                select_history = '<space>ah',      -- Select history command
             },
             windows = {
                 ---@alias AvantePosition "right" | "left" | "top" | "bottom" | "smart"
                 position = 'left',
                 fillchars = 'eob: ',
-                wrap = true, -- similar to vim.o.wrap
-                width = 30, -- default % based on available width in vertical layout
-                height = 30, -- default % based on available height in horizontal layout
+                wrap = true,        -- similar to vim.o.wrap
+                width = 30,         -- default % based on available width in vertical layout
+                height = 30,        -- default % based on available height in horizontal layout
                 sidebar_header = {
                     enabled = true, -- true, false to enable/disable the header
                     align = 'left', -- left, center, right for title
@@ -126,9 +127,9 @@ return {
                     start_insert = true, -- Start insert mode when opening the edit window
                 },
                 ask = {
-                    floating = true, -- Open the 'AvanteAsk' prompt in a floating window
+                    floating = true,         -- Open the 'AvanteAsk' prompt in a floating window
                     border = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
-                    start_insert = false, -- Start insert mode when opening the ask window
+                    start_insert = false,    -- Start insert mode when opening the ask window
                     ---@alias AvanteInitialDiff "ours" | "theirs"
                     focus_on_apply = 'ours', -- which diff to focus after applying
                 },
@@ -148,7 +149,7 @@ return {
             --- @class AvanteRepoMapConfig
             repo_map = {
                 ignore_patterns = { '%.git', '%.worktree', '__pycache__', 'node_modules' }, -- ignore files matching these
-                negate_patterns = {}, -- negate ignore files matching these.
+                negate_patterns = {},                                                       -- negate ignore files matching these.
             },
             --- @class AvanteFileSelectorConfig
             file_selector = {
@@ -182,12 +183,12 @@ return {
             'nvim-lua/plenary.nvim',
             'MunifTanjim/nui.nvim',
             --- The below dependencies are optional,
-            'echasnovski/mini.pick', -- for file_selector provider mini.pick
+            'echasnovski/mini.pick',         -- for file_selector provider mini.pick
             'nvim-telescope/telescope.nvim', -- for file_selector provider telescope
-            'hrsh7th/nvim-cmp', -- autocompletion for avante commands and mentions
-            'ibhagwan/fzf-lua', -- for file_selector provider fzf
-            'nvim-tree/nvim-web-devicons', -- or echasnovski/mini.icons
-            'zbirenbaum/copilot.lua', -- for providers='copilot'
+            'hrsh7th/nvim-cmp',              -- autocompletion for avante commands and mentions
+            'ibhagwan/fzf-lua',              -- for file_selector provider fzf
+            'nvim-tree/nvim-web-devicons',   -- or echasnovski/mini.icons
+            'zbirenbaum/copilot.lua',        -- for providers='copilot'
             {
                 -- support for image pasting
                 'HakonHarnes/img-clip.nvim',

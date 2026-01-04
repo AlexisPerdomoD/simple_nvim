@@ -22,10 +22,10 @@ return {
         local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
         cmp.setup {
             sources = {
-                { name = 'nvim_lsp', max_item_count = 25 },
-                { name = 'luasnip', max_item_count = 5 },
-                { name = 'path', max_item_count = 3 },
-                { name = 'buffer', max_item_count = 5 },
+                { name = 'nvim_lsp',  max_item_count = 25 },
+                { name = 'luasnip',   max_item_count = 5 },
+                { name = 'path',      max_item_count = 3 },
+                { name = 'buffer',    max_item_count = 5 },
                 { name = 'nerdfonts', max_item_count = 3 },
             },
             -- performance = {
