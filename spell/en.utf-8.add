@@ -71,3 +71,4 @@ backend
 frontend
 UserEvent
 usecase
+cli
