@@ -1,10 +1,10 @@
 return {
-    --themes
+    -- themes
     require 'config.themes',
     -- add mapping navigation support
     { 'christoomey/vim-tmux-navigator' },
     -- adds better java support for jdtls
-    { 'mfussenegger/nvim-jdtls', ft = 'java' },
+    { 'mfussenegger/nvim-jdtls',       ft = 'java' },
     -- adds support to lua into nvim
     {
         'folke/lazydev.nvim',
@@ -28,8 +28,8 @@ return {
             require('nvim-ts-autotag').setup {
                 opts = {
                     -- Defaults
-                    enable_close = true, -- Auto close tags
-                    enable_rename = true, -- Auto rename pairs of tags
+                    enable_close = true,          -- Auto close tags
+                    enable_rename = true,         -- Auto rename pairs of tags
                     enable_close_on_slash = true, -- Auto close on trailing </
                 },
             }

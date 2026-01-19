@@ -11,29 +11,32 @@ return {
     priority = 900,
     config = function()
         require('neo-tree').setup {
-            enable_refresh_on_write = false,
+            auto_clean_after_session_restore = true,
+            enable_refresh_on_write = true,
+            add_blank_line_at_top = true,
+            close_if_last_window = true,
+            popup_border_style = 'rounded',
+            enable_git_status = true,
+            enable_diagnostics = true,
+
             buffers = {
                 window = {
                     width = 30,
                     auto_expand_width = true,
                 },
             },
-            add_blank_line_at_top = true,
+
             window = {
-                width = 60,
+                width = 30,
                 position = 'float',
                 auto_expand_width = true,
-                --width = 30,
                 mapping_options = {
                     noremap = true,
-
                     -- nowait = true,
                 },
             },
-            close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
-            popup_border_style = 'rounded',
-            enable_git_status = true,
-            enable_diagnostics = true,
+
+
             default_component_configs = {
                 container = {
                     enable_character_fade = true,
@@ -41,13 +44,14 @@ return {
                 },
                 indent = {
                     indent_size = 1,
-                    padding = 0, -- extra padding on left hand side
+                    padding = 0,          -- extra padding on left hand side
                     with_markers = false,
                     with_expanders = nil, -- if nil and file nesting is enabled, will enable expanders
                     expander_collapsed = '',
                     expander_expanded = '',
                     expander_highlight = 'NeoTreeExpander',
                 },
+
                 icon = {
                     folder_empty_open = '󰜌',
                     -- folder_closed = '',
@@ -62,15 +66,18 @@ return {
                     use_filtered_colors = false,
                     provider = nil,
                 },
+
                 modified = {
                     symbol = '[+]',
                     highlight = 'NeoTreeModified',
-                },
+                }
+                ,
                 name = {
                     trailing_slash = false,
                     use_git_status_colors = true,
                     highlight = 'NeoTreeFileName',
                 },
+
                 git_status = {
                     symbols = {
                         -- Change type
