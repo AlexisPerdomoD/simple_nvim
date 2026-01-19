@@ -1,5 +1,4 @@
 local T = { 'Mofiqul/dracula.nvim' }
-T.lazy = true
 T.config = function()
     local theme = require 'dracula'
     local bg_utils = require 'utils.bg_color_setuper'

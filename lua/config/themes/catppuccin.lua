@@ -1,5 +1,4 @@
 local T = { 'catppuccin/nvim' }
-T.lazy = true
 T.name = 'catppuccin'
 T.config = function()
     local catppuccin_theme = require 'catppuccin'

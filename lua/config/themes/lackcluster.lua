@@ -1,6 +1,4 @@
 local M = { 'slugbyte/lackluster.nvim' }
-M.lazy = true
--- M.priority = 1000
 M.custom_palette = {
     azure = '#37478a',
     cyan = '#22d3ee',

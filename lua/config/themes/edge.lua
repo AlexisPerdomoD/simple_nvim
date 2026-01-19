@@ -1,6 +1,4 @@
 local M = { 'sainnhe/edge' }
--- M.priority = 1000
-M.lazy = true
 M.config = function()
     -- vim.g.edge_style = 'default'
     vim.g.edge_style = 'neon'

@@ -1,7 +1,5 @@
 local backgroundSetter = require 'utils.bg_color_setuper'
 local M = { 'Mofiqul/vscode.nvim' }
-M.lazy = false
-M.priority = 1000
 M.config = function()
     --  Lua:
     --  For dark theme (neovim's default)
