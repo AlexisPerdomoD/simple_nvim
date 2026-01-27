@@ -40,6 +40,7 @@ return {
             -- 'p00f/nvim-ts-rainbow',
             --"nvim-treesitter/playground",
         },
+        lazy = false,
         build = ':TSUpdate',
         event = 'BufReadPost',
         main = 'nvim-treesitter.configs',
@@ -70,14 +71,6 @@ return {
                     },
                 },
             },
-
-            -- rainbow = {
-            --     enable = false,
-            --     extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
-            --     max_file_lines = nil, -- Do not enable for files with more than n lines, int
-            --     -- colors = {}, -- table of hex strings
-            --     -- termcolors = {} -- table of colour name strings
-            -- },
         },
     },
 }

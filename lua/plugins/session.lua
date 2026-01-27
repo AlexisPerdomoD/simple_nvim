@@ -5,9 +5,9 @@ M.lazy         = false
 
 M.keys         = {
     -- Will use Telescope if installed or a vim.ui.select picker otherwise
-    { '<space>s',  '<cmd>SessionSearch<CR>', desc = 'Session search' },
-    { '<space>S',  '<cmd>SessionSave<CR>',   desc = 'Save session' },
-    { '<space>ws', '<cmd>SessionToggle<CR>', desc = 'Toggle autosave' },
+    { '<space>s',  '<cmd>SessionSearch <CR>', desc = 'Session search' },
+    { '<space>S',  '<cmd>SessionSave<CR>',    desc = 'Save session' },
+    { '<space>ws', '<cmd>SessionToggle<CR>',  desc = 'Toggle autosave' },
 }
 
 ---@module "auto-session"
@@ -32,6 +32,10 @@ M.opts         = {
         },
 
         picker_opts = {
+            telescope = {
+
+
+            }
             -- For Telescope, you can set theme options here, see:
             -- https://github.com/nvim-telescope/telescope.nvim/blob/master/doc/telescope.txt#L112
             -- https://github.com/nvim-telescope/telescope.nvim/blob/master/lua/telescope/themes.lua
