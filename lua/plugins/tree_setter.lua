@@ -33,44 +33,62 @@ return {
         end,
     },
 
+    -- {
+    --     'nvim-treesitter/nvim-treesitter',
+    --     lazy = false,
+    --     build = ':TSUpdate',
+    --     -- opts = {
+    --     --     ensure_installed = {},
+    --     --     auto_install = true,
+    --     --     fold = {
+    --     --         enable = true,
+    --     --     },
+    --     --     highlight = {
+    --     --         enable = true,
+    --     --     },
+    --     --     indent = {
+    --     --         enable = true,
+    --     --     },
+    --     --     -- textobjects = {
+    --     --     --     enable = true,
+    --     --     --     select = {
+    --     --     --         enable = true,
+    --     --     --         lookahead = true,
+    --     --     --         keymaps = {
+    --     --     --             ['tf'] = '@function.outer',
+    --     --     --             ['taf'] = '@function.inner',
+    --     --     --             ['tc'] = '@conditional.outer',
+    --     --     --             ['tac'] = '@conditional.inner',
+    --     --     --             ['tl'] = '@loop.outer',
+    --     --     --             ['tal'] = '@loop.inner',
+    --     --     --         },
+    --     --     --     },
+    --     --     -- },
+    --     -- },
+    -- },
+    -- {
+    --     "nvim-treesitter/nvim-treesitter-textobjects",
+    --     dependencies = { 'nvim-treesitter/nvim-treesitter' }
+    -- }
+
+
     {
-        'nvim-treesitter/nvim-treesitter',
-        dependencies = {
-            'nvim-treesitter/nvim-treesitter-textobjects',
-            -- 'p00f/nvim-ts-rainbow',
-            --"nvim-treesitter/playground",
-        },
+        "nvim-treesitter/nvim-treesitter",
         lazy = false,
-        build = ':TSUpdate',
-        event = 'BufReadPost',
-        main = 'nvim-treesitter.configs',
-        opts = {
-            ensure_installed = {},
-            auto_install = true,
-            fold = {
-                enable = true,
-            },
-            highlight = {
-                enable = true,
-            },
-            indent = {
-                enable = true,
-            },
-            textobjects = {
-                enable = true,
-                select = {
-                    enable = true,
-                    lookahead = true,
-                    keymaps = {
-                        ['tf'] = '@function.outer',
-                        ['taf'] = '@function.inner',
-                        ['tc'] = '@conditional.outer',
-                        ['tac'] = '@conditional.inner',
-                        ['tl'] = '@loop.outer',
-                        ['tal'] = '@loop.inner',
-                    },
+        build = ":TSUpdate",
+    },
+
+    {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        lazy = false,
+        config = function()
+            require("nvim-treesitter.configs").setup({
+                highlight = { enable = true },
+                indent = { enable = true },
+                textobjects = {
+                    select = { enable = true },
                 },
-            },
-        },
+            })
+        end,
     },
 }
