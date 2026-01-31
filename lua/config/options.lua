@@ -47,7 +47,8 @@ vim.opt.clipboard = 'unnamedplus'
 
 -- Configuración de plegado
 vim.o.foldmethod = 'expr'
-vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
+-- vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.o.foldlevel = 99
 vim.o.foldenable = true
 -- Usa el portapapeles del sistema para copiar y pegar
