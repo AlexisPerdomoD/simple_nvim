@@ -5,6 +5,6 @@ return {
         css = true,
         javascript = true,
     },
-    filetypes = { "html", "templ" },
+    filetypes = { "html", "templ", "vue", "svelte", "typescriptreact", "javascriptreact" },
     root_markers = { "package.json", ".git" }
 }

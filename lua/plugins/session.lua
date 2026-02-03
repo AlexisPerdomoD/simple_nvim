@@ -21,8 +21,12 @@ M.opts         = {
         '~/.config/*',
     },
     lazy_support = true,
-    auto_restore = true,
+    auto_restore = false,
+    -- preserve_buffer_on_restore = function (bufnr)
+    --
+    -- end,
     auto_save = true,
+    lsp_stop_on_restore = false,
     -- The following are already the default values, no need to provide them if these are already the settings you want.
     session_lens = {
         mappings = {
@@ -59,6 +63,7 @@ M.opts         = {
         },
 
         load_on_setup = true,
+
     },
 }
 

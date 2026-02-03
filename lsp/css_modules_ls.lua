@@ -1,5 +1,5 @@
 return {
     cmd = { "cssmodules-language-server", "--stdio" },
-    filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+    filetypes = { "html", "vue", "css", "scss", "less", "svelte", "typescriptreact", "javascriptreact" },
     root_markers = { "package.json", ".git" },
 }

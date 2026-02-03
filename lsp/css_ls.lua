@@ -1,6 +1,6 @@
 return {
     cmd          = { "vscode-css-language-server", "--stdio" },
-    filetypes    = { "css", "scss", "less", "sass", },
+    filetypes    = { "html", "vue", "css", "scss", "less", "svelte", "typescriptreact", "javascriptreact" },
     init_options = { provideFormatter = true, },
     root_markers = { "package.json", ".git" },
     settings     = {

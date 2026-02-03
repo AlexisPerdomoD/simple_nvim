@@ -1,6 +1,6 @@
 return {
     cmd = { 'css-variables-language-server', '--stdio' },
-    filetypes = { 'css', 'scss', 'less' },
+    filetypes = { "html", "vue", "css", "scss", "less", "svelte", "typescriptreact", "javascriptreact" },
     root_markers = { 'package.json', '.git' },
     settings = {
         cssVariables = {
