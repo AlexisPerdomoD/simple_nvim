@@ -5,6 +5,7 @@ return {
         local conform = require 'conform'
 
         conform.setup {
+            format_after_save = false,
             formatters_by_ft = {
                 javascript = { 'prettier' },
                 typescript = { 'prettier' },
@@ -22,6 +23,7 @@ return {
                 sh = { 'shfmt' },
                 zsh = { 'shfmt' },
                 cs = { 'csharpier' },
+                python = { 'ruff_format' },
             },
 
             shfmt = {
@@ -69,7 +71,7 @@ return {
             '<leader>f',
             function()
                 conform.format {
-                    lsp_fallback = true,
+                    lsp_fallback = false,
                     async = true,
                     timeout_ms = 500,
                 }
@@ -79,11 +81,11 @@ return {
 
         vim.keymap.set({ 'n', 'v' }, '<leader>s', function()
             conform.format({
-                lsp_fallback = true,
-                async = true,
+                lsp_fallback = false,
+                async = false,
                 timeout_ms = 500,
             }, function()
-                vim.cmd ':w'
+                vim.cmd.write()
                 vim.notify('Formateo correcto', vim.log.levels.INFO)
             end)
         end, { desc = 'Format= format file or range (in visual, normal mode) and saved', noremap = true })

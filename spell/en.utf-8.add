@@ -72,3 +72,5 @@ frontend
 UserEvent
 usecase
 cli
+middlewares
+OpenAPI

@@ -10,7 +10,8 @@ return {
     },
     priority = 900,
     config = function()
-        require('neo-tree').setup {
+        local neo_tree = require 'neo-tree'
+        neo_tree.setup {
             auto_clean_after_session_restore = true,
             enable_refresh_on_write = true,
             add_blank_line_at_top = true,
@@ -18,6 +19,7 @@ return {
             popup_border_style = 'rounded',
             enable_git_status = true,
             enable_diagnostics = true,
+            enable_cursor_hijack = true,
 
             buffers = {
                 window = {
@@ -138,9 +140,9 @@ return {
             },
         }
 
-        vim.keymap.set('n', '<space>.', '<cmd>Neotree toggle  current<cr>')
-        vim.keymap.set('n', '<space>d', '<cmd>Neotree toggle  right<cr>')
-        vim.keymap.set('n', '.gs', '<cmd>Neotree float toggle git_status<cr>')
+        vim.keymap.set('n', '<space><leader>', '<cmd>Neotree toggle  current<cr>')
+        vim.keymap.set('n', '<space><space>', '<cmd>Neotree toggle  right<cr>')
+        vim.keymap.set('n', '<leader>gs', '<cmd>Neotree float toggle git_status<cr>')
         vim.keymap.set('n', '<space>b', '<cmd>Neotree float  toggle buffers<cr>')
     end,
 }
