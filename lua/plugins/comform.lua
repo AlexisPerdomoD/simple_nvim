@@ -24,6 +24,7 @@ return {
                 zsh = { 'shfmt' },
                 cs = { 'csharpier' },
                 python = { 'ruff_format' },
+                go = { 'gofumpt' },
             },
 
             shfmt = {
