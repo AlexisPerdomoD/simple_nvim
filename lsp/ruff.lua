@@ -43,7 +43,7 @@ return {
         ----------------------------------------------------------------
         -- Autofix Ruff on save
         ----------------------------------------------------------------
-        local group = vim.api.nvim_create_augroup('ruff_fix_' .. bufnr, { clear = true })
+        -- local group = vim.api.nvim_create_augroup('ruff_fix_' .. bufnr, { clear = true })
 
         -- vim.api.nvim_create_autocmd('BufWritePre', {
         --     group = group,
@@ -67,25 +67,25 @@ return {
         --     end,
         -- })
 
-        vim.api.nvim_create_autocmd('BufWritePre', {
-            group = group,
-            buffer = bufnr,
-            callback = function()
-                if not vim.api.nvim_buf_is_valid(bufnr) then return end
-
-                local clients = vim.lsp.get_clients { bufnr = bufnr, name = 'ruff' }
-                if #clients == 0 then return end
-
-                pcall(
-                    function()
-                        vim.lsp.buf.code_action {
-                            context = { diagnostics = vim.diagnostic.get(bufnr), only = { 'source.fixAll.ruff' } },
-                            apply = true,
-                        }
-                    end
-                )
-            end,
-        })
+        -- vim.api.nvim_create_autocmd('BufWritePre', {
+        --     group = group,
+        --     buffer = bufnr,
+        --     callback = function()
+        --         if not vim.api.nvim_buf_is_valid(bufnr) then return end
+        --
+        --         local clients = vim.lsp.get_clients { bufnr = bufnr, name = 'ruff' }
+        --         if #clients == 0 then return end
+        --
+        --         pcall(
+        --             function()
+        --                 vim.lsp.buf.code_action {
+        --                     context = { diagnostics = vim.diagnostic.get(bufnr), only = { 'source.fixAll.ruff' } },
+        --                     apply = true,
+        --                 }
+        --             end
+        --         )
+        --     end,
+        -- })
 
         ----------------------------------------------------------------
         -- Organize imports manual command (opcional)
