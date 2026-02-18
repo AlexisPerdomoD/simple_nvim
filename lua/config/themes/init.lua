@@ -7,6 +7,7 @@ local moonfly = require 'config.themes.moonfly'
 local monochrome = require 'config.themes.monochrome'
 local bamboo = require 'config.themes.bamboo'
 local onedark = require 'config.themes.onedark'
+local matrix = require 'config.themes.matrix'
 
 local themes = {
     catppuccin,
@@ -18,6 +19,7 @@ local themes = {
     monochrome,
     bamboo,
     onedark,
+    matrix,
 }
 
 for _, theme in ipairs(themes) do
@@ -25,7 +27,7 @@ for _, theme in ipairs(themes) do
 end
 
 -- ACTIVE THEME
-local activetheme = vscode
+local activetheme = matrix
 activetheme.lazy = false
 activetheme.priority = 1000
 
