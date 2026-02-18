@@ -1,11 +1,12 @@
 -- Configuración de capabilities con UTF-16 para consistencia
-local signs = { Error = '', Warn = '', Hint = '', Info = '' }
+local signs = { Error = '✖', Warn = '▲', Hint = '⚑', Info = '●' }
+-- local signs = { Error = '', Warn = '', Hint = '󰌵', Info = '' }
 local capabilities_settings = vim.lsp.protocol.make_client_capabilities()
 vim.lsp.config('*', { capabilities = capabilities_settings })
 vim.diagnostic.config {
     virtual_text = true,
     float = { border = 'rounded' },
-    virtual_lines = { current_line = true, severity = vim.diagnostic.severity.ERROR },
+    -- virtual_lines = { current_line = true, severity = vim.diagnostic.severity.ERROR },
     signs = {
         text = {
             [vim.diagnostic.severity.ERROR] = signs.Error,

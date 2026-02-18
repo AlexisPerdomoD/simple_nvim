@@ -96,8 +96,8 @@ return {
         config.settings.python.pythonPath = python_path
     end,
 
-    on_attach = function(client, bufnr)
-        client.offset_encoding = 'utf-8'
+    on_attach = function(_, bufnr)
+        -- client.offset_encoding = 'utf-8'
         -- client.server_capabilities.hoverProvider = true
 
         vim.api.nvim_buf_create_user_command(bufnr, 'PyrightSetPythonPath', set_python_path, {
