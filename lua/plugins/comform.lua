@@ -25,6 +25,8 @@ return {
                 cs = { 'csharpier' },
                 python = { 'ruff_format' },
                 go = { 'gofumpt' },
+                cpp = { 'clang_format' },
+                c = { 'clang_format' },
             },
 
             shfmt = {
@@ -77,7 +79,7 @@ return {
                     timeout_ms = 500,
                 }
             end,
-            { desc = 'Format= format file or range (in visual, normal mode)', noremap = true }
+            { desc = 'Format=format file or range (in visual, normal mode)', noremap = true }
         )
 
         vim.keymap.set({ 'n', 'v' }, '<leader>s', function()
@@ -89,6 +91,6 @@ return {
                 vim.cmd.write()
                 vim.notify('Formateo correcto', vim.log.levels.INFO)
             end)
-        end, { desc = 'Format= format file or range (in visual, normal mode) and saved', noremap = true })
+        end, { desc = 'Format=format file or range (in visual, normal mode) and saved', noremap = true })
     end,
 }

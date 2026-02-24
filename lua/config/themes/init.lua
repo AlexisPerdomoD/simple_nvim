@@ -27,7 +27,7 @@ for _, theme in ipairs(themes) do
 end
 
 -- ACTIVE THEME
-local activetheme = matrix
+local activetheme = solarizedosaka
 activetheme.lazy = false
 activetheme.priority = 1000
 
