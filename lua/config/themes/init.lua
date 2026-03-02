@@ -3,23 +3,20 @@ local dracula = require 'config.themes.dracula'
 local vscode = require 'config.themes.vscode'
 local github = require 'config.themes.github'
 local solarizedosaka = require 'config.themes.solarizedosaka'
-local moonfly = require 'config.themes.moonfly'
 local monochrome = require 'config.themes.monochrome'
 local bamboo = require 'config.themes.bamboo'
-local onedark = require 'config.themes.onedark'
 local matrix = require 'config.themes.matrix'
-
+local vague = require 'config.themes.vague'
 local themes = {
     catppuccin,
     dracula,
     vscode,
     github,
     solarizedosaka,
-    moonfly,
     monochrome,
     bamboo,
-    onedark,
     matrix,
+    vague,
 }
 
 for _, theme in ipairs(themes) do
@@ -27,7 +24,7 @@ for _, theme in ipairs(themes) do
 end
 
 -- ACTIVE THEME
-local activetheme = solarizedosaka
+local activetheme = vague
 activetheme.lazy = false
 activetheme.priority = 1000
 
