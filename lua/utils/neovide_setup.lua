@@ -60,13 +60,14 @@ function M:init()
     vim.g.neovide_cursor_vfx_mode = 'railgun'
     -- vim.o.guifont = 'FantasqueSansM Nerd Font:h10'
     -- vim.o.guifont = 'JetBrainsMono Nerd Font:h10'
-    vim.o.guifont = 'CaskaydiaCove Nerd Font:h12'
+    -- vim.o.guifont = 'CaskaydiaCove Nerd Font:h12'
+    vim.o.guifont = 'AnonymicePro Nerd Font:h12'
     vim.g.neovide_text_gamma = 1
     vim.g.neovide_text_contrast = 1
     vim.g.neovide_input_use_logo = true
-    vim.g.neovide_refresh_rate = 144
+    vim.g.neovide_refresh_rate = 120
     vim.g.neovide_refresh_rate_idle = 15
-    vim.g.neovide_opacity = 0.8
+    vim.g.neovide_opacity = 0.95
     vim.g.transparency = 1
     vim.opt.linespace = 2
     vim.g.neovide_floating_corner_radius = 0.5

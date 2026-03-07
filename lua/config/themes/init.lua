@@ -1,22 +1,20 @@
 local catppuccin = require 'config.themes.catppuccin'
-local dracula = require 'config.themes.dracula'
 local vscode = require 'config.themes.vscode'
 local github = require 'config.themes.github'
-local solarizedosaka = require 'config.themes.solarizedosaka'
-local monochrome = require 'config.themes.monochrome'
-local bamboo = require 'config.themes.bamboo'
 local matrix = require 'config.themes.matrix'
 local vague = require 'config.themes.vague'
+local deepspace = require 'config.themes.deepspace'
+local nightjungle = require 'config.themes.nightjungle'
+local doric = require 'config.themes.doric'
 local themes = {
     catppuccin,
-    dracula,
     vscode,
     github,
-    solarizedosaka,
-    monochrome,
-    bamboo,
     matrix,
     vague,
+    deepspace,
+    nightjungle,
+    doric,
 }
 
 for _, theme in ipairs(themes) do
@@ -24,8 +22,8 @@ for _, theme in ipairs(themes) do
 end
 
 -- ACTIVE THEME
-local activetheme = vague
+local activetheme = doric
 activetheme.lazy = false
 activetheme.priority = 1000
-
+vim.notify('Active theme: ' .. activetheme.name, vim.log.levels.INFO, { title = 'neovim' })
 return themes
