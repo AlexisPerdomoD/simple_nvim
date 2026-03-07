@@ -62,7 +62,7 @@ function M:clear_cache() self.cache = { normal = nil, normalfloat = nil, floatbo
 
 function M:toggle_bg()
     local is_bg_transparent = not self.state.bg_transparent
-    self:bg_setuper(is_bg_transparent, self.state.float_transparent)
+    self:bg_setuper(is_bg_transparent, false)
 
     self.state.bg_transparent = is_bg_transparent
     vim.notify(string.format('bg: %s', is_bg_transparent and 'transparent' or 'opaque'), vim.log.levels.INFO)

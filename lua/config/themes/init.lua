@@ -25,5 +25,4 @@ end
 local activetheme = doric
 activetheme.lazy = false
 activetheme.priority = 1000
-vim.notify('Active theme: ' .. activetheme.name, vim.log.levels.INFO, { title = 'neovim' })
 return themes

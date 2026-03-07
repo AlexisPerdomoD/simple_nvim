@@ -1,8 +1,7 @@
 -- Ensure lazy.nvim is installed
-local fn = vim.fn
-local install_path = fn.stdpath 'data' .. '/lazy/lazy.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system {
+local install_path = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+    vim.fn.system {
         'git',
         'clone',
         '--filter=blob:none',
@@ -11,10 +10,11 @@ if fn.empty(fn.glob(install_path)) > 0 then
         install_path,
     }
 end
----@diagnostic disable-next-line: undefined-field
+
 vim.opt.rtp:prepend(install_path)
 
-require('lazy').setup {
+local lazy_plugin_manager = require 'lazy'
+lazy_plugin_manager.setup {
     opts = {
         rocks = { enable = false },
     },

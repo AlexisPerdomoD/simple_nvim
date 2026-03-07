@@ -54,7 +54,7 @@ return {
             '.git',
         })
 
-        on_dir(root)
+        on_dir(root or vim.fn.getcwd())
     end,
 
     settings = {
@@ -81,6 +81,7 @@ return {
                     '**/.git',
                     '**/node_modules',
                 },
+                include = { '.' },
             },
         },
     },
@@ -110,7 +111,7 @@ return {
             local has_pyright = false
             for _, client in ipairs(vim.lsp.get_clients { bufnr = bufnr, name = 'pyright' }) do
                 if client.name == 'pyright' then
-                    client:stop()
+                    vim.lsp.stop_client(client.id)
                     has_pyright = true
                 end
             end
