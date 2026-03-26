@@ -17,8 +17,6 @@ M.ensure_installed = {
     'rust-analyzer',
     'csharp-language-server',
     'csharpier',
-    'eslint_d',
-    'prettier',
     'yamlfmt',
     'shfmt',
     'stylua',
@@ -26,13 +24,11 @@ M.ensure_installed = {
 
 M.event = 'VeryLazy'
 M.config = function()
-    require 'mason'.setup {}
+    require('mason').setup {}
     local register = require 'mason-registry'
 
     for _, server_name in ipairs(M.ensure_installed) do
-        if register.is_installed(server_name) then
-            goto continue
-        end
+        if register.is_installed(server_name) then goto continue end
 
         register.get_package(server_name):install()
         vim.notify('Installed ' .. server_name, vim.log.levels.INFO, { title = 'LSP Server Install' })

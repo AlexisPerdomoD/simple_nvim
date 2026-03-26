@@ -1,17 +1,17 @@
 return {
-    cmd          = { "vscode-css-language-server", "--stdio" },
-    filetypes    = { "html", "vue", "css", "scss", "less", "svelte", "typescriptreact", "javascriptreact" },
-    init_options = { provideFormatter = true, },
-    root_markers = { "package.json", ".git" },
-    settings     = {
+    cmd = { 'vscode-css-language-server', '--stdio' },
+    filetypes = { 'html', 'vue', 'css', 'scss', 'less', 'svelte' },
+    init_options = { provideFormatter = true },
+    root_markers = { 'package.json', '.git' },
+    settings = {
         css = {
-            validate = true
+            validate = true,
         },
         less = {
-            validate = true
+            validate = true,
         },
         scss = {
-            validate = true
-        }
-    }
+            validate = true,
+        },
+    },
 }

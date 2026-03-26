@@ -11,6 +11,7 @@ return {
                 typescript = { 'prettier' },
                 javascriptreact = { 'prettier' },
                 typescriptreact = { 'prettier' },
+                jsx = { 'prettier' },
                 vue = { 'prettier' },
                 css = { 'prettier' },
                 html = { 'prettier' },
@@ -35,7 +36,7 @@ return {
 
             prettier = {
                 inherit = false,
-                command = 'prettierd',
+                command = 'prettier',
                 args = function()
                     local config_path = vim.fn.findfile('.prettierrc', '.;')
                         or vim.fn.findfile('.prettierrc.json', '.;')
@@ -49,7 +50,6 @@ return {
                     return {
                         '--config',
                         config_path,
-                        '--config',
                         '--stdin-filepath',
                         vim.api.nvim_buf_get_name(0),
                     }
