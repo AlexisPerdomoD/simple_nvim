@@ -6,6 +6,9 @@ return {
 
         conform.setup {
             format_after_save = false,
+            notify_on_error = false,
+            notify_no_formatters = true,
+
             formatters_by_ft = {
                 javascript = { 'prettier' },
                 typescript = { 'prettier' },
@@ -70,28 +73,20 @@ return {
             format_on_save = nil,
         }
 
-        vim.keymap.set(
-            { 'n', 'v' },
-            '<leader>f',
-            function()
-                conform.format {
-                    lsp_fallback = false,
-                    async = true,
-                    timeout_ms = 500,
-                }
-            end,
-            { desc = 'Format=format file or range (in visual, normal mode)', noremap = true }
-        )
-
         vim.keymap.set({ 'n', 'v' }, '<leader>s', function()
             conform.format({
                 lsp_fallback = false,
                 async = false,
                 timeout_ms = 500,
-            }, function()
-                vim.cmd.write()
-                vim.notify('Formateo correcto', vim.log.levels.INFO)
+            }, function(err)
+                if err ~= nil then
+                    -- NOTIFY ERROR
+                    vim.notify(err, vim.log.levels.WARN)
+                    return
+                end
+
+                vim.notify('Formatted properly!', vim.log.levels.INFO)
             end)
-        end, { desc = 'Format=format file or range (in visual, normal mode) and saved', noremap = true })
+        end, { desc = 'Format=format file or range (in visual, normal mode)', noremap = true })
     end,
 }

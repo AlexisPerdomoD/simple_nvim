@@ -19,18 +19,18 @@ return {
             popup_border_style = 'rounded',
             enable_git_status = true,
             enable_diagnostics = true,
-            enable_cursor_hijack = true,
+            enable_cursor_hijack = false,
 
             buffers = {
                 window = {
-                    width = 30,
+                    width = 40,
                     auto_expand_width = true,
                 },
             },
 
             window = {
-                width = 30,
-                position = 'float',
+                width = 40,
+                position = 'left',
                 auto_expand_width = true,
                 mapping_options = {
                     noremap = true,
@@ -38,15 +38,15 @@ return {
                 },
             },
 
-
             default_component_configs = {
                 container = {
                     enable_character_fade = true,
                     right_padding = 0,
                 },
+
                 indent = {
                     indent_size = 1,
-                    padding = 0,          -- extra padding on left hand side
+                    padding = 0, -- extra padding on left hand side
                     with_markers = false,
                     with_expanders = nil, -- if nil and file nesting is enabled, will enable expanders
                     expander_collapsed = '',
@@ -65,15 +65,15 @@ return {
                     -- then these will never be used.
                     default = '*',
                     highlight = 'NeoTreeFileIcon',
-                    use_filtered_colors = false,
+                    use_filtered_colors = true,
                     provider = nil,
                 },
 
                 modified = {
                     symbol = '[+]',
                     highlight = 'NeoTreeModified',
-                }
-                ,
+                },
+
                 name = {
                     trailing_slash = false,
                     use_git_status_colors = true,
@@ -95,30 +95,41 @@ return {
                         conflict = '',
                     },
                 },
+
+                last_modified = {
+                    format = 'relative',
+                    enabled = true,
+                    required_width = 40, -- min width of window required to show this column
+                },
+
                 -- If you don't want to use these columns, you can set `enabled = false` for each of them individually
                 file_size = {
                     enabled = true,
-                    required_width = 120, -- min width of window required to show this column
+                    required_width = 60, -- min width of window required to show this column
                 },
+
                 type = {
                     enabled = true,
                     required_width = 120, -- min width of window required to show this column
                 },
-                last_modified = {
-                    format = 'relative',
-                    enabled = true,
-                    required_width = 120, -- min width of window required to show this column
-                },
+
                 created = {
                     format = 'relative',
                     enabled = false,
                     required_width = 200, -- min width of window required to show this column
                 },
+
                 symlink_target = {
                     enabled = true,
                 },
             },
+
             filesystem = {
+
+                follow_current_file = {
+                    enabled = true,
+                },
+
                 filtered_items = {
                     visible = false,
                     hide_dotfiles = true,
@@ -129,6 +140,7 @@ return {
                         'node_modules',
                         '.git',
                     },
+
                     always_show_by_pattern = { -- uses glob style patterns
                         '.env*',
                         '.prettierrc',
@@ -140,9 +152,32 @@ return {
             },
         }
 
-        vim.keymap.set('n', '<space><leader>', '<cmd>Neotree toggle  current<cr>')
-        vim.keymap.set('n', '<space><space>', '<cmd>Neotree toggle  right<cr>')
-        vim.keymap.set('n', '<leader>gs', '<cmd>Neotree float toggle git_status<cr>')
-        vim.keymap.set('n', '<space>b', '<cmd>Neotree float  toggle buffers<cr>')
+        local neotree_cmd = require 'neo-tree.command'
+
+        vim.keymap.set(
+            'n',
+            '<space><leader>',
+            function() neotree_cmd.execute { toggle = true, dir = vim.fn.getcwd() } end
+        )
+
+        vim.keymap.set('n', '<space><space>', function() neotree_cmd.execute { toggle = true, position = 'left' } end)
+
+        vim.keymap.set(
+            'n',
+            '<leader>gs',
+            function() neotree_cmd.execute { source = 'git_status', toggle = true, position = 'float' } end
+        )
+
+        vim.keymap.set(
+            'n',
+            '<space>b',
+            function() neotree_cmd.execute { source = 'buffers', toggle = true, position = 'float' } end
+        )
+
+        -- LEGACY
+        -- vim.keymap.set('n', '<space><leader>', '<cmd>Neotree toggle  current<cr>')
+        -- vim.keymap.set('n', '<space><space>', '<cmd>Neotree toggle  left<cr>')
+        -- vim.keymap.set('n', '<leader>gs', '<cmd>Neotree float toggle git_status<cr>')
+        -- vim.keymap.set('n', '<space>b', '<cmd>Neotree float  toggle buffers<cr>')
     end,
 }
