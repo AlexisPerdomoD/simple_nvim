@@ -3,7 +3,6 @@ local vscode = require 'config.themes.vscode'
 local github = require 'config.themes.github'
 local matrix = require 'config.themes.matrix'
 local vague = require 'config.themes.vague'
-local deepspace = require 'config.themes.deepspace'
 local nightjungle = require 'config.themes.nightjungle'
 local doric = require 'config.themes.doric'
 local onenord = require 'config.themes.onenord'
@@ -13,7 +12,6 @@ local themes = {
     github,
     matrix,
     vague,
-    deepspace,
     nightjungle,
     doric,
     onenord,
@@ -24,7 +22,7 @@ for _, theme in ipairs(themes) do
 end
 
 -- ACTIVE THEME
-local activetheme = onenord
+local activetheme = doric
 activetheme.lazy = false
 activetheme.priority = 1000
 return themes
