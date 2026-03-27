@@ -6,6 +6,7 @@ local vague = require 'config.themes.vague'
 local deepspace = require 'config.themes.deepspace'
 local nightjungle = require 'config.themes.nightjungle'
 local doric = require 'config.themes.doric'
+local onenord = require 'config.themes.onenord'
 local themes = {
     catppuccin,
     vscode,
@@ -15,6 +16,7 @@ local themes = {
     deepspace,
     nightjungle,
     doric,
+    onenord,
 }
 
 for _, theme in ipairs(themes) do
@@ -22,7 +24,7 @@ for _, theme in ipairs(themes) do
 end
 
 -- ACTIVE THEME
-local activetheme = nightjungle
+local activetheme = onenord
 activetheme.lazy = false
 activetheme.priority = 1000
 return themes
