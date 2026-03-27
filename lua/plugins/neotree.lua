@@ -105,7 +105,7 @@ return {
                 -- If you don't want to use these columns, you can set `enabled = false` for each of them individually
                 file_size = {
                     enabled = true,
-                    required_width = 60, -- min width of window required to show this column
+                    required_width = 120, -- min width of window required to show this column
                 },
 
                 type = {
@@ -175,7 +175,7 @@ return {
         )
 
         -- LEGACY
-        -- vim.keymap.set('n', '<space><leader>', '<cmd>Neotree toggle  current<cr>')
+        -- vim.keymap.set('n', '<space><leader>', '<cmd>Neotree float toggle  current<cr>')
         -- vim.keymap.set('n', '<space><space>', '<cmd>Neotree toggle  left<cr>')
         -- vim.keymap.set('n', '<leader>gs', '<cmd>Neotree float toggle git_status<cr>')
         -- vim.keymap.set('n', '<space>b', '<cmd>Neotree float  toggle buffers<cr>')
