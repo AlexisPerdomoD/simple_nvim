@@ -28,6 +28,7 @@ return {
                 go = { 'gofumpt' },
                 cpp = { 'clang_format' },
                 c = { 'clang_format' },
+                java = { lsp_format = 'first' },
             },
 
             shfmt = {

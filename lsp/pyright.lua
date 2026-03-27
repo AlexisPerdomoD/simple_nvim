@@ -20,6 +20,9 @@ local function set_python_path(command)
             client.config.settings =
                 vim.tbl_deep_extend('force', client.config.settings, { python = { pythonPath = path } })
         end
+
+        client.config.capabilities.workspace.didChangeConfiguration = true
+
         client:notify('workspace/didChangeConfiguration', {
             settings = client.config.settings,
         })
@@ -81,7 +84,7 @@ return {
                     '**/.git',
                     '**/node_modules',
                 },
-                include = { '.' },
+                -- include = { '.' },
             },
         },
     },
@@ -108,18 +111,12 @@ return {
         })
 
         vim.api.nvim_buf_create_user_command(bufnr, 'PyrightRestart', function()
-            local has_pyright = false
             for _, client in ipairs(vim.lsp.get_clients { bufnr = bufnr, name = 'pyright' }) do
-                if client.name == 'pyright' then
-                    vim.lsp.stop_client(client.id)
-                    has_pyright = true
-                end
+                vim.lsp.stop_client(client.id)
             end
 
-            if has_pyright then
-                -- start lsp server
-                vim.defer_fn(function() vim.cmd 'edit' end, 300)
-            end
+            -- start lsp server
+            vim.defer_fn(function() vim.cmd 'edit' end, 300)
         end, { desc = 'Restart pyright' })
     end,
 }

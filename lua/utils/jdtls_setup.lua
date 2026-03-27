@@ -100,10 +100,9 @@ function M:get_config(extendedClientCapabilities)
 
         config.settings.java.configuration = {}
         config.settings.java.configuration.runtimes = {
-            { name = 'JavaSE-15', path = java_runtimes_path .. '/15.0.12-tem/bin/java' },
             { name = 'JavaSE-17', path = java_runtimes_path .. '/17.0.12-tem/bin/java' },
-            { name = 'JavaSE-21', path = java_runtimes_path .. '/21.0.5-tem/bin/java' },
-            { name = 'JavaSE-25', path = java_runtimes_path .. '/25.0.1-tem/bin/java' },
+            { name = 'JavaSE-21', path = java_runtimes_path .. '/21.0.10-tem/bin/java' },
+            { name = 'JavaSE-25', path = java_runtimes_path .. '/25.0.2-tem/bin/java' },
         }
 
         -- Language server `initializationOptions`

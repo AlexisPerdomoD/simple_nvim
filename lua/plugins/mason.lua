@@ -20,11 +20,14 @@ M.ensure_installed = {
     'yamlfmt',
     'shfmt',
     'stylua',
+    'jdtls',
 }
 
 M.event = 'VeryLazy'
 M.config = function()
     require('mason').setup {}
+    local mason = require 'mason'
+    mason.setup {}
     local register = require 'mason-registry'
 
     for _, server_name in ipairs(M.ensure_installed) do

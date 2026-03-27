@@ -22,7 +22,7 @@ for _, theme in ipairs(themes) do
 end
 
 -- ACTIVE THEME
-local activetheme = doric
+local activetheme = nightjungle
 activetheme.lazy = false
 activetheme.priority = 1000
 return themes
