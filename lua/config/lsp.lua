@@ -17,22 +17,6 @@ vim.diagnostic.config {
     },
 }
 
-local default_progress_handler = vim.lsp.handlers['$/progress'] or function(_, _, _) end
-
-vim.lsp.handlers['$/progress'] = function(err, result, ctx)
-    local client = vim.lsp.get_client_by_id(ctx.client_id)
-    if not client then return end
-
-    if client.name == 'pyright' then
-        -- MOLESTO
-        return
-        -- local value = result and result.value
-        -- if type(value) == 'table' and type(value.message) == 'string' and value.message:find 'analyze' then return end
-    end
-
-    return default_progress_handler(err, result, ctx)
-end
-
 vim.lsp.set_log_level 'ERROR'
 
 vim.api.nvim_create_autocmd('LspAttach', {

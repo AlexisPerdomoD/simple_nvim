@@ -1,16 +1,4 @@
-local M = { 'nvimdev/lspsaga.nvim' }
-M.dependencies = {
-    -- Language servers instaletions
-    'williamboman/mason.nvim',
-    -- extended funcionality for c#
-    -- 'decodetalkers/csharpls-extended-lsp.nvim',
-    -- java lsp setup
-    'mfussenegger/nvim-jdtls',
-    'nvim-tree/nvim-web-devicons',
-}
-
-M.event = 'VeryLazy'
-M.default_config = {
+return {
     ui = {
         winbar_prefix = '',
         border = 'rounded',
@@ -206,47 +194,3 @@ M.default_config = {
         width = 0.7,
     },
 }
-
-M.config = function()
-    require('lspsaga').setup(M.default_config)
-    -- Configuración de capabilities con UTF-16 para consistencia
-    -- local capabilities_settings = vim.lsp.protocol.make_client_capabilities()
-    --
-    -- capabilities_settings = vim.tbl_deep_extend('force', capabilities_settings, {
-    --     offsetEncoding = { 'utf-16' },
-    --     general = {
-    --         positionEncodings = { 'utf-16' },
-    --     },
-    -- })
-
-    vim.api.nvim_create_autocmd('LspAttach', {
-        group = vim.api.nvim_create_augroup('my.lsp_saga', {}),
-        callback = function(args)
-            -- require('cmp_nvim_lsp').default_capabilities(capabilities_settings)
-            local bufnr = args.buf
-            local opts = { buffer = bufnr, noremap = true, silent = true }
-            vim.keymap.set('n', '<space>[', '<cmd>Lspsaga diagnostic_jump_prev<CR>', opts)
-            vim.keymap.set('n', '<space>]', '<cmd>Lspsaga diagnostic_jump_next<CR>', opts)
-
-            vim.keymap.set('n', 'F', '<cmd>Lspsaga finder<CR>', opts)
-            vim.keymap.set('n', 'gd', '<cmd>Lspsaga peek_definition<CR>', opts)
-            vim.keymap.set('n', 'K', '<cmd>Lspsaga hover_doc<CR>', opts)
-            vim.keymap.set('n', 'ca', '<cmd>Lspsaga code_action<CR>', opts)
-            vim.keymap.set('n', 'gr', '<cmd>Lspsaga finder ref<CR>', opts)
-
-            vim.keymap.set('n', '<space>wd', '<cmd>Lspsaga show_workspace_diagnostics<CR>', opts)
-            vim.keymap.set('n', '<space>wb', '<cmd>Lspsaga show_buf_diagnostics<CR>', opts)
-        end,
-    })
-
-    -- JAVA LSP AUTOCOMAND
-    vim.api.nvim_create_autocmd('FileType', {
-        pattern = 'java',
-        callback = function()
-            local jdtls_setup = require 'utils/jdtls_setup'
-            jdtls_setup:setup()
-        end,
-    })
-end
-
-return M
