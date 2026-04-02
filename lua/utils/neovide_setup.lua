@@ -74,8 +74,6 @@ function M:init()
     -- vim.g.transparency = 1
     -- vim.opt.linespace = 1
     vim.g.neovide_floating_corner_radius = 0.30
-    vim.o.guicursor =
-        'n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175'
     -- vim.g.neovide_floating_blur_amount_x = 4.0
     -- vim.g.neovide_floating_blur_amount_y = 4.0
     self.set_env()
