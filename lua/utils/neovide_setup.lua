@@ -58,20 +58,26 @@ end
 
 function M:init()
     -- vim.g.neovide_cursor_vfx_mode = 'railgun'
-    -- vim.o.guifont = 'FantasqueSansM Nerd Font:h11'
+    vim.o.guifont = 'FantasqueSansM Nerd Font:h11'
     -- vim.o.guifont = 'JetBrainsMono Nerd Font:h11'
-    vim.o.guifont = 'CaskaydiaCove Nerd Font:h8'
+    -- vim.o.guifont = 'CaskaydiaCove Nerd Font:h8'
     -- vim.o.guifont = 'AnonymicePro Nerd Font:h12'
-    vim.g.neovide_text_gamma = 1
-    vim.g.neovide_text_contrast = 1
+    -- vim.g.neovide_text_gamma = 1
+    -- vim.g.neovide_text_contrast = 1
     vim.g.neovide_input_use_logo = true
-    vim.g.neovide_refresh_rate = 120
-    vim.g.neovide_refresh_rate_idle = 15
     vim.g.neovide_opacity = 0.95
-    vim.g.transparency = 1
-    vim.opt.linespace = 2
-    vim.g.neovide_floating_corner_radius = 0.5
 
+    vim.g.neovide_cursor_smooth_blink = true
+    vim.g.neovide_floating_shadow = false
+    -- vim.g.neovide_refresh_rate = 120
+    -- vim.g.neovide_refresh_rate_idle = 15
+    -- vim.g.transparency = 1
+    -- vim.opt.linespace = 1
+    vim.g.neovide_floating_corner_radius = 0.30
+    vim.o.guicursor =
+        'n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175'
+    -- vim.g.neovide_floating_blur_amount_x = 4.0
+    -- vim.g.neovide_floating_blur_amount_y = 4.0
     self.set_env()
     self:set_keymaps()
 end
