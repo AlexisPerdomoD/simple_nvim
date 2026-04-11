@@ -132,14 +132,4 @@ function M:get_config(extendedClientCapabilities)
     return self.config
 end
 
-function M:setup()
-    local ok, jdtls = pcall(require, 'jdtls')
-    if not ok then
-        vim.notify('jdtls not properly load or not found', vim.log.levels.ERROR)
-        return
-    end
-
-    jdtls.start_or_attach(self:get_config(jdtls.extendedClientCapabilities))
-end
-
 return M

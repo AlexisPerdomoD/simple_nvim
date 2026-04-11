@@ -1,5 +1,6 @@
 local color_bg = require 'utils.bg_color_setuper'
 local custom_spell_check = require 'utils.custom_spell_check'
+
 -- -- Set leader key
 vim.g.mapleader = '.'
 

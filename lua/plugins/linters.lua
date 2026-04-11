@@ -4,7 +4,7 @@ return {
         'BufReadPre',
         'BufNewFile',
     },
-    -- lazy = true,
+    enabled = false,
     config = function()
         local lint = require 'lint'
 

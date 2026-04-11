@@ -32,6 +32,7 @@ return {
                 cpp = { 'clang_format' },
                 c = { 'clang_format' },
                 java = { lsp_format = 'first' },
+                sql = { 'sqlfluff' },
             },
 
             shfmt = {
@@ -75,9 +76,9 @@ return {
 
         vim.keymap.set({ 'n', 'v' }, '<leader>s', function()
             conform.format({
-                lsp_fallback = false,
-                async = false,
-                timeout_ms = 500,
+                lsp_fallback = true,
+                async = true,
+                timeout_ms = 1000,
             }, function(err)
                 if err ~= nil then
                     -- NOTIFY ERROR

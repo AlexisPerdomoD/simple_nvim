@@ -1,7 +1,8 @@
 local M = { 'supermaven-inc/supermaven-nvim' }
 M.Event = 'VeryLazy'
 M.config = function()
-    require('supermaven-nvim').setup {
+    local supermaven = require 'supermaven-nvim'
+    supermaven.setup {
         keymaps = {
             accept_suggestion = '<C-a>',
             clear_suggestion = '<C-]>',
@@ -20,26 +21,6 @@ M.config = function()
     local api = require 'supermaven-nvim.api'
     api.use_free_version()
     api.restart()
-
-    -- vim.api.nvim_create_autocmd("User", {
-    --     pattern = "ConformFormatPre",
-    --     callback = function()
-    --         if api.is_running() then
-    --             api.stop()
-    --         end
-    --     end,
-    -- })
-    --
-    -- vim.api.nvim_create_autocmd("User", {
-    --     pattern = "ConformFormatPost",
-    --     callback = function()
-    --         if not api.is_running() then
-    --             api.start()
-    --         end
-    --     end,
-    -- })
-
-    -- api.start()
 end
 
 return M
