@@ -109,14 +109,5 @@ return {
             nargs = 1,
             complete = 'file',
         })
-
-        vim.api.nvim_buf_create_user_command(bufnr, 'PyrightRestart', function()
-            for _, client in ipairs(vim.lsp.get_clients { bufnr = bufnr, name = 'pyright' }) do
-                vim.lsp.stop_client(client.id)
-            end
-
-            -- start lsp server
-            vim.defer_fn(function() vim.cmd 'edit' end, 300)
-        end, { desc = 'Restart pyright' })
     end,
 }
