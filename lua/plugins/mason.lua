@@ -21,6 +21,9 @@ M.ensure_installed = {
     'shfmt',
     'stylua',
     'jdtls',
+    'eslint-lsp',
+    'pyright',
+    'ruff',
 }
 
 M.event = 'VeryLazy'

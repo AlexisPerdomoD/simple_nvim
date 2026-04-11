@@ -76,7 +76,7 @@ return {
 
         vim.keymap.set({ 'n', 'v' }, '<leader>s', function()
             conform.format({
-                lsp_fallback = false,
+                lsp_fallback = true,
                 async = true,
                 timeout_ms = 1000,
             }, function(err)
