@@ -31,7 +31,7 @@ M.lsp_servers = {
     'tailwindcss',
     'terraformls',
     'ts_ls',
-    'eslint_ls',
+    'eslint',
     'vue_ls',
     'yamlls',
 }
