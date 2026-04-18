@@ -24,6 +24,11 @@ M.ensure_installed = {
     'eslint-lsp',
     'pyright',
     'ruff',
+
+    -- formaters
+    'prettier',
+    'stylua',
+    'shfmt',
 }
 
 M.event = 'VeryLazy'
@@ -34,7 +39,9 @@ M.config = function()
     local register = require 'mason-registry'
 
     for _, server_name in ipairs(M.ensure_installed) do
-        if register.is_installed(server_name) then goto continue end
+        if register.is_installed(server_name) then
+            goto continue
+        end
 
         register.get_package(server_name):install()
         vim.notify('Installed ' .. server_name, vim.log.levels.INFO, { title = 'LSP Server Install' })

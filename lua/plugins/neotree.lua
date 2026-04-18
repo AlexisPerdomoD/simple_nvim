@@ -8,7 +8,7 @@ return {
         'lewis6991/gitsigns.nvim',
         -- '3rd/image.nvim', -- Optional image support in preview window: See `# Preview Mode` for more information
     },
-    priority = 900,
+    lazy = false,
     config = function()
         local neo_tree = require 'neo-tree'
         neo_tree.setup {
@@ -154,25 +154,21 @@ return {
 
         local neotree_cmd = require 'neo-tree.command'
 
-        vim.keymap.set(
-            'n',
-            '<space><leader>',
-            function() neotree_cmd.execute { toggle = true, dir = vim.fn.getcwd() } end
-        )
+        vim.keymap.set('n', '<space><leader>', function()
+            neotree_cmd.execute { toggle = true, dir = vim.fn.getcwd() }
+        end)
 
-        vim.keymap.set('n', '<space><space>', function() neotree_cmd.execute { toggle = true, position = 'left' } end)
+        vim.keymap.set('n', '<space><space>', function()
+            neotree_cmd.execute { toggle = true, position = 'left' }
+        end)
 
-        vim.keymap.set(
-            'n',
-            '<leader>gs',
-            function() neotree_cmd.execute { source = 'git_status', toggle = true, position = 'float' } end
-        )
+        vim.keymap.set('n', '<leader>gs', function()
+            neotree_cmd.execute { source = 'git_status', toggle = true, position = 'float' }
+        end)
 
-        vim.keymap.set(
-            'n',
-            '<space>b',
-            function() neotree_cmd.execute { source = 'buffers', toggle = true, position = 'float' } end
-        )
+        vim.keymap.set('n', '<space>b', function()
+            neotree_cmd.execute { source = 'buffers', toggle = true, position = 'float' }
+        end)
 
         -- LEGACY
         -- vim.keymap.set('n', '<space><leader>', '<cmd>Neotree float toggle  current<cr>')

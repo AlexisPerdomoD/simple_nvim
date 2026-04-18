@@ -60,14 +60,9 @@ M.config = function()
             end, opts)
             vim.keymap.set('n', 'td', vim.lsp.buf.type_definition, opts)
             vim.keymap.set('n', 'rn', vim.lsp.buf.rename, opts)
-            vim.keymap.set(
-                'n',
-                '<space>l',
-                function()
-                    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = bufnr }, { bufnr = bufnr })
-                end,
-                opts
-            )
+            vim.keymap.set('n', '<space>l', function()
+                vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = bufnr }, { bufnr = bufnr })
+            end, opts)
 
             -- SAGA KEYMAPS
             vim.keymap.set('n', '<space>[', '<cmd>Lspsaga diagnostic_jump_prev<CR>', opts)
@@ -95,7 +90,9 @@ M.config = function()
     local jdtls_setup_config = require('config.plugin.jdtls'):get_config(M.extendedClientCapabilities)
     vim.api.nvim_create_autocmd('FileType', {
         pattern = 'java',
-        callback = function() jdtls.start_or_attach(jdtls_setup_config) end,
+        callback = function()
+            jdtls.start_or_attach(jdtls_setup_config)
+        end,
     })
 
     -- OVERRRIDES
@@ -103,7 +100,9 @@ M.config = function()
 
     vim.lsp.handlers['$/progress'] = function(err, result, ctx)
         local client = vim.lsp.get_client_by_id(ctx.client_id)
-        if not client then return end
+        if not client then
+            return
+        end
 
         if client.name == 'pyright' then
             -- MOLESTO

@@ -17,10 +17,10 @@ M.event = 'VeryLazy'
 M.config = function()
     require("luasnip.loaders.from_vscode").lazy_load()
     local luasnip = require 'luasnip'
-
     local cmp = require 'cmp'
     local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
-    cmp.setup {
+
+    local setup =  {
         sources = {
             { name = 'nvim_lsp',  max_item_count = 20 },
             { name = 'luasnip',   max_item_count = 10 },
@@ -99,8 +99,7 @@ M.config = function()
         },
     }
 
-    cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done { map_char = { tex = '' } })
-
+    cmp.setup(setup)
     -- Set configuration for specific filetype.
     cmp.setup.filetype('gitcommit', {
         sources = cmp.config.sources {
@@ -111,12 +110,16 @@ M.config = function()
     -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
     cmp.setup.cmdline({ '/', '?' }, {
         mapping = cmp.mapping.preset.cmdline(),
-        sources = { { name = 'buffer' } },
+        sources = { { name = 'buffer' , } },
     })
     -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
     cmp.setup.cmdline(':', {
         mapping = cmp.mapping.preset.cmdline(),
-        sources = cmp.config.sources({ { name = 'path' } }, { { name = 'cmdline' } }),
+        sources = cmp.config.sources({ { name = 'path' } }, { { name = 'cmdline', max_item_count = 20 } }),
     })
+
+
+    cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done { map_char = { tex = '' } })
+
 end
 return M

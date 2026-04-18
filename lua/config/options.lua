@@ -28,15 +28,8 @@ vim.o.lazyredraw = false
 vim.o.cursorline = true
 -- No mostrar el modo de edición
 vim.opt.showmode = false
-
--- Siempre mostrar la barra de estado
-vim.opt.laststatus = 0
-
 -- Habilitar colores verdaderos en la terminal
 vim.opt.termguicolors = true
-
--- Configuración de la altura del comando
-vim.o.cmdheight = 0
 
 -- Configuraciones de búsqueda
 vim.opt.hlsearch = true -- Resaltar coincidencias

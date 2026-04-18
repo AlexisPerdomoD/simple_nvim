@@ -41,20 +41,18 @@ function Cfg:register_keymaps()
     )
     vim.api.nvim_set_keymap('n', '<sc-v>', '"+p', { noremap = true, desc = 'Paste in normal mode (CTRL+Shift+v)' })
 
-    vim.keymap.set(
-        'n',
-        '<C-=>',
-        function() self:set_scale(0.05) end,
-        { noremap = true, desc = 'Increase scale factor' }
-    )
-    vim.keymap.set(
-        'n',
-        '<C-->',
-        function() self:set_scale(-0.05) end,
-        { noremap = true, desc = 'Decrease scale factor' }
-    )
-    vim.keymap.set('n', '<C-)>', function() self:set_transparency(0.05) end)
-    vim.keymap.set('n', '<C-(>', function() self:set_transparency(-0.05) end)
+    vim.keymap.set('n', '<C-=>', function()
+        self:set_scale(0.05)
+    end, { noremap = true, desc = 'Increase scale factor' })
+    vim.keymap.set('n', '<C-->', function()
+        self:set_scale(-0.05)
+    end, { noremap = true, desc = 'Decrease scale factor' })
+    vim.keymap.set('n', '<C-)>', function()
+        self:set_transparency(0.05)
+    end)
+    vim.keymap.set('n', '<C-(>', function()
+        self:set_transparency(-0.05)
+    end)
 end
 
 function Cfg:setup()
@@ -63,7 +61,7 @@ function Cfg:setup()
     -- vim.o.guifont = 'JetBrainsMono Nerd Font:h11'
     -- vim.o.guifont = 'CaskaydiaCove Nerd Font:h8'
     -- vim.o.guifont = 'AnonymicePro Nerd Font:h12'
-    vim.o.guifont = "Fixedsys Excelsior:h12"
+    vim.o.guifont = 'Fixedsys Excelsior:h12'
     -- vim.g.neovide_text_gamma = 1
     -- vim.g.neovide_text_contrast = 1
     vim.g.neovide_input_use_logo = true

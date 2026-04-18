@@ -3,5 +3,4 @@ M.lazy = true
 M.event = 'VeryLazy'
 M.version = 'v2.*'
 M.dependencies = { 'rafamadriz/friendly-snippets' }
-
 return M

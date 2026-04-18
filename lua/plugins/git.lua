@@ -12,7 +12,8 @@ gitsigns.config_2 = function()
 end
 
 gitsigns.config = function()
-    require('gitsigns').setup {
+    local signs = require 'gitsigns'
+    signs.setup {
         signs = {
             add = { text = '+' },
             change = { text = '~' },
@@ -36,24 +37,26 @@ gitsigns.config = function()
                 gs.stage_hunk,
                 { buffer = bufnr, desc = 'Gitsign:Stage hunk', silent = true }
             )
-            vim.keymap.set(
-                'v',
-                '<leader>hs',
-                function() gs.stage_hunk { vim.fn.line '.', vim.fn.line 'v' } end,
-                { buffer = bufnr, desc = 'Gitsign:Stage hunk', silent = true }
-            )
+            vim.keymap.set('v', '<leader>hs', function()
+                gs.stage_hunk { vim.fn.line '.', vim.fn.line 'v' }
+            end, {
+                buffer = bufnr,
+                desc = 'Gitsign:Stage hunk',
+                silent = true,
+            })
             vim.keymap.set(
                 'n',
                 '<leader>hr',
                 gs.reset_hunk,
                 { buffer = bufnr, desc = 'Gitsign:Reset hunk', silent = true }
             )
-            vim.keymap.set(
-                'v',
-                '<leader>hr',
-                function() gs.reset_hunk { vim.fn.line '.', vim.fn.line 'v' } end,
-                { buffer = bufnr, desc = 'Gitsign:Reset hunk', silent = true }
-            )
+            vim.keymap.set('v', '<leader>hr', function()
+                gs.reset_hunk { vim.fn.line '.', vim.fn.line 'v' }
+            end, {
+                buffer = bufnr,
+                desc = 'Gitsign:Reset hunk',
+                silent = true,
+            })
 
             -- Stage / Reset buffer
             vim.keymap.set(
@@ -85,12 +88,13 @@ gitsigns.config = function()
 
             -- Diff / toggle deleted
             vim.keymap.set('n', '<leader>hd', gs.diffthis, { buffer = bufnr, desc = 'Gitsign:Diffthis', silent = true })
-            vim.keymap.set(
-                'n',
-                '<leader>hD',
-                function() gs.diffthis '~' end,
-                { buffer = bufnr, desc = 'Gitsign:Diffthis', silent = true }
-            )
+            vim.keymap.set('n', '<leader>hD', function()
+                gs.diffthis '~'
+            end, {
+                buffer = bufnr,
+                desc = 'Gitsign:Diffthis',
+                silent = true,
+            })
 
             -- Toggle signs / line blame
             vim.keymap.set(
@@ -99,12 +103,11 @@ gitsigns.config = function()
                 gs.toggle_signs,
                 { buffer = bufnr, desc = 'Gitsign:Toggle signs', silent = true }
             )
-            vim.keymap.set(
-                'n',
-                '<leader>hB',
-                gs.toggle_current_line_blame,
-                { buffer = bufnr, desc = 'Gitsign:Toggle line blame', silent = true }
-            )
+            vim.keymap.set('n', '<leader>hB', gs.toggle_current_line_blame, {
+                buffer = bufnr,
+                desc = 'Gitsign:Toggle line blame',
+                silent = true,
+            })
         end,
     }
 end
