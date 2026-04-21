@@ -5,7 +5,9 @@
 --- `pyright`, a static type checker and language server for python
 local function set_python_path(command)
     local bufnr = vim.api.nvim_get_current_buf()
-    if not vim.api.nvim_buf_is_valid(bufnr) then return end
+    if not vim.api.nvim_buf_is_valid(bufnr) then
+        return
+    end
 
     local path = command.args
     local clients = vim.lsp.get_clients {
@@ -21,7 +23,7 @@ local function set_python_path(command)
                 vim.tbl_deep_extend('force', client.config.settings, { python = { pythonPath = path } })
         end
 
-        client.config.capabilities.workspace.didChangeConfiguration = true
+        client.config.capabilities.workspace.didChangeConfiguration.dynamicRegistration = true
 
         client:notify('workspace/didChangeConfiguration', {
             settings = client.config.settings,
@@ -32,7 +34,9 @@ end
 local function get_python_path(root_dir)
     local venv_path = root_dir .. '/.venv/bin/python'
 
-    if vim.fn.executable(venv_path) == 1 then return venv_path end
+    if vim.fn.executable(venv_path) == 1 then
+        return venv_path
+    end
 
     return vim.fn.exepath 'python3'
 end

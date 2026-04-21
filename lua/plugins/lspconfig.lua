@@ -16,6 +16,7 @@ M.lsp_servers = {
     'cssmodules_ls',
     'css_variables',
     'dockerls',
+    'eslint',
     'golangci_lint_ls',
     'gopls',
     'html',
@@ -31,14 +32,12 @@ M.lsp_servers = {
     'tailwindcss',
     'terraformls',
     'ts_ls',
-    'eslint',
     'vue_ls',
     'yamlls',
 }
 
 M.config = function()
     vim.lsp.log.set_level 'ERROR'
-
     vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('my.lsp', {}),
         callback = function(args)

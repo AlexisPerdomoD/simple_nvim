@@ -1,7 +1,25 @@
 install:
 	set -e
 
-	sudo pacman -S --needed --noconfirm git curl neovim ripgrep fd bat fzf go nodejs fnm neovide pnpm zip unzip bash
+	sudo pacman -S --needed --noconfirm git \
+		curl  \
+		neovim  \
+		ripgrep \
+		fd \
+		bat \
+		fzf \
+		go \
+		nodejs \
+		uv \
+		fnm \
+		pnpm \
+		zip \
+		unzip \
+		bash \
+		tree-sitter \
+		tree-sitter-cli \
+		base-devel 
+
 
 	############# Java #################
 	curl -s "https://get.sdkman.io" | bash

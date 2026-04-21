@@ -1,104 +1,27 @@
--- local M = { 'nvim-treesitter/nvim-treesitter' }
--- M.event = 'BufReadPost'
--- M.build = ':TSUpdate'
--- M.dependencies = { { 'nvim-treesitter/nvim-treesitter-textobjects' } }
--- M.main = 'nvim-treesitter.configs'
--- M.opts = {
---     ensure_installed = {
---       "lua",
---       "vim",
---       "vimdoc",
---       "query",
---
---       "bash",
---       "json",
---       "yaml",
---       "toml",
---
---       "html",
---       "css",
---       "javascript",
---       "typescript",
---       "tsx",
---
---       "go",
---       "rust",
---       "python",
---
---       "markdown",
---       "markdown_inline",
---     },
---     auto_install = true,
---     fold = {
---         enable = true,
---     },
---     highlight = {
---         enable = true,
---     },
---     indent = {
---         enable = true,
---     },
---     textobjects = {
---         enable = true,
---         select = {
---             enable = true,
---             lookahead = true,
---             keymaps = {
---                 ['tf'] = '@function.outer',
---                 ['taf'] = '@function.inner',
---                 ['tc'] = '@conditional.outer',
---                 ['tac'] = '@conditional.inner',
---                 ['tl'] = '@loop.outer',
---                 ['tal'] = '@loop.inner',
---             },
---         },
---     },
--- }
+local TS = { 'nvim-treesitter/nvim-treesitter' }
+TS.lazy = false
+TS.branch = 'main'
+TS.build = ':TSUpdate'
 
-local M = { 'nvim-treesitter/nvim-treesitter' }
+local TSObj = { 'nvim-treesitter/nvim-treesitter-textobjects' }
+TSObj.dependencies = { 'nvim-treesitter/nvim-treesitter' }
+TSObj.branch = 'main'
+TSObj.lazy = false
+TSObj.init = function()
+    -- Disable entire built-in ftplugin mappings to avoid conflicts.
+    -- See https://github.com/neovim/neovim/tree/master/runtime/ftplugin for built-in ftplugins.
+    vim.g.no_plugin_maps = true
 
-M.event = 'BufReadPost'
-M.build = ':TSUpdate'
-M.dependencies = { 'nvim-treesitter/nvim-treesitter-textobjects' }
+    -- Or, disable per filetype (add as you like)
+    -- vim.g.no_python_maps = true
+    -- vim.g.no_ruby_maps = true
+    -- vim.g.no_rust_maps = true
+    -- vim.g.no_go_maps = true
+end
 
-M.opts = {
-    ensure_installed = {
-        'lua',
-        'vim',
-        'vimdoc',
-        'query',
-        'bash',
-        'json',
-        'yaml',
-        'toml',
-        'html',
-        'css',
-        'javascript',
-        'typescript',
-        'tsx',
-        'go',
-        'rust',
-        'python',
-        'markdown',
-        'markdown_inline',
-    },
-    auto_install = true,
-    highlight = { enable = true },
-    indent = { enable = true },
-    textobjects = {
-        select = {
-            enable = true,
-            lookahead = true,
-            keymaps = {
-                ['tf'] = '@function.outer',
-                ['taf'] = '@function.inner',
-                ['tc'] = '@conditional.outer',
-                ['tac'] = '@conditional.inner',
-                ['tl'] = '@loop.outer',
-                ['tal'] = '@loop.inner',
-            },
-        },
-    },
-}
+TSObj.config = function()
+    local tsobj = require 'nvim-treesitter-textobjects'
+    tsobj.setup { select = { lookahead = true } }
+end
 
-return M
+return { TS, TSObj }
