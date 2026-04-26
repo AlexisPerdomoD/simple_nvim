@@ -10,8 +10,8 @@ return {
     },
     priority = 900,
     config = function()
-        local neo_tree = require 'neo-tree'
-        neo_tree.setup {
+        local nt = require 'neo-tree'
+        nt.setup {
             auto_clean_after_session_restore = true,
             enable_refresh_on_write = true,
             add_blank_line_at_top = true,

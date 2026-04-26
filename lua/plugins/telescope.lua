@@ -93,7 +93,7 @@ function M.custom.colorscheme()
     })
 end
 
-M.lazy = false
+M.lazy = true
 M.dependencies = {
     'nvim-lua/plenary.nvim',
     'nvim-telescope/telescope-file-browser.nvim',
@@ -111,12 +111,11 @@ M.opts = {
     },
 }
 
-M.config = function(opts)
-    local telescope = require 'telescope'
+M.config = function()
+    local t = require 'telescope'
     local builtin = require 'telescope.builtin'
     local mapper = vim.keymap
-    opts = opts or {}
-    telescope.setup(opts)
+    t.setup{}
 
     -- BUILTIN
     mapper.set('n', '<space>cb', builtin.buffers, { desc = 'Telescope= buffers' })
@@ -125,7 +124,7 @@ M.config = function(opts)
     mapper.set('n', '<space>gc', builtin.git_commits, { desc = 'Telescope= Git commits' })
     mapper.set('n', '<space>gb', builtin.git_branches, { desc = 'Telescope= Git branches' })
     mapper.set('n', '<space>ff', builtin.find_files, { desc = 'Telescope= Find Files' })
-    mapper.set('n', '<space>h', builtin.help_tags, { desc = 'Telescope= Help' })
+    mapper.set('n', '<space>h',  builtin.help_tags, { desc = 'Telescope= Help' })
     mapper.set('n', '<space>hk', builtin.keymaps, { desc = 'Telescope= keymaps' })
     mapper.set('n', '<space>lg', builtin.live_grep, { desc = 'Telescope= live grep' })
     -- CUSTOM

@@ -1,8 +1,8 @@
 local M = { 'supermaven-inc/supermaven-nvim' }
 M.Event = 'VeryLazy'
 M.config = function()
-    local supermaven = require 'supermaven-nvim'
-    supermaven.setup {
+    local sm = require 'supermaven-nvim'
+    sm.setup {
         keymaps = {
             accept_suggestion = '<C-a>',
             clear_suggestion = '<C-]>',

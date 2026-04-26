@@ -1,4 +1,3 @@
-local backgroundSetter = require 'utils.bg_color_setuper'
 local M = { 'Mofiqul/vscode.nvim' }
 M.config = function()
     --  Lua:
@@ -8,7 +7,9 @@ M.config = function()
     -- vim.o.background = 'light'
 
     -- local c = require('vscode.colors').get_colors()
-    require('vscode').setup {
+
+    local t = require 'vscode'
+    t.setup {
         -- Alternatively set style in setup
         -- style = 'light'
 
@@ -47,7 +48,8 @@ M.config = function()
     -- load the theme without affecting devicon colors.
     vim.cmd.colorscheme 'vscode'
     vim.o.background = 'dark'
-    backgroundSetter:bg_setuper(false, true)
+    local bg = require 'utils.bg_color_setuper'
+    bg:bg_setuper(false, true)
 end
 
 return M

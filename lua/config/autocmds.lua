@@ -28,10 +28,9 @@ api.nvim_create_autocmd({ 'VimResized', 'BufEnter', 'WinEnter' }, {
     desc = 'Keep centered cursor',
 })
 
-vim.opt.autoread = true
-vim.cmd [[
-  augroup auto_read
-    autocmd!
-    autocmd FocusGained,BufEnter * checktime
-  augroup END
-]]
+-- vim.cmd [[
+--   augroup auto_read
+--     autocmd!
+--     autocmd FocusGained,BufEnter * checktime
+--   augroup END
+-- ]]

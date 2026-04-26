@@ -2,37 +2,36 @@ return {
     'stevearc/conform.nvim',
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
-        local conform = require 'conform'
+        local c = require 'conform'
 
-        conform.setup {
-            format_after_save = false,
-            notify_on_error = false,
-            notify_no_formatters = true,
+        c.setup {
+            notify_on_error         = false,
+            notify_no_formatters    = true,
 
             formatters_by_ft = {
-                javascript = { 'prettier' },
-                typescript = { 'prettier' },
-                javascriptreact = { 'prettier' },
-                typescriptreact = { 'prettier' },
-                jsx = { 'prettier' },
-                vue = { 'prettier' },
-                css = { 'prettier' },
-                html = { 'prettier' },
-                json = { 'prettier' },
-                yaml = { 'yamlfmt' },
-                markdown = { 'prettier' },
-                xml = { 'xmlformat' },
-                lua = { 'stylua' },
-                bash = { 'shfmt' },
-                sh = { 'shfmt' },
-                zsh = { 'shfmt' },
-                cs = { 'csharpier' },
-                python = { 'ruff_format' },
-                go = { 'gofumpt' },
-                cpp = { 'clang_format' },
-                c = { 'clang_format' },
-                java = { lsp_format = 'first' },
-                sql = { 'sqlfluff' },
+                javascript          = { 'prettier' },
+                typescript          = { 'prettier' },
+                javascriptreact     = { 'prettier' },
+                typescriptreact     = { 'prettier' },
+                jsx                 = { 'prettier' },
+                vue                 = { 'prettier' },
+                css                 = { 'prettier' },
+                html                = { 'prettier' },
+                json                = { 'prettier' },
+                yaml                = { 'yamlfmt' },
+                markdown            = { 'prettier' },
+                xml                 = { 'xmlformat' },
+                lua                 = { 'stylua' },
+                bash                = { 'shfmt' },
+                sh                  = { 'shfmt' },
+                zsh                 = { 'shfmt' },
+                cs                  = { 'csharpier' },
+                python              = { 'ruff_format' },
+                go                  = { 'gofumpt' },
+                cpp                 = { 'clang_format' },
+                c                   = { 'clang_format' },
+                java                = { lsp_format = 'first' },
+                sql                 = { 'sqlfluff' },
             },
 
             shfmt = {
@@ -75,7 +74,7 @@ return {
         }
 
         vim.keymap.set({ 'n', 'v' }, '<leader>s', function()
-            conform.format({
+            c.format({
                 lsp_fallback = true,
                 async = true,
                 timeout_ms = 1000,

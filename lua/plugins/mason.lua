@@ -29,14 +29,14 @@ M.ensure_installed = {
 M.event = 'VeryLazy'
 M.config = function()
     require('mason').setup {}
-    local mason = require 'mason'
-    mason.setup {}
-    local register = require 'mason-registry'
+    local m = require 'mason'
+    m.setup {}
+    local r = require 'mason-registry'
 
     for _, server_name in ipairs(M.ensure_installed) do
-        if register.is_installed(server_name) then goto continue end
+        if r.is_installed(server_name) then goto continue end
 
-        register.get_package(server_name):install()
+        r.get_package(server_name):install()
         vim.notify('Installed ' .. server_name, vim.log.levels.INFO, { title = 'LSP Server Install' })
 
         ::continue::

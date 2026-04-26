@@ -1,25 +1,25 @@
-local Cfg = {}
+local M = {}
 ---
 --- @param delta number
-function Cfg:set_transparency(delta)
+function M:set_transparency(delta)
     local currentOpacityPercentage = vim.g.neovide_opacity + delta
     vim.g.neovide_opacity = math.min(1.0, math.max(0.1, currentOpacityPercentage))
     self.last_notify = vim.notify('Opacity set to ' .. vim.g.neovide_opacity * 100 .. '%', vim.log.levels.INFO)
 end
 
-function Cfg:set_scale(delta)
+function M:set_scale(delta)
     local currentScale = vim.g.neovide_scale_factor + delta
     vim.g.neovide_scale_factor = math.min(2.0, math.max(0.1, currentScale))
 end
 
 --- set environment variables for neovide
-function Cfg.register_env()
+function M.register_env()
     local java_home = os.getenv 'HOME' .. '/.sdkman/candidates/java/current'
     vim.fn.setenv('JAVA_HOME', java_home)
     vim.fn.setenv('PATH', java_home .. '/bin:' .. os.getenv 'PATH')
 end
 
-function Cfg:register_keymaps()
+function M:register_keymaps()
     vim.api.nvim_set_keymap('n', '<sc-v>', 'l"+P', { noremap = true, desc = 'Select line(s) in normal mode and copy' })
     vim.api.nvim_set_keymap(
         'c',
@@ -57,7 +57,7 @@ function Cfg:register_keymaps()
     vim.keymap.set('n', '<C-(>', function() self:set_transparency(-0.05) end)
 end
 
-function Cfg:setup()
+function M:setup()
     -- vim.g.neovide_cursor_vfx_mode = 'railgun'
     -- vim.o.guifont = 'FantasqueSansM Nerd Font:h11'
     -- vim.o.guifont = 'JetBrainsMono Nerd Font:h11'
@@ -82,4 +82,4 @@ function Cfg:setup()
     self:register_keymaps()
 end
 
-return Cfg
+return M

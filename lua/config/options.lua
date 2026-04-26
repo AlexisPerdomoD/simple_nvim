@@ -1,43 +1,30 @@
--- eliminar linter de error con variable vim
--- Mostrar números de línea
+vim.opt.termguicolors = true
 vim.opt.number = true
--- Habilitar el uso del mouse
+vim.opt.relativenumber = true
 vim.opt.mouse = 'a'
--- Mostrar comandos en la barra de estado
 vim.opt.showcmd = true
-
 -- Resaltar coincidencias al busca s s
 vim.opt.showmatch = true
-
--- Mostrar números de línea relativos
-vim.opt.relativenumber = true
-
+vim.opt.cursorline = true
 -- Configuraciones para la indexación, tabulaciones y formateo de texto para pantallas angostas
 vim.opt.breakindent = true
 vim.opt.autoindent = true
 vim.opt.linebreak = true
 
 -- Habilitar sintaxis y configuración de archivos
-vim.cmd 'syntax on'
-vim.cmd 'filetype plugin indent on'
+-- vim.crd 'syntax on'
+-- vim.cmd 'filetype plugin indent on'
 -- Configuración de indentación predeterminada para todos los archivos
 vim.opt.tabstop = 4 -- Número de espacios por tabulación
 vim.opt.shiftwidth = 4 -- Número de espacios para indentación
 vim.opt.expandtab = true -- Utilizar espacios en lugar de tabulaciones
 vim.o.lazyredraw = false
-vim.o.cursorline = true
 -- No mostrar el modo de edición
 vim.opt.showmode = false
-
 -- Siempre mostrar la barra de estado
 vim.opt.laststatus = 0
-
--- Habilitar colores verdaderos en la terminal
-vim.opt.termguicolors = true
-
 -- Configuración de la altura del comando
 vim.o.cmdheight = 0
-
 -- Configuraciones de búsqueda
 vim.opt.hlsearch = true -- Resaltar coincidencias
 vim.opt.incsearch = true -- Búsqueda incremental
@@ -59,6 +46,7 @@ vim.opt.spelllang = { 'en', 'es' }
 vim.o.signcolumn = 'yes'
 -- chequear
 vim.o.swapfile = false
+vim.opt.autoread = true
 -- warnings disabled
 vim.g.loaded_node_provider = 0
 vim.g.loaded_python3_provider = 0

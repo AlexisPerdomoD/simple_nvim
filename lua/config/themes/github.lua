@@ -13,11 +13,12 @@ T.config = function(opts)
         }
 
     local github_theme = require 'github-theme'
-    local bg_utils = require 'utils.bg_color_setuper'
 
     github_theme.setup(opts)
     vim.cmd 'colorscheme github_dark_default'
-    bg_utils:bg_setuper(false, true)
+
+    local bg = require 'utils.bg_color_setuper'
+    bg:bg_setuper(false, true)
 end
 
 return T
