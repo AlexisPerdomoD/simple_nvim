@@ -154,25 +154,21 @@ return {
 
         local neotree_cmd = require 'neo-tree.command'
 
-        vim.keymap.set(
-            'n',
-            '<space><leader>',
-            function() neotree_cmd.execute { toggle = true, dir = vim.fn.getcwd() } end
-        )
+        vim.keymap.set('n', '<space><leader>', function()
+            neotree_cmd.execute { toggle = true, dir = vim.fn.getcwd() }
+        end)
 
-        vim.keymap.set('n', '<space><space>', function() neotree_cmd.execute { toggle = true, position = 'left' } end)
+        vim.keymap.set('n', '<space><space>', function()
+            neotree_cmd.execute { toggle = true, position = 'left' }
+        end)
 
-        vim.keymap.set(
-            'n',
-            '<leader>gs',
-            function() neotree_cmd.execute { source = 'git_status', toggle = true, position = 'float' } end
-        )
+        vim.keymap.set('n', '<leader>gs', function()
+            neotree_cmd.execute { source = 'git_status', toggle = true, position = 'float' }
+        end)
 
-        vim.keymap.set(
-            'n',
-            '<space>b',
-            function() neotree_cmd.execute { source = 'buffers', toggle = true, position = 'float' } end
-        )
+        vim.keymap.set('n', '<space>b', function()
+            neotree_cmd.execute { source = 'buffers', toggle = true, position = 'float' }
+        end)
 
         -- LEGACY
         -- vim.keymap.set('n', '<space><leader>', '<cmd>Neotree float toggle  current<cr>')

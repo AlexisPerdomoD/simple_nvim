@@ -21,4 +21,5 @@ end
 local activetheme       = vague
 activetheme.lazy        = false
 activetheme.priority    = 1000
+
 return themes

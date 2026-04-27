@@ -15,8 +15,12 @@ M.cache = {
     floatborder = nil,
 }
 
-M.set_hl = function(name, hl) vim.api.nvim_set_hl(0, name, hl) end
-M.get_hl = function(name) return vim.api.nvim_get_hl(0, { name = name, link = false }) end
+M.set_hl = function(name, hl)
+    vim.api.nvim_set_hl(0, name, hl)
+end
+M.get_hl = function(name)
+    return vim.api.nvim_get_hl(0, { name = name, link = false })
+end
 
 M.float_border = 'rounded'
 
@@ -27,7 +31,9 @@ M.float_border = 'rounded'
 ---@param disable_bg boolean
 ---@param disable_float_bg boolean
 function M:bg_setuper(disable_bg, disable_float_bg)
-    if self.cache.Normal == nil then self.cache.Normal = self.get_hl 'Normal' end
+    if self.cache.Normal == nil then
+        self.cache.Normal = self.get_hl 'Normal'
+    end
     if self.cache.FloatBorder == nil then
         self.cache.NormalFloat = self.get_hl 'NormalFloat'
         self.cache.FloatBorder = self.get_hl 'FloatBorder'
@@ -58,7 +64,9 @@ function M:bg_setuper(disable_bg, disable_float_bg)
     end
 end
 
-function M:clear_cache() self.cache = { normal = nil, normalfloat = nil, floatborder = nil } end
+function M:clear_cache()
+    self.cache = { normal = nil, normalfloat = nil, floatborder = nil }
+end
 
 function M:toggle_bg()
     local is_bg_transparent = not self.state.bg_transparent

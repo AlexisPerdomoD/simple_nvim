@@ -56,12 +56,9 @@ m('i', '<C-S>v', '"*p', { noremap = true, desc = 'Paste from system clipboard' }
 m('n', '<C-c>v', '"*PP', { noremap = true, desc = 'Paste from system clipboard' })
 
 -- remmove background color
-vim.keymap.set(
-    'n',
-    '<leader>t',
-    function() color_bg:toggle_bg() end,
-    { noremap = true, desc = 'Toggle background color' }
-)
+vim.keymap.set('n', '<leader>t', function()
+    color_bg:toggle_bg()
+end, { noremap = true, desc = 'Toggle background color' })
 
 -- Crear el mapeo para invocar el corrector personalizado
 vim.keymap.set(

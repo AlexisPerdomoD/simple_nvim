@@ -1,6 +1,6 @@
 if vim.g.neovide then
-    local neovide_cfg = require 'config.neovide'
-    neovide_cfg:setup()
+    local cfg = require 'config.neovide'
+    cfg:setup()
 end
 
 require 'config.options'

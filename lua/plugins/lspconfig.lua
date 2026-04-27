@@ -1,6 +1,5 @@
 local M = { 'neovim/nvim-lspconfig' }
 M.dependencies = {
-    'williamboman/mason.nvim',
     'nvimdev/lspsaga.nvim',
     'mfussenegger/nvim-jdtls',
     'nvim-tree/nvim-web-devicons',
