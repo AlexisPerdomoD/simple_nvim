@@ -6,7 +6,6 @@ return {
         'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
         'MunifTanjim/nui.nvim',
         'lewis6991/gitsigns.nvim',
-        -- '3rd/image.nvim', -- Optional image support in preview window: See `# Preview Mode` for more information
     },
     priority = 900,
     config = function()
@@ -152,22 +151,21 @@ return {
             },
         }
 
-        local neotree_cmd = require 'neo-tree.command'
-
+        local ntc = require 'neo-tree.command'
         vim.keymap.set('n', '<space><leader>', function()
-            neotree_cmd.execute { toggle = true, dir = vim.fn.getcwd() }
+            ntc.execute { toggle = true, dir = vim.fn.getcwd(), position = 'float' }
         end)
 
         vim.keymap.set('n', '<space><space>', function()
-            neotree_cmd.execute { toggle = true, position = 'left' }
+            ntc.execute { toggle = true, position = 'current' }
         end)
 
         vim.keymap.set('n', '<leader>gs', function()
-            neotree_cmd.execute { source = 'git_status', toggle = true, position = 'float' }
+            ntc.execute { source = 'git_status', toggle = true, position = 'float' }
         end)
 
         vim.keymap.set('n', '<space>b', function()
-            neotree_cmd.execute { source = 'buffers', toggle = true, position = 'float' }
+            ntc.execute { source = 'buffers', toggle = true, position = 'float' }
         end)
 
         -- LEGACY
