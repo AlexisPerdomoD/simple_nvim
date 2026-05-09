@@ -39,11 +39,15 @@ M.config = function()
 
     vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('my.lsp', {}),
-        callback = function(args)
-            local bufnr = args.buf
-            local opts = { buffer = bufnr, noremap = true, silent = true }
-            vim.bo[bufnr].omnifunc = 'v:lua.vim.lsp.omnifunc' -- algo de autocompletadito
+        callback = function(ev)
+            local buf = ev.buf
+            local cl = assert(vim.lsp.get_client_by_id(ev.data.client_id), 'LSP client not found')
+            if cl:supports_method 'textDocument/completion' then
+                vim.lsp.completion.enable(true, cl.id, buf, { autoTrigger = true })
+            end
 
+            -- vim.bo[buf].omnifunc = 'v:lua.vim.lsp.omnifunc' -- algo de autocompletadito
+            local opts = { buffer = buf, noremap = true, silent = true }
             vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, opts)
             vim.keymap.set('n', '<leader>L', vim.diagnostic.setloclist, opts)
             vim.keymap.set('n', 'DE', vim.lsp.buf.declaration, opts)
@@ -61,7 +65,7 @@ M.config = function()
             vim.keymap.set('n', 'td', vim.lsp.buf.type_definition, opts)
             vim.keymap.set('n', 'rn', vim.lsp.buf.rename, opts)
             vim.keymap.set('n', '<space>l', function()
-                vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = bufnr }, { bufnr = bufnr })
+                vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = buf }, { bufnr = buf })
             end, opts)
 
             -- SAGA KEYMAPS
@@ -84,7 +88,6 @@ M.config = function()
     -- LSPSAGA CONFIGURATION
     local lspsaga_config = require 'config.plugin.lspsaga'
     require('lspsaga').setup(lspsaga_config)
-
     -- JAVA LSP AUTOCOMAND SPECIFIC CONFIGURATION
     local jdtls = require 'jdtls'
     local jdtls_setup_config = require('config.plugin.jdtls'):get_config(M.extendedClientCapabilities)

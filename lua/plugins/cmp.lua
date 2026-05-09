@@ -13,6 +13,7 @@ M.dependencies = {
     --devi icons
     'ryanoasis/vim-devicons',
 }
+M.enabled = false
 M.event = 'VeryLazy'
 M.config = function()
     require("luasnip.loaders.from_vscode").lazy_load()

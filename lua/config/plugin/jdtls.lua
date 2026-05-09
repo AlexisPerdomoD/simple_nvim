@@ -54,14 +54,13 @@ local lombok_jar_path = home
     .. 'jdtls'
     .. sep
     .. 'lombok.jar'
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local M = {}
 M.config = nil
 ---@param extendedClientCapabilities table
 function M:get_config(extendedClientCapabilities)
     if self.config == nil then
         local config = {}
-        config.capabilities = capabilities
+        -- config.capabilities = require('cmp_nvim_lsp').default_capabilities()
         config.flags = { allow_incremental_sync = true }
         -- See https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
         config.settings = {}

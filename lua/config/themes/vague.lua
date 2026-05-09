@@ -33,6 +33,7 @@ T.on_highlights = function(highlights, colors) end
 
 T.config = function()
     local theme = require 'vague'
+    local bg = require 'utils.bg_color_setuper'
     theme.setup {
         -- Don't set background
         transparent = T.transparent,
@@ -46,7 +47,9 @@ T.config = function()
         -- Override colors
         colors = T.default_colors,
     }
+
     vim.cmd 'colorscheme vague'
+    bg:bg_setuper(false, true)
 end
 
 return T

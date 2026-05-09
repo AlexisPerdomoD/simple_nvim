@@ -67,3 +67,12 @@ vim.keymap.set(
     custom_spell_check.custom_spell,
     { desc = 'Corrector ortográfico personalizado', noremap = true, silent = true }
 )
+
+-- BUILTINS OVERRIDES
+vim.keymap.set('i', '<C-j>', function()
+    return vim.fn.pumvisible() == 1 and '<C-n>' or '<C-j>'
+end, { expr = true, desc = 'CMD select next' })
+
+vim.keymap.set('i', '<C-k>', function()
+    return vim.fn.pumvisible() == 1 and '<C-p>' or '<C-k>'
+end, { expr = true, desc = 'CMD select prev' })

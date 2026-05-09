@@ -37,6 +37,9 @@ function M:bg_setuper(disable_bg, disable_float_bg)
     if self.cache.FloatBorder == nil then
         self.cache.NormalFloat = self.get_hl 'NormalFloat'
         self.cache.FloatBorder = self.get_hl 'FloatBorder'
+        self.cache.pmenu = self.get_hl 'Pmenu'
+        self.cache.pmenukind = self.get_hl 'PmenuKind'
+        self.cache.pmenuextra = self.get_hl 'PmenuExtra'
     end
 
     M.state.bg_transparent = not disable_bg
@@ -52,15 +55,17 @@ function M:bg_setuper(disable_bg, disable_float_bg)
     -- Floating
     if disable_float_bg then
         self.set_hl('NormalFloat', { bg = 'NONE' })
-        self.set_hl(
-            'FloatBorder',
-            vim.tbl_extend('force', M.cache.FloatBorder or {}, {
-                bg = 'NONE',
-            })
-        )
+        self.set_hl('FloatBorder', { bg = 'NONE' })
+
+        self.set_hl('Pmenu', { bg = 'NONE' })
+        self.set_hl('PmenuKind', { bg = 'NONE' })
+        self.set_hl('PmenuExtra', { bg = 'NONE' })
     else
         self.set_hl('NormalFloat', M.cache.NormalFloat)
         self.set_hl('FloatBorder', M.cache.FloatBorder)
+        self.set_hl('Pmenu', M.cache.pmenu)
+        self.set_hl('PmenuKind', M.cache.pmenukind)
+        self.set_hl('PmenuExtra', M.cache.pmenuextra)
     end
 end
 

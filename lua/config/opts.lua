@@ -48,3 +48,14 @@ vim.g.loaded_node_provider = 0
 vim.g.loaded_python3_provider = 0
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_perl_provider = 0
+
+-- CMD
+vim.opt.autocomplete = true
+vim.o.complete = 'o,.'
+vim.opt.completeopt = { 'menuone', 'noselect', 'popup', 'fuzzy' }
+vim.opt.completeitemalign = { 'abbr', 'menu', 'kind' }
+vim.o.pumheight = 12
+vim.o.pummaxwidth = 25
+-- vim.o.pumblend = 10
+vim.opt.wildoptions = { 'fuzzy', 'pum' }
+vim.o.pumborder = 'rounded'

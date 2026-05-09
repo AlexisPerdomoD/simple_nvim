@@ -4,7 +4,7 @@ return {
     dependencies = {
         'MunifTanjim/nui.nvim',
         'nvim-treesitter/nvim-treesitter',
-        'hrsh7th/nvim-cmp',
+        -- 'hrsh7th/nvim-cmp',
         'rcarriga/nvim-notify',
     },
     config = function()
@@ -19,8 +19,8 @@ return {
             bottom_right = '╯',
         }
         require('noice').setup {
-            cmdline = {
 
+            cmdline = {
                 enabled = true, -- enables the Noice cmdline UI
                 view = 'cmdline_popup', -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
                 spell = false,
