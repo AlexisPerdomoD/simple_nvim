@@ -3,7 +3,7 @@ if vim.g.neovide then
     cfg:setup()
 end
 
-require 'config.options'
+require 'config.opts'
 require 'config.autocmds'
 require 'config.keymaps'
 require 'config.lazy'
