@@ -33,7 +33,17 @@ M.config = function()
 
         inactive_sections = {},
         tabline = {
-            lualine_a = { 'mode' },
+            lualine_a = {
+                'mode',
+                function()
+                    local reg = vim.fn.reg_recording()
+                    if reg == '' then
+                        return ''
+                    end
+
+                    return 'REG @' .. reg
+                end,
+            },
             lualine_b = { { 'filename', path = 1, shorting_target = 120 } },
             lualine_c = { 'diagnostics' },
             lualine_x = {},

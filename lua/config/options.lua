@@ -18,7 +18,7 @@ vim.opt.linebreak = true
 vim.opt.tabstop = 4 -- Número de espacios por tabulación
 vim.opt.shiftwidth = 4 -- Número de espacios para indentación
 vim.opt.expandtab = true -- Utilizar espacios en lugar de tabulaciones
-vim.o.lazyredraw = true
+vim.o.lazyredraw = false
 -- No mostrar el modo de edición
 vim.opt.showmode = false
 -- Siempre mostrar la barra de estado
