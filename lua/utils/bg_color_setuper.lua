@@ -30,7 +30,7 @@ M.float_border = 'rounded'
 
 ---@param disable_bg boolean
 ---@param disable_float_bg boolean
-function M:bg_setuper(disable_bg, disable_float_bg)
+function M:start(disable_bg, disable_float_bg)
     if self.cache.Normal == nil then
         self.cache.Normal = self.get_hl 'Normal'
     end
@@ -70,7 +70,7 @@ end
 
 function M:toggle_bg()
     local is_bg_transparent = not self.state.bg_transparent
-    self:bg_setuper(is_bg_transparent, false)
+    self:start(is_bg_transparent, false)
 
     self.state.bg_transparent = is_bg_transparent
     vim.notify(string.format('bg: %s', is_bg_transparent and 'transparent' or 'opaque'), vim.log.levels.INFO)

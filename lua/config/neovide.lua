@@ -67,7 +67,8 @@ function M:setup()
     -- vim.o.guifont = 'JetBrainsMono Nerd Font:h11'
     -- vim.o.guifont = 'CaskaydiaCove Nerd Font:h8'
     -- vim.o.guifont = 'AnonymicePro Nerd Font:h12'
-    vim.o.guifont = 'Fixedsys Excelsior:h12'
+    -- vim.o.guifont = 'Fixedsys Excelsior:h12'
+    vim.o.guifont = 'ComicShannsMono Nerd Font:h10'
     -- vim.g.neovide_text_gamma = 1
     -- vim.g.neovide_text_contrast = 1
     vim.g.neovide_input_use_logo = true

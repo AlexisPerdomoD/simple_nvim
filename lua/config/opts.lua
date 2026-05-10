@@ -10,9 +10,6 @@ vim.opt.cursorline = true
 vim.opt.breakindent = true
 vim.opt.autoindent = true
 vim.opt.linebreak = true
--- Habilitar sintaxis y configuración de archivos
--- vim.crd 'syntax on'
--- vim.cmd 'filetype plugin indent on'
 -- Configuración de indentación predeterminada para todos los archivos
 vim.opt.tabstop = 4 -- Número de espacios por tabulación
 vim.opt.shiftwidth = 4 -- Número de espacios para indentación

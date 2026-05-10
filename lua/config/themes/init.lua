@@ -1,16 +1,16 @@
 local catppuccin    = require 'config.themes.catppuccin'
 local vscode        = require 'config.themes.vscode'
-local github        = require 'config.themes.github'
 local matrix        = require 'config.themes.matrix'
 local vague         = require 'config.themes.vague'
 local nightjungle   = require 'config.themes.nightjungle'
+local dracula       = require 'config.themes.dracula'
 local themes = {
     catppuccin,
     vscode,
-    github,
     matrix,
     vague,
     nightjungle,
+    dracula,
 }
 
 for _ , theme in ipairs(themes) do
@@ -18,7 +18,7 @@ for _ , theme in ipairs(themes) do
 end
 
 -- ACTIVE THEME
-local activetheme       = vague
+local activetheme       = nightjungle
 activetheme.lazy        = false
 activetheme.priority    = 1000
 

@@ -49,7 +49,7 @@ M.config = function()
     vim.cmd.colorscheme 'vscode'
     vim.o.background = 'dark'
     local bg = require 'utils.bg_color_setuper'
-    bg:bg_setuper(false, true)
+    bg:start(false, true)
 end
 
 return M

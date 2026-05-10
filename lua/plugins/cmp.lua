@@ -15,12 +15,17 @@ M.dependencies = {
 }
 M.event = 'VeryLazy'
 M.config = function()
+    vim.o.winborder = 'rounded'
     require("luasnip.loaders.from_vscode").lazy_load()
     local luasnip = require 'luasnip'
-
     local cmp = require 'cmp'
     local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
+
     cmp.setup {
+        window = {
+            completion = cmp.config.window.bordered(),
+            documentation = cmp.config.window.bordered(),
+        },
         sources = {
             { name = 'nvim_lsp',  max_item_count = 20 },
             { name = 'luasnip',   max_item_count = 10 },
@@ -83,19 +88,19 @@ M.config = function()
                     fallback()
                 end
             end, { 'i', 's' }),
-            ['<C-Down>']  = cmp.mapping.select_next_item(),
-            ['<C-j>']     = cmp.mapping.select_next_item(),
-            ['<C-Up>']    = cmp.mapping.select_prev_item(),
-            ['<C-k>']     = cmp.mapping.select_prev_item(),
-            ['<C-Right>'] = cmp.mapping.confirm {
-                behavior = cmp.ConfirmBehavior.Insert,
-                select = true,
+            ['<C-Down>']    = cmp.mapping.select_next_item(),
+            ['<C-j>']       = cmp.mapping.select_next_item(),
+            ['<C-Up>']      = cmp.mapping.select_prev_item(),
+            ['<C-k>']       = cmp.mapping.select_prev_item(),
+            ['<C-Right>']   = cmp.mapping.confirm {
+                behavior    = cmp.ConfirmBehavior.Insert,
+                select      = true,
             },
-            ['<C-l>']     = cmp.mapping.confirm {
-                behavior = cmp.ConfirmBehavior.Insert,
-                select = true,
+            ['<C-l>']       = cmp.mapping.confirm {
+                behavior    = cmp.ConfirmBehavior.Insert,
+                select      = true,
             },
-            ['<c-space>'] = cmp.mapping.complete(),
+            ['<c-space>']   = cmp.mapping.complete(),
         },
     }
 
@@ -118,5 +123,7 @@ M.config = function()
         mapping = cmp.mapping.preset.cmdline(),
         sources = cmp.config.sources({ { name = 'path' } }, { { name = 'cmdline' } }),
     })
+
+
 end
 return M
