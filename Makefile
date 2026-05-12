@@ -1,11 +1,29 @@
 install:
 	set -e
 
-	sudo pacman -S --needed --noconfirm git curl neovim ripgrep fd bat fzf go nodejs fnm neovide pnpm zip unzip bash
+	sudo pacman -S --needed --noconfirm git \
+		curl \
+		neovim \
+		ripgrep \
+		fd \
+		bat \
+		fzf \
+		go \
+		nodejs \
+		fnm \
+		neovide \
+		pnpm \
+		zip \
+		unzip \
+		bash \
+		tree-sitter \
+		tree-sitter-cli 
 
-	############# Java #################
+install-java:
+	set -e
+
 	curl -s "https://get.sdkman.io" | bash
-	source "$HOME/.sdkman/bin/sdkman-init.sh"
+	source "${HOME}/.sdkman/bin/sdkman-init.sh"
 
 	sdk install maven
 	sdk install java
