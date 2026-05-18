@@ -1,10 +1,10 @@
 local T = { 'catppuccin/nvim' }
 T.name = 'catppuccin'
 T.config = function()
-    local catppuccin = require 'catppuccin'
+    local theme = require 'catppuccin'
     local bg = require 'utils.bg_color_setuper'
 
-    catppuccin.setup {
+    theme.setup {
         float = { solid = true, transparent = true },
         -- flavour = "auto", -- latte, frappe, macchiato, mocha
         -- background = { -- :h background
@@ -78,6 +78,7 @@ T.config = function()
         treesitter = true,
     }
 
+    vim.cmd 'colorscheme catppuccin-macchiato'
     bg:start(false, true)
 end
 
