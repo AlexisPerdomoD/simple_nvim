@@ -18,7 +18,7 @@ for _ , theme in ipairs(themes) do
 end
 
 -- ACTIVE THEME
-local activetheme       = nightjungle
+local activetheme       = catppuccin
 activetheme.lazy        = false
 activetheme.priority    = 1000
 
