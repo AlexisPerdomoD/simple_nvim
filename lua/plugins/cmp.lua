@@ -79,13 +79,15 @@ M.config = function()
             ['<C-u>']     = cmp.mapping.scroll_docs(-4),
             ['<C-d>']     = cmp.mapping.scroll_docs(4),
             ['<C-x>']     = cmp.mapping.abort(),
-            ['<C-z>']     = cmp.mapping(function(fallback)
-                if cmp.visible() then
-                    cmp.select_next_item()
-                elseif luasnip.choice_active() then
-                    luasnip.change_choice(1)
-                else
-                    fallback()
+            ['<C-z>']     = cmp.mapping(
+                function(fallback)
+                    if cmp.visible() then
+                        cmp.select_next_item()
+                        return
+                    end
+                    if luasnip.choice_active() then
+                        luasnip.change_choice(1)
+                        return fallback()
                 end
             end, { 'i', 's' }),
             ['<C-Down>']    = cmp.mapping.select_next_item(),

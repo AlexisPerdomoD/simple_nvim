@@ -1,15 +1,13 @@
 local color_bg = require 'utils.bg_color_setuper'
 local custom_spell_check = require 'utils.custom_spell_check'
+local opencode = require 'utils.opencode'
 
 -- -- Set leader key
 vim.g.mapleader = '.'
 
 local m = vim.api.nvim_set_keymap
 -- Normal mode mappings
-m('n', '<leader>1', ':source ~/.config/nvim/init.lua<CR>', { noremap = true, desc = 'Reload config', silent = true })
 m('v', '$', '$<Left>', { noremap = true, desc = 'Jump to end of line' })
-m('n', '<space>w', ':w<CR>', { noremap = true, desc = 'Save file' })
-m('n', '<space>q', ':q<CR>', { noremap = true, desc = 'Quit file' })
 m('n', '<space>p', ':fold<CR>', { noremap = true, desc = 'Toggle fold' })
 -- directions
 m('n', '<left>', '<cmd>echo "Use h to move!!"<CR>', { noremap = true, desc = 'Move left' })
@@ -42,6 +40,12 @@ m('n', '<leader>l', ':vertical resize -10<CR>', { silent = true, desc = 'Resize 
 m('n', '\\', ':vertical resize -5<CR>', { silent = true, desc = 'Resize right' })
 
 m('n', '<leader>c', ':nohlsearch<CR>', { silent = true, desc = 'Clear highlight' })
+-- TERMINAL MAPPINGS
+m('t', '<A-h>', '<C-\\><C-n>:TmuxNavigateLeft<cr>', { silent = true, desc = 'Tmux left' })
+m('t', '<A-j>', '<C-\\><C-n>:TmuxNavigateDown<cr>', { silent = true, desc = 'Tmux down' })
+m('t', '<A-k>', '<C-\\><C-n>:TmuxNavigateUp<cr>', { silent = true, desc = 'Tmux up' })
+m('t', '<A-l>', '<C-\\><C-n>:TmuxNavigateRight<cr>', { silent = true, desc = 'Tmux right' })
+m('t', '<Esc><Esc>', '<C-\\><C-n>', { silent = true, desc = 'exit terminal' })
 
 --Insert mode keybinding
 m('i', '<C-h>', '<Left>', { noremap = true, desc = 'Move left in insert mode' })
@@ -55,15 +59,20 @@ m('v', '<C-c>', '"*yy', { noremap = true, desc = 'Copy to system clipboard' })
 m('i', '<C-S>v', '"*p', { noremap = true, desc = 'Paste from system clipboard' })
 m('n', '<C-c>v', '"*PP', { noremap = true, desc = 'Paste from system clipboard' })
 
+local ms = vim.keymap.set
 -- remmove background color
-vim.keymap.set('n', '<leader>t', function()
+ms('n', '<leader>t', function()
     color_bg:toggle_bg()
 end, { noremap = true, desc = 'Toggle background color' })
 
 -- Crear el mapeo para invocar el corrector personalizado
-vim.keymap.set(
+ms(
     'n',
     'sp',
     custom_spell_check.custom_spell,
     { desc = 'Corrector ortográfico personalizado', noremap = true, silent = true }
 )
+
+-- Opencode
+ms('n', '<space>oc', opencode.toggle, { desc = 'Opencode toggle' })
+ms('n', '<space>of', opencode.focus, { desc = 'Opencode focus' })
