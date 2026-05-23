@@ -19,14 +19,12 @@ m('n', '<Tab>', ':tabnext<CR>', { noremap = true, desc = 'Next tab', silent = tr
 m('n', '<S-Tab>', ':tabprevious<CR>', { noremap = true, desc = 'Previous tab', silent = true })
 m('n', '<space><Tab>', ':tabnew<CR>', { noremap = true, desc = 'New tab', silent = true })
 
-m('n', '<space><Left>', ':TmuxNavigateLeft<cr>', { silent = true, desc = 'Tmux left' })
-m('n', '<A-h>', ':TmuxNavigateLeft<cr>', { silent = true, desc = 'Tmux left' })
-m('n', '<space><Down>', ':TmuxNavigateDown<cr>', { silent = true, desc = 'Tmux down' })
-m('n', '<A-j>', ':TmuxNavigateDown<cr>', { silent = true, desc = 'Tmux down' })
-m('n', '<space><Up>', ':TmuxNavigateUp<cr>', { silent = true, desc = 'Tmux up' })
-m('n', '<A-k>', ':TmuxNavigateUp<cr>', { silent = true, desc = 'Tmux up' })
-m('n', '<space><Right>', ':TmuxNavigateRight<cr>', { silent = true, desc = 'Tmux right' })
+-- MOVEMENTS
 m('n', '<A-l>', ':TmuxNavigateRight<cr>', { silent = true, desc = 'Tmux right' })
+m('n', '<A-h>', '<C-w>h', { silent = true, desc = 'Split left' })
+m('n', '<A-j>', '<C-w>j', { silent = true, desc = 'Split down' })
+m('n', '<A-k>', '<C-w>k', { silent = true, desc = 'Split up' })
+m('n', '<A-l>', '<C-w>l', { silent = true, desc = 'Split right' })
 
 m('n', '<leader><Up>', ':resize +5<CR>', { silent = true, desc = 'Resize up' })
 m('n', '<leader>k', ':resize +5<CR>', { silent = true, desc = 'Resize up' })
@@ -41,10 +39,10 @@ m('n', '\\', ':vertical resize -5<CR>', { silent = true, desc = 'Resize right' }
 
 m('n', '<leader>c', ':nohlsearch<CR>', { silent = true, desc = 'Clear highlight' })
 -- TERMINAL MAPPINGS
-m('t', '<A-h>', '<C-\\><C-n>:TmuxNavigateLeft<cr>', { silent = true, desc = 'Tmux left' })
-m('t', '<A-j>', '<C-\\><C-n>:TmuxNavigateDown<cr>', { silent = true, desc = 'Tmux down' })
-m('t', '<A-k>', '<C-\\><C-n>:TmuxNavigateUp<cr>', { silent = true, desc = 'Tmux up' })
-m('t', '<A-l>', '<C-\\><C-n>:TmuxNavigateRight<cr>', { silent = true, desc = 'Tmux right' })
+m('t', '<A-h>', '<C-\\><C-n><C-w>h', { silent = true, desc = 'Split left' })
+m('t', '<A-j>', '<C-\\><C-n><C-w>j', { silent = true, desc = 'Split down' })
+m('t', '<A-k>', '<C-\\><C-n><C-w>k', { silent = true, desc = 'Split up' })
+m('t', '<A-l>', '<C-\\><C-n><C-w>l', { silent = true, desc = 'Split right' })
 m('t', '<Esc><Esc>', '<C-\\><C-n>', { silent = true, desc = 'exit terminal' })
 
 --Insert mode keybinding

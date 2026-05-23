@@ -130,25 +130,33 @@ M.opts = {
 M.config = function()
     local t = require 'telescope'
     local builtin = require 'telescope.builtin'
-    local m = vim.keymap
+    local m = vim.keymap.set
     t.setup {}
 
     -- BUILTIN
-    m.set('n', '<space>cb', builtin.buffers, { desc = 'Telescope=buffers' })
-    m.set('n', '<space>gs', builtin.git_status, { desc = 'Telescope=Git status' })
-    m.set('n', '<space>gf', builtin.git_files, { desc = 'Telescope=Git Files' })
-    m.set('n', '<space>gc', builtin.git_commits, { desc = 'Telescope=Git commits' })
-    m.set('n', '<space>gb', builtin.git_branches, { desc = 'Telescope=Git branches' })
-    m.set('n', '<space>ff', builtin.find_files, { desc = 'Telescope=Find Files' })
-    m.set('n', '<space>h',  builtin.help_tags, { desc = 'Telescope=Help' })
-    m.set('n', '<space>hk', builtin.keymaps, { desc = 'Telescope=keymaps' })
-    m.set('n', '<space>lg', builtin.live_grep, { desc = 'Telescope=live grep' })
+    m('n', '<space>gD', builtin.lsp_definitions, { desc = 'Telescope=LSP Definitions' })
+    m('n', '<space>gT', builtin.lsp_type_definitions, { desc = 'Telescope=LSP Type Definitions' })
+    m('n', '<space>gR', builtin.lsp_references, { desc = 'Telescope=LSP References' })
+    m('n', '<space>gI', builtin.lsp_implementations, { desc = 'Telescope=LSP Implementations' })
+    m('n', '<space>wd', builtin.diagnostics, { desc = 'Telescope=Workspace Diagnostics' })
+    m('n', '<space>wb', function() builtin.diagnostics { bufnr = 0 } end, { desc = 'Telescope=Current Buffer Diagnostics' })
+
+
+    m('n', '<space>cb', builtin.buffers, { desc = 'Telescope=buffers' })
+    m('n', '<space>gs', builtin.git_status, { desc = 'Telescope=Git status' })
+    m('n', '<space>gf', builtin.git_files, { desc = 'Telescope=Git Files' })
+    m('n', '<space>gc', builtin.git_commits, { desc = 'Telescope=Git commits' })
+    m('n', '<space>gb', builtin.git_branches, { desc = 'Telescope=Git branches' })
+    m('n', '<space>ff', builtin.find_files, { desc = 'Telescope=Find Files' })
+    m('n', '<space>h' , builtin.help_tags, { desc = 'Telescope=Help' })
+    m('n', '<space>hk', builtin.keymaps, { desc = 'Telescope=keymaps' })
+    m('n', '<space>lg', builtin.live_grep, { desc = 'Telescope=live grep' })
     -- CUSTOM
-    m.set('n', '<space>cc', M.custom.colorscheme, { desc = 'Change colorscheme' })
-    m.set('n', '<space>LG', M.custom.grep_string, { desc = 'Custom grep string' })
-    m.set('n', '<space>pp', M.custom.list_plugins, { desc = 'Plugins installed' })
-    m.set('n', '<space>fb', M.custom.list_buffers, { desc = 'Current folder file browser' })
-    m.set('n', '<space>nf', M.custom.change_neovide_font, { desc = 'Change neovide fonts' })
+    m('n', '<space>cc', M.custom.colorscheme, { desc = 'Change colorscheme' })
+    m('n', '<space>LG', M.custom.grep_string, { desc = 'Custom grep string' })
+    m('n', '<space>pp', M.custom.list_plugins, { desc = 'Plugins installed' })
+    m('n', '<space>fb', M.custom.list_buffers, { desc = 'Current folder file browser' })
+    m('n', '<space>nf', M.custom.change_neovide_font, { desc = 'Change neovide fonts' })
 end
 
 return M

@@ -1,10 +1,6 @@
 return {
     -- themes
     require 'config.themes',
-    -- add mapping navigation support
-    { 'christoomey/vim-tmux-navigator' },
-    -- adds better java support for jdtls
-    { 'mfussenegger/nvim-jdtls', ft = 'java' },
     -- adds support to lua into nvim
     {
         'folke/lazydev.nvim',
@@ -48,55 +44,21 @@ return {
         version = 'v2.*',
         dependencies = { 'rafamadriz/friendly-snippets' },
     },
-
     {
-        'numToStr/Comment.nvim',
-        lazy = true,
+        'mfussenegger/nvim-jdtls',
+        ft = 'java',
         config = function()
-            local c = require 'Comment'
-            c.setup {
-                ---Add a space b/w comment and the line
-                padding = true,
-                ---Whether the cursor should stay at its position
-                sticky = true,
-                ---Lines to be ignored while (un)comment
-                ignore = nil,
-                ---LHS of toggle mappings in NORMAL mode
-                toggler = {
-                    ---Line-comment toggle keymap
-                    line = 'cl',
-                    ---Block-comment toggle keymap
-                    block = 'gbc',
-                },
-                ---LHS of operator-pending mappings in NORMAL and VISUAL mode
-                opleader = {
-                    ---Line-comment keymap
-                    line = '/gc',
-                    ---Block-comment keymap
-                    block = '/gb',
-                },
-                ---LHS of extra mappings
-                extra = {
-                    ---Add comment on the line above
-                    above = 'gk',
-                    ---Add comment on the line below
-                    below = 'gj',
-                    ---Add comment at the end of line
-                    eol = 'gl',
-                },
-                ---Enable keybindings
-                ---NOTE: If given `false` then the plugin won't create any mappings
-                mappings = {
-                    ---Operator-pending mapping; `gcc` `gbc` `gc[count]{motion}` `gb[count]{motion}`
-                    basic = true,
-                    ---Extra mapping; `gco`, `gcO`, `gcA`
-                    extra = true,
-                },
-                ---Function to call before (un)comment
-                pre_hook = nil,
-                ---Function to call after (un)comment
-                post_hook = nil,
-            }
+            -- JAVA LSP AUTOCOMAND SPECIFIC CONFIGURATION
+            vim.api.nvim_create_autocmd('FileType', {
+                pattern = 'java',
+                callback = function(args)
+                    local jdtls = require 'jdtls'
+                    local lang_setup = require 'config.plugin.jdtls'
+                    local capabilities = vim.lsp.protocol.make_client_capabilities()
+                    local cfg = lang_setup:get_config(capabilities)
+                    jdtls.start_or_attach(cfg)
+                end,
+            })
         end,
     },
 }
