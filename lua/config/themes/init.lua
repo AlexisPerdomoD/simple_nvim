@@ -4,6 +4,9 @@ local matrix        = require 'config.themes.matrix'
 local vague         = require 'config.themes.vague'
 local dracula       = require 'config.themes.dracula'
 local vercel        = require 'config.themes.vercel'
+local vesper        = require 'config.themes.vesper'
+local ayu           = require 'config.themes.ayu'
+local boo           = require 'config.themes.boo'
 local themes = {
     catppuccin,
     vscode,
@@ -11,6 +14,9 @@ local themes = {
     vague,
     dracula,
     vercel,
+    vesper,
+    ayu,
+    boo,
 }
 
 for _ , theme in ipairs(themes) do
@@ -18,7 +24,7 @@ for _ , theme in ipairs(themes) do
 end
 
 -- ACTIVE THEME
-local activetheme       = vercel
+local activetheme       = boo
 activetheme.lazy        = false
 activetheme.priority    = 1000
 

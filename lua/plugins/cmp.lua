@@ -5,11 +5,10 @@ M.dependencies = {
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-cmdline',
     'hrsh7th/cmp-git',
-    'L3MON4D3/LuaSnip',
     'saadparwaiz1/cmp_luasnip',
-    'davidmh/cmp-nerdfonts',
+
+    'L3MON4D3/LuaSnip',
     'windwp/nvim-autopairs',
-    --devi icons
     'ryanoasis/vim-devicons',
 }
 M.event = 'VeryLazy'
@@ -29,7 +28,6 @@ M.config = function()
             { name = 'nvim_lsp',  max_item_count = 20 },
             { name = 'luasnip',   max_item_count = 10 },
             { name = 'buffer',    max_item_count = 5 },
-            { name = 'nerdfonts', max_item_count = 3 },
             { name = 'path',      max_item_count = 3 },
         },
         -- performance = {
