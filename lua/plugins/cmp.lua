@@ -4,7 +4,6 @@ M.dependencies = {
     'hrsh7th/cmp-path',
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-cmdline',
-    'hrsh7th/cmp-git',
     'saadparwaiz1/cmp_luasnip',
 
     'L3MON4D3/LuaSnip',
@@ -106,10 +105,7 @@ M.config = function()
 
     -- Set configuration for specific filetype.
     cmp.setup.filetype('gitcommit', {
-        sources = cmp.config.sources {
-            { { name = 'buffer' } },
-            -- { name = 'git' }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
-        },
+        sources = cmp.config.sources {{  name = 'buffer'  }},
     })
     -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
     cmp.setup.cmdline({ '/', '?' }, {
