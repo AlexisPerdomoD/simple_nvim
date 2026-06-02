@@ -7,7 +7,7 @@ M.config = function()
     local get_background_colour = function()
         local hl = vim.api.nvim_get_hl(0, { name = 'Normal' })
         if not hl or not hl.bg then
-            return '#000000'
+            return '#020202'
         end
 
         return string.format('#%06x', hl.bg)

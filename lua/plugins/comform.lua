@@ -81,7 +81,7 @@ return {
             }, function(err)
                 if err ~= nil then
                     -- NOTIFY ERROR
-                    vim.notify(err, vim.log.levels.WARN)
+                    vim.notify(tostring(err), vim.log.levels.WARN)
                     return
                 end
 
