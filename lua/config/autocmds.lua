@@ -58,12 +58,20 @@ vim.api.nvim_create_autocmd('BufReadPre', {
                 vim.lsp.buf_detach_client(args.buf, client.id)
             end
 
-            vim.schedule(function()
+            local stats = vim.loop.fs_stat(args.file)
+
+            if not stats then
+                return
+            end
+
+            local function notify_cb()
                 vim.notify(
                     ('Large file detected (%0.2f MB), lite mode enabled'):format(stats.size / 1024 / 1024),
                     vim.log.levels.WARN
                 )
-            end)
+            end
+
+            vim.schedule(notify_cb)
         end)
     end,
 })
