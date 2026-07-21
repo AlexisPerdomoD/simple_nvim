@@ -1,10 +1,9 @@
 local T = { 'catppuccin/nvim' }
 T.name = 'catppuccin'
 T.config = function()
-    local theme = require 'catppuccin'
-    local bg = require 'utils.bg_color_setuper'
+    local t = require 'catppuccin'
 
-    theme.setup {
+    t.setup {
         float = { solid = true, transparent = true },
         auto_integrations = true,
         native_lsp = {
@@ -29,6 +28,8 @@ T.config = function()
         },
         treesitter = true,
     }
+    local bg = require 'utils.bg_color_setuper'
+
     vim.cmd 'colorscheme catppuccin-macchiato'
     bg:start(false, true)
 end
