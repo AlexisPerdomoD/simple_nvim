@@ -1,22 +1,24 @@
 local catppuccin    = require 'config.themes.catppuccin'
 local vscode        = require 'config.themes.vscode'
-local matrix        = require 'config.themes.matrix'
-local vague         = require 'config.themes.vague'
 local dracula       = require 'config.themes.dracula'
 local vercel        = require 'config.themes.vercel'
 local vesper        = require 'config.themes.vesper'
 local ayu           = require 'config.themes.ayu'
-local boo           = require 'config.themes.boo'
+local pallete       = require 'config.themes.pallete'
+local poimandres    = require 'config.themes.poimandres'
+local everbush      = require 'config.themes.everbush'
+local zenbones      = require 'config.themes.zenbones'
 local themes = {
     catppuccin,
     vscode,
-    matrix,
-    vague,
     dracula,
     vercel,
     vesper,
     ayu,
-    boo,
+    pallete,
+    poimandres,
+    everbush,
+    zenbones,
 }
 
 for _ , theme in ipairs(themes) do
@@ -24,7 +26,7 @@ for _ , theme in ipairs(themes) do
 end
 
 -- ACTIVE THEME
-local activetheme       = boo
+local activetheme       = poimandres
 activetheme.lazy        = false
 activetheme.priority    = 1000
 

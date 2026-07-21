@@ -1,0 +1,16 @@
+local M = { 'olivercederborg/poimandres.nvim' }
+M.config = function()
+    local t = require 'poimandres'
+
+    t.setup {
+        bold_vert_split = false, -- use bold vertical separators
+        dim_nc_background = false, -- dim 'non-current' window backgrounds
+        disable_background = false, -- disable background
+        disable_float_background = true, -- disable background for floats
+        disable_italics = false, -- disable italics
+    }
+
+    vim.cmd 'colorscheme poimandres'
+end
+
+return M
