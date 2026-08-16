@@ -1,6 +1,6 @@
 local M = { 'williamboman/mason.nvim' }
 M.ensure_installed = {
-    "typescript-language-server",
+    'typescript-language-server',
     'bash-language-server',
     'lua-language-server',
     'css-lsp',
@@ -18,6 +18,8 @@ M.ensure_installed = {
     'pyright',
     'ruff',
     'hyprls',
+    'pyright',
+    'ruff',
     -- 'marksman',
     -- 'sqls',
     -- 'jdtls',

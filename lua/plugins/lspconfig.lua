@@ -7,7 +7,7 @@ M.lsp_servers = {
     'bashls',
     'cssls',
     'dockerls',
-    'eslint_ls',
+    'eslint',
     'gopls',
     'html',
     'jsonls',
