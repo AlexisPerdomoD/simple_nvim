@@ -26,7 +26,7 @@ for _ , theme in ipairs(themes) do
 end
 
 -- ACTIVE THEME
-local activetheme       = poimandres
+local activetheme       = zenbones
 activetheme.lazy        = false
 activetheme.priority    = 1000
 
