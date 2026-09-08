@@ -8,6 +8,7 @@ local pallete       = require 'config.themes.pallete'
 local poimandres    = require 'config.themes.poimandres'
 local everbush      = require 'config.themes.everbush'
 local zenbones      = require 'config.themes.zenbones'
+local sora          = require 'config.themes.sora'
 local themes = {
     catppuccin,
     vscode,
@@ -19,6 +20,7 @@ local themes = {
     poimandres,
     everbush,
     zenbones,
+    sora,
 }
 
 for _ , theme in ipairs(themes) do
@@ -26,7 +28,7 @@ for _ , theme in ipairs(themes) do
 end
 
 -- ACTIVE THEME
-local activetheme       = zenbones
+local activetheme       = sora
 activetheme.lazy        = false
 activetheme.priority    = 1000
 
