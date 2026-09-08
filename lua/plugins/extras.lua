@@ -208,7 +208,7 @@ return {
             local mp = require 'markdown_preview'
             mp.setup {
                 instance_mode = 'takeover', -- "takeover" or "multi" (see below)
-                port = 0, -- 0 = auto (8421 for takeover, OS-assigned for multi)
+                port = 1666, -- 0 = auto (8421 for takeover, OS-assigned for multi)
                 host = '127.0.0.1', -- bind address; "0.0.0.0" for network access (see Remote access)
                 open_browser = true, -- auto-open browser on start
 
@@ -216,6 +216,7 @@ return {
                 -- string = browser name ("Firefox") or binary ("google-chrome")
                 -- table = full command, URL appended ({ "google-chrome", "--incognito" })
                 -- On macOS, string values are passed via `open -a <name>`.
+                -- browser = { 'terminal-browser', 'open', '127.0.0.1:1666' },
                 browser = nil,
 
                 content_name = 'content.md', -- workspace content file
