@@ -32,6 +32,7 @@ return {
                 c                   = { 'clang_format' },
                 java                = { lsp_format = 'first' },
                 sql                 = { 'sqlfluff' },
+                rust                = { 'rustfmt' },
             },
 
             shfmt = {
