@@ -21,43 +21,43 @@ function M.custom.change_neovide_font()
     local action_state = require 'telescope.actions.state'
     local conf = require('telescope.config').values
 
-    pickers
-        .new({}, {
-            prompt_title = 'Select Neovide Font',
-            finder = finders.new_table {
-                results = fonts,
-            },
-            sorter = conf.generic_sorter {},
-            attach_mappings = function(bufnr, _)
-                local picker = action_state.get_current_picker(bufnr)
+    local p = pickers.new({}, {
+        prompt_title = 'Select Neovide Font',
+        finder = finders.new_table {
+            results = fonts,
+        },
+        sorter = conf.generic_sorter {},
+        attach_mappings = function(bufnr, _)
+            local pick = action_state.get_current_picker(bufnr)
 
-                -- cache original set_selection
-                local original_set_selection = picker.set_selection
+            -- cache original set_selection
+            local original_set_selection = pick.set_selection
 
-                -- override selection change (REAL hook point)
-                picker.set_selection = function(self, row)
-                    original_set_selection(self, row)
+            -- override selection change (REAL hook point)
+            pick.set_selection = function(self, row)
+                original_set_selection(self, row)
 
-                    local entry = action_state.get_selected_entry()
-                    if entry and entry[1] then
-                        vim.o.guifont = entry[1]
-                    end
+                local entry = action_state.get_selected_entry()
+                if entry and entry[1] then
+                    vim.o.guifont = entry[1]
                 end
+            end
 
-                actions.select_default:replace(function()
-                    local entry = action_state.get_selected_entry()
-                    actions.close(bufnr)
+            actions.select_default:replace(function()
+                local entry = action_state.get_selected_entry()
+                actions.close(bufnr)
 
-                    if entry and entry[1] then
-                        vim.o.guifont = entry[1]
-                        vim.notify('Font set: ' .. entry[1], vim.log.levels.INFO)
-                    end
-                end)
+                if entry and entry[1] then
+                    vim.o.guifont = entry[1]
+                    vim.notify('Font set: ' .. entry[1], vim.log.levels.INFO)
+                end
+            end)
 
-                return true
-            end,
-        })
-        :find()
+            return true
+        end,
+    })
+
+    p:find()
 end
 
 function M.custom.list_plugins()
@@ -139,8 +139,9 @@ M.config = function()
     m('n', '<space>gR', builtin.lsp_references, { desc = 'Telescope=LSP References' })
     m('n', '<space>gI', builtin.lsp_implementations, { desc = 'Telescope=LSP Implementations' })
     m('n', '<space>wd', builtin.diagnostics, { desc = 'Telescope=Workspace Diagnostics' })
-    m('n', '<space>wb', function() builtin.diagnostics { bufnr = 0 } end, { desc = 'Telescope=Current Buffer Diagnostics' })
-
+    m('n', '<space>wb', function()
+        builtin.diagnostics { bufnr = 0 }
+    end, { desc = 'Telescope=Current Buffer Diagnostics' })
 
     m('n', '<space>cb', builtin.buffers, { desc = 'Telescope=buffers' })
     m('n', '<space>gs', builtin.git_status, { desc = 'Telescope=Git status' })
@@ -148,7 +149,7 @@ M.config = function()
     m('n', '<space>gc', builtin.git_commits, { desc = 'Telescope=Git commits' })
     m('n', '<space>gb', builtin.git_branches, { desc = 'Telescope=Git branches' })
     m('n', '<space>ff', builtin.find_files, { desc = 'Telescope=Find Files' })
-    m('n', '<space>h' , builtin.help_tags, { desc = 'Telescope=Help' })
+    m('n', '<space>h', builtin.help_tags, { desc = 'Telescope=Help' })
     m('n', '<space>hk', builtin.keymaps, { desc = 'Telescope=keymaps' })
     m('n', '<space>lg', builtin.live_grep, { desc = 'Telescope=live grep' })
     -- CUSTOM
