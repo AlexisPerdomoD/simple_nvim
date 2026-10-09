@@ -47,8 +47,6 @@ M.config = function()
     -- load the theme without affecting devicon colors.
     vim.cmd.colorscheme 'vscode'
     vim.o.background = 'dark'
-    local bg = require 'utils.bg_color_setuper'
-    bg:start(false, true)
 end
 
 return M

@@ -16,9 +16,6 @@ M.config = function()
         palette_overrides = {},
     }
     vim.cmd 'colorscheme vesper'
-
-    local bg = require 'utils.bg_color_setuper'
-    bg:start(false, true)
 end
 
 return M

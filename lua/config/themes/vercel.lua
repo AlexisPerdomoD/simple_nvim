@@ -17,9 +17,6 @@ M.config = function()
     }
     -- This must be called before setting the colorscheme, otherwise it will always default to light mode
     vim.cmd 'colorscheme vercel'
-
-    local bg = require 'utils.bg_color_setuper'
-    bg:start(false, true)
 end
 
 return M

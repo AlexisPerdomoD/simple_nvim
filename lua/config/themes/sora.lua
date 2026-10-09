@@ -6,7 +6,5 @@ M.config = function()
     }
 
     vim.cmd 'colorscheme sora'
-    local bg = require 'utils.bg_color_setuper'
-    bg:start(false, true)
 end
 return M

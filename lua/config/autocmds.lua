@@ -25,6 +25,7 @@ vim.api.nvim_create_autocmd({ 'VimResized', 'BufEnter', 'WinEnter' }, {
 })
 
 vim.api.nvim_create_autocmd('BufReadPre', {
+    group = custom_group,
     callback = function(args)
         local filesize_ckr = require 'utils.file_size'
         local large_file = filesize_ckr.is_too_large(args.file)
@@ -73,5 +74,15 @@ vim.api.nvim_create_autocmd('BufReadPre', {
 
             vim.schedule(notify_cb)
         end)
+    end,
+})
+
+vim.api.nvim_create_autocmd('ColorScheme', {
+    desc = 'ColorScheme preferences',
+    group = custom_group,
+    callback = function()
+        vim.api.nvim_set_hl(0, 'Pmenu', { bg = 'NONE' })
+        vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'NONE' })
+        vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'NONE' })
     end,
 })

@@ -28,10 +28,8 @@ T.config = function()
         },
         treesitter = true,
     }
-    local bg = require 'utils.bg_color_setuper'
 
     vim.cmd 'colorscheme catppuccin-macchiato'
-    bg:start(false, true)
 end
 
 return T

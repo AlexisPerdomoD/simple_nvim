@@ -95,20 +95,6 @@ function M.custom.grep_string()
     }
 end
 
-function M.custom.colorscheme()
-    local builtin = require 'telescope.builtin'
-    local bg_util = require 'utils.bg_color_setuper'
-
-    builtin.colorscheme { enable_preview = true }
-    vim.api.nvim_create_autocmd('ColorScheme', {
-        once = true, -- solo una vez tras escoger el nuevo esquema
-        callback = function()
-            bg_util:clear_cache()
-            bg_util:start(false, true)
-        end,
-    })
-end
-
 M.event = 'VeryLazy'
 M.dependencies = {
     'nvim-lua/plenary.nvim',
@@ -130,34 +116,36 @@ M.opts = {
 M.config = function()
     local t = require 'telescope'
     local builtin = require 'telescope.builtin'
-    local m = vim.keymap.set
     t.setup {}
 
     -- BUILTIN
-    m('n', '<space>gD', builtin.lsp_definitions, { desc = 'Telescope=LSP Definitions' })
-    m('n', '<space>gT', builtin.lsp_type_definitions, { desc = 'Telescope=LSP Type Definitions' })
-    m('n', '<space>gR', builtin.lsp_references, { desc = 'Telescope=LSP References' })
-    m('n', '<space>gI', builtin.lsp_implementations, { desc = 'Telescope=LSP Implementations' })
-    m('n', '<space>wd', builtin.diagnostics, { desc = 'Telescope=Workspace Diagnostics' })
-    m('n', '<space>wb', function()
+    vim.keymap.set('n', '<space>gD', builtin.lsp_definitions, { desc = 'Telescope=LSP Definitions' })
+    vim.keymap.set('n', '<space>gT', builtin.lsp_type_definitions, { desc = 'Telescope=LSP Type Definitions' })
+    vim.keymap.set('n', '<space>gR', builtin.lsp_references, { desc = 'Telescope=LSP References' })
+    vim.keymap.set('n', '<space>gI', builtin.lsp_implementations, { desc = 'Telescope=LSP Implementations' })
+    vim.keymap.set('n', '<space>wd', builtin.diagnostics, { desc = 'Telescope=Workspace Diagnostics' })
+    vim.keymap.set('n', '<space>wb', function()
         builtin.diagnostics { bufnr = 0 }
     end, { desc = 'Telescope=Current Buffer Diagnostics' })
+    vim.keymap.set('n', '<space>cc', function()
+        builtin.colorscheme { enable_preview = true }
+    end, { desc = 'Change colorscheme' })
 
-    m('n', '<space>cb', builtin.buffers, { desc = 'Telescope=buffers' })
-    m('n', '<space>gs', builtin.git_status, { desc = 'Telescope=Git status' })
-    m('n', '<space>gf', builtin.git_files, { desc = 'Telescope=Git Files' })
-    m('n', '<space>gc', builtin.git_commits, { desc = 'Telescope=Git commits' })
-    m('n', '<space>gb', builtin.git_branches, { desc = 'Telescope=Git branches' })
-    m('n', '<space>ff', builtin.find_files, { desc = 'Telescope=Find Files' })
-    m('n', '<space>h', builtin.help_tags, { desc = 'Telescope=Help' })
-    m('n', '<space>hk', builtin.keymaps, { desc = 'Telescope=keymaps' })
-    m('n', '<space>lg', builtin.live_grep, { desc = 'Telescope=live grep' })
+    vim.keymap.set('n', '<space>cb', builtin.buffers, { desc = 'Telescope=buffers' })
+    vim.keymap.set('n', '<space>gs', builtin.git_status, { desc = 'Telescope=Git status' })
+    vim.keymap.set('n', '<space>gf', builtin.git_files, { desc = 'Telescope=Git Files' })
+    vim.keymap.set('n', '<space>gc', builtin.git_commits, { desc = 'Telescope=Git commits' })
+    vim.keymap.set('n', '<space>gb', builtin.git_branches, { desc = 'Telescope=Git branches' })
+    vim.keymap.set('n', '<space>ff', builtin.find_files, { desc = 'Telescope=Find Files' })
+    vim.keymap.set('n', '<space>h', builtin.help_tags, { desc = 'Telescope=Help' })
+    vim.keymap.set('n', '<space>hk', builtin.keymaps, { desc = 'Telescope=keymaps' })
+    vim.keymap.set('n', '<space>lg', builtin.live_grep, { desc = 'Telescope=live grep' })
+
     -- CUSTOM
-    m('n', '<space>cc', M.custom.colorscheme, { desc = 'Change colorscheme' })
-    m('n', '<space>LG', M.custom.grep_string, { desc = 'Custom grep string' })
-    m('n', '<space>pp', M.custom.list_plugins, { desc = 'Plugins installed' })
-    m('n', '<space>fb', M.custom.list_buffers, { desc = 'Current folder file browser' })
-    m('n', '<space>nf', M.custom.change_neovide_font, { desc = 'Change neovide fonts' })
+    vim.keymap.set('n', '<space>LG', M.custom.grep_string, { desc = 'Custom grep string' })
+    vim.keymap.set('n', '<space>pp', M.custom.list_plugins, { desc = 'Plugins installed' })
+    vim.keymap.set('n', '<space>fb', M.custom.list_buffers, { desc = 'Current folder file browser' })
+    vim.keymap.set('n', '<space>nf', M.custom.change_neovide_font, { desc = 'Change neovide fonts' })
 end
 
 return M
