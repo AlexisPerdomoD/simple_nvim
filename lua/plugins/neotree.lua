@@ -7,7 +7,8 @@ return {
         'MunifTanjim/nui.nvim',
         'lewis6991/gitsigns.nvim',
     },
-    priority = 900,
+    event = 'VeryLazy',
+
     config = function()
         local nt = require 'neo-tree'
         nt.setup {
@@ -66,6 +67,7 @@ return {
                     highlight = 'NeoTreeFileIcon',
                     use_filtered_colors = true,
                     provider = nil,
+                    selected = ""
                 },
 
                 modified = {

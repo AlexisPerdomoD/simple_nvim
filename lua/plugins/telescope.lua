@@ -109,7 +109,7 @@ function M.custom.colorscheme()
     })
 end
 
-M.lazy = true
+M.event = 'VeryLazy'
 M.dependencies = {
     'nvim-lua/plenary.nvim',
     'nvim-telescope/telescope-file-browser.nvim',

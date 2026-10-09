@@ -1,18 +1,16 @@
-local M        = { 'rmagatti/auto-session' }
+local M = { 'rmagatti/auto-session' }
 M.dependencies = { 'nvim-telescope/telescope.nvim' }
-
-M.lazy         = false
-
-M.keys         = {
+M.event = 'VeryLazy'
+M.keys = {
     -- Will use Telescope if installed or a vim.ui.select picker otherwise
-    { '<space>s',  '<cmd>AutoSession search<CR>', desc = 'Session search' },
-    { '<space>S',  '<cmd>AutoSession save<CR>',   desc = 'Save session' },
+    { '<space>s', '<cmd>AutoSession search<CR>', desc = 'Session search' },
+    { '<space>S', '<cmd>AutoSession save<CR>', desc = 'Save session' },
     { '<space>ws', '<cmd>AutoSession toggle<CR>', desc = 'Toggle autosave' },
 }
 
 ---@module "auto-session"
 ---@type AutoSession.Config
-M.opts         = {
+M.opts = {
     -- allowed_dirs = {
     --     '~/work/*',
     -- },
@@ -37,10 +35,7 @@ M.opts         = {
         },
 
         picker_opts = {
-            telescope = {
-
-
-            }
+            telescope = {},
             -- For Telescope, you can set theme options here, see:
             -- https://github.com/nvim-telescope/telescope.nvim/blob/master/doc/telescope.txt#L112
             -- https://github.com/nvim-telescope/telescope.nvim/blob/master/lua/telescope/themes.lua
@@ -63,10 +58,7 @@ M.opts         = {
         },
 
         load_on_setup = true,
-
     },
 }
-
-
 
 return M
