@@ -1,76 +1,84 @@
-local color_bg = require 'utils.bg_color_setuper'
-local custom_spell_check = require 'utils.custom_spell_check'
-local opencode = require 'utils.opencode'
-
--- -- Set leader key
+-- Set leader key
 vim.g.mapleader = '.'
 
-local m = vim.api.nvim_set_keymap
--- Normal mode mappings
-m('v', '$', '$<Left>', { noremap = true, desc = 'Jump to end of line' })
-m('n', '<space>p', ':fold<CR>', { noremap = true, desc = 'Toggle fold' })
--- directions
-m('n', '<left>', '<cmd>echo "Use h to move!!"<CR>', { noremap = true, desc = 'Move left' })
-m('n', '<right>', '<cmd>echo "Use l to move!!"<CR>', { noremap = true, desc = 'Move right' })
-m('n', '<Up>', '<cmd>echo "Use k to move!!"<CR>', { noremap = true, desc = 'Move up' })
-m('n', '<Down>', '<cmd>echo "Use j to move!!"<CR>', { noremap = true, desc = 'Move down' })
+local map = vim.keymap.set
 
-m('n', '<Tab>', ':tabnext<CR>', { noremap = true, desc = 'Next tab', silent = true })
-m('n', '<S-Tab>', ':tabprevious<CR>', { noremap = true, desc = 'Previous tab', silent = true })
-m('n', '<space><Tab>', ':tabnew<CR>', { noremap = true, desc = 'New tab', silent = true })
+-- Normal and visual mode
+map('v', '$', '$<Left>', { desc = 'Jump to end of line' })
+map('n', '<space>p', '<cmd>fold<CR>', { desc = 'Toggle fold' })
+map('n', '<left>', '<cmd>echo "Use h to move!!"<CR>', { desc = 'Move left' })
+map('n', '<right>', '<cmd>echo "Use l to move!!"<CR>', { desc = 'Move right' })
+map('n', '<Up>', '<cmd>echo "Use k to move!!"<CR>', { desc = 'Move up' })
+map('n', '<Down>', '<cmd>echo "Use j to move!!"<CR>', { desc = 'Move down' })
 
--- MOVEMENTS
-m('n', '<A-l>', ':TmuxNavigateRight<cr>', { silent = true, desc = 'Tmux right' })
-m('n', '<A-h>', '<C-w>h', { silent = true, desc = 'Split left' })
-m('n', '<A-j>', '<C-w>j', { silent = true, desc = 'Split down' })
-m('n', '<A-k>', '<C-w>k', { silent = true, desc = 'Split up' })
-m('n', '<A-l>', '<C-w>l', { silent = true, desc = 'Split right' })
+map('n', '<Tab>', '<cmd>tabnext<CR>', { desc = 'Next tab', silent = true })
+map('n', '<S-Tab>', '<cmd>tabprevious<CR>', { desc = 'Previous tab', silent = true })
+map('n', '<space><Tab>', '<cmd>tabnew<CR>', { desc = 'New tab', silent = true })
 
-m('n', '<leader><Up>', ':resize +5<CR>', { silent = true, desc = 'Resize up' })
-m('n', '<leader>k', ':resize +5<CR>', { silent = true, desc = 'Resize up' })
-m('n', '<leader><Down>', ':resize -5<CR>', { silent = true, desc = 'Resize down' })
-m('n', '<leader>j', 'resize -5<CR>', { silent = true, desc = 'Resize down' })
-m('n', '<leader><Left>', ':vertical resize +10<CR>', { silent = true, desc = 'Resize left' })
-m('n', '<leader>h', ':vertical resize +10<CR>', { silent = true, desc = 'Resize left' })
-m('n', '|', ':vertical resize +5<CR>', { silent = true, desc = 'Resize left' })
-m('n', '<leader><Right>', ':vertical resize -10<CR>', { silent = true, desc = 'Resize right' })
-m('n', '<leader>l', ':vertical resize -10<CR>', { silent = true, desc = 'Resize right' })
-m('n', '\\', ':vertical resize -5<CR>', { silent = true, desc = 'Resize right' })
+-- Split navigation
+map('n', '<A-h>', '<C-w>h', { desc = 'Split left', silent = true })
+map('n', '<A-j>', '<C-w>j', { desc = 'Split down', silent = true })
+map('n', '<A-k>', '<C-w>k', { desc = 'Split up', silent = true })
+map('n', '<A-l>', '<C-w>l', { desc = 'Split right', silent = true })
 
-m('n', '<leader>c', ':nohlsearch<CR>', { silent = true, desc = 'Clear highlight' })
--- TERMINAL MAPPINGS
-m('t', '<A-h>', '<C-\\><C-n><C-w>h', { silent = true, desc = 'Split left' })
-m('t', '<A-j>', '<C-\\><C-n><C-w>j', { silent = true, desc = 'Split down' })
-m('t', '<A-k>', '<C-\\><C-n><C-w>k', { silent = true, desc = 'Split up' })
-m('t', '<A-l>', '<C-\\><C-n><C-w>l', { silent = true, desc = 'Split right' })
-m('t', '<Esc><Esc>', '<C-\\><C-n>', { silent = true, desc = 'exit terminal' })
+-- Window resizing
+map('n', '<leader><Up>', '<cmd>resize +5<CR>', { desc = 'Resize up', silent = true })
+map('n', '<leader>k', '<cmd>resize +5<CR>', { desc = 'Resize up', silent = true })
+map('n', '<leader><Down>', '<cmd>resize -5<CR>', { desc = 'Resize down', silent = true })
+map('n', '<leader>j', '<cmd>resize -5<CR>', { desc = 'Resize down', silent = true })
+map('n', '<leader><Left>', '<cmd>vertical resize +10<CR>', { desc = 'Resize left', silent = true })
+map('n', '<leader>h', '<cmd>vertical resize +10<CR>', { desc = 'Resize left', silent = true })
+map('n', '|', '<cmd>vertical resize +5<CR>', { desc = 'Resize left', silent = true })
+map('n', '<leader><Right>', '<cmd>vertical resize -10<CR>', { desc = 'Resize right', silent = true })
+map('n', '<leader>l', '<cmd>vertical resize -10<CR>', { desc = 'Resize right', silent = true })
+map('n', '\\', '<cmd>vertical resize -5<CR>', { desc = 'Resize right', silent = true })
+map('n', '<leader>c', '<cmd>nohlsearch<CR>', { desc = 'Clear highlight', silent = true })
 
---Insert mode keybinding
-m('i', '<C-h>', '<Left>', { noremap = true, desc = 'Move left in insert mode' })
-m('i', '<C-l>', '<Right>', { noremap = true, desc = 'Move right in insert mode' })
-m('i', '<C-j>', '<Down>', { noremap = true, desc = 'Move down in insert mode' })
-m('i', '<C-k>', '<Up>', { noremap = true, desc = 'Move up in insert mode' })
+-- Terminal navigation
+map('t', '<A-h>', '<C-\\><C-n><C-w>h', { desc = 'Split left', silent = true })
+map('t', '<A-j>', '<C-\\><C-n><C-w>j', { desc = 'Split down', silent = true })
+map('t', '<A-k>', '<C-\\><C-n><C-w>k', { desc = 'Split up', silent = true })
+map('t', '<A-l>', '<C-\\><C-n><C-w>l', { desc = 'Split right', silent = true })
+map('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal', silent = true })
 
--- Paste shortcuts
-m('n', '<C-c>', '"*y', { noremap = true, desc = 'Copy to system clipboard' })
-m('v', '<C-c>', '"*yy', { noremap = true, desc = 'Copy to system clipboard' })
-m('i', '<C-S>v', '"*p', { noremap = true, desc = 'Paste from system clipboard' })
-m('n', '<C-c>v', '"*PP', { noremap = true, desc = 'Paste from system clipboard' })
+-- Insert mode movement
+map('i', '<C-h>', '<Left>', { desc = 'Move left in insert mode' })
+map('i', '<C-l>', '<Right>', { desc = 'Move right in insert mode' })
 
-local ms = vim.keymap.set
--- remmove background color
-ms('n', '<leader>t', function()
-    color_bg:toggle_bg()
-end, { noremap = true, desc = 'Toggle background color' })
+local function snippet_jump_or_move(direction, fallback)
+    return function()
+        if vim.snippet.active { direction = direction } then
+            vim.snippet.jump(direction)
+            return ''
+        end
+        return fallback
+    end
+end
 
--- Crear el mapeo para invocar el corrector personalizado
-ms(
-    'n',
-    'sp',
-    custom_spell_check.custom_spell,
-    { desc = 'Corrector ortográfico personalizado', noremap = true, silent = true }
-)
+map({ 'i', 's' }, '<C-j>', snippet_jump_or_move(1, '<Down>'), {
+    expr = true,
+    desc = 'Next snippet placeholder / move down',
+})
+map({ 'i', 's' }, '<C-k>', snippet_jump_or_move(-1, '<Up>'), {
+    expr = true,
+    desc = 'Previous snippet placeholder / move up',
+})
 
--- Opencode
-ms('n', '<space>oc', opencode.toggle, { desc = 'Opencode toggle' })
-ms('n', '<space>of', opencode.focus, { desc = 'Opencode focus' })
+-- Native snippet smoke test
+map('i', '<M-s>', function()
+    vim.snippet.expand 'local ${1:name} = ${2:value}\nprint(${1})\n$0'
+end, { desc = 'Insert native snippet test' })
+
+-- Clipboard
+map('n', '<C-c>', '"*y', { desc = 'Copy to system clipboard' })
+map('v', '<C-c>', '"*yy', { desc = 'Copy line to system clipboard' })
+map('i', '<C-S>v', '"*p', { desc = 'Paste from system clipboard' })
+map('n', '<C-c>v', '"*PP', { desc = 'Paste from system clipboard' })
+
+-- Utilities
+map('n', 'sp', require('utils.custom_spell_check').custom_spell, {
+    desc = 'Corrector ortográfico personalizado',
+    silent = true,
+})
+map('n', '<space>oc', require('utils.opencode').toggle, { desc = 'Opencode toggle' })
+map('n', '<space>of', require('utils.opencode').focus, { desc = 'Opencode focus' })

@@ -1,8 +1,9 @@
 vim.opt.termguicolors = true
 vim.opt.number = true
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 vim.opt.mouse = 'a'
 vim.opt.showcmd = true
+
 -- Resaltar coincidencias al busca s s
 vim.opt.showmatch = true
 vim.opt.cursorline = true
@@ -17,11 +18,6 @@ vim.opt.expandtab = true -- Utilizar espacios en lugar de tabulaciones
 vim.o.lazyredraw = false
 -- No mostrar el modo de edición
 vim.opt.showmode = false
--- Siempre mostrar la barra de estado
-vim.opt.laststatus = 0
--- Configuración de la altura del comando
-vim.o.cmdheight = 0
--- Configuraciones de búsqueda
 vim.opt.hlsearch = true -- Resaltar coincidencias
 vim.opt.incsearch = true -- Búsqueda incremental
 vim.opt.ignorecase = true -- Búsquedas insensibles a mayúsculas...
@@ -30,8 +26,10 @@ vim.opt.smartcase = true -- ... A menos que contengan al menos una letra mayúsc
 vim.opt.clipboard = 'unnamedplus'
 vim.o.guicursor =
     'n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175'
+
 vim.o.foldlevel = 99
 vim.o.foldenable = true
+
 -- Usa el portapapeles del sistema para copiar y pegar
 vim.opt.spell = false
 vim.opt.spelllang = { 'en', 'es' }
@@ -45,3 +43,29 @@ vim.g.loaded_node_provider = 0
 vim.g.loaded_python3_provider = 0
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_perl_provider = 0
+
+-- Native diagnostics and completion
+vim.diagnostic.config {
+    severity_sort = true,
+    update_in_insert = false,
+    virtual_text = false,
+    signs = true,
+    float = { border = 'rounded' },
+}
+
+-- Keep native completion opt-in to avoid a popup in an empty insert-mode line.
+vim.o.autocomplete = false
+vim.o.complete = 'o'
+
+vim.o.completeopt = 'menuone,noselect,noinsert'
+vim.o.pumheight = 12
+vim.o.pumblend = 6
+vim.o.pumborder = 'rounded'
+vim.o.winborder = 'rounded'
+
+-- COMMAND-LINE COMPLETION
+vim.o.wildmenu = true
+vim.o.wildmode = 'full'
+vim.o.wildoptions = 'pum'
+vim.o.wildignorecase = true
+vim.o.wildcharm = 9

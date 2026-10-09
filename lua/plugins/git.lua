@@ -1,11 +1,7 @@
-local fugitive = { 'tpope/vim-fugitive' }
-fugitive.event = 'VeryLazy'
-fugitive.cmd = { 'Git', 'G' }
+local M = { 'lewis6991/gitsigns.nvim' }
+M.event = 'VeryLazy'
 
-local gitsigns = { 'lewis6991/gitsigns.nvim' }
-gitsigns.event = 'VeryLazy'
-
-gitsigns.config = function()
+M.config = function()
     local gs = require 'gitsigns'
     gs.setup {
         signs = {
@@ -99,4 +95,4 @@ gitsigns.config = function()
     }
 end
 
-return { fugitive, gitsigns }
+return M

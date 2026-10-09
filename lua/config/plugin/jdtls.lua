@@ -54,11 +54,10 @@ local lombok_jar_path = home
     .. 'jdtls'
     .. sep
     .. 'lombok.jar'
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local capabilities = vim.lsp.protocol.make_client_capabilities()
 local M = {}
 M.config = nil
----@param extendedClientCapabilities table
-function M:get_config(extendedClientCapabilities)
+function M:get_config()
     if self.config == nil then
         local config = {}
         config.capabilities = capabilities
@@ -67,7 +66,6 @@ function M:get_config(extendedClientCapabilities)
         config.settings = {}
         config.settings.java = {}
         config.settings.java.signatureHelp = { enabled = true }
-        config.settings.java.extendedClientCapabilities = extendedClientCapabilities
         config.settings.java.maven = { downloadSources = false } -- revisar
         config.settings.java.implementationsCodeLens = { enabled = true }
         config.settings.java.referencesCodeLens = { enabled = true }
