@@ -21,15 +21,15 @@
 ```
 init.lua                  ← entrypoint (loads opts → autocmds → keymaps → lazy)
 lua/config/
-  opts.lua                ← vim options (4-space indent, expandtab, relativenumber)
+  opts.lua                ← Neovim options and native completion/diagnostic UI
   keymaps.lua             ← all global keymaps
   autocmds.lua            ← custom autocmds (yank highlight, spell on .md, centered cursor)
   lazy.lua                ← lazy.nvim bootstrap + `import = 'plugins'`
   neovide.lua             ← Neovide GUI config (font, opacity, scale, JAVA_HOME via SDKMAN)
-  plugin/                 ← lspsaga.lua, jdtls.lua (LSP sub-configs)
-  themes/                 ← theme definitions; active = nightjungle
+  plugin/                 ← JDTLS sub-configuration
+  themes/                 ← theme definitions; active = poimandres
 lua/plugins/              ← one file per plugin/spec (lazy imports this dir)
-lua/utils/                ← bg_color_setuper, custom_spell_check, opencode
+lua/utils/                ← custom_spell_check, file_size, opencode
 lsp/                      ← lua_ls.lua, pyright.lua (standalone LSP configs, referenced by mason)
 ```
 
@@ -42,12 +42,16 @@ lsp/                      ← lua_ls.lua, pyright.lua (standalone LSP configs, r
 
 ## LSP
 
-- Servers installed/managed by **Mason** (`lua/plugins/mason.lua`) then enabled via native `vim.lsp.enable()`
-- 24 servers configured: ts, go, python, rust, java, lua, web, sql, docker, terraform, etc.
+- Tested with Neovim 0.12.5; uses native LSP and completion APIs.
+- Servers installed/managed by **Mason** (`lua/plugins/mason.lua`) and enabled with `vim.lsp.enable()`.
+- 16 servers are enabled in `lua/plugins/lspconfig.lua`; Java uses `nvim-jdtls` separately.
+- Native LSP completion is manual (`<C-Space>`) to avoid unsolicited insert-mode popups; nvim-cmp is not configured.
+- Native snippets use `vim.snippet`; `<C-j>/<C-k>` navigate placeholders and `<M-s>` inserts a test snippet in insert mode.
+- LSP maps are buffer-local and installed according to client method support in `LspAttach`.
 - LSP log level set to `ERROR` (reduces noise)
 - Pyright `$/progress` handler suppressed (too verbose)
 - Java: **jdtls** with Lombok agent, SDKMAN runtimes (17/21/25), workspace per-project in `stdpath('data')/jdtls-workspace/`
-- Lspsaga for enhanced LSP UI (peek definitions, finder, diagnostics)
+- Diagnostics use signs and on-demand floats; virtual text is disabled to reduce inline noise.
 
 ## Formatting (conform.nvim)
 
@@ -64,10 +68,10 @@ lsp/                      ← lua_ls.lua, pyright.lua (standalone LSP configs, r
 | ------------------ | ------------------------------------------ |
 | `<leader>1`        | Reload entire config                       |
 | `<leader>s`        | Format file                                |
-| `<leader>t`        | Toggle transparent background              |
+| `<M-s>`            | Insert native snippet test (insert mode)   |
 | `<leader>e`        | LSP diagnostic float                       |
 | `<leader>L`        | LSP diagnostics loclist                    |
-| `<leader>a`        | LSP code action                            |
+| `cA`               | LSP code action                            |
 | `<leader>c`        | Clear search highlight                     |
 | `<leader>hs/hr`    | Git stage/reset hunk (gitsigns, buf-local) |
 | `sp` (normal)      | Custom spell-check popup                   |
@@ -75,19 +79,16 @@ lsp/                      ← lua_ls.lua, pyright.lua (standalone LSP configs, r
 | `<space><leader>`  | Neo-tree float toggle                      |
 | `<space><space>`   | Neo-tree left sidebar                      |
 | `<space>b`         | Neo-tree buffers                           |
-| `<space>a`         | Harpoon add file                           |
-| `<space>e`         | Harpoon menu                               |
-| `<space>1-4`       | Harpoon select 1-4                         |
 | `<space>s/S`       | Session search/save                        |
-| `F`                | Lspsaga finder                             |
-| `gd`               | Lspsaga peek definition                    |
-| `gr`               | Lspsaga references                         |
-| `K`                | Lspsaga hover                              |
-| `DE`               | LSP declaration                            |
+| `<C-Space>`        | Request native LSP completion              |
+| `<C-j>/<C-k>`      | Snippet placeholders; otherwise move vertically |
+| `DE/gd/td/gi/grr`  | Supported LSP navigation methods           |
+| `<leader><leader>` | LSP hover                                  |
+| `<leader>sh`       | LSP signature help                         |
 | `rn`               | LSP rename                                 |
-| `td`               | LSP type definition                        |
+| `<space>l`         | Toggle supported LSP inlay hints           |
 | Arrow keys         | Blocked in normal mode (prints hint)       |
-| `Ctrl-+/Alt-` hjkl | Tmux pane navigation                       |
+| `Alt-hjkl`         | Split navigation                           |
 
 ## Treesitter
 
@@ -95,12 +96,12 @@ lsp/                      ← lua_ls.lua, pyright.lua (standalone LSP configs, r
 - Uses treesitter-based folding (`vim.treesitter.foldexpr()`)
 - Skips parsers for UI/plugin buffers (lazy, mason, neo-tree, telescope, noice, etc.)
 
-## Completion (nvim-cmp)
+## Completion and snippets (native Neovim)
 
-- Sources: LSP > Luasnip > buffer > nerdfonts > path
-- Confirm with `Ctrl-Right` or `Ctrl-l` in insert mode
-- Autopairs integrated
-- cmdline completion for `/`, `?`, `:`
+- `vim.o.autocomplete = false`; request LSP completion with `<C-Space>`.
+- `completeopt` keeps the native menu unselected and does not insert candidates automatically.
+- `vim.snippet` handles placeholders; no snippet plugin/catalog is enabled.
+- Completion sources are attached LSPs; nvim-cmp buffer/path/cmdline sources are not configured.
 
 ## AI
 

@@ -13,7 +13,7 @@ A clean, fast, and efficient Neovim configuration using lazy.nvim as the package
 
 Before using this configuration, ensure you have the following installed:
 
-- [Neovim](https://neovim.io/) (v0.9.0 or later)
+- [Neovim](https://neovim.io/) (v0.12.0 or later; native LSP completion APIs are used)
 - [Node.js](https://nodejs.org/) and npm (for LSP support)
 - [Go](https://golang.org/) (for Go development tools)
 - [git](https://git-scm.com/) (for plugin management)
