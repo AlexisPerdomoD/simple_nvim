@@ -48,13 +48,13 @@ vim.g.loaded_perl_provider = 0
 vim.diagnostic.config {
     severity_sort = true,
     update_in_insert = false,
-    virtual_text = false,
+    virtual_text = true,
     signs = true,
     float = { border = 'rounded' },
 }
 
 -- Keep native completion opt-in to avoid a popup in an empty insert-mode line.
-vim.o.autocomplete = false
+vim.o.autocomplete = true
 vim.o.complete = 'o'
 
 vim.o.completeopt = 'menuone,noselect,noinsert'
