@@ -13,8 +13,9 @@ end
 
 vim.opt.rtp:prepend(install_path)
 
-local lazy_plugin_manager = require 'lazy'
-lazy_plugin_manager.setup {
+local lazy = require 'lazy'
+
+lazy.setup {
     opts = {
         rocks = { enable = false },
     },
