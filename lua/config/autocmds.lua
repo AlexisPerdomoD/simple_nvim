@@ -86,3 +86,15 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         -- vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'NONE' })
     end,
 })
+
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'qf',
+    desc = 'Quicklist preferences',
+    group = custom_group,
+    callback = function()
+        vim.keymap.set('n', '<CR>', '<CR><cmd>cclose<CR>', {
+            buffer = true,
+            desc = 'Open quickfix item and close list',
+        })
+    end,
+})
