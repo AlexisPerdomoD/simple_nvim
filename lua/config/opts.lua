@@ -3,6 +3,7 @@ vim.opt.number = true
 vim.opt.relativenumber = false
 vim.opt.mouse = 'a'
 vim.opt.showcmd = true
+vim.o.cmdheight = 0
 
 -- Resaltar coincidencias al busca s s
 vim.opt.showmatch = true
@@ -26,7 +27,6 @@ vim.opt.smartcase = true -- ... A menos que contengan al menos una letra mayúsc
 vim.opt.clipboard = 'unnamedplus'
 vim.o.guicursor =
     'n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175'
-
 vim.o.foldlevel = 99
 vim.o.foldenable = true
 
