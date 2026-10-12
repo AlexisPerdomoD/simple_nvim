@@ -8,6 +8,8 @@ M.keys = {
     { '<space>ws', '<cmd>AutoSession toggle<CR>', desc = 'Toggle autosave' },
 }
 
+M.enabled = false
+
 ---@module "auto-session"
 ---@type AutoSession.Config
 M.opts = {
