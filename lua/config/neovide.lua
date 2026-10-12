@@ -63,7 +63,7 @@ end
 
 function M:setup()
     -- vim.g.neovide_cursor_vfx_mode = 'railgun'
-    vim.o.guifont = 'FantasqueSansM Nerd Font:h11'
+    vim.o.guifont = 'FantasqueSansM Nerd Font:h10'
     -- vim.o.guifont = 'JetBrainsMono Nerd Font:h11'
     -- vim.o.guifont = 'CaskaydiaCove Nerd Font:h8'
     -- vim.o.guifont = 'AnonymicePro Nerd Font:h12'
