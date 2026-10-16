@@ -98,3 +98,12 @@ vim.api.nvim_create_autocmd('FileType', {
         })
     end,
 })
+
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'sql',
+    group = custom_group,
+    desc = 'avoid dependency on dbext on sql files',
+    callback = function()
+        vim.opt_local.complete:remove 'o'
+    end,
+})

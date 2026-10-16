@@ -104,6 +104,9 @@ vim.diagnostic.config {
 
 vim.o.autocomplete = true -- Enable automatic completion
 vim.o.complete = 'o' -- Use the specified sources for insert-mode completion
+-- vim.g.omni_sql_default_compl_type = 'syntax'
+-- vim.g.omni_sql_ignorecase = 1
+
 vim.o.completeopt = 'menuone,noselect,noinsert' -- Configure completion menu behavior
 vim.o.pumheight = 12 -- Maximum number of visible completion items
 vim.o.pumblend = 6 -- Set completion popup transparency
