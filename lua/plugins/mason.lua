@@ -30,6 +30,7 @@ M.ensure_installed = {
     -- 'golangci-lint-langserver',
 }
 
+-- Fallback trigger; nvim-lspconfig loads Mason earlier when an LSP is needed.
 M.event = 'VeryLazy'
 M.config = function()
     local m = require 'mason'
