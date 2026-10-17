@@ -1,6 +1,6 @@
 local M = { 'supermaven-inc/supermaven-nvim' }
--- M.Event = 'InsertEnter'
-M.lazy = true
+M.event = 'InsertEnter'
+-- M.lazy = true
 M.config = function()
     local sm = require 'supermaven-nvim'
 
