@@ -1,7 +1,7 @@
 return { -- ADDS SUPPORT TO MARKDOWN PREVIEW
     {
         'selimacerbas/markdown-preview.nvim',
-        dependencies = { 'selimacerbas/live-server.nvim' },
+        dependencies = { 'selimacerbas/kitehost.nvim' },
         -- event = 'VeryLazy',
         ft = 'markdown',
         config = function()
