@@ -1,6 +1,4 @@
 return {
-    -- THEMES
-    require 'config.themes',
 
     -- ADDS SUPPORT TO LUA INTO NVIM
     {
@@ -258,4 +256,7 @@ return {
             }
         end,
     },
+
+    -- EXTRA THEMES
+    { 'scottmckendry/cyberdream.nvim', lazy = true },
 }
