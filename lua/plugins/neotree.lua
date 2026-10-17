@@ -12,7 +12,6 @@ return {
     config = function()
         local nt = require 'neo-tree'
         nt.setup {
-            auto_clean_after_session_restore = true,
             enable_refresh_on_write = true,
             add_blank_line_at_top = true,
             close_if_last_window = true,

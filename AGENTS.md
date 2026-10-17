@@ -27,7 +27,6 @@ lua/config/
   lazy.lua                ← lazy.nvim bootstrap + `import = 'plugins'`
   neovide.lua             ← Neovide GUI config (font, opacity, scale, JAVA_HOME via SDKMAN)
   plugin/                 ← JDTLS sub-configuration
-  themes/                 ← theme definitions; active = poimandres
 lua/plugins/              ← one file per plugin/spec (lazy imports this dir)
 lua/utils/                ← custom_spell_check, file_size, opencode
 lsp/                      ← lua_ls.lua, pyright.lua (standalone LSP configs, referenced by mason)
@@ -79,7 +78,6 @@ lsp/                      ← lua_ls.lua, pyright.lua (standalone LSP configs, r
 | `<space><leader>`  | Neo-tree float toggle                      |
 | `<space><space>`   | Neo-tree left sidebar                      |
 | `<space>b`         | Neo-tree buffers                           |
-| `<space>s/S`       | Session search/save                        |
 | `<C-Space>`        | Request native LSP completion              |
 | `<C-j>/<C-k>`      | Snippet placeholders; otherwise move vertically |
 | `DE/gd/td/gi/grr`  | Supported LSP navigation methods           |
@@ -111,12 +109,7 @@ lsp/                      ← lua_ls.lua, pyright.lua (standalone LSP configs, r
 
 ## Neovide (GUI)
 
-- Font: FantasqueSansM Nerd Font :h11
+- Font: FantasqueSansM Nerd Font :h9
 - `Ctrl-+/-`: scale, `Ctrl-)/(`: opacity
 - Sets `JAVA_HOME` to SDKMAN current via `neovide.lua`
 - System clipboard paste via `Cmd-v` / `Ctrl-Shift-v`
-
-## Sessions
-
-- auto-session: auto-save enabled, auto-restore **disabled**
-- Suppressed dirs: `~/work`, `~/.config/*`
