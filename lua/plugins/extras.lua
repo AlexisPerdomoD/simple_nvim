@@ -259,4 +259,5 @@ return {
 
     -- EXTRA THEMES
     { 'scottmckendry/cyberdream.nvim', lazy = true },
+    { 'Mofiqul/vscode.nvim', lazy = true },
 }
