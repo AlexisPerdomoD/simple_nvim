@@ -262,8 +262,8 @@ return {
     { 'Mofiqul/vscode.nvim', lazy = true },
     {
         'kbraggins/duskhaven.nvim',
-        -- lazy = true,
-        priority = 1000,
+        lazy = true,
+        -- priority = 1000,
         opts = {
             italic = false,
             bold = false,
@@ -287,6 +287,15 @@ return {
             })
 
             vim.cmd 'colorscheme duskhaven'
+        end,
+    },
+    {
+        'Biscuit-Theme/nvim',
+        name = 'biscuit',
+        lazy = false,
+        priority = 1000,
+        config = function()
+            vim.cmd 'colorscheme biscuit'
         end,
     },
 }
