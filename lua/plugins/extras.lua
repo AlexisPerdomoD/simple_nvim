@@ -204,21 +204,22 @@ return {
                 -- on_exit = fun(t: Terminal, job: number, exit_code: number, name: string) -- function to run when terminal process exits
                 hide_numbers = true, -- hide the number column in toggleterm buffers
                 shade_filetypes = {},
-                -- autochdir = false, -- when neovim changes it current directory the terminal will change it's own when next it's opened
-                -- highlights = {
-                --   -- highlights which map to a highlight group name and a table of it's values
-                --   -- NOTE: this is only a subset of values, any group placed here will be set for the terminal window split
-                --   Normal = {
-                --     guibg = "<VALUE-HERE>",
-                --   },
-                --   NormalFloat = {
-                --     link = 'Normal'
-                --   },
-                --   FloatBorder = {
-                --     guifg = "<VALUE-HERE>",
-                --     guibg = "<VALUE-HERE>",
-                --   },
-                -- },
+                --
+                highlights = {
+                    -- highlights which map to a highlight group name and a table of it's values
+                    -- NOTE: this is only a subset of values, any group placed here will be set for the terminal window split
+                    Normal = {
+                        guibg = 'NONE',
+                        guifg = '#00FF9C',
+                    },
+                    NormalFloat = {
+                        link = 'Normal',
+                    },
+                    FloatBorder = {
+                        guifg = '#00FF9C',
+                        guibg = 'NONE',
+                    },
+                },
                 shade_terminals = true, -- NOTE: this option takes priority over highlights specified so if you specify Normal highlights you should set this to false
                 shading_factor = '3', -- the percentage by which to lighten terminal background, default: -30 (gets multiplied by -3 if background is light)
                 start_in_insert = true,
@@ -258,6 +259,34 @@ return {
     },
 
     -- EXTRA THEMES
-    { 'scottmckendry/cyberdream.nvim', lazy = true },
     { 'Mofiqul/vscode.nvim', lazy = true },
+    {
+        'kbraggins/duskhaven.nvim',
+        -- lazy = true,
+        priority = 1000,
+        opts = {
+            italic = false,
+            bold = false,
+            transparent = false,
+            palette = { orange = '#ff8c42' },
+            highlight_overrides = {
+                Comment = { fg = '#7a7f9e', italic = true },
+            },
+        },
+        config = function(_, opts)
+            local theme = require 'duskhaven'
+            vim.g.__transparent_bg = opts.transparency
+            theme.setup(vim.g.__transparent_bg)
+
+            vim.keymap.set('n', '<leader>t', function()
+                vim.g.__transparent_bg = not vim.g.__transparent_bg
+                opts.transparent = vim.g.__transparent_bg
+                theme.setup(opts)
+            end, {
+                desc = 'toggle background transparency',
+            })
+
+            vim.cmd 'colorscheme duskhaven'
+        end,
+    },
 }

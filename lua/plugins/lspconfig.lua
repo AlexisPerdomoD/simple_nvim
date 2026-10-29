@@ -10,6 +10,7 @@ M.lsp_servers = {
     'dockerls',
     'eslint',
     'gopls',
+    'golangci_lint_ls',
     'html',
     'jsonls',
     'lua_ls',
