@@ -262,12 +262,12 @@ return {
     { 'Mofiqul/vscode.nvim', lazy = true },
     {
         'kbraggins/duskhaven.nvim',
-        lazy = true,
-        -- priority = 1000,
+        -- lazy = true,
+        priority = 1000,
         opts = {
             italic = false,
             bold = false,
-            transparent = false,
+            transparent = true,
             palette = { orange = '#ff8c42' },
             highlight_overrides = {
                 Comment = { fg = '#7a7f9e', italic = true },
@@ -292,8 +292,8 @@ return {
     {
         'Biscuit-Theme/nvim',
         name = 'biscuit',
-        lazy = false,
-        priority = 1000,
+        lazy = true,
+        -- priority = 1000,
         config = function()
             vim.cmd 'colorscheme biscuit'
         end,
