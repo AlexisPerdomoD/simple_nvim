@@ -257,45 +257,4 @@ return {
             }
         end,
     },
-
-    -- EXTRA THEMES
-    { 'Mofiqul/vscode.nvim', lazy = true },
-    {
-        'kbraggins/duskhaven.nvim',
-        -- lazy = true,
-        priority = 1000,
-        opts = {
-            italic = false,
-            bold = false,
-            transparent = true,
-            palette = { orange = '#ff8c42' },
-            highlight_overrides = {
-                Comment = { fg = '#7a7f9e', italic = true },
-            },
-        },
-        config = function(_, opts)
-            local theme = require 'duskhaven'
-            vim.g.__transparent_bg = opts.transparency
-            theme.setup(vim.g.__transparent_bg)
-
-            vim.keymap.set('n', '<leader>t', function()
-                vim.g.__transparent_bg = not vim.g.__transparent_bg
-                opts.transparent = vim.g.__transparent_bg
-                theme.setup(opts)
-            end, {
-                desc = 'toggle background transparency',
-            })
-
-            vim.cmd 'colorscheme duskhaven'
-        end,
-    },
-    {
-        'Biscuit-Theme/nvim',
-        name = 'biscuit',
-        lazy = true,
-        -- priority = 1000,
-        config = function()
-            vim.cmd 'colorscheme biscuit'
-        end,
-    },
 }

@@ -1,7 +1,7 @@
 {
   "biscuit": { "branch": "main", "commit": "1307d875ac42c5bf620b311781de7211521a0e42" },
   "conform.nvim": { "branch": "master", "commit": "016802de402556da54c36bd7359b441266b01cdd" },
-  "duskhaven.nvim": { "branch": "main", "commit": "9adb53257f2b4571514db111a197b6bef759745c" },
+  "duskhaven": { "branch": "main", "commit": "9adb53257f2b4571514db111a197b6bef759745c" },
   "gitsigns.nvim": { "branch": "main", "commit": "d4854fa9a94b5c8b37dd209fb4a19e98e764186f" },
   "kitehost.nvim": { "branch": "main", "commit": "4cb5c94a84cc653e0b32e0c9aed95465a36fc94d" },
   "lazy.nvim": { "branch": "main", "commit": "306a05526ada86a7b30af95c5cc81ffba93fef97" },
@@ -23,5 +23,5 @@
   "telescope-file-browser.nvim": { "branch": "master", "commit": "3610dc7dc91f06aa98b11dca5cc30dfa98626b7e" },
   "telescope.nvim": { "branch": "master", "commit": "40aedd8a68c78a656a10a8d62d80c54af59420fb" },
   "toggleterm.nvim": { "branch": "main", "commit": "50ea089fc548917cc3cc16b46a8211833b9e3c7c" },
-  "vscode.nvim": { "branch": "main", "commit": "6439ed89d0e10193f07e92268a321d7c6f6e93ee" }
+  "vscode": { "branch": "main", "commit": "6439ed89d0e10193f07e92268a321d7c6f6e93ee" }
 }

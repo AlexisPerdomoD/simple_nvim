@@ -10,4 +10,10 @@ if vim.g.neovide then
     cfg:setup()
 end
 
+if vim.fn.getenv 'TERM' == 'xterm-kitty' then
+    vim.g.__extra_colorscheme_name = 'biscuit'
+else
+    vim.g.__extra_colorscheme_name = 'duskhaven'
+end
+
 require 'config.lazy'
