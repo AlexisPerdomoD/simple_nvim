@@ -1,4 +1,24 @@
 local mason = { 'williamboman/mason.nvim' }
+-- Fallback trigger; nvim-lspconfig loads Mason earlier when an LSP is needed.
+mason.event = 'VeryLazy'
+
+mason.config = function()
+    local m = require 'mason'
+    m.setup {}
+    local r = require 'mason-registry'
+
+    for _, server_name in ipairs(mason.ensure_installed) do
+        if r.is_installed(server_name) then
+            goto continue
+        end
+
+        r.get_package(server_name):install()
+        vim.notify('Installed ' .. server_name, vim.log.levels.INFO, { title = 'LSP Server Install' })
+
+        ::continue::
+    end
+end
+
 mason.ensure_installed = {
     'typescript-language-server',
     'bash-language-server',
@@ -30,49 +50,9 @@ mason.ensure_installed = {
     -- 'golangci-lint-langserver',
 }
 
--- Fallback trigger; nvim-lspconfig loads Mason earlier when an LSP is needed.
-mason.event = 'VeryLazy'
-mason.config = function()
-    local m = require 'mason'
-    m.setup {}
-    local r = require 'mason-registry'
-
-    for _, server_name in ipairs(mason.ensure_installed) do
-        if r.is_installed(server_name) then
-            goto continue
-        end
-
-        r.get_package(server_name):install()
-        vim.notify('Installed ' .. server_name, vim.log.levels.INFO, { title = 'LSP Server Install' })
-
-        ::continue::
-    end
-end
-
 local lspconfig = { 'neovim/nvim-lspconfig' }
-
-lspconfig.dependencies = { 'williamboman/mason.nvim' }
 lspconfig.event = { 'BufReadPre', 'BufNewFile', 'VeryLazy' }
-
-lspconfig.lsp_servers = {
-    'ts_ls',
-    'bashls',
-    'cssls',
-    'dockerls',
-    'eslint',
-    'gopls',
-    -- 'golangci_lint_ls', no useful for now
-    'html',
-    'jsonls',
-    'lua_ls',
-    'pyright',
-    'ruff',
-    'rust_analyzer',
-    'tailwindcss',
-    'yamlls',
-    'hyprls',
-    'clangd',
-}
+lspconfig.dependencies = { 'williamboman/mason.nvim' }
 
 lspconfig.config = function()
     vim.lsp.log.set_level 'ERROR'
@@ -176,5 +156,25 @@ lspconfig.config = function()
         vim.lsp.enable(server_name)
     end
 end
+
+lspconfig.lsp_servers = {
+    'ts_ls',
+    'bashls',
+    'cssls',
+    'dockerls',
+    'eslint',
+    'gopls',
+    -- 'golangci_lint_ls', no useful for now
+    'html',
+    'jsonls',
+    'lua_ls',
+    'pyright',
+    'ruff',
+    'rust_analyzer',
+    'tailwindcss',
+    'yamlls',
+    'hyprls',
+    'clangd',
+}
 
 return { mason, lspconfig }
