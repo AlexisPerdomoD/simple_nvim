@@ -1,16 +1,67 @@
-local M = { 'neovim/nvim-lspconfig' }
+local mason = { 'williamboman/mason.nvim' }
+mason.ensure_installed = {
+    'typescript-language-server',
+    'bash-language-server',
+    'lua-language-server',
+    'css-lsp',
+    'gopls',
+    'html-lsp',
+    'json-lsp',
+    'yaml-language-server',
+    'tailwindcss-language-server',
+    'rust-analyzer',
+    'clangd',
+    'yamlfmt',
+    'shfmt',
+    'stylua',
+    'eslint-lsp',
+    'pyright',
+    'ruff',
+    'hyprls',
+    'pyright',
+    'ruff',
+    -- 'marksman',
+    -- 'sqls',
+    -- 'jdtls',
+    -- 'csharp-language-server',
+    -- 'csharpier',
+    -- 'cssmodules-language-server',
+    -- 'css-variables-language-server',
+    -- 'golangci-lint-langserver',
+}
 
-M.dependencies = { 'williamboman/mason.nvim' }
-M.event = { 'BufReadPre', 'BufNewFile', 'VeryLazy' }
+-- Fallback trigger; nvim-lspconfig loads Mason earlier when an LSP is needed.
+mason.event = 'VeryLazy'
+mason.config = function()
+    local m = require 'mason'
+    m.setup {}
+    local r = require 'mason-registry'
 
-M.lsp_servers = {
+    for _, server_name in ipairs(mason.ensure_installed) do
+        if r.is_installed(server_name) then
+            goto continue
+        end
+
+        r.get_package(server_name):install()
+        vim.notify('Installed ' .. server_name, vim.log.levels.INFO, { title = 'LSP Server Install' })
+
+        ::continue::
+    end
+end
+
+local lspconfig = { 'neovim/nvim-lspconfig' }
+
+lspconfig.dependencies = { 'williamboman/mason.nvim' }
+lspconfig.event = { 'BufReadPre', 'BufNewFile', 'VeryLazy' }
+
+lspconfig.lsp_servers = {
     'ts_ls',
     'bashls',
     'cssls',
     'dockerls',
     'eslint',
     'gopls',
-    'golangci_lint_ls',
+    -- 'golangci_lint_ls', no useful for now
     'html',
     'jsonls',
     'lua_ls',
@@ -23,7 +74,7 @@ M.lsp_servers = {
     'clangd',
 }
 
-M.config = function()
+lspconfig.config = function()
     vim.lsp.log.set_level 'ERROR'
 
     local function map_if_supported(client, bufnr, method, lhs, rhs, desc, mode)
@@ -121,9 +172,9 @@ M.config = function()
         end,
     })
 
-    for _, server_name in ipairs(M.lsp_servers) do
+    for _, server_name in ipairs(lspconfig.lsp_servers) do
         vim.lsp.enable(server_name)
     end
 end
 
-return M
+return { mason, lspconfig }
